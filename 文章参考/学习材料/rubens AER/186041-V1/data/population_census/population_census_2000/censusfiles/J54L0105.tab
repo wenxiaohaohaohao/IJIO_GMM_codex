@@ -1,0 +1,797 @@
+V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14
+CHENGGUAN 	Total	16774	8525	8249	10434	6202	4232	495	288	207	4.53	4.44	4.66
+CHENGGUAN 	Gongdelin	4104	2133	1971	2646	1644	1002	143	77	66	5.13	4.47	6.18
+CHENGGUAN 	Zhaxi	1719	885	834	1034	644	390	38	23	15	3.54	3.45	3.70
+CHENGGUAN 	Jibenggang	2335	1147	1188	1529	871	658	62	40	22	3.90	4.39	3.24
+CHENGGUAN 	Bakuo	1256	608	648	866	476	390	47	27	20	5.15	5.37	4.88
+CHENGGUAN 	Jiri	2337	1149	1188	1338	782	556	77	45	32	5.44	5.44	5.44
+CHENGGUAN 	Chongsaikang	893	425	468	577	330	247	30	18	12	4.94	5.17	4.63
+CHENGGUAN 	Caigongtang	554	275	279	377	208	169	18	9	9	4.56	4.15	5.06
+CHENGGUAN 	Najin	1671	855	816	994	573	421	30	16	14	2.93	2.72	3.22
+CHENGGUAN 	Niangre	1361	706	655	762	473	289	42	28	14	5.22	5.59	4.62
+CHENGGUAN 	Duodi	544	342	202	311	201	110	8	5	3	2.51	2.43	2.65
+LINZHOU 	Total	3347	1580	1767	2969	1423	1546	7	5	2	0.24	0.35	0.13
+LINZHOU 	Ganqu	536	246	290	461	218	243	1	1	          	0.22	0.46	          
+LINZHOU 	Chundui	346	165	181	286	139	147	          	          	          	          	          	          
+LINZHOU 	Kazi	329	159	170	302	147	155	          	          	          	          	          	          
+LINZHOU 	Qiangga	315	144	171	271	128	143	          	          	          	          	          	          
+LINZHOU 	Songpan	244	116	128	239	115	124	          	          	          	          	          	          
+LINZHOU 	Jiangrexia	319	142	177	309	135	174	          	          	          	          	          	          
+LINZHOU 	Bianjiaolin	330	166	164	296	152	144	5	4	1	1.66	2.56	0.69
+LINZHOU 	Pangduo	258	119	139	200	98	102	          	          	          	          	          	          
+LINZHOU 	Alang	306	144	162	287	134	153	          	          	          	          	          	          
+LINZHOU 	Tanggu	364	179	185	318	157	161	1	          	1	0.31	          	0.62
+DANGXIONG 	Total	2512	1251	1261	2078	1097	981	18	13	5	0.86	1.17	0.51
+DANGXIONG 	Yangbajing	303	150	153	240	129	111	          	          	          	          	          	          
+DANGXIONG 	Dangquka	297	153	144	186	115	71	13	8	5	6.53	6.5	6.58
+DANGXIONG 	Geda	244	114	130	210	103	107	1	1	          	0.47	0.96	          
+DANGXIONG 	Ningzhong	495	244	251	436	225	211	          	          	          	          	          	          
+DANGXIONG 	Gongtang	346	165	181	296	151	145	          	          	          	          	          	          
+DANGXIONG 	Longren	220	111	109	196	100	96	          	          	          	          	          	          
+DANGXIONG 	Wuma	316	161	155	277	146	131	2	2	          	0.72	1.35	          
+DANGXIONG 	Namuhu	291	153	138	237	128	109	2	2	          	0.84	1.54	          
+NIMU 	Total	1688	812	876	1457	712	745	1	1	          	0.07	0.14	          
+NIMU 	Tarong	420	210	210	354	183	171	          	          	          	          	          	          
+NIMU 	Tunba	150	72	78	124	59	65	          	          	          	          	          	          
+NIMU 	Xumai	347	158	189	299	142	157	          	          	          	          	          	          
+NIMU 	Pusong	119	52	67	98	44	54	          	          	          	          	          	          
+NIMU 	Pagu	138	65	73	121	57	64	1	1	          	0.82	1.72	          
+NIMU 	Majiang	91	50	41	77	42	35	          	          	          	          	          	          
+NIMU 	Keru	66	36	30	59	32	27	          	          	          	          	          	          
+NIMU 	Nimu	357	169	188	325	153	172	          	          	          	          	          	          
+QUSHUI 	Total	2131	1044	1087	1779	908	871	8	3	5	0.45	0.33	0.57
+QUSHUI 	Qushui	566	283	283	490	254	236	3	1	2	0.61	0.39	0.84
+QUSHUI 	Niedang	293	161	132	248	138	110	2	1	1	0.80	0.72	0.90
+QUSHUI 	Chabala	276	132	144	254	122	132	          	          	          	          	          	          
+QUSHUI 	Caina	307	148	159	248	130	118	          	          	          	          	          	          
+QUSHUI 	Nanmu	192	90	102	133	70	63	3	1	2	2.21	1.41	3.08
+QUSHUI 	Daga	497	230	267	406	194	212	          	          	          	          	          	          
+DUILONGDEQING 	Total	2741	1318	1423	2445	1198	1247	14	7	7	0.57	0.58	0.56
+DUILONGDEQING 	Dongga	644	313	331	524	268	256	13	6	7	2.42	2.19	2.66
+DUILONGDEQING 	Naiqiong	536	241	295	496	221	275	          	          	          	          	          	          
+DUILONGDEQING 	Deqing	374	179	195	343	166	177	          	          	          	          	          	          
+DUILONGDEQING 	Ma	310	150	160	288	144	144	          	          	          	          	          	          
+DUILONGDEQING 	Gurong	368	167	201	334	152	182	1	1	          	0.30	0.65	          
+DUILONGDEQING 	Yangda	258	131	127	229	119	110	          	          	          	          	          	          
+DUILONGDEQING 	Liuwu	251	137	114	231	128	103	          	          	          	          	          	          
+DAZI 	Total	1762	894	868	1540	806	734	1	1	          	0.06	0.12	          
+DAZI 	Deqing	539	264	275	454	231	223	          	          	          	          	          	          
+DAZI 	Tajie	206	90	116	185	82	103	          	          	          	          	          	          
+DAZI 	Zhangduo	270	154	116	247	143	104	          	          	          	          	          	          
+DAZI 	Tangga	316	165	151	287	154	133	          	          	          	          	          	          
+DAZI 	Xue	157	82	75	123	68	55	1	1	          	0.81	1.45	          
+DAZI 	Bangdui	274	139	135	244	128	116	          	          	          	          	          	          
+MOZHUGONGKA 	Total	2451	1234	1217	2116	1087	1029	10	4	6	0.47	0.37	0.58
+MOZHUGONGKA 	Gongka	288	145	143	251	134	117	3	          	3	1.18	          	2.5
+MOZHUGONGKA 	Jiama	199	112	87	185	103	82	          	          	          	          	          	          
+MOZHUGONGKA 	Tangjia	372	182	190	340	169	171	          	          	          	          	          	          
+MOZHUGONGKA 	Zhaxigang	408	207	201	383	196	187	          	          	          	          	          	          
+MOZHUGONGKA 	Nimajiangre	491	246	245	390	202	188	          	          	          	          	          	          
+MOZHUGONGKA 	Zhaxue	408	203	205	326	163	163	7	4	3	2.10	2.40	1.81
+MOZHUGONGKA 	Riduo	112	52	60	100	48	52	          	          	          	          	          	          
+MOZHUGONGKA 	Menba	173	87	86	141	72	69	          	          	          	          	          	          
+CHANGDU 	Total	4873	2340	2533	3557	1864	1693	57	33	24	1.58	1.74	1.40
+CHANGDU 	Chengguan	1891	972	919	1153	709	444	52	31	21	4.32	4.19	4.52
+CHANGDU 	Karuo	168	71	97	137	61	76	          	          	          	          	          	          
+CHANGDU 	Eluo	288	137	151	236	116	120	1	1	          	0.42	0.85	          
+CHANGDU 	Mangda	371	178	193	296	150	146	4	1	3	1.33	0.66	2.01
+CHANGDU 	Shagong	191	88	103	160	78	82	          	          	          	          	          	          
+CHANGDU 	Ruoba	187	96	91	157	83	74	          	          	          	          	          	          
+CHANGDU 	Aixi	198	92	106	183	85	98	          	          	          	          	          	          
+CHANGDU 	Ruyi	132	68	64	103	53	50	          	          	          	          	          	          
+CHANGDU 	Ritong	200	92	108	176	81	95	          	          	          	          	          	          
+CHANGDU 	Chaidui	243	98	145	185	80	105	          	          	          	          	          	          
+CHANGDU 	Yueba	150	65	85	121	57	64	          	          	          	          	          	          
+CHANGDU 	Gama	189	84	105	138	72	66	          	          	          	          	          	          
+CHANGDU 	Mianda	180	66	114	143	58	85	          	          	          	          	          	          
+CHANGDU 	Laduo	246	114	132	185	87	98	          	          	          	          	          	          
+CHANGDU 	Tuoba	239	119	120	184	94	90	          	          	          	          	          	          
+JIANGDA 	Total	4579	2201	2378	3800	1882	1918	9	3	6	0.24	0.16	0.31
+JIANGDA 	Jiangda	250	122	128	201	109	92	5	2	3	2.43	1.80	3.16
+JIANGDA 	Gangtuo	208	99	109	160	75	85	          	          	          	          	          	          
+JIANGDA 	Tongpu	500	229	271	423	194	229	2	          	2	0.47	          	0.87
+JIANGDA 	Boluo	465	229	236	382	192	190	          	          	          	          	          	          
+JIANGDA 	Yanbi	214	99	115	190	91	99	          	          	          	          	          	          
+JIANGDA 	Wangbuding	439	197	242	361	170	191	          	          	          	          	          	          
+JIANGDA 	Dengke	357	176	181	300	155	145	          	          	          	          	          	          
+JIANGDA 	Dedeng	413	190	223	335	164	171	          	          	          	          	          	          
+JIANGDA 	Shengda	552	273	279	466	235	231	1	1	          	0.21	0.42	          
+JIANGDA 	Ziga	503	251	252	410	209	201	          	          	          	          	          	          
+JIANGDA 	Kagong	243	123	120	206	109	97	1	          	1	0.48	          	1.02
+JIANGDA 	Niangxi	185	89	96	159	75	84	          	          	          	          	          	          
+JIANGDA 	Qingnidong	250	124	126	207	104	103	          	          	          	          	          	          
+GONGJUE 	Total	2976	1427	1549	2397	1227	1170	9	5	4	0.37	0.41	0.34
+GONGJUE 	Moluo	796	379	417	592	306	286	7	4	3	1.17	1.29	1.04
+GONGJUE 	Xiangpi	412	190	222	322	151	171	1	1	          	0.31	0.66	          
+GONGJUE 	Hajia	456	208	248	373	186	187	          	          	          	          	          	          
+GONGJUE 	Zeba	164	79	85	118	65	53	1	          	1	0.84	          	1.85
+GONGJUE 	Awang	172	94	78	135	84	51	          	          	          	          	          	          
+GONGJUE 	Latuo	158	77	81	138	68	70	          	          	          	          	          	          
+GONGJUE 	Muxie	228	113	115	207	106	101	          	          	          	          	          	          
+GONGJUE 	Xiongsong	142	68	74	117	58	59	          	          	          	          	          	          
+GONGJUE 	Mindu	165	78	87	155	75	80	          	          	          	          	          	          
+GONGJUE 	Luomai	95	46	49	79	40	39	          	          	          	          	          	          
+GONGJUE 	Shadong	118	60	58	100	56	44	          	          	          	          	          	          
+GONGJUE 	Keri	70	35	35	61	32	29	          	          	          	          	          	          
+LEIWUQI 	Total	1702	804	898	1436	710	726	5	3	2	0.35	0.42	0.27
+LEIWUQI 	Sangduo	332	164	168	272	146	126	2	1	1	0.73	0.68	0.79
+LEIWUQI 	Leiwuqi	189	81	108	161	70	91	          	          	          	          	          	          
+LEIWUQI 	Binda	156	78	78	131	67	64	1	1	          	0.76	1.47	          
+LEIWUQI 	Kamaduo	130	57	73	98	45	53	1	1	          	1.01	2.17	          
+LEIWUQI 	Shangka	199	93	106	174	84	90	          	          	          	          	          	          
+LEIWUQI 	Yiri	93	42	51	78	36	42	          	          	          	          	          	          
+LEIWUQI 	Jiduo	140	60	80	109	50	59	1	          	1	0.91	          	1.67
+LEIWUQI 	Gangse	109	53	56	99	50	49	          	          	          	          	          	          
+LEIWUQI 	Jiasangka	175	83	92	141	72	69	          	          	          	          	          	          
+LEIWUQI 	Changmaoling	179	93	86	173	90	83	          	          	          	          	          	          
+DINGQING 	Total	2864	1368	1496	2460	1237	1223	8	2	6	0.32	0.16	0.49
+DINGQING 	Dingqing	331	166	165	259	141	118	1	1	          	0.38	0.70	          
+DINGQING 	Shagong	177	100	77	140	80	60	          	          	          	          	          	          
+DINGQING 	Sangduo	198	90	108	158	79	79	2	          	2	1.25	          	2.47
+DINGQING 	Jueen	405	178	227	364	164	200	          	          	          	          	          	          
+DINGQING 	Dangdui	233	106	127	216	103	113	          	          	          	          	          	          
+DINGQING 	Xiexiong	243	116	127	204	107	97	          	          	          	          	          	          
+DINGQING 	Sezha	383	180	203	340	167	173	          	          	          	          	          	          
+DINGQING 	Chidu	344	160	184	286	142	144	4	          	4	1.38	          	2.70
+DINGQING 	Gata	196	94	102	187	91	96	          	          	          	          	          	          
+DINGQING 	Bada	87	43	44	79	41	38	          	          	          	          	          	          
+DINGQING 	Ganyan	113	58	55	107	56	51	          	          	          	          	          	          
+DINGQING 	Muta	35	13	22	30	12	18	          	          	          	          	          	          
+DINGQING 	Buta	119	64	55	90	54	36	1	1	          	1.10	1.82	          
+CHAYA 	Total	3199	1524	1675	2492	1236	1256	2	1	1	0.08	0.08	0.08
+CHAYA 	Yanduo	611	293	318	488	247	241	2	1	1	0.41	0.40	0.41
+CHAYA 	Jitang	206	97	109	161	79	82	          	          	          	          	          	          
+CHAYA 	Xiangdui	516	244	272	383	184	199	          	          	          	          	          	          
+CHAYA 	Xinka	96	46	50	66	33	33	          	          	          	          	          	          
+CHAYA 	Wangka	267	133	134	196	99	97	          	          	          	          	          	          
+CHAYA 	Kuoda	274	128	146	205	110	95	          	          	          	          	          	          
+CHAYA 	Rongzhou	336	154	182	264	125	139	          	          	          	          	          	          
+CHAYA 	Kagong	241	106	135	195	89	106	          	          	          	          	          	          
+CHAYA 	Zongsha	258	136	122	205	111	94	          	          	          	          	          	          
+CHAYA 	Azi	105	56	49	86	48	38	          	          	          	          	          	          
+CHAYA 	Bari	203	88	115	164	71	93	          	          	          	          	          	          
+CHAYA 	Kentong	86	43	43	79	40	39	          	          	          	          	          	          
+BASU 	Total	2240	1093	1147	1765	933	832	4	3	1	0.23	0.32	0.12
+BASU 	Baima	338	161	177	233	120	113	1	1	          	0.43	0.83	          
+BASU 	Ranwu	257	122	135	247	118	129	          	          	          	          	          	          
+BASU 	Tongka	183	86	97	113	73	40	          	          	          	          	          	          
+BASU 	Guoqing	258	123	135	192	109	83	          	          	          	          	          	          
+BASU 	Yiqing	88	41	47	67	33	34	2	1	1	2.90	2.94	2.86
+BASU 	Jizhong	134	76	58	86	51	35	          	          	          	          	          	          
+BASU 	Bangda	169	96	73	128	86	42	          	          	          	          	          	          
+BASU 	Kawabaiqing	70	33	37	49	25	24	1	1	          	2	3.85	          
+BASU 	Linka	237	116	121	225	111	114	          	          	          	          	          	          
+BASU 	Lagen	122	56	66	106	54	52	          	          	          	          	          	          
+BASU 	Xiali	66	26	40	50	18	32	          	          	          	          	          	          
+BASU 	Wa	37	20	17	28	14	14	          	          	          	          	          	          
+BASU 	Yong	84	45	39	71	39	32	          	          	          	          	          	          
+BASU 	Jida	197	92	105	170	82	88	          	          	          	          	          	          
+ZUOGONG 	Total	2560	1272	1288	2203	1117	1086	5	4	1	0.23	0.36	0.09
+ZUOGONG 	Wangda	414	208	206	328	171	157	3	2	1	0.91	1.16	0.63
+ZUOGONG 	Tiantuo	335	170	165	290	147	143	          	          	          	          	          	          
+ZUOGONG 	Shayi	59	26	33	52	25	27	          	          	          	          	          	          
+ZUOGONG 	Meiyu	225	105	120	197	94	103	          	          	          	          	          	          
+ZUOGONG 	Gumi	38	18	20	34	16	18	          	          	          	          	          	          
+ZUOGONG 	Wutong	149	82	67	119	70	49	          	          	          	          	          	          
+ZUOGONG 	Juema	116	54	62	100	49	51	          	          	          	          	          	          
+ZUOGONG 	Bitu	153	76	77	112	60	52	1	1	          	0.88	1.64	          
+ZUOGONG 	Raojin	104	52	52	102	50	52	          	          	          	          	          	          
+ZUOGONG 	Jiaka	102	45	57	98	43	55	          	          	          	          	          	          
+ZUOGONG 	Renguo	106	61	45	103	58	45	          	          	          	          	          	          
+ZUOGONG 	Xialinka	173	93	80	156	84	72	1	1	          	0.64	1.18	          
+ZUOGONG 	Dongba	141	65	76	118	57	61	          	          	          	          	          	          
+ZUOGONG 	Zhonglinka	344	165	179	302	145	157	          	          	          	          	          	          
+ZUOGONG 	Lawu	101	52	49	92	48	44	          	          	          	          	          	          
+MANGKANG 	Total	4945	2408	2537	4118	2063	2055	13	7	6	0.31	0.34	0.29
+MANGKANG 	Gatuo	854	433	421	678	357	321	8	4	4	1.17	1.11	1.23
+MANGKANG 	Rumei	311	148	163	281	135	146	2	1	1	0.71	0.74	0.68
+MANGKANG 	Qudeng	181	77	104	152	68	84	          	          	          	          	          	          
+MANGKANG 	Xuzhong	350	170	180	305	150	155	          	          	          	          	          	          
+MANGKANG 	Quzika	190	81	109	162	71	91	          	          	          	          	          	          
+MANGKANG 	Naximinzuzhzhixian	265	133	132	214	116	98	2	2	          	0.93	1.69	          
+MANGKANG 	Zhubalong	284	148	136	254	137	117	          	          	          	          	          	          
+MANGKANG 	Gabo	181	90	91	165	86	79	          	          	          	          	          	          
+MANGKANG 	Angduo	107	50	57	92	46	46	          	          	          	          	          	          
+MANGKANG 	Luoni	231	110	121	196	95	101	          	          	          	          	          	          
+MANGKANG 	Cuowa	547	267	280	456	229	227	1	          	1	0.22	          	0.44
+MANGKANG 	Zongxi	344	168	176	293	142	151	          	          	          	          	          	          
+MANGKANG 	Muxu	145	57	88	118	49	69	          	          	          	          	          	          
+MANGKANG 	Mangling	189	99	90	159	85	74	          	          	          	          	          	          
+MANGKANG 	Suoduoxi	292	143	149	232	119	113	          	          	          	          	          	          
+MANGKANG 	Bangda	474	234	240	361	178	183	          	          	          	          	          	          
+LUOLONG 	Total	1958	977	981	1610	823	787	3	2	1	0.19	0.24	0.13
+LUOLONG 	Zituo	406	209	197	312	166	146	2	2	          	0.64	1.19	          
+LUOLONG 	Shuodu	253	130	123	195	107	88	          	          	          	          	          	          
+LUOLONG 	Dalong	53	24	29	49	22	27	          	          	          	          	          	          
+LUOLONG 	Xinrong	165	81	84	128	60	68	          	          	          	          	          	          
+LUOLONG 	Baida	23	11	12	20	10	10	          	          	          	          	          	          
+LUOLONG 	Mali	168	88	80	141	77	64	          	          	          	          	          	          
+LUOLONG 	Yuxi	34	16	18	25	13	12	          	          	          	          	          	          
+LUOLONG 	Kangsha	253	116	137	227	103	124	          	          	          	          	          	          
+LUOLONG 	Zhongyi	111	52	59	103	49	54	1	          	1	0.96	          	1.82
+LUOLONG 	Exi	266	134	132	227	119	108	          	          	          	          	          	          
+LUOLONG 	Lajiu	226	116	110	183	97	86	          	          	          	          	          	          
+BIANBA 	Total	1610	764	846	1220	621	599	6	3	3	0.49	0.48	0.5
+BIANBA 	Bianba	187	93	94	165	81	84	1	1	          	0.60	1.22	          
+BIANBA 	Caoka	368	180	188	254	144	110	3	2	1	1.17	1.37	0.90
+BIANBA 	Jinling	216	104	112	171	83	88	          	          	          	          	          	          
+BIANBA 	Jiagong	48	23	25	45	22	23	          	          	          	          	          	          
+BIANBA 	Reyu	110	54	56	44	25	19	          	          	          	          	          	          
+BIANBA 	Duwa	116	52	64	92	44	48	          	          	          	          	          	          
+BIANBA 	Lazi	195	92	103	148	75	73	2	          	2	1.33	          	2.67
+BIANBA 	Mawu	79	35	44	66	32	34	          	          	          	          	          	          
+BIANBA 	Maxiu	69	31	38	59	29	30	          	          	          	          	          	          
+BIANBA 	Shading	142	67	75	115	58	57	          	          	          	          	          	          
+BIANBA 	Nimu	80	33	47	61	28	33	          	          	          	          	          	          
+NAIDONG 	Total	4166	2054	2112	3366	1783	1583	42	19	23	1.23	1.05	1.43
+NAIDONG 	Zedang	2051	1040	1011	1614	904	710	38	17	21	2.30	1.85	2.87
+NAIDONG 	Changzhu	445	202	243	350	170	180	          	          	          	          	          	          
+NAIDONG 	Jieba	314	153	161	178	110	68	          	          	          	          	          	          
+NAIDONG 	Suozhu	189	89	100	155	76	79	          	          	          	          	          	          
+NAIDONG 	Yadui	518	253	265	502	246	256	          	          	          	          	          	          
+NAIDONG 	Pozhang	526	257	269	466	227	239	2	2	          	0.43	0.87	          
+NAIDONG 	Duopozhang	123	60	63	101	50	51	2	          	2	1.94	          	3.77
+ZHANANG 	Total	2428	1206	1222	2116	1058	1058	8	5	3	0.38	0.47	0.28
+ZHANANG 	Zhatang	630	326	304	573	297	276	          	          	          	          	          	          
+ZHANANG 	Sangye	310	161	149	279	148	131	1	          	1	0.36	          	0.76
+ZHANANG 	Zhaqi	586	274	312	507	241	266	1	1	          	0.20	0.41	          
+ZHANANG 	Jiru	739	364	375	610	297	313	2	1	1	0.33	0.34	0.32
+ZHANANG 	Anzha	163	81	82	147	75	72	4	3	1	2.65	3.85	1.37
+GONGGA 	Total	3104	1530	1574	2676	1377	1299	6	4	2	0.22	0.29	0.15
+GONGGA 	Jixiong	358	174	184	301	159	142	4	2	2	1.31	1.24	1.39
+GONGGA 	Jiazhulin	509	252	257	461	230	231	1	1	          	0.22	0.43	          
+GONGGA 	Jiedexiu	571	290	281	475	261	214	          	          	          	          	          	          
+GONGGA 	Gangdui	492	256	236	431	234	197	          	          	          	          	          	          
+GONGGA 	Jiangtang	336	161	175	304	148	156	          	          	          	          	          	          
+GONGGA 	Dongla	261	125	136	237	111	126	          	          	          	          	          	          
+GONGGA 	Langjiexue	396	188	208	314	161	153	1	1	          	0.32	0.62	          
+GONGGA 	Changguo	181	84	97	153	73	80	          	          	          	          	          	          
+SANGRI 	Total	1143	565	578	1023	508	515	2	1	1	0.20	0.20	0.19
+SANGRI 	Sangri	333	163	170	296	144	152	1	          	1	0.34	          	0.65
+SANGRI 	Rong	378	186	192	346	171	175	1	1	          	0.29	0.58	          
+SANGRI 	Baidui	157	79	78	136	69	67	          	          	          	          	          	          
+SANGRI 	Zengqi	275	137	138	245	124	121	          	          	          	          	          	          
+QIONGJIE 	Total	1247	599	648	1118	543	575	          	          	          	          	          	          
+QIONGJIE 	Qiongjie	367	181	186	314	159	155	          	          	          	          	          	          
+QIONGJIE 	Jiama	336	159	177	297	138	159	          	          	          	          	          	          
+QIONGJIE 	Xiashui	202	95	107	176	89	87	          	          	          	          	          	          
+QIONGJIE 	Layu	342	164	178	331	157	174	          	          	          	          	          	          
+QUSONG 	Total	1099	572	527	856	465	391	          	          	          	          	          	          
+QUSONG 	Qusong	475	237	238	435	215	220	          	          	          	          	          	          
+QUSONG 	Luobusha	123	83	40	113	78	35	          	          	          	          	          	          
+QUSONG 	Qiuduojiang	160	82	78	111	64	47	          	          	          	          	          	          
+QUSONG 	Duisui	201	103	98	94	52	42	          	          	          	          	          	          
+QUSONG 	Xiajiang	140	67	73	103	56	47	          	          	          	          	          	          
+CUOMEI 	Total	957	461	496	820	406	414	4	1	3	0.49	0.25	0.72
+CUOMEI 	Cuomei	356	171	185	300	145	155	2	          	2	0.66	          	1.27
+CUOMEI 	Zhegu	295	143	152	256	128	128	2	1	1	0.78	0.78	0.78
+CUOMEI 	Naixi	208	102	106	182	93	89	          	          	          	          	          	          
+CUOMEI 	Gudui	98	45	53	82	40	42	          	          	          	          	          	          
+LUOZHA 	Total	1281	609	672	1116	532	584	1	          	1	0.09	          	0.17
+LUOZHA 	Luozha	389	193	196	329	164	165	          	          	          	          	          	          
+LUOZHA 	Lakang	134	69	65	126	64	62	          	          	          	          	          	          
+LUOZHA 	Zhari	311	138	173	266	116	150	1	          	1	0.37	          	0.66
+LUOZHA 	Se	132	62	70	116	55	61	          	          	          	          	          	          
+LUOZHA 	Shengge	228	106	122	202	93	109	          	          	          	          	          	          
+LUOZHA 	Bianba	87	41	46	77	40	37	          	          	          	          	          	          
+JIACHA 	Total	1371	659	712	1145	569	576	2	1	1	0.17	0.18	0.17
+JIACHA 	Jiacha	209	93	116	171	80	91	          	          	          	          	          	          
+JIACHA 	Anrao	269	145	124	212	119	93	1	1	          	0.47	0.83	          
+JIACHA 	Lengda	152	70	82	127	61	66	1	          	1	0.78	          	1.49
+JIACHA 	Ba	75	38	37	69	36	33	          	          	          	          	          	          
+JIACHA 	Luolin	365	166	199	305	144	161	          	          	          	          	          	          
+JIACHA 	Lasui	269	130	139	235	116	119	          	          	          	          	          	          
+JIACHA 	Cuijiu	32	17	15	26	13	13	          	          	          	          	          	          
+LONGZI 	Total	2244	1083	1161	2051	997	1054	1	1	          	0.05	0.10	          
+LONGZI 	Longzi	511	244	267	481	234	247	          	          	          	          	          	          
+LONGZI 	Ridang	506	245	261	437	215	222	1	1	          	0.23	0.46	          
+LONGZI 	Zhunba	30	18	12	28	16	12	          	          	          	          	          	          
+LONGZI 	Jiayu	238	94	144	224	87	137	          	          	          	          	          	          
+LONGZI 	Liemai	181	91	90	166	83	83	          	          	          	          	          	          
+LONGZI 	Rerong	278	132	146	249	122	127	          	          	          	          	          	          
+LONGZI 	Xuesha	274	136	138	264	130	134	          	          	          	          	          	          
+LONGZI 	Sanlin	200	109	91	182	99	83	          	          	          	          	          	          
+LONGZI 	Zhari	23	13	10	17	10	7	          	          	          	          	          	          
+LONGZI 	Yumen	3	1	2	3	1	2	          	          	          	          	          	          
+CUONA 	Total	1155	562	593	988	495	493	          	          	          	          	          	          
+CUONA 	Lebu	61	33	28	50	28	22	          	          	          	          	          	          
+CUONA 	Cuona	165	79	86	145	75	70	          	          	          	          	          	          
+CUONA 	Juela	401	188	213	324	159	165	          	          	          	          	          	          
+CUONA 	Kada	179	79	100	156	68	88	          	          	          	          	          	          
+CUONA 	Quzhuomu	292	148	144	260	131	129	          	          	          	          	          	          
+CUONA 	Kuju	26	14	12	23	13	10	          	          	          	          	          	          
+CUONA 	Langbo	31	21	10	30	21	9	          	          	          	          	          	          
+LANGKAZI 	Total	1375	664	711	1184	587	597	6	3	3	0.5	0.51	0.5
+LANGKAZI 	Langkazi	175	94	81	159	88	71	          	          	          	          	          	          
+LANGKAZI 	Dalong	185	83	102	160	74	86	          	          	          	          	          	          
+LANGKAZI 	Zhangda	144	76	68	133	72	61	          	          	          	          	          	          
+LANGKAZI 	Gongbuxue	367	188	179	308	162	146	5	3	2	1.60	1.82	1.35
+LANGKAZI 	Duoque	193	87	106	169	78	91	          	          	          	          	          	          
+LANGKAZI 	Pumajiangtang	39	21	18	38	20	18	          	          	          	          	          	          
+LANGKAZI 	Azha	72	27	45	66	25	41	          	          	          	          	          	          
+LANGKAZI 	Kalong	81	35	46	63	27	36	          	          	          	          	          	          
+LANGKAZI 	Baidi	58	20	38	48	18	30	1	          	1	2.04	          	3.23
+LANGKAZI 	Kare	61	33	28	40	23	17	          	          	          	          	          	          
+RIKAZE 	Total	7131	3598	3533	5744	3156	2588	66	32	34	1.14	1	1.30
+RIKAZE 	Chengnan	2441	1243	1198	1773	1013	760	51	24	27	2.80	2.31	3.43
+RIKAZE 	Chengbei	773	344	429	508	271	237	13	6	7	2.5	2.17	2.87
+RIKAZE 	Lian	337	171	166	232	147	85	          	          	          	          	          	          
+RIKAZE 	Nianmu	216	120	96	200	114	86	          	          	          	          	          	          
+RIKAZE 	Jiacuoxiong	804	401	403	673	374	299	          	          	          	          	          	          
+RIKAZE 	Qubuxiong	423	232	191	373	211	162	          	          	          	          	          	          
+RIKAZE 	Qumei	405	198	207	395	193	202	          	          	          	          	          	          
+RIKAZE 	Dongga	607	305	302	568	290	278	          	          	          	          	          	          
+RIKAZE 	Naer	139	73	66	126	65	61	2	2	          	1.56	2.99	          
+RIKAZE 	Jiangdang	336	164	172	311	155	156	          	          	          	          	          	          
+RIKAZE 	Bianxiong	270	137	133	245	124	121	          	          	          	          	          	          
+RIKAZE 	Nierixiong	380	210	170	340	199	141	          	          	          	          	          	          
+NANMULIN 	Total	4311	2197	2114	4023	2074	1949	          	          	          	          	          	          
+NANMULIN 	Nanmulin	559	288	271	516	265	251	          	          	          	          	          	          
+NANMULIN 	Dana	143	74	69	137	70	67	          	          	          	          	          	          
+NANMULIN 	Qiumu	172	83	89	168	82	86	          	          	          	          	          	          
+NANMULIN 	Kazi	300	150	150	290	146	144	          	          	          	          	          	          
+NANMULIN 	Duojiao	294	148	146	261	133	128	          	          	          	          	          	          
+NANMULIN 	Aima	451	227	224	436	218	218	          	          	          	          	          	          
+NANMULIN 	Chaer	131	61	70	130	61	69	          	          	          	          	          	          
+NANMULIN 	Tubujia	321	167	154	311	165	146	          	          	          	          	          	          
+NANMULIN 	Numa	198	105	93	173	92	81	          	          	          	          	          	          
+NANMULIN 	Dazi	251	133	118	228	123	105	          	          	          	          	          	          
+NANMULIN 	Suojin	198	91	107	173	78	95	          	          	          	          	          	          
+NANMULIN 	Mangre	177	92	85	168	88	80	          	          	          	          	          	          
+NANMULIN 	Labupu	107	54	53	65	43	22	          	          	          	          	          	          
+NANMULIN 	Redang	455	246	209	438	240	198	          	          	          	          	          	          
+NANMULIN 	Jiacuo	294	152	142	283	149	134	          	          	          	          	          	          
+NANMULIN 	Pudang	172	83	89	165	81	84	          	          	          	          	          	          
+NANMULIN 	Rendui	88	43	45	81	40	41	          	          	          	          	          	          
+JIANGZI 	Total	4424	2189	2235	3524	1896	1628	6	3	3	0.17	0.16	0.18
+JIANGZI 	Jiangzi	716	336	380	515	271	244	3	3	          	0.58	1.09	          
+JIANGZI 	Naru	305	151	154	260	135	125	          	          	          	          	          	          
+JIANGZI 	Kadui	365	168	197	281	138	143	          	          	          	          	          	          
+JIANGZI 	Kamai	344	178	166	280	149	131	1	          	1	0.36	          	0.76
+JIANGZI 	Dazi	186	99	87	143	87	56	          	          	          	          	          	          
+JIANGZI 	Canggai	174	91	83	144	75	69	          	          	          	          	          	          
+JIANGZI 	Resuo	221	117	104	212	112	100	          	          	          	          	          	          
+JIANGZI 	Chongzi	330	156	174	234	136	98	          	          	          	          	          	          
+JIANGZI 	Zijin	232	115	117	165	108	57	          	          	          	          	          	          
+JIANGZI 	Jiangre	295	138	157	242	119	123	1	          	1	0.41	          	0.81
+JIANGZI 	Kangzhuo	137	68	69	118	60	58	          	          	          	          	          	          
+JIANGZI 	Rixing	171	89	82	155	82	73	          	          	          	          	          	          
+JIANGZI 	Jinga	186	92	94	148	76	72	          	          	          	          	          	          
+JIANGZI 	Jiakexi	32	18	14	25	15	10	          	          	          	          	          	          
+JIANGZI 	Rilang	66	34	32	52	32	20	          	          	          	          	          	          
+JIANGZI 	Niandui	206	97	109	179	87	92	1	          	1	0.56	          	1.08
+JIANGZI 	Cheren	179	94	85	138	79	59	          	          	          	          	          	          
+JIANGZI 	Longma	146	79	67	124	73	51	          	          	          	          	          	          
+JIANGZI 	Relong	133	69	64	109	62	47	          	          	          	          	          	          
+DINGRI 	Total	3197	1575	1622	2816	1436	1380	5	3	2	0.18	0.21	0.14
+DINGRI 	Xiegeer	596	288	308	500	262	238	2	          	2	0.40	          	0.83
+DINGRI 	Gangga	402	194	208	382	186	196	          	          	          	          	          	          
+DINGRI 	Nixia	163	84	79	136	75	61	          	          	          	          	          	          
+DINGRI 	Zhaxizong	442	212	230	383	188	195	          	          	          	          	          	          
+DINGRI 	Penji	47	22	25	41	20	21	          	          	          	          	          	          
+DINGRI 	Kema	225	124	101	182	112	70	          	          	          	          	          	          
+DINGRI 	Changsuo	233	113	120	219	107	112	          	          	          	          	          	          
+DINGRI 	Quluo	183	99	84	169	91	78	          	          	          	          	          	          
+DINGRI 	Cuoguo	205	95	110	187	89	98	          	          	          	          	          	          
+DINGRI 	Jiacuo	95	50	45	87	49	38	          	          	          	          	          	          
+DINGRI 	Qudang	415	193	222	368	169	199	3	3	          	0.81	1.74	          
+DINGRI 	Zhaguo	143	75	68	120	65	55	          	          	          	          	          	          
+DINGRI 	Rongxia	48	26	22	42	23	19	          	          	          	          	          	          
+SAJIA 	Total	2638	1294	1344	2244	1161	1083	2	2	          	0.09	0.17	          
+SAJIA 	Jiding	454	228	226	371	195	176	          	          	          	          	          	          
+SAJIA 	Sajia	291	144	147	239	126	113	          	          	          	          	          	          
+SAJIA 	Mula	140	66	74	126	60	66	          	          	          	          	          	          
+SAJIA 	Sai	131	62	69	124	59	65	          	          	          	          	          	          
+SAJIA 	Laluo	167	77	90	155	73	82	          	          	          	          	          	          
+SAJIA 	Charong	164	85	79	155	79	76	          	          	          	          	          	          
+SAJIA 	Xiongma	378	190	188	312	168	144	          	          	          	          	          	          
+SAJIA 	Chexiu	258	130	128	227	116	111	1	1	          	0.44	0.85	          
+SAJIA 	Xiongmai	129	59	70	89	55	34	          	          	          	          	          	          
+SAJIA 	Mabujia	238	108	130	214	99	115	1	1	          	0.47	1	          
+SAJIA 	Zhaxigang	288	145	143	232	131	101	          	          	          	          	          	          
+LAZI 	Total	2930	1467	1463	2505	1318	1187	2	1	1	0.08	0.08	0.08
+LAZI 	Quxia	370	179	191	317	162	155	2	1	1	0.63	0.61	0.64
+LAZI 	Lazi	312	159	153	281	145	136	          	          	          	          	          	          
+LAZI 	Chawu	228	114	114	194	102	92	          	          	          	          	          	          
+LAZI 	Mangpu	176	85	91	158	79	79	          	          	          	          	          	          
+LAZI 	Zhaxigang	419	219	200	356	192	164	          	          	          	          	          	          
+LAZI 	Xiqin	379	184	195	332	168	164	          	          	          	          	          	          
+LAZI 	Zhaxizong	146	68	78	123	62	61	          	          	          	          	          	          
+LAZI 	Resa	208	106	102	163	92	71	          	          	          	          	          	          
+LAZI 	Liu	215	113	102	185	101	84	          	          	          	          	          	          
+LAZI 	Quma	276	144	132	232	130	102	          	          	          	          	          	          
+LAZI 	Pengcuolin	201	96	105	164	85	79	          	          	          	          	          	          
+ANGREN 	Total	3004	1519	1485	2524	1369	1155	1	1	          	0.04	0.07	          
+ANGREN 	Kaga	494	260	234	418	232	186	          	          	          	          	          	          
+ANGREN 	Sangsang	240	114	126	184	102	82	          	          	          	          	          	          
+ANGREN 	Daju	249	121	128	179	111	68	          	          	          	          	          	          
+ANGREN 	Yamu	399	203	196	304	181	123	          	          	          	          	          	          
+ANGREN 	Qiuwo	373	191	182	328	167	161	1	1	          	0.30	0.60	          
+ANGREN 	Duobai	358	180	178	313	158	155	          	          	          	          	          	          
+ANGREN 	Riwuqi	327	171	156	311	166	145	          	          	          	          	          	          
+ANGREN 	Qiere	63	31	32	62	31	31	          	          	          	          	          	          
+ANGREN 	Xiongba	32	15	17	28	15	13	          	          	          	          	          	          
+ANGREN 	Rusha	54	24	30	52	23	29	          	          	          	          	          	          
+ANGREN 	Konglong	41	23	18	37	20	17	          	          	          	          	          	          
+ANGREN 	Amuxiong	45	21	24	21	11	10	          	          	          	          	          	          
+ANGREN 	Niguo	89	43	46	69	36	33	          	          	          	          	          	          
+ANGREN 	Daruo	17	12	5	17	12	5	          	          	          	          	          	          
+ANGREN 	Cuomai	90	41	49	87	41	46	          	          	          	          	          	          
+ANGREN 	Gongrubu	58	28	30	48	24	24	          	          	          	          	          	          
+ANGREN 	Chazi	75	41	34	66	39	27	          	          	          	          	          	          
+XIETONGMEN 	Total	2578	1284	1294	2177	1115	1062	4	3	1	0.18	0.27	0.09
+XIETONGMEN 	Kaga	472	228	244	385	186	199	2	2	          	0.52	1.06	          
+XIETONGMEN 	Tongmen	99	43	56	71	34	37	          	          	          	          	          	          
+XIETONGMEN 	Tading	121	57	64	96	45	51	          	          	          	          	          	          
+XIETONGMEN 	Rongma	166	98	68	124	80	44	          	          	          	          	          	          
+XIETONGMEN 	Data	227	117	110	205	108	97	          	          	          	          	          	          
+XIETONGMEN 	Renqingze	364	176	188	329	163	166	1	1	          	0.30	0.61	          
+XIETONGMEN 	Danapu	120	59	61	110	55	55	          	          	          	          	          	          
+XIETONGMEN 	Damuxia	277	137	140	249	124	125	          	          	          	          	          	          
+XIETONGMEN 	Lieba	96	51	45	91	50	41	          	          	          	          	          	          
+XIETONGMEN 	Meibaqie	35	19	16	26	17	9	          	          	          	          	          	          
+XIETONGMEN 	Qieqiong	21	9	12	21	9	12	          	          	          	          	          	          
+XIETONGMEN 	Cuobuxi	102	50	52	93	46	47	          	          	          	          	          	          
+XIETONGMEN 	Nadang	58	29	29	49	23	26	          	          	          	          	          	          
+XIETONGMEN 	Qingdu	50	21	29	32	14	18	          	          	          	          	          	          
+XIETONGMEN 	Niangre	70	33	37	62	30	32	          	          	          	          	          	          
+XIETONGMEN 	Zixu	43	23	20	30	17	13	          	          	          	          	          	          
+XIETONGMEN 	Chabu	118	61	57	107	55	52	1	          	1	0.93	          	1.89
+XIETONGMEN 	Nanmuqie	57	31	26	51	29	22	          	          	          	          	          	          
+XIETONGMEN 	Chunzhe	82	42	40	46	30	16	          	          	          	          	          	          
+BAILANG 	Total	2875	1476	1399	2412	1337	1075	2	          	2	0.08	          	0.19
+BAILANG 	Luojiang	468	250	218	382	228	154	          	          	          	          	          	          
+BAILANG 	Dongxi	95	49	46	61	41	20	          	          	          	          	          	          
+BAILANG 	Zhexia	160	87	73	132	78	54	          	          	          	          	          	          
+BAILANG 	Gapu	138	70	68	80	54	26	2	          	2	2.44	          	7.14
+BAILANG 	Wangdan	276	132	144	230	113	117	          	          	          	          	          	          
+BAILANG 	Ma	330	174	156	293	169	124	          	          	          	          	          	          
+BAILANG 	Qunu	245	126	119	212	112	100	          	          	          	          	          	          
+BAILANG 	Duqiong	218	107	111	202	104	98	          	          	          	          	          	          
+BAILANG 	Qiangdui	160	87	73	150	82	68	          	          	          	          	          	          
+BAILANG 	Bazha	339	160	179	267	139	128	          	          	          	          	          	          
+BAILANG 	Gadong	446	234	212	403	217	186	          	          	          	          	          	          
+RENBU 	Total	1729	838	891	1394	734	660	3	2	1	0.21	0.27	0.15
+RENBU 	Dejilin	348	172	176	289	157	132	3	2	1	1.03	1.26	0.75
+RENBU 	Qiewa	188	83	105	159	70	89	          	          	          	          	          	          
+RENBU 	Mu	162	79	83	134	66	68	          	          	          	          	          	          
+RENBU 	Renbu	124	58	66	96	48	48	          	          	          	          	          	          
+RENBU 	Chaba	298	148	150	226	123	103	          	          	          	          	          	          
+RENBU 	Ranba	143	69	74	108	64	44	          	          	          	          	          	          
+RENBU 	Padang	181	86	95	141	78	63	          	          	          	          	          	          
+RENBU 	Pusong	98	48	50	78	45	33	          	          	          	          	          	          
+RENBU 	Kangxiong	187	95	92	163	83	80	          	          	          	          	          	          
+KANGMA 	Total	1444	721	723	1282	649	633	1	1	          	0.08	0.15	          
+KANGMA 	Kangma	226	118	108	184	103	81	          	          	          	          	          	          
+KANGMA 	Nanni	147	70	77	127	61	66	          	          	          	          	          	          
+KANGMA 	Shaogang	161	74	87	151	70	81	1	1	          	0.66	1.41	          
+KANGMA 	Kangru	133	67	66	126	62	64	          	          	          	          	          	          
+KANGMA 	Xiongzhang	124	68	56	118	64	54	          	          	          	          	          	          
+KANGMA 	Samada	123	57	66	106	52	54	          	          	          	          	          	          
+KANGMA 	Gala	255	130	125	229	117	112	          	          	          	          	          	          
+KANGMA 	Nierudui	155	76	79	132	65	67	          	          	          	          	          	          
+KANGMA 	Nierumai	120	61	59	109	55	54	          	          	          	          	          	          
+DINGJIE 	Total	1247	626	621	1053	562	491	1	1	          	0.09	0.18	          
+DINGJIE 	Jiangga	199	103	96	163	89	74	1	1	          	0.61	1.11	          
+DINGJIE 	Riwu	59	31	28	42	28	14	          	          	          	          	          	          
+DINGJIE 	Chentang	111	55	56	105	53	52	          	          	          	          	          	          
+DINGJIE 	Guojia	93	45	48	83	42	41	          	          	          	          	          	          
+DINGJIE 	Saer	138	63	75	117	58	59	          	          	          	          	          	          
+DINGJIE 	Qiongjie	169	86	83	138	76	62	          	          	          	          	          	          
+DINGJIE 	Dingjie	126	67	59	113	61	52	          	          	          	          	          	          
+DINGJIE 	Duobuzha	109	49	60	85	45	40	          	          	          	          	          	          
+DINGJIE 	Zhaxigang	121	58	63	101	50	51	          	          	          	          	          	          
+DINGJIE 	Quebu	122	69	53	106	60	46	          	          	          	          	          	          
+ZHONGBA 	Total	1008	507	501	867	447	420	2	          	2	0.23	          	0.47
+ZHONGBA 	Payang	124	53	71	105	47	58	          	          	          	          	          	          
+ZHONGBA 	Qiongguo	63	33	30	54	27	27	          	          	          	          	          	          
+ZHONGBA 	Larang	98	51	47	70	42	28	          	          	          	          	          	          
+ZHONGBA 	Yare	41	23	18	30	17	13	2	          	2	6.25	          	13.33
+ZHONGBA 	Buduo	28	15	13	26	14	12	          	          	          	          	          	          
+ZHONGBA 	Pianji	103	49	54	88	42	46	          	          	          	          	          	          
+ZHONGBA 	Najiu	39	19	20	38	19	19	          	          	          	          	          	          
+ZHONGBA 	Jila	51	24	27	47	21	26	          	          	          	          	          	          
+ZHONGBA 	Huoerba	56	28	28	50	26	24	          	          	          	          	          	          
+ZHONGBA 	Jima	73	37	36	68	37	31	          	          	          	          	          	          
+ZHONGBA 	Longgaer	116	62	54	98	53	45	          	          	          	          	          	          
+ZHONGBA 	Pajiang	111	60	51	100	56	44	          	          	          	          	          	          
+ZHONGBA 	Renduo	105	53	52	93	46	47	          	          	          	          	          	          
+YADONG 	Total	871	411	460	601	342	259	4	3	1	0.66	0.87	0.38
+YADONG 	Pali	132	59	73	96	50	46	          	          	          	          	          	          
+YADONG 	Xiasima	221	106	115	142	74	68	2	2	          	1.39	2.63	          
+YADONG 	Duina	173	83	90	156	77	79	          	          	          	          	          	          
+YADONG 	Jiru	60	33	27	32	25	7	1	1	          	3.03	3.85	          
+YADONG 	Kangbu	76	33	43	52	30	22	          	          	          	          	          	          
+YADONG 	Shangyadong	117	48	69	62	41	21	          	          	          	          	          	          
+YADONG 	Xiayadong	92	49	43	61	45	16	1	          	1	1.61	          	5.88
+JILONG 	Total	816	422	394	692	383	309	3	3	          	0.43	0.78	          
+JILONG 	Zongga	209	110	99	181	103	78	2	2	          	1.09	1.90	          
+JILONG 	Jilong	278	146	132	246	134	112	1	1	          	0.40	0.74	          
+JILONG 	Chana	142	73	69	131	69	62	          	          	          	          	          	          
+JILONG 	Zheba	120	64	56	72	49	23	          	          	          	          	          	          
+JILONG 	Gongdang	67	29	38	62	28	34	          	          	          	          	          	          
+NIELAMU 	Total	1029	528	501	852	481	371	3	1	2	0.35	0.21	0.54
+NIELAMU 	Zhangmu	204	110	94	175	104	71	2	1	1	1.13	0.95	1.39
+NIELAMU 	Nielamu	157	77	80	122	69	53	          	          	          	          	          	          
+NIELAMU 	Yalai	88	45	43	80	39	41	          	          	          	          	          	          
+NIELAMU 	Suohua	192	94	98	171	85	86	1	          	1	0.58	          	1.15
+NIELAMU 	Nailong	86	45	41	58	38	20	          	          	          	          	          	          
+NIELAMU 	Menbu	161	84	77	139	79	60	          	          	          	          	          	          
+NIELAMU 	Borong	141	73	68	107	67	40	          	          	          	          	          	          
+SAGA 	Total	808	403	405	689	359	330	7	5	2	1.01	1.37	0.60
+SAGA 	Jiajia	169	89	80	123	72	51	6	5	1	4.65	6.49	1.92
+SAGA 	Xiaru	165	83	82	150	78	72	          	          	          	          	          	          
+SAGA 	Danga	93	44	49	90	44	46	1	          	1	1.10	          	2.13
+SAGA 	Changguo	71	38	33	71	38	33	          	          	          	          	          	          
+SAGA 	Xiongru	100	49	51	82	42	40	          	          	          	          	          	          
+SAGA 	Lawu	90	44	46	71	36	35	          	          	          	          	          	          
+SAGA 	Rujiao	58	26	32	46	22	24	          	          	          	          	          	          
+SAGA 	Dayouling	62	30	32	56	27	29	          	          	          	          	          	          
+GANGBA 	Total	630	310	320	536	275	261	          	          	          	          	          	          
+GANGBA 	Gongbalou	185	89	96	133	74	59	          	          	          	          	          	          
+GANGBA 	Changlong	146	72	74	129	65	64	          	          	          	          	          	          
+GANGBA 	Zhike	74	40	34	67	38	29	          	          	          	          	          	          
+GANGBA 	Kongma	64	32	32	57	28	29	          	          	          	          	          	          
+GANGBA 	Longzhong	161	77	84	150	70	80	          	          	          	          	          	          
+NAQU 	Total	4803	2429	2374	3809	2021	1788	97	61	36	2.48	2.93	1.97
+NAQU 	Naqu	1625	858	767	896	559	337	92	57	35	9.31	9.25	9.41
+NAQU 	Deji	204	102	102	187	93	94	1	1	          	0.53	1.06	          
+NAQU 	Renmao	136	75	61	123	69	54	          	          	          	          	          	          
+NAQU 	Daren	223	117	106	200	112	88	          	          	          	          	          	          
+NAQU 	Dasa	222	107	115	167	74	93	          	          	          	          	          	          
+NAQU 	Luomai	113	61	52	107	58	49	          	          	          	          	          	          
+NAQU 	Sexiong	192	91	101	180	86	94	          	          	          	          	          	          
+NAQU 	Nima	156	81	75	145	75	70	          	          	          	          	          	          
+NAQU 	Daqian	151	67	84	137	62	75	          	          	          	          	          	          
+NAQU 	Kongma	176	83	93	163	79	84	          	          	          	          	          	          
+NAQU 	Dangmao	142	65	77	133	62	71	          	          	          	          	          	          
+NAQU 	Mendi	154	74	80	142	69	73	2	1	1	1.39	1.43	1.35
+NAQU 	Ziri	187	97	90	177	94	83	          	          	          	          	          	          
+NAQU 	Nameqie	187	93	94	175	89	86	          	          	          	          	          	          
+NAQU 	Enni	102	42	60	94	41	53	          	          	          	          	          	          
+NAQU 	Luoma	242	113	129	227	107	120	1	1	          	0.44	0.93	          
+NAQU 	Xiangmao	110	55	55	105	53	52	          	          	          	          	          	          
+NAQU 	Yangji	133	63	70	125	62	63	          	          	          	          	          	          
+NAQU 	Gulu	164	81	83	149	77	72	1	1	          	0.67	1.28	          
+NAQU 	Youqia	184	104	80	177	100	77	          	          	          	          	          	          
+JIALI 	Total	1698	844	854	1436	738	698	6	3	3	0.42	0.40	0.43
+JIALI 	Azha	230	118	112	173	96	77	4	2	2	2.26	2.04	2.53
+JIALI 	Cuoduo	112	56	56	105	55	50	          	          	          	          	          	          
+JIALI 	Xiama	140	74	66	119	63	56	          	          	          	          	          	          
+JIALI 	Duola	90	47	43	77	41	36	          	          	          	          	          	          
+JIALI 	Sangqian	87	40	47	67	33	34	1	1	          	1.47	2.94	          
+JIALI 	Jiali	76	40	36	64	34	30	          	          	          	          	          	          
+JIALI 	Gequn	106	49	57	91	43	48	          	          	          	          	          	          
+JIALI 	Zhangruo	103	49	54	88	43	45	1	          	1	1.12	          	2.17
+JIALI 	Cuola	146	76	70	118	67	51	          	          	          	          	          	          
+JIALI 	Lindi	104	52	52	83	42	41	          	          	          	          	          	          
+JIALI 	Cangbi	97	42	55	87	38	49	          	          	          	          	          	          
+JIALI 	Rongduo	143	76	67	129	70	59	          	          	          	          	          	          
+JIALI 	Cuomei	110	55	55	93	49	44	          	          	          	          	          	          
+JIALI 	Zhongyi	154	70	84	142	64	78	          	          	          	          	          	          
+BIRU 	Total	2996	1457	1539	1312	756	556	5	2	3	0.38	0.26	0.54
+BIRU 	Biru	360	190	170	127	84	43	          	          	          	          	          	          
+BIRU 	Xiaqu	281	131	150	189	98	91	          	          	          	          	          	          
+BIRU 	Bulong	254	121	133	63	43	20	          	          	          	          	          	          
+BIRU 	Zhala	156	73	83	70	37	33	          	          	          	          	          	          
+BIRU 	Qiaze	90	42	48	57	33	24	          	          	          	          	          	          
+BIRU 	Datang	334	159	175	126	78	48	          	          	          	          	          	          
+BIRU 	Chaqu	299	140	159	159	95	64	          	          	          	          	          	          
+BIRU 	Liangqu	168	92	76	99	64	35	5	2	3	4.81	3.03	7.89
+BIRU 	Xiangqu	287	139	148	125	48	77	          	          	          	          	          	          
+BIRU 	Yangxiu	323	149	174	152	82	70	          	          	          	          	          	          
+BIRU 	Baiga	444	221	223	145	94	51	          	          	          	          	          	          
+NIERONG 	Total	1441	711	730	1127	600	527	2	1	1	0.18	0.17	0.19
+NIERONG 	Dazhong	167	76	91	112	58	54	1	          	1	0.88	          	1.82
+NIERONG 	Chadang	117	52	65	96	49	47	          	          	          	          	          	          
+NIERONG 	Guoxiong	53	27	26	44	23	21	          	          	          	          	          	          
+NIERONG 	Dangmuxiong	68	34	34	56	31	25	          	          	          	          	          	          
+NIERONG 	Yongqu	73	33	40	63	30	33	          	          	          	          	          	          
+NIERONG 	Suoxiong	62	30	32	54	26	28	          	          	          	          	          	          
+NIERONG 	Baixiong	120	60	60	101	53	48	          	          	          	          	          	          
+NIERONG 	Sanglong	81	42	39	58	30	28	          	          	          	          	          	          
+NIERONG 	Xiaqu	199	105	94	154	84	70	1	1	          	0.65	1.18	          
+NIERONG 	Seqin	137	68	69	103	57	46	          	          	          	          	          	          
+NIERONG 	Shase	126	66	60	97	56	41	          	          	          	          	          	          
+NIERONG 	Nima	145	78	67	115	67	48	          	          	          	          	          	          
+NIERONG 	Yuze	93	40	53	74	36	38	          	          	          	          	          	          
+ANDUO 	Total	1545	782	763	1272	693	579	6	5	1	0.47	0.72	0.17
+ANDUO 	Yaoqia	286	151	135	202	117	85	6	5	1	2.88	4.10	1.16
+ANDUO 	Buqu	48	25	23	46	25	21	          	          	          	          	          	          
+ANDUO 	Duoma	94	49	45	86	46	40	          	          	          	          	          	          
+ANDUO 	Maqu	82	40	42	68	35	33	          	          	          	          	          	          
+ANDUO 	Jiri	93	46	47	85	43	42	          	          	          	          	          	          
+ANDUO 	Tandui	47	25	22	37	21	16	          	          	          	          	          	          
+ANDUO 	Qiangma	79	40	39	78	39	39	          	          	          	          	          	          
+ANDUO 	Bangai	71	33	38	36	30	6	          	          	          	          	          	          
+ANDUO 	Cuoma	128	61	67	95	51	44	          	          	          	          	          	          
+ANDUO 	Guozu	102	51	51	96	49	47	          	          	          	          	          	          
+ANDUO 	Jiaao	94	48	46	89	47	42	          	          	          	          	          	          
+ANDUO 	Nase	79	45	34	63	42	21	          	          	          	          	          	          
+ANDUO 	Marong	41	22	19	28	17	11	          	          	          	          	          	          
+ANDUO 	Zhaqu	42	20	22	39	19	20	          	          	          	          	          	          
+ANDUO 	Sewu	48	27	21	40	26	14	          	          	          	          	          	          
+ANDUO 	Gangni	89	42	47	86	42	44	          	          	          	          	          	          
+ANDUO 	Desha	122	57	65	98	44	54	          	          	          	          	          	          
+SHENZHA 	Total	851	428	423	502	333	169	          	          	          	          	          	          
+SHENZHA 	Mayue	74	37	37	48	29	19	          	          	          	          	          	          
+SHENZHA 	Shenzha	147	82	65	80	53	27	          	          	          	          	          	          
+SHENZHA 	Xiongmei	136	68	68	98	61	37	          	          	          	          	          	          
+SHENZHA 	Maiba	48	22	26	24	16	8	          	          	          	          	          	          
+SHENZHA 	Taerma	201	97	104	119	76	43	          	          	          	          	          	          
+SHENZHA 	Bazha	127	61	66	70	50	20	          	          	          	          	          	          
+SHENZHA 	Xiaguo	63	29	34	30	23	7	          	          	          	          	          	          
+SHENZHA 	Ka	55	32	23	33	25	8	          	          	          	          	          	          
+SUO 	Total	2066	1012	1054	1538	833	705	21	15	6	1.35	1.77	0.84
+SUO 	Yala	171	91	80	103	68	35	3	3	          	2.83	4.23	          
+SUO 	Yaan	214	101	113	165	84	81	          	          	          	          	          	          
+SUO 	Xichang	185	99	86	143	87	56	1	          	1	0.69	          	1.75
+SUO 	Jiangda	151	75	76	109	61	48	          	          	          	          	          	          
+SUO 	Rongbu	380	180	200	250	126	124	13	11	2	4.94	8.03	1.59
+SUO 	Jiaqin	149	72	77	123	64	59	          	          	          	          	          	          
+SUO 	Yongna	121	57	64	73	36	37	          	          	          	          	          	          
+SUO 	Ruoda	139	63	76	91	49	42	          	          	          	          	          	          
+SUO 	Chiduo	96	39	57	91	39	52	          	          	          	          	          	          
+SUO 	Rewa	106	49	57	96	48	48	2	          	2	2.04	          	4
+SUO 	Gamei	260	140	120	219	130	89	2	1	1	0.90	0.76	1.11
+SUO 	Gamu	94	46	48	75	41	34	          	          	          	          	          	          
+BANGE 	Total	2052	989	1063	1187	823	364	9	6	3	0.75	0.72	0.82
+BANGE 	Pubao	217	117	100	108	83	25	2	1	1	1.82	1.19	3.85
+BANGE 	Qunxue	158	72	86	76	62	14	          	          	          	          	          	          
+BANGE 	Qinglong	121	63	58	61	47	14	2	2	          	3.17	4.08	          
+BANGE 	Nima	126	60	66	61	50	11	          	          	          	          	          	          
+BANGE 	Peida	133	61	72	70	52	18	          	          	          	          	          	          
+BANGE 	Baila	156	77	79	91	64	27	          	          	          	          	          	          
+BANGE 	Jiaqiong	117	58	59	59	43	16	          	          	          	          	          	          
+BANGE 	Kangri	45	25	20	27	24	3	1	1	          	3.57	4	          
+BANGE 	Maqian	118	53	65	73	41	32	2	1	1	2.67	2.38	3.03
+BANGE 	Debao	84	40	44	45	34	11	          	          	          	          	          	          
+BANGE 	Xinji	115	53	62	73	46	27	          	          	          	          	          	          
+BANGE 	Gaerde	50	21	29	29	18	11	1	          	1	3.33	          	8.33
+BANGE 	Deqing	73	37	36	41	33	8	1	1	          	2.38	2.94	          
+BANGE 	Gongmang	95	41	54	69	32	37	          	          	          	          	          	          
+BANGE 	Mendang	129	60	69	76	55	21	          	          	          	          	          	          
+BANGE 	Xueru	137	70	67	97	66	31	          	          	          	          	          	          
+BANGE 	Namucuo	70	31	39	44	27	17	          	          	          	          	          	          
+BANGE 	Baoji	108	50	58	87	46	41	          	          	          	          	          	          
+BAQING 	Total	1684	799	885	1416	696	720	1	          	1	0.07	          	0.14
+BAQING 	Laxi	356	171	185	267	140	127	          	          	          	          	          	          
+BAQING 	Rongqing	46	20	26	40	19	21	          	          	          	          	          	          
+BAQING 	Gongri	78	41	37	76	39	37	          	          	          	          	          	          
+BAQING 	Manta	136	68	68	115	56	59	          	          	          	          	          	          
+BAQING 	Benta	176	99	77	150	88	62	          	          	          	          	          	          
+BAQING 	Axiu	83	41	42	75	37	38	          	          	          	          	          	          
+BAQING 	Zhasai	135	58	77	114	51	63	1	          	1	0.87	          	1.56
+BAQING 	Yaan	155	68	87	139	61	78	          	          	          	          	          	          
+BAQING 	Baqing	64	30	34	55	26	29	          	          	          	          	          	          
+BAQING 	Maru	157	71	86	135	65	70	          	          	          	          	          	          
+BAQING 	Gangqie	161	74	87	141	66	75	          	          	          	          	          	          
+BAQING 	Gaokou	137	58	79	109	48	61	          	          	          	          	          	          
+NIMA 	Total	2141	1076	1065	1630	949	681	3	3	          	0.18	0.32	          
+NIMA 	Wuerduo	156	83	73	113	72	41	1	1	          	0.88	1.37	          
+NIMA 	Jiwa	82	44	38	50	33	17	          	          	          	          	          	          
+NIMA 	Zhongcang	170	98	72	119	80	39	1	1	          	0.83	1.23	          
+NIMA 	Ejiu	103	47	56	90	41	49	          	          	          	          	          	          
+NIMA 	Zhuowa	87	42	45	86	41	45	          	          	          	          	          	          
+NIMA 	Ganglong	111	54	57	95	50	45	          	          	          	          	          	          
+NIMA 	Jiagu	75	37	38	64	31	33	          	          	          	          	          	          
+NIMA 	Zhuoni	104	47	57	73	40	33	          	          	          	          	          	          
+NIMA 	Laiduo	108	56	52	87	49	38	          	          	          	          	          	          
+NIMA 	Shenya	116	60	56	69	51	18	1	1	          	1.43	1.92	          
+NIMA 	Asuo	79	47	32	69	43	26	          	          	          	          	          	          
+NIMA 	Wenbu	99	50	49	61	47	14	          	          	          	          	          	          
+NIMA 	Juncang	97	49	48	78	41	37	          	          	          	          	          	          
+NIMA 	Dagu	72	37	35	50	33	17	          	          	          	          	          	          
+NIMA 	Rongma	53	24	29	45	22	23	          	          	          	          	          	          
+NIMA 	Duoma	147	71	76	109	63	46	          	          	          	          	          	          
+NIMA 	Heping	105	50	55	76	45	31	          	          	          	          	          	          
+NIMA 	Nancuozhe	167	76	91	116	71	45	          	          	          	          	          	          
+NIMA 	Balin	69	33	36	51	29	22	          	          	          	          	          	          
+NIMA 	Beicuozhe	43	24	19	41	23	18	          	          	          	          	          	          
+NIMA 	Gacuo	26	13	13	20	12	8	          	          	          	          	          	          
+NIMA 	Maima	72	34	38	68	32	36	          	          	          	          	          	          
+PULAN 	Total	521	257	264	448	227	221	5	4	1	1.10	1.73	0.45
+PULAN 	Pulan	335	164	171	287	145	142	4	4	          	1.37	2.68	          
+PULAN 	Baga	88	47	41	75	41	34	          	          	          	          	          	          
+PULAN 	Huoer	98	46	52	86	41	45	1	          	1	1.15	          	2.17
+ZHADA 	Total	384	185	199	321	163	158	1	1	          	0.31	0.61	          
+ZHADA 	Tuolin	115	64	51	95	56	39	1	1	          	1.04	1.75	          
+ZHADA 	Xiangzi	73	27	46	62	24	38	          	          	          	          	          	          
+ZHADA 	Qusong	60	32	28	53	28	25	          	          	          	          	          	          
+ZHADA 	Diya	54	23	31	41	19	22	          	          	          	          	          	          
+ZHADA 	Sarang	32	15	17	28	14	14	          	          	          	          	          	          
+ZHADA 	Daba	50	24	26	42	22	20	          	          	          	          	          	          
+GAER 	Total	1137	561	576	775	452	323	37	19	18	4.56	4.03	5.28
+GAER 	Shiquanhe	755	366	389	479	284	195	36	18	18	6.99	5.96	8.45
+GAER 	Zuozuo	87	49	38	71	46	25	          	          	          	          	          	          
+GAER 	Kunsha	106	51	55	81	40	41	          	          	          	          	          	          
+GAER 	Menshi	124	63	61	93	55	38	1	1	          	1.06	1.79	          
+GAER 	Zhaxigang	65	32	33	51	27	24	          	          	          	          	          	          
+RITU 	Total	432	210	222	375	195	180	3	3	          	0.79	1.52	          
+RITU 	Ritu	133	66	67	97	55	42	3	3	          	3	5.17	          
+RITU 	Duoma	64	33	31	62	32	30	          	          	          	          	          	          
+RITU 	Risong	110	51	59	103	50	53	          	          	          	          	          	          
+RITU 	Rebang	65	33	32	58	31	27	          	          	          	          	          	          
+RITU 	Dongru	60	27	33	55	27	28	          	          	          	          	          	          
+GEJI 	Total	763	397	366	498	338	160	3	1	2	0.60	0.29	1.23
+GEJI 	Geji	203	100	103	118	80	38	1	1	          	0.84	1.23	          
+GEJI 	Xiongba	138	73	65	75	62	13	          	          	          	          	          	          
+GEJI 	Yare	175	91	84	114	82	32	          	          	          	          	          	          
+GEJI 	Yanhu	122	63	59	89	55	34	2	          	2	2.20	          	5.56
+GEJI 	Wenbudangsang	125	70	55	102	59	43	          	          	          	          	          	          
+GAIZE 	Total	1034	529	505	836	447	389	1	1	          	0.12	0.22	          
+GAIZE 	Gaize	204	111	93	157	90	67	1	1	          	0.63	1.10	          
+GAIZE 	Mami	240	119	121	203	99	104	          	          	          	          	          	          
+GAIZE 	Dongcuo	113	56	57	78	44	34	          	          	          	          	          	          
+GAIZE 	Chabu	161	81	80	134	72	62	          	          	          	          	          	          
+GAIZE 	Wuma	131	74	57	113	67	46	          	          	          	          	          	          
+GAIZE 	Xianqian	88	39	49	73	34	39	          	          	          	          	          	          
+GAIZE 	Gumu	97	49	48	78	41	37	          	          	          	          	          	          
+CUOQIN 	Total	751	369	382	511	291	220	2	          	2	0.39	          	0.90
+CUOQIN 	Cuoqin	193	100	93	145	83	62	2	          	2	1.36	          	3.12
+CUOQIN 	Quluo	107	53	54	73	44	29	          	          	          	          	          	          
+CUOQIN 	Jiangrang	175	74	101	103	56	47	          	          	          	          	          	          
+CUOQIN 	Daxiong	137	71	66	116	65	51	          	          	          	          	          	          
+CUOQIN 	Ci	139	71	68	74	43	31	          	          	          	          	          	          
+LINZHI 	Total	2996	1539	1457	2309	1269	1040	48	26	22	2.04	2.01	2.07
+LINZHI 	Bayi	1835	952	883	1340	761	579	40	18	22	2.90	2.31	3.66
+LINZHI 	Linzhi	344	173	171	292	154	138	1	1	          	0.34	0.65	          
+LINZHI 	Baiba	218	110	108	178	91	87	1	1	          	0.56	1.09	          
+LINZHI 	Mirui	168	81	87	142	67	75	          	          	          	          	          	          
+LINZHI 	Bujiu	227	112	115	182	99	83	1	1	          	0.55	1	          
+LINZHI 	Dongjiu	151	84	67	133	74	59	5	5	          	3.62	6.33	          
+LINZHI 	Pailong	53	27	26	42	23	19	          	          	          	          	          	          
+GONGBUJIANGDA 	Total	1835	923	912	1548	807	741	3	2	1	0.19	0.25	0.13
+GONGBUJIANGDA 	Jinda	291	161	130	251	144	107	          	          	          	          	          	          
+GONGBUJIANGDA 	Gongbujiangda	315	165	150	238	132	106	2	1	1	0.83	0.75	0.93
+GONGBUJIANGDA 	Bahe	201	92	109	176	86	90	          	          	          	          	          	          
+GONGBUJIANGDA 	Jiaxing	245	123	122	202	110	92	          	          	          	          	          	          
+GONGBUJIANGDA 	Niangpu	172	91	81	139	77	62	          	          	          	          	          	          
+GONGBUJIANGDA 	Jiangda	155	69	86	129	57	72	1	1	          	0.77	1.72	          
+GONGBUJIANGDA 	Zhongsha	164	80	84	150	72	78	          	          	          	          	          	          
+GONGBUJIANGDA 	Zhula	170	82	88	150	73	77	          	          	          	          	          	          
+GONGBUJIANGDA 	Cuogao	122	60	62	113	56	57	          	          	          	          	          	          
+MILIN 	Total	1264	646	618	989	553	436	10	4	6	1	0.72	1.36
+MILIN 	Wolong	206	101	105	167	85	82	          	          	          	          	          	          
+MILIN 	Milin	308	162	146	235	141	94	5	1	4	2.08	0.70	4.08
+MILIN 	Paizhen+E51758	140	77	63	104	65	39	          	          	          	          	          	          
+MILIN 	Lilong	76	40	36	65	35	30	          	          	          	          	          	          
+MILIN 	Nanyi	68	37	31	56	36	20	          	          	          	          	          	          
+MILIN 	Zharao	223	108	115	166	89	77	5	3	2	2.92	3.26	2.53
+MILIN 	Qiangna	145	70	75	113	58	55	          	          	          	          	          	          
+MILIN 	Danniang	98	51	47	83	44	39	          	          	          	          	          	          
+MOTUO 	Total	593	319	274	473	273	200	2	1	1	0.42	0.36	0.5
+MOTUO 	Motuo	135	79	56	111	66	45	          	          	          	          	          	          
+MOTUO 	Beibeng	133	70	63	104	59	45	1	          	1	0.95	          	2.17
+MOTUO 	Dexing	79	44	35	69	38	31	1	1	          	1.43	2.56	          
+MOTUO 	Damu	31	17	14	26	17	9	          	          	          	          	          	          
+MOTUO 	Pangxin	75	39	36	66	36	30	          	          	          	          	          	          
+MOTUO 	Jialasa	45	22	23	35	19	16	          	          	          	          	          	          
+MOTUO 	Gandeng	44	20	24	30	16	14	          	          	          	          	          	          
+MOTUO 	Gedang	51	28	23	32	22	10	          	          	          	          	          	          
+BOMI 	Total	1842	954	888	1490	808	682	34	14	20	2.23	1.70	2.85
+BOMI 	Songzong	136	67	69	110	55	55	1	          	1	0.90	          	1.79
+BOMI 	Qingduo	293	171	122	256	155	101	          	          	          	          	          	          
+BOMI 	Zhamu	513	266	247	370	213	157	33	14	19	8.19	6.17	10.80
+BOMI 	Duoji	193	103	90	161	86	75	          	          	          	          	          	          
+BOMI 	Yupu	47	26	21	3	3	          	          	          	          	          	          	          
+BOMI 	Xumu	187	86	101	159	77	82	          	          	          	          	          	          
+BOMI 	Yuren	160	76	84	156	75	81	          	          	          	          	          	          
+BOMI 	Kangyu	91	45	46	89	45	44	          	          	          	          	          	          
+BOMI 	Bagai	70	32	38	57	27	30	          	          	          	          	          	          
+BOMI 	Yigong	67	36	31	59	31	28	          	          	          	          	          	          
+BOMI 	Gu	85	46	39	70	41	29	          	          	          	          	          	          
+CHAYU 	Total	1454	706	748	1302	647	655	6	5	1	0.46	0.77	0.15
+CHAYU 	Zhuwagen	355	185	170	285	158	127	3	3	          	1.04	1.86	          
+CHAYU 	Guyu	171	79	92	155	73	82	          	          	          	          	          	          
+CHAYU 	Xiachayu	247	121	126	226	113	113	3	2	1	1.31	1.74	0.88
+CHAYU 	Shangchayu	156	69	87	137	61	76	          	          	          	          	          	          
+CHAYU 	Gula	186	87	99	176	83	93	          	          	          	          	          	          
+CHAYU 	Chawalong	339	165	174	323	159	164	          	          	          	          	          	          
+LANG 	Total	931	451	480	841	413	428	6	3	3	0.71	0.72	0.70
+LANG 	Zhongda	162	71	91	154	68	86	          	          	          	          	          	          
+LANG 	Langzhne	215	115	100	181	99	82	6	3	3	3.21	2.94	3.53
+LANG 	Dongga	159	77	82	152	74	78	          	          	          	          	          	          
+LANG 	Dengmu	145	68	77	129	63	66	          	          	          	          	          	          
+LANG 	Laduo	129	65	64	117	59	58	          	          	          	          	          	          
+LANG 	Jindong	121	55	66	108	50	58	          	          	          	          	          	          

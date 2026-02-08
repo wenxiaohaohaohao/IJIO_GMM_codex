@@ -1,0 +1,13 @@
+/* 10_analysis.src */
+new;
+cls;
+
+/* TODO: set project root to the workflow folder */
+root = "C:\\path\\to\\workflow\\";
+raw = root $+ "data\\raw\\";
+proc = root $+ "data\\processed\\";
+out_tables = root $+ "output\\tables\\";
+out_figs = root $+ "output\\figures\\";
+
+print "Set root and add your analysis.";
+end;

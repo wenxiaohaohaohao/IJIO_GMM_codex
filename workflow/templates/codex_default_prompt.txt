@@ -1,0 +1,9 @@
+日常开发（Default permission）执行约束：
+
+1. 永远在正确的 workspace/repo 里运行任务。
+2. 先 Review 再 Apply，先读后改。
+3. 改动保持最小化，小步提交，保证可回滚。
+4. 不运行重计算、GUI、或高风险命令，除非我明确要求。
+
+Hard constraint:
+Only modify files in this workspace; do not touch anything outside.

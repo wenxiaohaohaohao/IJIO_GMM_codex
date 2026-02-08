@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"stata-vscode.stataPath": "D:\\AppGallery\\stata18"
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": []
+	}
+}

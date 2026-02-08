@@ -1,0 +1,1433 @@
+V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14
+TIANSHAN 	Total	40684	19618	21066	22667	12256	10411	1644	864	780	6.76	6.59	6.97
+TIANSHAN 	Wulabo	753	396	357	444	267	177	18	11	7	3.90	3.96	3.80
+TIANSHAN 	Yanerwo	1183	655	528	599	402	197	112	77	35	15.75	16.08	15.09
+TIANSHAN 	Shenglilu	6295	3093	3202	3532	1903	1629	408	208	200	10.36	9.85	10.93
+TIANSHAN 	Tuanjielu	3267	1374	1893	981	509	472	78	37	41	7.37	6.78	7.99
+TIANSHAN 	Jiefangnanlu	4972	2488	2484	3010	1661	1349	183	94	89	5.73	5.36	6.19
+TIANSHAN 	Xinhuananlu	3453	1711	1742	2059	1114	945	248	139	109	10.75	11.09	10.34
+TIANSHAN 	Hepinglu	2779	1386	1393	1715	928	787	104	52	52	5.72	5.31	6.20
+TIANSHAN 	Jiefangbeilu	1907	930	977	1216	663	553	95	49	46	7.25	6.88	7.68
+TIANSHAN 	Xingfulu	5049	2119	2930	1349	752	597	64	38	26	4.53	4.81	4.17
+TIANSHAN 	Dongmen	3217	1617	1600	2188	1178	1010	89	49	40	3.91	3.99	3.81
+TIANSHAN 	Xinhuabeilu	2721	1337	1384	1659	870	789	150	66	84	8.29	7.05	9.62
+TIANSHAN 	Qingnianlu	2166	1175	991	1480	888	592	31	19	12	2.05	2.09	1.99
+TIANSHAN 	Jianquanjie	2465	1096	1369	2159	945	1214	23	6	17	1.05	0.63	1.38
+TIANSHAN 	Yananlu	          	          	          	          	          	          	          	          	          	          	          	          
+TIANSHAN 	Yanhuhuagongchang	457	241	216	276	176	100	41	19	22	12.93	9.74	18.03
+TIANSHAN 	Chaiwobaolinchang	          	          	          	          	          	          	          	          	          	          	          	          
+SHAYIBAKE 	Total	36174	18673	17501	21894	12790	9104	1867	953	914	7.86	6.93	9.12
+SHAYIBAKE 	Changjianglu	3042	1560	1482	1894	1115	779	174	90	84	8.41	7.47	9.73
+SHAYIBAKE 	Hetianjie	3272	1695	1577	1910	1169	741	198	98	100	9.39	7.73	11.89
+SHAYIBAKE 	Yangzijianglu	8110	4226	3884	4789	2783	2006	377	193	184	7.30	6.49	8.40
+SHAYIBAKE 	Youhaonanlu	1157	569	588	642	343	299	59	30	29	8.42	8.04	8.84
+SHAYIBAKE 	Youhaobeilu	2370	1173	1197	1512	823	689	129	68	61	7.86	7.63	8.13
+SHAYIBAKE 	Bayijie	1020	495	525	681	353	328	42	14	28	5.81	3.81	7.87
+SHAYIBAKE 	Luyuanjie	6193	3182	3011	3996	2251	1745	208	87	121	4.95	3.72	6.48
+SHAYIBAKE 	Xishan	2965	1530	1435	1770	1059	711	194	78	116	9.88	6.86	14.03
+SHAYIBAKE 	Yamalikeshan	2057	1054	1003	1329	786	543	49	26	23	3.56	3.20	4.06
+SHAYIBAKE 	Hongmiaozi	3547	1830	1717	1818	1059	759	326	193	133	15.21	15.42	14.91
+SHAYIBAKE 	Houxiadiqu	274	175	99	239	165	74	3	2	1	1.24	1.20	1.33
+SHAYIBAKE 	104tuan	1762	967	795	1026	716	310	90	61	29	8.06	7.85	8.55
+SHAYIBAKE 	Xishannongmuchang	405	217	188	288	168	120	18	13	5	5.88	7.18	4
+WULUMUQI XINSHIQU 	Total	25453	13066	12387	14222	8395	5827	1390	681	709	8.90	7.5	10.85
+WULUMUQI XINSHIQU 	Beijinglu	2579	1281	1298	1215	702	513	203	103	100	14.32	12.80	16.31
+WULUMUQI XINSHIQU 	Ergong	4300	2089	2211	2618	1453	1165	79	36	43	2.93	2.42	3.56
+WULUMUQI XINSHIQU 	Sangong	7914	4126	3788	4549	2624	1925	311	140	171	6.40	5.07	8.16
+WULUMUQI XINSHIQU 	Shiyouxincun	2656	1326	1330	1663	970	693	59	23	36	3.43	2.32	4.94
+WULUMUQI XINSHIQU 	Yingbinlu	5802	3024	2778	2694	1644	1050	658	343	315	19.63	17.26	23.08
+WULUMUQI XINSHIQU 	Kashendonglu	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XINSHIQU 	Beizhan	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XINSHIQU 	Wulumuqijingjijishukaifaqu	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XINSHIQU 	Gaoxinjishuchanyekaifaqu	2202	1220	982	1483	1002	481	80	36	44	5.12	3.47	8.38
+SHUIMOGOU 	Total	16151	8102	8049	9406	5249	4157	937	507	430	9.06	8.81	9.37
+SHUIMOGOU 	Shuimogou	3618	1760	1858	2161	1161	1000	237	134	103	9.88	10.35	9.34
+SHUIMOGOU 	Liudaowan	3880	1924	1956	2003	1135	868	231	112	119	10.34	8.98	12.06
+SHUIMOGOU 	Weihuliang	3501	1777	1724	1794	1001	793	253	159	94	12.36	13.71	10.60
+SHUIMOGOU 	Badaowan	205	139	66	136	119	17	15	7	8	9.93	5.56	32
+SHUIMOGOU 	Xinminlu	3933	1952	1981	2602	1398	1204	153	79	74	5.55	5.35	5.79
+SHUIMOGOU 	Nanhu	1014	550	464	710	435	275	48	16	32	6.33	3.55	10.42
+TOUTUNHE 	Total	10778	5685	5093	6033	3604	2429	322	206	116	5.07	5.41	4.56
+TOUTUNHE 	Toutunhe	3950	2150	1800	1769	1090	679	96	43	53	5.15	3.80	7.24
+TOUTUNHE 	Huochexizhan	4242	2148	2094	2517	1513	1004	44	22	22	1.72	1.43	2.14
+TOUTUNHE 	Wangjiagou	535	293	242	412	247	165	14	7	7	3.29	2.76	4.07
+TOUTUNHE 	Wuchanglu	361	181	180	250	107	143	38	34	4	13.19	24.11	2.72
+TOUTUNHE 	Sanpingnongchang	401	221	180	286	172	114	5	2	3	1.72	1.15	2.56
+TOUTUNHE 	Wuyinongchang	362	207	155	198	127	71	59	48	11	22.96	27.43	13.41
+TOUTUNHE 	Tunhenongchang	927	485	442	601	348	253	66	50	16	9.90	12.56	5.95
+NANQUAN 	Total	997	539	458	573	387	186	40	32	8	6.53	7.64	4.12
+NANQUAN 	Aiweiergou	997	539	458	573	387	186	40	32	8	6.53	7.64	4.12
+NANQUAN 	Xinghuo	          	          	          	          	          	          	          	          	          	          	          	          
+NANQUAN 	Dongfeng	          	          	          	          	          	          	          	          	          	          	          	          
+DONGSHAN 	Total	9347	4492	4855	3327	2059	1268	266	134	132	7.40	6.11	9.43
+DONGSHAN 	Shihua	3804	1937	1867	2369	1335	1034	90	38	52	3.66	2.77	4.79
+DONGSHAN 	Dibang	515	298	217	315	253	62	23	15	8	6.80	5.60	11.43
+DONGSHAN 	Kaziwan	4336	1891	2445	390	254	136	147	79	68	27.37	23.72	33.33
+DONGSHAN 	Lucaogou	692	366	326	253	217	36	6	2	4	2.32	0.91	10
+WULUMUQI XIAN 	Total	28919	15846	13073	20093	13302	6791	717	472	245	3.45	3.43	3.48
+WULUMUQI XIAN 	Dabancheng	600	320	280	417	260	157	24	12	12	5.44	4.41	7.10
+WULUMUQI XIAN 	Anningqu	1385	787	598	1114	713	401	15	10	5	1.33	1.38	1.23
+WULUMUQI XIAN 	Donggou	241	134	107	193	115	78	2	          	2	1.03	          	2.5
+WULUMUQI XIAN 	Xigou	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XIAN 	Akesu	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XIAN 	Chaiwobao	870	489	381	585	431	154	14	6	8	2.34	1.37	4.94
+WULUMUQI XIAN 	Qinggedahu	1168	596	572	908	498	410	2	          	2	0.22	          	0.49
+WULUMUQI XIAN 	Sishihu	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XIAN 	Liushihu	873	469	404	748	420	328	10	3	7	1.32	0.71	2.09
+WULUMUQI XIAN 	Saerdaban	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XIAN 	Gangou	593	316	277	399	229	170	28	19	9	6.56	7.66	5.03
+WULUMUQI XIAN 	Xiaoquzi	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XIAN 	Yongfeng	414	222	192	351	196	155	2	1	1	0.57	0.51	0.64
+WULUMUQI XIAN 	Shuixigou	740	394	346	438	293	145	10	4	6	2.23	1.35	3.97
+WULUMUQI XIAN 	Banfanggou	537	288	249	436	250	186	5	2	3	1.13	0.79	1.59
+WULUMUQI XIAN 	Diwobao	1985	1041	944	1378	869	509	56	26	30	3.91	2.91	5.57
+WULUMUQI XIAN 	Ergong	5289	2870	2419	3553	2380	1173	131	80	51	3.56	3.25	4.17
+WULUMUQI XIAN 	Dawan	10933	5941	4992	7092	4909	2183	299	216	83	4.05	4.21	3.66
+WULUMUQI XIAN 	Qidaowan	2606	1625	981	1981	1455	526	102	82	20	4.90	5.34	3.66
+WULUMUQI XIAN 	Tuoli	685	354	331	500	284	216	17	11	6	3.29	3.73	2.70
+WULUMUQI XIAN 	Gaoyazimuchang	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XIAN 	Saerqiaokemuchang	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XIAN 	Tianshanmuchang	          	          	          	          	          	          	          	          	          	          	          	          
+WULUMUQI XIAN 	Zhongyangchang	          	          	          	          	          	          	          	          	          	          	          	          
+DUSHANZI 	Total	9936	5243	4693	7541	4275	3266	134	62	72	1.75	1.43	2.16
+DUSHANZI 	Jinshanlu	2417	1254	1163	1790	1003	787	53	24	29	2.88	2.34	3.55
+DUSHANZI 	Xininglu	6507	3368	3139	4863	2703	2160	72	34	38	1.46	1.24	1.73
+DUSHANZI 	Beicun	1012	621	391	888	569	319	9	4	5	1	0.70	1.54
+KELAMAYI 	Total	12837	6839	5998	8047	4867	3180	332	156	176	3.96	3.11	5.24
+KELAMAYI 	Tianshanlu	1333	662	671	775	427	348	18	11	7	2.27	2.51	1.97
+KELAMAYI 	Shenglilu	3833	2006	1827	2443	1408	1035	53	22	31	2.12	1.54	2.91
+KELAMAYI 	Kunlunlu	1371	725	646	721	423	298	29	15	14	3.87	3.42	4.49
+KELAMAYI 	Yinhelu	1905	933	972	1167	637	530	22	14	8	1.85	2.15	1.49
+KELAMAYI 	Jinlongzhen	2466	1371	1095	1539	964	575	40	20	20	2.53	2.03	3.36
+KELAMAYI 	Wuwuxinzhen	574	305	269	431	252	179	22	12	10	4.86	4.55	5.29
+KELAMAYI 	Xiaoguai	63	32	31	55	29	26	          	          	          	          	          	          
+KELAMAYI 	Kelamayijinkuang	1292	805	487	916	727	189	148	62	86	13.91	7.86	31.27
+BAIJIANTAN 	Total	5511	3193	2318	3593	2547	1046	110	56	54	2.97	2.15	4.91
+BAIJIANTAN 	Zhongxinglu	3401	2080	1321	2373	1785	588	68	29	39	2.79	1.60	6.22
+BAIJIANTAN 	Sanpingzhen	2110	1113	997	1220	762	458	42	27	15	3.33	3.42	3.17
+WUERHE 	Total	1610	958	652	1295	879	416	28	12	16	2.12	1.35	3.70
+WUERHE 	Baikouquan	1236	781	455	1046	738	308	16	7	9	1.51	0.94	2.84
+WUERHE 	Wuerhe	374	177	197	249	141	108	12	5	7	4.60	3.42	6.09
+TULUFAN 	Total	23678	12092	11586	17329	9655	7674	624	336	288	3.48	3.36	3.62
+TULUFAN 	Laochenglu	2609	1328	1281	1727	990	737	161	91	70	8.53	8.42	8.67
+TULUFAN 	Gaochanglu	3698	1863	1835	2465	1421	1044	173	86	87	6.56	5.71	7.69
+TULUFAN 	Qiquanhu	681	339	342	322	191	131	68	30	38	17.44	13.57	22.49
+TULUFAN 	Daheyan	1448	751	697	501	335	166	56	37	19	10.05	9.95	10.27
+TULUFAN 	Yaer	5527	2915	2612	4424	2578	1846	48	23	25	1.07	0.88	1.34
+TULUFAN 	Aidinghu	1238	647	591	1023	549	474	14	8	6	1.35	1.44	1.25
+TULUFAN 	Putao	1174	575	599	999	498	501	19	12	7	1.87	2.35	1.38
+TULUFAN 	Qiatekale	3342	1656	1686	2926	1475	1451	7	4	3	0.24	0.27	0.21
+TULUFAN 	Erbao	          	          	          	          	          	          	          	          	          	          	          	          
+TULUFAN 	Sanbao	1293	658	635	886	532	354	7	3	4	0.78	0.56	1.12
+TULUFAN 	Shengjin	1874	957	917	1559	811	748	16	8	8	1.02	0.98	1.06
+TULUFAN 	Hongliuheyuanyichang	74	40	34	54	33	21	3	2	1	5.26	5.71	4.55
+TULUFAN 	Yuanzhongchang	397	198	199	265	145	120	43	25	18	13.96	14.71	13.04
+TULUFAN 	221tuan	323	165	158	178	97	81	9	7	2	4.81	6.73	2.41
+SHANSHAN 	Total	12477	6449	6028	10326	5542	4784	166	79	87	1.58	1.41	1.79
+SHANSHAN 	Shanshan	1226	671	555	879	543	336	31	16	15	3.41	2.86	4.27
+SHANSHAN 	Qiketai	860	438	422	729	381	348	19	11	8	2.54	2.81	2.25
+SHANSHAN 	Shanshanhuochezhan	762	396	366	481	301	180	64	25	39	11.74	7.67	17.81
+SHANSHAN 	Lianmuqin	2307	1160	1147	1948	1003	945	10	7	3	0.51	0.69	0.32
+SHANSHAN 	Lukeqin	2283	1158	1125	1919	989	930	14	6	8	0.72	0.60	0.85
+SHANSHAN 	Pizhan	1998	1044	954	1740	920	820	10	6	4	0.57	0.65	0.49
+SHANSHAN 	Dongbazha	          	          	          	          	          	          	          	          	          	          	          	          
+SHANSHAN 	Tuyugou	669	355	314	550	303	247	5	2	3	0.90	0.66	1.20
+SHANSHAN 	Dalangkan	1673	849	824	1501	776	725	5	1	4	0.33	0.13	0.55
+SHANSHAN 	Dikan	563	309	254	490	278	212	1	1	          	0.20	0.36	          
+SHANSHAN 	Shuangshuimogonganguanliqu	136	69	67	89	48	41	7	4	3	7.29	7.69	6.82
+TUOKEXUN 	Total	7132	3643	3489	5571	3024	2547	202	95	107	3.5	3.05	4.03
+TUOKEXUN 	Tuokexun	1704	827	877	837	478	359	135	72	63	13.89	13.09	14.93
+TUOKEXUN 	Kumishen	306	157	149	235	139	96	          	          	          	          	          	          
+TUOKEXUN 	Kujiayi	224	114	110	197	106	91	          	          	          	          	          	          
+TUOKEXUN 	Xia	1872	977	895	1706	904	802	13	6	7	0.76	0.66	0.87
+TUOKEXUN 	Guolebuyi	1095	553	542	960	500	460	14	3	11	1.44	0.60	2.34
+TUOKEXUN 	Yilahu	1205	638	567	984	551	433	31	12	19	3.05	2.13	4.20
+TUOKEXUN 	Bositan	726	377	349	652	346	306	9	2	7	1.36	0.57	2.24
+HAMI 	Total	38278	19754	18524	24524	14481	10043	1731	951	780	6.59	6.16	7.21
+HAMI 	Donghequ	4173	2095	2078	2332	1313	1019	233	139	94	9.08	9.57	8.45
+HAMI 	Xihequ	897	441	456	483	288	195	72	43	29	12.97	12.99	12.95
+HAMI 	XinShiqu	7215	3802	3413	4428	2722	1706	385	200	185	8	6.84	9.78
+HAMI 	Yamansu	326	176	150	220	144	76	2	2	          	0.90	1.37	          
+HAMI 	Qijiaojing	75	39	36	37	26	11	12	8	4	24.49	23.53	26.67
+HAMI 	Xingxingxia	18	17	1	18	17	1	          	          	          	          	          	          
+HAMI 	Erbao	966	500	466	819	444	375	13	4	9	1.56	0.89	2.34
+HAMI 	Qincheng	514	278	236	440	248	192	4	1	3	0.90	0.40	1.54
+HAMI 	Wulataihasakeminzu	559	287	272	469	256	213	2	          	2	0.42	          	0.93
+HAMI 	Shuangjingzi	          	          	          	          	          	          	          	          	          	          	          	          
+HAMI 	Daquanwan	1067	535	532	928	477	451	3	2	1	0.32	0.42	0.22
+HAMI 	Taojiagong	979	493	486	815	441	374	8	1	7	0.97	0.23	1.84
+HAMI 	Huicheng	634	311	323	440	234	206	26	12	14	5.58	4.88	6.36
+HAMI 	Huayuan	829	447	382	718	404	314	4	1	3	0.55	0.25	0.95
+HAMI 	Nanhu	135	69	66	116	61	55	          	          	          	          	          	          
+HAMI 	Wubao	879	456	423	657	372	285	14	4	10	2.09	1.06	3.39
+HAMI 	Dewailidurukehasake	114	55	59	102	51	51	          	          	          	          	          	          
+HAMI 	Xishan	103	55	48	64	44	20	4	3	1	5.88	6.38	4.76
+HAMI 	Tianshan	719	383	336	632	337	295	6	3	3	0.94	0.88	1.01
+HAMI 	Baishitou	128	69	59	70	61	9	2	2	          	2.78	3.17	          
+HAMI 	Chengjiao	1350	656	694	902	528	374	84	29	55	8.52	5.21	12.82
+HAMI 	Liushugou	68	36	32	58	35	23	1	          	1	1.69	          	4.17
+HAMI 	Shiyoukuangqu	2603	1289	1314	1121	708	413	145	76	69	11.45	9.69	14.32
+HAMI 	Sandaolingkuangqu	2439	1253	1186	1342	880	462	53	33	20	3.80	3.61	4.15
+HAMI 	Yuanlinchang	77	44	33	70	39	31	          	          	          	          	          	          
+HAMI 	Yiwujunmachang	1403	737	666	554	413	141	296	168	128	34.82	28.92	47.58
+HAMI 	Hongxingyichang	1078	559	519	613	390	223	52	33	19	7.82	7.80	7.85
+HAMI 	Hongxingerchang	896	455	441	588	333	255	40	20	20	6.37	5.67	7.27
+HAMI 	Hongxingsanchang	3410	1776	1634	2113	1305	808	129	87	42	5.75	6.25	4.94
+HAMI 	Hongxingsichang	642	330	312	467	261	206	10	6	4	2.10	2.25	1.90
+HAMI 	Huangtiannongchang	966	496	470	666	372	294	51	28	23	7.11	7	7.26
+HAMI 	Huojiannongchang	585	303	282	370	208	162	22	15	7	5.61	6.73	4.14
+HAMI 	Liushuquannongchang	1738	927	811	1378	754	624	37	15	22	2.61	1.95	3.41
+HAMI 	Hongxingermuchang	693	385	308	494	315	179	21	16	5	4.08	4.83	2.72
+BALIKUNHASAKEZIZHIXIAN 	Total	6546	3318	3228	4467	2572	1895	211	113	98	4.51	4.21	4.92
+BALIKUNHASAKEZIZHIXIAN 	Balikun	1406	689	717	818	459	359	86	44	42	9.51	8.75	10.47
+BALIKUNHASAKEZIZHIXIAN 	Boerqiangji	          	          	          	          	          	          	          	          	          	          	          	          
+BALIKUNHASAKEZIZHIXIAN 	Saerqiaoke	280	145	135	237	123	114	          	          	          	          	          	          
+BALIKUNHASAKEZIZHIXIAN 	Haiziyan	386	201	185	345	181	164	          	          	          	          	          	          
+BALIKUNHASAKEZIZHIXIAN 	Xialaoba	390	199	191	328	173	155	1	          	1	0.30	          	0.64
+BALIKUNHASAKEZIZHIXIAN 	Dahe	1193	595	598	942	509	433	11	3	8	1.15	0.59	1.81
+BALIKUNHASAKEZIZHIXIAN 	Kuisu	270	137	133	196	125	71	1	1	          	0.51	0.79	          
+BALIKUNHASAKEZIZHIXIAN 	Shirenzi	360	200	160	249	150	99	27	18	9	9.78	10.71	8.33
+BALIKUNHASAKEZIZHIXIAN 	Huayuan	417	213	204	192	177	15	6	4	2	3.03	2.21	11.76
+BALIKUNHASAKEZIZHIXIAN 	Santanghu	229	118	111	202	103	99	          	          	          	          	          	          
+BALIKUNHASAKEZIZHIXIAN 	Dahongliuxia	164	78	86	106	64	42	3	2	1	2.75	3.03	2.33
+BALIKUNHASAKEZIZHIXIAN 	Baqiangzi	          	          	          	          	          	          	          	          	          	          	          	          
+BALIKUNHASAKEZIZHIXIAN 	Hongshannongchang	1046	530	516	578	343	235	58	28	30	9.12	7.55	11.32
+BALIKUNHASAKEZIZHIXIAN 	Hongxingyimuchang	405	213	192	274	165	109	18	13	5	6.16	7.30	4.39
+YIWU 	Total	2664	1378	1286	1968	1096	872	101	55	46	4.88	4.78	5.01
+YIWU 	Yiwu	271	143	128	198	113	85	16	12	4	7.48	9.60	4.49
+YIWU 	Naomaohu	274	143	131	190	110	80	13	6	7	6.40	5.17	8.05
+YIWU 	Weizixia	349	173	176	238	123	115	2	2	          	0.83	1.60	          
+YIWU 	Xiamaya	236	125	111	186	103	83	5	          	5	2.62	          	5.68
+YIWU 	Yanchi	279	148	131	147	104	43	25	14	11	14.53	11.86	20.37
+YIWU 	Tuhulu	374	189	185	298	164	134	16	5	11	5.10	2.96	7.59
+YIWU 	Qianshanhasakeminzu	441	231	210	371	190	181	7	6	1	1.85	3.06	0.55
+YIWU 	Naomaohunongchang	440	226	214	340	189	151	17	10	7	4.76	5.03	4.43
+CHANGJI 	Total	31297	15855	15442	19957	11850	8107	1204	642	562	5.69	5.14	6.48
+CHANGJI 	Laocheng	2385	1219	1166	1305	803	502	96	55	41	6.85	6.41	7.55
+CHANGJI 	Yananbeilu	6329	2699	3630	3247	1762	1485	257	119	138	7.33	6.33	8.5
+CHANGJI 	Yanannanlu	6224	3109	3115	3968	2238	1730	250	123	127	5.93	5.21	6.84
+CHANGJI 	Chengjiao	4362	2372	1990	3166	2047	1119	153	102	51	4.61	4.75	4.36
+CHANGJI 	Wujiaqu	2611	1398	1213	1409	885	524	289	152	137	17.02	14.66	20.73
+CHANGJI 	Liuhuanggou	838	573	265	669	538	131	9	6	3	1.33	1.10	2.24
+CHANGJI 	Sangong	1106	593	513	917	528	389	7	2	5	0.76	0.38	1.27
+CHANGJI 	Yushugou	557	297	260	408	238	170	5	2	3	1.21	0.83	1.73
+CHANGJI 	Erliugong	875	448	427	686	370	316	          	          	          	          	          	          
+CHANGJI 	Daxiqu	551	275	276	390	227	163	9	6	3	2.26	2.58	1.81
+CHANGJI 	Dianba	501	264	237	409	233	176	3	3	          	0.73	1.27	          
+CHANGJI 	Binhu	744	399	345	642	353	289	3	1	2	0.47	0.28	0.69
+CHANGJI 	Liugong	242	125	117	190	113	77	2	1	1	1.04	0.88	1.28
+CHANGJI 	Ashenlihasakeminzu	406	202	204	238	160	78	12	9	3	4.80	5.33	3.70
+CHANGJI 	Miaoergou	216	111	105	109	68	41	2	          	2	1.80	          	4.65
+CHANGJI 	Yuanyichang	885	468	417	679	380	299	34	23	11	4.77	5.71	3.55
+CHANGJI 	101tuan	755	395	360	478	276	202	38	16	22	7.36	5.48	9.82
+CHANGJI 	103tuan	688	370	318	413	248	165	16	9	7	3.73	3.5	4.07
+CHANGJI 	Gongqingtuannongchang	466	245	221	296	171	125	13	10	3	4.21	5.52	2.34
+CHANGJI 	Junhunongchang	556	293	263	338	212	126	6	3	3	1.74	1.40	2.33
+FUKANG 	Total	13829	7233	6596	9665	5570	4095	335	194	141	3.35	3.37	3.33
+FUKANG 	Bofengjie	3597	1863	1734	2347	1371	976	173	98	75	6.87	6.67	7.14
+FUKANG 	Fuxinjie	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Zhundong	2166	1106	1060	1350	776	574	18	14	4	1.32	1.77	0.69
+FUKANG 	Ganhezi	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Chengguan	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Jiuyunjie	825	429	396	665	361	304	4	2	2	0.60	0.55	0.65
+FUKANG 	Ziniquanzi	1993	1050	943	1670	916	754	16	9	7	0.95	0.97	0.92
+FUKANG 	Sangonghehasakeminzu	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Shanghugouhasakeminzu	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Shuimogou	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Yousegongsiguanlichu	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Dahuangshanmeikuang	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Zhongyangchang	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Xiaoquanmuchang	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Wugongmeikuang	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	Tudunzinongchang	2198	1140	1058	1423	871	552	76	42	34	5.07	4.60	5.80
+FUKANG 	Liuyunhunongchang	          	          	          	          	          	          	          	          	          	          	          	          
+FUKANG 	222tuannongchang	3050	1645	1405	2210	1275	935	48	29	19	2.13	2.22	1.99
+MIQUAN 	Total	14186	7993	6193	8007	5288	2719	252	146	106	3.05	2.69	3.75
+MIQUAN 	Donglu	1577	874	703	1111	752	359	19	11	8	1.68	1.44	2.18
+MIQUAN 	Xilu	1498	745	753	802	532	270	26	2	24	3.14	0.37	8.16
+MIQUAN 	Youhaolu	4744	3043	1701	1800	1367	433	72	43	29	3.85	3.05	6.28
+MIQUAN 	Gumudi	1096	565	531	685	464	221	41	28	13	5.65	5.69	5.56
+MIQUAN 	Tiechanggou	1305	706	599	600	442	158	49	34	15	7.55	7.14	8.67
+MIQUAN 	Changshanzi	1455	741	714	1142	633	509	5	3	2	0.44	0.47	0.39
+MIQUAN 	Yangmaogong	994	518	476	802	453	349	7	2	5	0.87	0.44	1.41
+MIQUAN 	Sandaoba	723	378	345	579	331	248	5	3	2	0.86	0.90	0.80
+MIQUAN 	Baiyanghe	386	198	188	300	174	126	10	5	5	3.23	2.79	3.82
+MIQUAN 	102tuanchang	408	225	183	186	140	46	18	15	3	8.82	9.68	6.12
+HUTUBI 	Total	16590	8702	7888	11738	6869	4869	390	223	167	3.22	3.14	3.32
+HUTUBI 	Hutubi	2301	1185	1116	1491	850	641	94	52	42	5.93	5.76	6.15
+HUTUBI 	Dafeng	878	458	420	676	387	289	6	2	4	0.88	0.51	1.37
+HUTUBI 	Queergou	678	372	306	409	280	129	26	15	11	5.98	5.08	7.86
+HUTUBI 	Ershilidian	1454	778	676	1222	690	532	4	          	4	0.33	          	0.75
+HUTUBI 	Yuanhucun	861	439	422	713	390	323	3	1	2	0.42	0.26	0.62
+HUTUBI 	Wugongtai	1358	716	642	1153	631	522	7	4	3	0.60	0.63	0.57
+HUTUBI 	Shitizihasakeminzu	1708	864	844	1217	738	479	9	3	6	0.73	0.40	1.24
+HUTUBI 	105tuanchang	359	190	169	267	158	109	4	2	2	1.48	1.25	1.80
+HUTUBI 	106tuanchang	226	107	119	160	84	76	          	          	          	          	          	          
+HUTUBI 	111tuanchang	85	45	40	50	34	16	          	          	          	          	          	          
+HUTUBI 	Fangcaohuzongchang	6593	3492	3101	4306	2578	1728	236	143	93	5.20	5.26	5.11
+HUTUBI 	Zhongniuchang	89	56	33	74	49	25	1	1	          	1.33	2	          
+MANASI 	Total	14343	7557	6786	10455	6168	4287	310	171	139	2.88	2.70	3.14
+MANASI 	Manasi	2047	1157	890	1347	881	466	129	72	57	8.74	7.56	10.90
+MANASI 	Letuyi	361	193	168	287	160	127	          	          	          	          	          	          
+MANASI 	Baojiadian	1821	960	861	1471	815	656	4	2	2	0.27	0.24	0.30
+MANASI 	Liangzhouhu	512	255	257	437	227	210	2	2	          	0.46	0.87	          
+MANASI 	Beiwucha	569	313	256	467	270	197	2	1	1	0.43	0.37	0.51
+MANASI 	Liuhudi	366	191	175	292	166	126	7	4	3	2.34	2.35	2.33
+MANASI 	Tougong	800	423	377	672	362	310	          	          	          	          	          	          
+MANASI 	Guangdongdi	380	203	177	325	183	142	6	1	5	1.81	0.54	3.40
+MANASI 	Lanzhouwan	1152	573	579	756	434	322	16	8	8	2.07	1.81	2.42
+MANASI 	Qingshuihehasakeminzu	743	368	375	328	255	73	28	15	13	7.87	5.56	15.12
+MANASI 	Taxihehasakeminzu	397	197	200	335	180	155	          	          	          	          	          	          
+MANASI 	Hankatanhasakeminzu	546	282	264	310	224	86	10	8	2	3.12	3.45	2.27
+MANASI 	Manasihuolifadianchang	679	332	347	532	278	254	13	5	8	2.39	1.77	3.05
+MANASI 	Xianyuanyichang	504	274	230	354	219	135	19	16	3	5.09	6.81	2.17
+MANASI 	Xinhunongchang	3466	1836	1630	2542	1514	1028	74	37	37	2.83	2.39	3.47
+JITAI 	Total	16328	8448	7880	12153	6765	5388	287	161	126	2.31	2.32	2.29
+JITAI 	Jitai	2623	1299	1324	1624	904	720	57	36	21	3.39	3.83	2.83
+JITAI 	Laojitai	1124	601	523	906	502	404	33	16	17	3.51	3.09	4.04
+JITAI 	Banjiegou	348	178	170	296	158	138	          	          	          	          	          	          
+JITAI 	Jibuku	810	425	385	645	363	282	7	2	5	1.07	0.55	1.74
+JITAI 	Dongwan	355	186	169	259	141	118	9	6	3	3.36	4.08	2.48
+JITAI 	Xidi	2135	1097	1038	1699	922	777	22	7	15	1.28	0.75	1.89
+JITAI 	Biliuhe	1598	812	786	1275	679	596	10	6	4	0.78	0.88	0.67
+JITAI 	Xibeiwan	1465	777	688	1172	657	515	7	2	5	0.59	0.30	0.96
+JITAI 	Kanerzi	423	230	193	366	197	169	7	4	3	1.88	1.99	1.74
+JITAI 	Wumachang	158	76	82	149	74	75	          	          	          	          	          	          
+JITAI 	Gucheng	180	94	86	152	81	71	          	          	          	          	          	          
+JITAI 	Qiaoren	180	106	74	131	85	46	4	1	3	2.96	1.16	6.12
+JITAI 	Qihu	1195	616	579	953	506	447	22	11	11	2.26	2.13	2.40
+JITAI 	Sangezhuangzi	106	54	52	87	49	38	          	          	          	          	          	          
+JITAI 	Daquantataerminzu	361	187	174	192	160	32	7	4	3	3.52	2.44	8.57
+JITAI 	108tuan	293	150	143	184	106	78	11	7	4	5.64	6.19	4.88
+JITAI 	109tuan	218	111	107	127	69	58	5	4	1	3.79	5.48	1.69
+JITAI 	110tuan	154	85	69	110	69	41	4	4	          	3.51	5.48	          
+JITAI 	Qitainongchang	2111	1110	1001	1590	878	712	19	8	11	1.18	0.90	1.52
+JITAI 	Beitashanmuchang	491	254	237	236	165	71	63	43	20	21.07	20.67	21.98
+JIMUSAER 	Total	8424	4397	4027	6652	3686	2966	121	66	55	1.79	1.76	1.82
+JIMUSAER 	Jimusaer	1996	1020	976	1392	775	617	68	37	31	4.66	4.56	4.78
+JIMUSAER 	Santai	846	439	407	743	397	346	2	2	          	0.27	0.5	          
+JIMUSAER 	Quanzijie	568	302	266	503	274	229	          	          	          	          	          	          
+JIMUSAER 	Ergong	870	454	416	745	402	343	7	4	3	0.93	0.99	0.87
+JIMUSAER 	Beiting	402	225	177	355	198	157	3	1	2	0.84	0.5	1.26
+JIMUSAER 	Qingyanghu	701	376	325	609	347	262	7	4	3	1.14	1.14	1.13
+JIMUSAER 	Laotai	496	258	238	412	228	184	          	          	          	          	          	          
+JIMUSAER 	Dayou	864	455	409	737	396	341	6	1	5	0.81	0.25	1.45
+JIMUSAER 	Xindi	442	236	206	391	215	176	1	          	1	0.26	          	0.56
+JIMUSAER 	Hongqinongchang	936	480	456	651	361	290	24	15	9	3.56	3.99	3.01
+JIMUSAER 	107tuan	303	152	151	114	93	21	3	2	1	2.56	2.11	4.55
+MULEIHASAKEZIZHIXIAN 	Total	6076	3158	2918	4421	2565	1856	109	68	41	2.41	2.58	2.16
+MULEIHASAKEZIZHIXIAN 	Mulei	1366	688	678	869	488	381	67	40	27	7.16	7.58	6.62
+MULEIHASAKEZIZHIXIAN 	Xijier	642	335	307	468	262	206	18	11	7	3.70	4.03	3.29
+MULEIHASAKEZIZHIXIAN 	Dongcheng	772	405	367	640	340	300	6	3	3	0.93	0.87	0.99
+MULEIHASAKEZIZHIXIAN 	Yinggebao	573	305	268	468	253	215	3	3	          	0.64	1.17	          
+MULEIHASAKEZIZHIXIAN 	Zhaobishan	628	325	303	547	295	252	3	3	          	0.55	1.01	          
+MULEIHASAKEZIZHIXIAN 	Xinhu	455	245	210	389	218	171	2	1	1	0.51	0.46	0.58
+MULEIHASAKEZIZHIXIAN 	Queren	399	204	195	312	173	139	4	2	2	1.27	1.14	1.42
+MULEIHASAKEZIZHIXIAN 	Baiyanghe	236	121	115	222	115	107	1	1	          	0.45	0.86	          
+MULEIHASAKEZIZHIXIAN 	Dashitou	486	254	232	239	199	40	1	1	          	0.42	0.5	          
+MULEIHASAKEZIZHIXIAN 	Danangouwuzibiekeminzu	229	119	110	116	102	14	1	1	          	0.85	0.97	          
+MULEIHASAKEZIZHIXIAN 	Bositang	290	157	133	151	120	31	3	2	1	1.95	1.64	3.12
+BOLE 	Total	16502	8777	7725	12095	7335	4760	521	251	270	4.13	3.31	5.37
+BOLE 	Qingdeli	3672	1787	1885	2646	1446	1200	159	54	105	5.67	3.60	8.05
+BOLE 	Gulimutu	1830	925	905	1282	700	582	61	28	33	4.54	3.85	5.37
+BOLE 	Keergenzhuo	259	162	97	210	158	52	          	          	          	          	          	          
+BOLE 	Xiaoyingpan	1704	911	793	1447	824	623	27	16	11	1.83	1.90	1.74
+BOLE 	Dalete	603	314	289	502	264	238	5	2	3	0.99	0.75	1.24
+BOLE 	Wutubulage	690	358	332	499	325	174	1	          	1	0.20	          	0.57
+BOLE 	Qingdeli	1746	896	850	1213	757	456	45	26	19	3.58	3.32	4
+BOLE 	Beilinharimodun	96	47	49	68	36	32	          	          	          	          	          	          
+BOLE 	Alashankou	2508	1608	900	2011	1510	501	58	39	19	2.80	2.52	3.65
+BOLE 	Areletuohaimuchang	285	146	139	226	123	103	2	          	2	0.88	          	1.90
+BOLE 	81tuan	352	192	160	276	157	119	13	10	3	4.5	5.99	2.46
+BOLE 	84tuan	687	352	335	370	243	127	14	11	3	3.65	4.33	2.31
+BOLE 	85tuan	448	225	223	230	137	93	64	30	34	21.77	17.96	26.77
+BOLE 	86tuan	379	207	172	273	165	108	8	2	6	2.85	1.20	5.26
+BOLE 	89tuan	745	388	357	424	263	161	59	31	28	12.22	10.54	14.81
+BOLE 	90tuan	498	259	239	418	227	191	5	2	3	1.18	0.87	1.55
+JINGHE 	Total	9492	4802	4690	7354	3946	3408	239	127	112	3.15	3.12	3.18
+JINGHE 	Jinghe	1906	960	946	1350	728	622	76	40	36	5.33	5.21	5.47
+JINGHE 	Daheyanzi	3367	1675	1692	2758	1430	1328	83	41	42	2.92	2.79	3.07
+JINGHE 	Mangding	1038	546	492	806	477	329	13	9	4	1.59	1.85	1.20
+JINGHE 	Tuoli	696	347	349	600	307	293	1	1	          	0.17	0.32	          
+JINGHE 	Tuotuo	216	110	106	180	98	82	6	1	5	3.23	1.01	5.75
+JINGHE 	Aheqinongchang	356	186	170	251	147	104	10	6	4	3.83	3.92	3.70
+JINGHE 	Bajiahunongchang	637	324	313	541	279	262	6	4	2	1.10	1.41	0.76
+JINGHE 	82tuan	451	237	214	307	173	134	10	9	1	3.15	4.95	0.74
+JINGHE 	83tuan	683	344	339	435	241	194	27	14	13	5.84	5.49	6.28
+JINGHE 	91tuan	142	73	69	126	66	60	7	2	5	5.26	2.94	7.69
+WENQUAN 	Total	5247	2714	2533	3820	2169	1651	147	88	59	3.71	3.90	3.45
+WENQUAN 	Bogedaer	1035	521	514	657	381	276	65	38	27	9	9.07	8.91
+WENQUAN 	Haribuhu	870	450	420	678	370	308	12	8	4	1.74	2.12	1.28
+WENQUAN 	Angelige	1159	609	550	919	512	407	19	12	7	2.03	2.29	1.69
+WENQUAN 	Chagantunge	187	91	96	143	77	66	2	2	          	1.38	2.53	          
+WENQUAN 	Zhalemute	415	221	194	356	200	156	7	4	3	1.93	1.96	1.89
+WENQUAN 	Taxiu	751	397	354	554	312	242	14	11	3	2.46	3.41	1.22
+WENQUAN 	Huhetuohazhongchuchang	258	133	125	190	114	76	1	          	1	0.52	          	1.30
+WENQUAN 	Kundelunmuchang	159	84	75	147	79	68	          	          	          	          	          	          
+WENQUAN 	87tuan	135	66	69	73	41	32	6	3	3	7.59	6.82	8.57
+WENQUAN 	88tuan	278	142	136	103	83	20	21	10	11	16.94	10.75	35.48
+KUERLE 	Total	29580	15426	14154	21187	12110	9077	866	460	406	3.93	3.66	4.28
+KUERLE 	Tuanjie	2886	1398	1488	1769	922	847	178	82	96	9.14	8.17	10.18
+KUERLE 	Saban	6451	3358	3093	3986	2376	1610	245	135	110	5.79	5.38	6.40
+KUERLE 	Tianshan	1282	703	579	912	566	346	71	36	35	7.22	5.98	9.19
+KUERLE 	Xincheng	2252	1250	1002	1871	1126	745	47	21	26	2.45	1.83	3.37
+KUERLE 	Jianshelu	379	217	162	262	172	90	14	10	4	5.07	5.49	4.26
+KUERLE 	Tashendian	905	484	421	676	387	289	14	7	7	2.03	1.78	2.36
+KUERLE 	Shanghu	876	439	437	739	391	348	10	3	7	1.34	0.76	1.97
+KUERLE 	Tiekeqi	2373	1212	1161	1513	967	546	98	61	37	6.08	5.93	6.35
+KUERLE 	Qiaerbage	1570	812	758	1230	673	557	29	22	7	2.30	3.17	1.24
+KUERLE 	Yingxia	691	347	344	555	299	256	7	5	2	1.25	1.64	0.78
+KUERLE 	Langan	1034	525	509	903	457	446	7	2	5	0.77	0.44	1.11
+KUERLE 	Heshenlike	957	490	467	819	437	382	6	3	3	0.73	0.68	0.78
+KUERLE 	Halayugong	1039	564	475	912	517	395	4	1	3	0.44	0.19	0.75
+KUERLE 	Awati	338	185	153	273	154	119	4	2	2	1.44	1.28	1.65
+KUERLE 	Tuobuliqi	887	441	446	795	407	388	3	1	2	0.38	0.25	0.51
+KUERLE 	Puhui	917	544	373	828	501	327	2	1	1	0.24	0.20	0.30
+KUERLE 	Kuerchuyuanyichang	485	262	223	324	184	140	8	7	1	2.41	3.66	0.71
+KUERLE 	Baotouhunongchang	382	195	187	293	165	128	2	1	1	0.68	0.60	0.78
+KUERLE 	Puhuinongchang	575	301	274	502	276	226	1	          	1	0.20	          	0.44
+KUERLE 	Awatinongchang	220	114	106	188	101	87	7	4	3	3.59	3.81	3.33
+KUERLE 	Shayidongyuanyichang	456	251	205	340	202	138	19	12	7	5.29	5.61	4.83
+KUERLE 	28tuan	1544	779	765	870	486	384	69	28	41	7.35	5.45	9.65
+KUERLE 	29tuan	611	317	294	324	177	147	16	13	3	4.71	6.84	2
+KUERLE 	30tuan	470	238	232	303	167	136	5	3	2	1.62	1.76	1.45
+LUNTAI 	Total	7621	3961	3660	6306	3415	2891	107	62	45	1.67	1.78	1.53
+LUNTAI 	Luntai	2051	1033	1018	1444	821	623	81	45	36	5.31	5.20	5.46
+LUNTAI 	Lunnan	51	29	22	49	28	21	          	          	          	          	          	          
+LUNTAI 	Dadaonan	183	100	83	158	84	74	          	          	          	          	          	          
+LUNTAI 	Haerbake	402	213	189	324	171	153	1	          	1	0.31	          	0.65
+LUNTAI 	Qunbake	1228	636	592	1094	573	521	1	1	          	0.09	0.17	          
+LUNTAI 	Akesalai	34	18	16	26	15	11	          	          	          	          	          	          
+LUNTAI 	Taerlake	767	406	361	705	374	331	          	          	          	          	          	          
+LUNTAI 	Yangxia	914	476	438	754	417	337	6	3	3	0.79	0.71	0.88
+LUNTAI 	Tierekebazha	1014	524	490	899	468	431	8	5	3	0.88	1.06	0.69
+LUNTAI 	Cedaya	317	168	149	276	147	129	9	8	1	3.16	5.16	0.77
+LUNTAI 	Yeyungou	575	312	263	508	279	229	1	          	1	0.20	          	0.43
+LUNTAI 	Caohu	85	46	39	69	38	31	          	          	          	          	          	          
+WEILI 	Total	6655	3493	3162	4940	2826	2114	105	62	43	2.08	2.15	1.99
+WEILI 	Weili	276	141	135	223	130	93	8	3	5	3.46	2.26	5.10
+WEILI 	Xinier	1418	778	640	1252	738	514	15	8	7	1.18	1.07	1.34
+WEILI 	Talimu	          	          	          	          	          	          	          	          	          	          	          	          
+WEILI 	Xingping	814	435	379	688	381	307	13	10	3	1.85	2.56	0.97
+WEILI 	Tuanjie	526	268	258	396	209	187	17	8	9	4.12	3.69	4.59
+WEILI 	Dunkuotan	787	419	368	514	332	182	4	2	2	0.77	0.60	1.09
+WEILI 	Kaerquga	          	          	          	          	          	          	          	          	          	          	          	          
+WEILI 	Akesupu	286	143	143	248	128	120	2	          	2	0.80	          	1.64
+WEILI 	Gulebage	          	          	          	          	          	          	          	          	          	          	          	          
+WEILI 	31tuan	110	54	56	66	34	32	5	4	1	7.04	10.53	3.03
+WEILI 	32tuan	963	507	456	607	352	255	28	18	10	4.41	4.86	3.77
+WEILI 	33tuan	393	198	195	287	157	130	          	          	          	          	          	          
+WEILI 	34tuan	451	230	221	280	151	129	10	7	3	3.45	4.43	2.27
+WEILI 	35tuan	631	320	311	379	214	165	3	2	1	0.79	0.93	0.60
+RUOQIANG 	Total	3921	2128	1793	3002	1813	1189	87	47	40	2.82	2.53	3.25
+RUOQIANG 	Ruoqiang	1129	570	559	776	464	312	40	21	19	4.90	4.33	5.74
+RUOQIANG 	Yitunbulake	510	324	186	402	308	94	18	8	10	4.29	2.53	9.62
+RUOQIANG 	Tieganlike	136	80	56	120	73	47	1	1	          	0.83	1.35	          
+RUOQIANG 	Wutamu	417	231	186	359	200	159	3	2	1	0.83	0.99	0.62
+RUOQIANG 	Washixia	1107	570	537	917	492	425	3	1	2	0.33	0.20	0.47
+RUOQIANG 	Tiemulike	201	127	74	141	113	28	7	7	          	4.73	5.83	          
+RUOQIANG 	Qimantake	55	34	21	34	33	1	          	          	          	          	          	          
+RUOQIANG 	36tuan	366	192	174	253	130	123	15	7	8	5.60	5.11	6.11
+QIEMO 	Total	4011	2144	1867	3105	1801	1304	81	45	36	2.54	2.44	2.69
+QIEMO 	Qiemo	1878	1006	872	1353	834	519	63	35	28	4.45	4.03	5.12
+QIEMO 	Arele	          	          	          	          	          	          	          	          	          	          	          	          
+QIEMO 	Qiongkule	          	          	          	          	          	          	          	          	          	          	          	          
+QIEMO 	Tuogelakeleke	465	245	220	346	205	141	7	3	4	1.98	1.44	2.76
+QIEMO 	Bageairike	420	220	200	381	200	181	          	          	          	          	          	          
+QIEMO 	Yingwusitang	582	301	281	528	268	260	          	          	          	          	          	          
+QIEMO 	Aketikandun	          	          	          	          	          	          	          	          	          	          	          	          
+QIEMO 	Kuoshensatema	          	          	          	          	          	          	          	          	          	          	          	          
+QIEMO 	Tatirang	          	          	          	          	          	          	          	          	          	          	          	          
+QIEMO 	Aqiang	106	52	54	93	45	48	          	          	          	          	          	          
+QIEMO 	Kulamuleke	          	          	          	          	          	          	          	          	          	          	          	          
+QIEMO 	Aoyiyayilake	          	          	          	          	          	          	          	          	          	          	          	          
+QIEMO 	Gongchengzhidui	560	320	240	404	249	155	11	7	4	2.65	2.73	2.52
+YANQIHUIZUZIZHIXIAN 	Total	8202	4239	3963	6317	3564	2753	187	100	87	2.88	2.73	3.06
+YANQIHUIZUZIZHIXIAN 	Yanqi	1298	633	665	890	481	409	57	31	26	6.02	6.05	5.98
+YANQIHUIZUZIZHIXIAN 	Qigexing	1273	653	620	1054	566	488	12	4	8	1.13	0.70	1.61
+YANQIHUIZUZIZHIXIAN 	Yongning	1257	660	597	941	579	362	18	4	14	1.88	0.69	3.72
+YANQIHUIZUZIZHIXIAN 	Beidaqu	855	435	420	698	386	312	20	10	10	2.79	2.53	3.11
+YANQIHUIZUZIZHIXIAN 	Wuhaoqu	400	197	203	340	176	164	5	3	2	1.45	1.68	1.20
+YANQIHUIZUZIZHIXIAN 	Sishilichengzi	724	382	342	561	342	219	6	4	2	1.06	1.16	0.90
+YANQIHUIZUZIZHIXIAN 	Chahancaikai	654	342	312	545	296	249	17	7	10	3.02	2.31	3.86
+YANQIHUIZUZIZHIXIAN 	Baoerhai	686	382	304	577	327	250	6	6	          	1.03	1.80	          
+YANQIHUIZUZIZHIXIAN 	Wangjiazhuangmuchang	132	66	66	130	66	64	          	          	          	          	          	          
+YANQIHUIZUZIZHIXIAN 	Suhailiangzhongchang	186	96	90	160	81	79	3	1	2	1.84	1.22	2.47
+YANQIHUIZUZIZHIXIAN 	27tuan	737	393	344	421	264	157	43	30	13	9.27	10.20	7.65
+HEJING 	Total	12168	6279	5889	8256	4790	3466	528	285	243	6.01	5.62	6.55
+HEJING 	Hejing	1214	587	627	736	412	324	32	19	13	4.17	4.41	3.86
+HEJING 	Baluntai	916	465	451	537	314	223	38	19	19	6.61	5.71	7.85
+HEJING 	Barunhaermodun	1722	883	839	1435	767	668	          	          	          	          	          	          
+HEJING 	Naimenmodun	638	344	294	538	302	236	4	2	2	0.74	0.66	0.84
+HEJING 	Xiebinaierbuhu	1735	889	846	1319	763	556	16	10	6	1.20	1.29	1.07
+HEJING 	Haermodun	1384	721	663	1137	643	494	22	12	10	1.90	1.83	1.98
+HEJING 	Keerguti	148	74	74	107	63	44	15	          	15	12.30	          	25.42
+HEJING 	Alagou	213	110	103	108	87	21	4	2	2	3.57	2.25	8.70
+HEJING 	Elezaitewulu	273	138	135	222	120	102	          	          	          	          	          	          
+HEJING 	Bayinguoleng	149	72	77	72	62	10	5	1	4	6.49	1.59	28.57
+HEJING 	Bayinwulu	147	81	66	91	66	25	5	5	          	5.21	7.04	          
+HEJING 	Gongnaisigou	319	178	141	237	153	84	21	16	5	8.14	9.47	5.62
+HEJING 	Hejinggangtiechang	901	466	435	257	166	91	323	169	154	55.69	50.45	62.86
+HEJING 	Wulasitainongchang	222	115	107	169	98	71	1	          	1	0.59	          	1.39
+HEJING 	21tuan	340	185	155	225	131	94	7	6	1	3.02	4.38	1.05
+HEJING 	22tuan	769	408	361	404	261	143	2	2	          	0.49	0.76	          
+HEJING 	23tuan	434	232	202	273	158	115	6	5	1	2.15	3.07	0.86
+HEJING 	223tuan	644	331	313	389	224	165	27	17	10	6.49	7.05	5.71
+HESHUO 	Total	4834	2511	2323	3297	1932	1365	243	135	108	6.86	6.53	7.33
+HESHUO 	Tewulike	1320	671	649	779	472	307	103	59	44	11.68	11.11	12.54
+HESHUO 	Wushentalahuizu	397	217	180	324	205	119	          	          	          	          	          	          
+HESHUO 	Quhui	105	55	50	100	53	47	2	1	1	1.96	1.85	2.08
+HESHUO 	Tahaqi	946	484	462	745	410	335	13	5	8	1.72	1.20	2.33
+HESHUO 	Suhate	157	84	73	105	65	40	4	4	          	3.67	5.80	          
+HESHUO 	Nayinke	141	69	72	90	57	33	7	3	4	7.22	5	10.81
+HESHUO 	Qingshuihenongchang	380	197	183	191	120	71	53	33	20	21.72	21.57	21.98
+HESHUO 	Baoertumuchang	430	235	195	215	137	78	31	18	13	12.60	11.61	14.29
+HESHUO 	Malancungonganguanqu	          	          	          	          	          	          	          	          	          	          	          	          
+HESHUO 	24tuan	          	          	          	          	          	          	          	          	          	          	          	          
+HESHUO 	26tuan	958	499	459	748	413	335	30	12	18	3.86	2.82	5.10
+BOHU 	Total	4864	2597	2267	3582	2075	1507	126	84	42	3.40	3.89	2.71
+BOHU 	Bohu	1421	735	686	930	556	374	57	37	20	5.78	6.24	5.08
+BOHU 	Tawenjueken	127	66	61	92	52	40	4	4	          	4.17	7.14	          
+BOHU 	Benbutu	255	126	129	189	105	84	1	1	          	0.53	0.94	          
+BOHU 	Wulanzaigesen	616	335	281	433	254	179	22	15	7	4.84	5.58	3.76
+BOHU 	Caikannuoer	193	102	91	134	87	47	5	2	3	3.60	2.25	6
+BOHU 	Chagannuoer	999	526	473	846	449	397	12	8	4	1.40	1.75	1
+BOHU 	Bositenghu	637	384	253	620	380	240	2	2	          	0.32	0.52	          
+BOHU 	25tuan	616	323	293	338	192	146	23	15	8	6.37	7.25	5.19
+AKESU 	Total	40467	20944	19523	30485	16795	13690	1283	707	576	4.04	4.04	4.04
+AKESU 	Langan	1151	555	596	713	414	299	126	66	60	15.02	13.75	16.71
+AKESU 	Yingbazha	336	187	149	203	145	58	50	22	28	19.76	13.17	32.56
+AKESU 	Hongqiao	818	397	421	366	250	116	66	39	27	15.28	13.49	18.88
+AKESU 	Xincheng	2379	1229	1150	1194	704	490	361	200	161	23.22	22.12	24.73
+AKESU 	Nancheng	831	434	397	601	345	256	39	22	17	6.09	5.99	6.23
+AKESU 	Kalatale	1936	1020	916	1680	915	765	1	          	1	0.06	          	0.13
+AKESU 	Ayikule	2917	1500	1417	2529	1322	1207	4	1	3	0.16	0.08	0.25
+AKESU 	Yiganqi	2489	1293	1196	2119	1163	956	28	12	16	1.30	1.02	1.65
+AKESU 	Baishentugeman	1688	901	787	1498	801	697	          	          	          	          	          	          
+AKESU 	Linyuan	1797	918	879	1639	839	800	4	2	2	0.24	0.24	0.25
+AKESU 	Tuopuluke	2064	1096	968	1911	1003	908	1	1	          	0.05	0.10	          
+AKESU 	Kumubashen	285	146	139	217	112	105	          	          	          	          	          	          
+AKESU 	Tuokayi	2649	1411	1238	1880	1106	774	71	37	34	3.64	3.24	4.21
+AKESU 	Alaerguanliju	1177	612	565	894	492	402	29	16	13	3.14	3.15	3.13
+AKESU 	Liangzhongfanyuchang	430	204	226	367	185	182	2	1	1	0.54	0.54	0.55
+AKESU 	Hongqiponongchang	3890	1997	1893	2741	1552	1189	180	113	67	6.16	6.79	5.33
+AKESU 	1tuan	          	          	          	          	          	          	          	          	          	          	          	          
+AKESU 	2tuan	738	386	352	458	245	213	32	19	13	6.53	7.20	5.75
+AKESU 	7tuan	          	          	          	          	          	          	          	          	          	          	          	          
+AKESU 	8tuan	1458	754	704	1150	622	528	34	14	20	2.87	2.20	3.65
+AKESU 	9tuan	277	133	144	191	98	93	2	1	1	1.04	1.01	1.06
+AKESU 	10tuan	2169	1124	1045	1595	891	704	64	36	28	3.86	3.88	3.83
+AKESU 	11tuan	2208	1136	1072	1759	931	828	13	12	1	0.73	1.27	0.12
+AKESU 	12tuan	          	          	          	          	          	          	          	          	          	          	          	          
+AKESU 	13tuan	2393	1236	1157	1575	883	692	107	57	50	6.36	6.06	6.74
+AKESU 	14tuan	843	468	375	701	420	281	14	3	11	1.96	0.71	3.77
+AKESU 	15tuan	1358	689	669	1062	558	504	11	6	5	1.03	1.06	0.98
+AKESU 	16tuan	2186	1118	1068	1442	799	643	44	27	17	2.96	3.27	2.58
+WENSU 	Total	14644	7554	7090	10919	6096	4823	374	183	191	3.31	2.91	3.81
+WENSU 	Wensu	2777	1372	1405	1408	940	468	248	111	137	14.98	10.56	22.64
+WENSU 	Tuohula	651	343	308	561	301	260	1	1	          	0.18	0.33	          
+WENSU 	Arele	713	357	356	645	326	319	          	          	          	          	          	          
+WENSU 	Qiagelake	712	386	326	600	326	274	          	          	          	          	          	          
+WENSU 	Tumuxiuke	734	389	345	641	345	296	1	          	1	0.16	          	0.34
+WENSU 	Jiamu	1097	576	521	916	481	435	2	1	1	0.22	0.21	0.23
+WENSU 	Yixilaimuqi	411	221	190	346	189	157	1	1	          	0.29	0.53	          
+WENSU 	Kezile	1939	978	961	1361	794	567	40	23	17	2.86	2.82	2.91
+WENSU 	Guleawati	362	192	170	315	163	152	1	          	1	0.32	          	0.65
+WENSU 	Bozidunkeerkezizu	          	          	          	          	          	          	          	          	          	          	          	          
+WENSU 	Shuidaonongchang	589	307	282	555	289	266	1	          	1	0.18	          	0.37
+WENSU 	Qingniannongchang	970	493	477	774	394	380	8	5	3	1.02	1.25	0.78
+WENSU 	Gongqingtuannongchang	393	215	178	332	186	146	14	9	5	4.05	4.62	3.31
+WENSU 	Tagelakemuchang	          	          	          	          	          	          	          	          	          	          	          	          
+WENSU 	Bozidunmuchang	          	          	          	          	          	          	          	          	          	          	          	          
+WENSU 	Sawafuqimuchang	          	          	          	          	          	          	          	          	          	          	          	          
+WENSU 	Qiaqilikemuchang	          	          	          	          	          	          	          	          	          	          	          	          
+WENSU 	Jiamulinchang	778	415	363	690	372	318	3	2	1	0.43	0.53	0.31
+WENSU 	Diqushiyanlinchang	          	          	          	          	          	          	          	          	          	          	          	          
+WENSU 	5tuan	1763	925	838	1253	693	560	32	22	10	2.49	3.08	1.75
+WENSU 	6tuan	755	385	370	522	297	225	22	8	14	4.04	2.62	5.86
+KUCHE 	Total	33076	17081	15995	23715	13376	10339	1251	713	538	5.01	5.06	4.95
+KUCHE 	Kuche	6164	2927	3237	3022	1759	1263	648	336	312	17.66	16.04	19.81
+KUCHE 	Wuqia	5185	2700	2485	4157	2348	1809	27	14	13	0.65	0.59	0.71
+KUCHE 	Yixihala	1175	595	580	997	537	460	4	2	2	0.40	0.37	0.43
+KUCHE 	Yujiwusitang	1225	641	584	1135	596	539	          	          	          	          	          	          
+KUCHE 	Alahage	1669	874	795	1449	779	670	8	6	2	0.55	0.76	0.30
+KUCHE 	Bixibage	1477	783	694	1353	726	627	1	1	          	0.07	0.14	          
+KUCHE 	Qiman	1341	699	642	1181	628	553	          	          	          	          	          	          
+KUCHE 	Hanikatamu	2013	1074	939	1393	893	500	57	39	18	3.93	4.18	3.47
+KUCHE 	Dunkuotan	937	472	465	808	422	386	4	3	1	0.49	0.71	0.26
+KUCHE 	Yaha	1118	580	538	994	530	464	          	          	          	          	          	          
+KUCHE 	Akewusitang	569	299	270	536	279	257	          	          	          	          	          	          
+KUCHE 	Wuzun	1882	974	908	1713	880	833	6	3	3	0.35	0.34	0.36
+KUCHE 	Age	580	336	244	322	238	84	41	29	12	11.29	10.86	12.5
+KUCHE 	Talimu	373	203	170	298	167	131	          	          	          	          	          	          
+KUCHE 	Shuidianerchu	3083	1632	1451	1123	743	380	394	232	162	25.97	23.79	29.89
+KUCHE 	Xibeishiyoujutabeiqianzhi	          	          	          	          	          	          	          	          	          	          	          	          
+KUCHE 	Erbatainongchang	2148	1134	1014	1671	896	775	20	14	6	1.18	1.54	0.77
+KUCHE 	Liangzhongfanyuchang	831	436	395	731	397	334	6	4	2	0.81	1	0.60
+KUCHE 	Kuziwengmuchang	469	274	195	219	204	15	26	25	1	10.61	10.92	6.25
+KUCHE 	Caohumuchang	400	220	180	351	192	159	1	1	          	0.28	0.52	          
+KUCHE 	Kuchezhongyangchang	437	228	209	262	162	100	8	4	4	2.96	2.41	3.85
+KUCHE 	Laogaizhiduinongchang	          	          	          	          	          	          	          	          	          	          	          	          
+SHAYA 	Total	13451	7014	6437	10853	6096	4757	169	98	71	1.53	1.58	1.47
+SHAYA 	Shaya	3962	2050	1912	2439	1626	813	139	86	53	5.39	5.02	6.12
+SHAYA 	Gulebage	867	451	416	735	396	339	13	4	9	1.74	1	2.59
+SHAYA 	Tuoyibaoledi	1409	745	664	1255	671	584	5	1	4	0.40	0.15	0.68
+SHAYA 	Hongqi	2320	1191	1129	2115	1092	1023	2	          	2	0.09	          	0.20
+SHAYA 	Yingmaili	941	492	449	803	436	367	2	1	1	0.25	0.23	0.27
+SHAYA 	Hailou	826	428	398	753	390	363	          	          	          	          	          	          
+SHAYA 	Nuerbage	629	319	310	559	285	274	2	2	          	0.36	0.70	          
+SHAYA 	Talimu	576	300	276	515	266	249	          	          	          	          	          	          
+SHAYA 	Xinkennongchang	345	182	163	305	160	145	          	          	          	          	          	          
+SHAYA 	Diyimuchang	904	479	425	768	429	339	2	2	          	0.26	0.46	          
+SHAYA 	Diermuchang	672	377	295	606	345	261	4	2	2	0.66	0.58	0.76
+SHAYA 	Shayajianyu	          	          	          	          	          	          	          	          	          	          	          	          
+XINHE 	Total	9146	4757	4389	8211	4311	3900	42	22	20	0.51	0.51	0.51
+XINHE 	Xinhe	677	341	336	608	319	289	3	2	1	0.49	0.62	0.34
+XINHE 	Yiqiairike	2068	1084	984	1804	959	845	19	11	8	1.04	1.13	0.94
+XINHE 	Paixianbaibazha	1430	749	681	1284	674	610	14	8	6	1.08	1.17	0.97
+XINHE 	Tashenairike	1477	761	716	1349	692	657	3	          	3	0.22	          	0.45
+XINHE 	Weigan	1490	769	721	1396	723	673	1	1	          	0.07	0.14	          
+XINHE 	Youludusibage	829	421	408	742	381	361	1	          	1	0.13	          	0.28
+XINHE 	Yujikate	750	410	340	630	348	282	          	          	          	          	          	          
+XINHE 	Sangtamunongchang	425	222	203	398	215	183	1	          	1	0.25	          	0.54
+BAICHENG 	Total	14907	7910	6997	11577	6850	4727	144	83	61	1.23	1.20	1.27
+BAICHENG 	Baicheng	2479	1381	1098	1635	1162	473	61	34	27	3.60	2.84	5.40
+BAICHENG 	Tiereke	423	216	207	371	201	170	          	          	          	          	          	          
+BAICHENG 	Heiyingshan	352	187	165	288	162	126	2	          	2	0.69	          	1.56
+BAICHENG 	Kezier	994	527	467	762	451	311	40	25	15	4.99	5.25	4.60
+BAICHENG 	Sailimu	1194	623	571	892	505	387	11	7	4	1.22	1.37	1.02
+BAICHENG 	Tuokexun	999	552	447	869	505	364	2	1	1	0.23	0.20	0.27
+BAICHENG 	Yatuer	1154	604	550	968	524	444	8	5	3	0.82	0.95	0.67
+BAICHENG 	Kangqi	1446	749	697	1158	681	477	2	1	1	0.17	0.15	0.21
+BAICHENG 	Bulong	477	258	219	247	203	44	4	4	          	1.59	1.93	          
+BAICHENG 	Mijike	622	330	292	538	290	248	          	          	          	          	          	          
+BAICHENG 	Wenbashen	1517	784	733	1288	693	595	3	1	2	0.23	0.14	0.34
+BAICHENG 	Daqiao	692	353	339	570	314	256	          	          	          	          	          	          
+BAICHENG 	Laohutai	993	507	486	867	451	416	1	          	1	0.12	          	0.24
+BAICHENG 	Dawanqinongchang	183	102	81	172	96	76	          	          	          	          	          	          
+BAICHENG 	Chaerqinongchang	1180	630	550	827	535	292	8	5	3	0.96	0.93	1.02
+BAICHENG 	Baichengzhongyangchang	202	107	95	125	77	48	2	          	2	1.57	          	4
+WUSHEN 	Total	13459	6887	6572	11737	6142	5595	138	57	81	1.16	0.92	1.43
+WUSHEN 	Wushen	791	388	403	383	246	137	105	41	64	21.52	14.29	31.84
+WUSHEN 	Aketuohaiyi	1639	847	792	1490	788	702	6	          	6	0.40	          	0.85
+WUSHEN 	Yakeruike	1253	649	604	1106	601	505	6	5	1	0.54	0.83	0.20
+WUSHEN 	Aqiatage	1287	660	627	1085	554	531	          	          	          	          	          	          
+WUSHEN 	Aheya	2311	1153	1158	2148	1082	1066	3	          	3	0.14	          	0.28
+WUSHEN 	Yimamu	2554	1314	1240	2301	1185	1116	1	          	1	0.04	          	0.09
+WUSHEN 	Yingawati	1056	562	494	954	516	438	2	1	1	0.21	0.19	0.23
+WUSHEN 	Yamansukeerkezizu	755	392	363	673	351	322	          	          	          	          	          	          
+WUSHEN 	Aotebeixi	1618	820	798	1493	757	736	8	3	5	0.53	0.39	0.67
+WUSHEN 	4tuan	195	102	93	104	62	42	7	7	          	6.31	10.14	          
+AWATI 	Total	12554	6472	6082	10635	5639	4996	71	50	21	0.66	0.88	0.42
+AWATI 	Awati	1177	553	624	748	438	310	11	9	2	1.45	2.01	0.64
+AWATI 	Wuluquele	1401	718	683	1243	636	607	4	          	4	0.32	          	0.65
+AWATI 	Baishenairike	2994	1575	1419	2713	1430	1283	4	3	1	0.15	0.21	0.08
+AWATI 	Ayibage	1356	701	655	1200	616	584	2	1	1	0.17	0.16	0.17
+AWATI 	Tamutuogelake	533	267	266	470	234	236	          	          	          	          	          	          
+AWATI 	Yingairike	1226	643	583	1093	565	528	5	2	3	0.46	0.35	0.56
+AWATI 	Duolang	1685	879	806	1390	773	617	23	17	6	1.63	2.15	0.96
+AWATI 	Bagetuogelake	383	199	184	348	180	168	          	          	          	          	          	          
+AWATI 	Liangzhongfanyuchang	89	47	42	84	45	39	          	          	          	          	          	          
+AWATI 	Fengshouyichang	448	229	219	403	207	196	          	          	          	          	          	          
+AWATI 	Fengshousanchang	339	178	161	323	172	151	1	          	1	0.31	          	0.66
+AWATI 	3tuan	923	483	440	620	343	277	21	18	3	3.28	4.99	1.07
+AWATI 	Akesujianyu	          	          	          	          	          	          	          	          	          	          	          	          
+KEPING 	Total	3190	1682	1508	2468	1405	1063	74	37	37	2.91	2.57	3.36
+KEPING 	Keping	1315	718	597	909	552	357	64	35	29	6.58	5.96	7.51
+KEPING 	Gaizilike	190	99	91	176	95	81	          	          	          	          	          	          
+KEPING 	Yuerqi	1084	551	533	853	473	380	10	2	8	1.16	0.42	2.06
+KEPING 	Aqiale	478	249	229	410	221	189	          	          	          	          	          	          
+KEPING 	Qilang	123	65	58	120	64	56	          	          	          	          	          	          
+ATUSHEN 	Total	16506	8460	8046	10784	6633	4151	494	266	228	4.38	3.86	5.21
+ATUSHEN 	Xingfu	1618	822	796	1136	635	501	81	56	25	6.66	8.10	4.75
+ATUSHEN 	Guangming	3861	1960	1901	2023	1226	797	308	167	141	13.21	11.99	15.03
+ATUSHEN 	Songtake	2550	1266	1284	1576	1123	453	46	17	29	2.84	1.49	6.02
+ATUSHEN 	Azhake	2894	1508	1386	1581	1200	381	35	12	23	2.17	0.99	5.69
+ATUSHEN 	Ahu	394	199	195	341	183	158	          	          	          	          	          	          
+ATUSHEN 	Shangatushen	1851	971	880	1446	782	664	14	6	8	0.96	0.76	1.19
+ATUSHEN 	Gedaliang	1201	612	589	1049	528	521	6	5	1	0.57	0.94	0.19
+ATUSHEN 	Halajun	736	393	343	602	356	246	1	          	1	0.17	          	0.40
+ATUSHEN 	Tugumaiti	560	285	275	433	223	210	          	          	          	          	          	          
+ATUSHEN 	Jingjiyangchang	306	153	153	149	119	30	3	3	          	1.97	2.46	          
+ATUSHEN 	Hongqiyichang	535	291	244	448	258	190	          	          	          	          	          	          
+AKETAO 	Total	10857	5607	5250	9457	4986	4471	103	57	46	1.08	1.13	1.02
+AKETAO 	Aketao	895	449	446	620	343	277	53	30	23	7.88	8.04	7.67
+AKETAO 	Aoyitake	102	69	33	75	66	9	3	2	1	3.85	2.94	10
+AKETAO 	Yumai	923	477	446	798	427	371	2	          	2	0.25	          	0.54
+AKETAO 	Pilali	1533	790	743	1359	704	655	7	4	3	0.51	0.56	0.46
+AKETAO 	Baren	1075	552	523	978	515	463	3	2	1	0.31	0.39	0.22
+AKETAO 	Karekaiqike	464	246	218	398	222	176	2	1	1	0.5	0.45	0.56
+AKETAO 	Jiamatielike	904	450	454	812	408	404	18	10	8	2.17	2.39	1.94
+AKETAO 	Muji	551	288	263	485	256	229	          	          	          	          	          	          
+AKETAO 	Bulunkou	865	439	426	826	409	417	1	          	1	0.12	          	0.24
+AKETAO 	Keziletao	720	375	345	670	351	319	          	          	          	          	          	          
+AKETAO 	Qiaerlong	474	246	228	426	219	207	2	1	1	0.47	0.45	0.48
+AKETAO 	Kusilafu	578	287	291	489	254	235	3	2	1	0.61	0.78	0.42
+AKETAO 	Taer	302	156	146	267	138	129	3	3	          	1.11	2.13	          
+AKETAO 	Duolaitibulakezhongyangchang	220	110	110	155	79	76	3	1	2	1.90	1.25	2.56
+AKETAO 	Akedalamuchang	336	174	162	259	139	120	2	          	2	0.77	          	1.64
+AKETAO 	Yuanzhongchang	100	55	45	91	50	41	          	          	          	          	          	          
+AKETAO 	Tuoertayinongchang	815	444	371	749	406	343	1	1	          	0.13	0.25	          
+AHEJI 	Total	2618	1338	1280	1941	1070	871	28	17	11	1.42	1.56	1.25
+AHEJI 	Aheji	354	181	173	215	122	93	11	5	6	4.87	3.94	6.06
+AHEJI 	Kulansarike	368	182	186	249	132	117	13	10	3	4.96	7.04	2.5
+AHEJI 	Sepabayi	400	204	196	275	171	104	1	          	1	0.36	          	0.95
+AHEJI 	Sumutashen	957	502	455	759	419	340	1	1	          	0.13	0.24	          
+AHEJI 	Halaji	177	88	89	151	79	72	1	1	          	0.66	1.25	          
+AHEJI 	Halabulake	362	181	181	292	147	145	1	          	1	0.34	          	0.68
+WUQIA 	Total	2956	1515	1441	1686	1125	561	66	36	30	3.77	3.10	5.08
+WUQIA 	Wuqia	313	156	157	170	105	65	16	8	8	8.60	7.08	10.96
+WUQIA 	Kangsu	268	141	127	131	84	47	22	16	6	14.38	16	11.32
+WUQIA 	Wulukeqiati	265	129	136	111	89	22	3	2	1	2.63	2.20	4.35
+WUQIA 	Wuheshalu	180	120	60	139	119	20	1	          	1	0.71	          	4.76
+WUQIA 	Jigen	243	128	115	110	96	14	2	1	1	1.79	1.03	6.67
+WUQIA 	Biaoertuokuoyi	270	137	133	144	93	51	4	2	2	2.70	2.11	3.77
+WUQIA 	Heiziwei	209	111	98	160	83	77	1	1	          	0.62	1.19	          
+WUQIA 	Tuoyun	244	116	128	172	97	75	4	1	3	2.27	1.02	3.85
+WUQIA 	Tielieke	246	122	124	85	73	12	2	1	1	2.30	1.35	7.69
+WUQIA 	Bayinkuluti	225	110	115	106	84	22	4	2	2	3.64	2.33	8.33
+WUQIA 	Bositanlieke	302	157	145	205	122	83	7	2	5	3.30	1.61	5.68
+WUQIA 	Yangchang	191	88	103	153	80	73	          	          	          	          	          	          
+KASHEN 	Total	21584	10795	10789	11942	7424	4518	1183	738	445	9.01	9.04	8.97
+KASHEN 	Qiasa	6611	3315	3296	3401	2046	1355	553	320	233	13.99	13.52	14.67
+KASHEN 	Yawage	2349	1169	1180	909	628	281	202	146	56	18.18	18.86	16.62
+KASHEN 	Wusitangboyi	2618	1281	1337	1390	880	510	116	77	39	7.70	8.05	7.10
+KASHEN 	Kumudaiwazha	3990	1951	2039	2488	1463	1025	133	74	59	5.07	4.81	5.44
+KASHEN 	Naizeerbage	1298	655	643	579	449	130	78	59	19	11.87	11.61	12.75
+KASHEN 	Xiamalebage	1843	968	875	1047	799	248	68	44	24	6.10	5.22	8.82
+KASHEN 	Duolaitibage	2098	1059	1039	1490	831	659	28	14	14	1.84	1.66	2.08
+KASHEN 	Haohan	777	397	380	638	328	310	5	4	1	0.78	1.20	0.32
+SHUFU 	Total	19834	10170	9664	17566	9148	8418	41	22	19	0.23	0.24	0.23
+SHUFU 	Tuokezhake	966	473	493	675	362	313	16	11	5	2.32	2.95	1.57
+SHUFU 	Wupaer	2248	1186	1062	2016	1080	936	2	2	          	0.10	0.18	          
+SHUFU 	Tashenmilike	746	378	368	665	342	323	1	          	1	0.15	          	0.31
+SHUFU 	Tierimu	453	235	218	388	211	177	1	          	1	0.26	          	0.56
+SHUFU 	Bulakesu	1983	1005	978	1793	922	871	          	          	          	          	          	          
+SHUFU 	Sayibage	831	442	389	778	416	362	          	          	          	          	          	          
+SHUFU 	Zhanmin	1466	744	722	1296	659	637	          	          	          	          	          	          
+SHUFU 	Wukusake	472	251	221	436	228	208	          	          	          	          	          	          
+SHUFU 	Pahataikeli	1106	549	557	976	504	472	2	          	2	0.20	          	0.42
+SHUFU 	Seman	990	501	489	896	462	434	2	1	1	0.22	0.22	0.23
+SHUFU 	Huangdi	172	83	89	149	76	73	1	          	1	0.67	          	1.35
+SHUFU 	Langan	1276	656	620	1168	604	564	2	1	1	0.17	0.17	0.18
+SHUFU 	Mushen	968	484	484	827	414	413	3	1	2	0.36	0.24	0.48
+SHUFU 	Boshenkeranmu	1286	671	615	1130	586	544	4	2	2	0.35	0.34	0.37
+SHUFU 	Awati	1457	748	709	1295	674	621	5	3	2	0.38	0.44	0.32
+SHUFU 	Yingwusitang	2275	1165	1110	2015	1047	968	2	1	1	0.10	0.10	0.10
+SHUFU 	Akekashen	1139	599	540	1063	561	502	          	          	          	          	          	          
+SHULE 	Total	18136	9210	8926	15623	8124	7499	231	117	114	1.46	1.42	1.5
+SHULE 	Shule	1941	956	985	1380	775	605	69	34	35	4.76	4.20	5.47
+SHULE 	Hannanlike	832	426	406	796	407	389	          	          	          	          	          	          
+SHULE 	Yafuquan	687	354	333	649	335	314	1	          	1	0.15	          	0.32
+SHULE 	Baren	3038	1522	1516	2540	1302	1238	22	10	12	0.86	0.76	0.96
+SHULE 	Yangdaman	566	288	278	527	266	261	          	          	          	          	          	          
+SHULE 	Yamanya	475	236	239	414	210	204	4	2	2	0.96	0.94	0.97
+SHULE 	Baheqi	572	296	276	525	269	256	          	          	          	          	          	          
+SHULE 	Tazihong	2398	1205	1193	2189	1114	1075	10	7	3	0.45	0.62	0.28
+SHULE 	Yingerlike	861	451	410	804	420	384	2	2	          	0.25	0.47	          
+SHULE 	Kumuxilike	891	467	424	838	438	400	          	          	          	          	          	          
+SHULE 	Taheqi	532	272	260	496	257	239	          	          	          	          	          	          
+SHULE 	Aiermudong	729	355	374	695	337	358	          	          	          	          	          	          
+SHULE 	Alali	1244	636	608	1133	585	548	          	          	          	          	          	          
+SHULE 	Alafu	821	441	380	772	407	365	          	          	          	          	          	          
+SHULE 	Yingawati	822	429	393	761	392	369	          	          	          	          	          	          
+SHULE 	41tuan	279	149	130	213	119	94	6	4	2	2.74	3.25	2.08
+SHULE 	Kunlunshipinchang	1448	727	721	891	491	400	117	58	59	11.61	10.56	12.85
+YINGJISHA 	Total	13951	7157	6794	10870	5984	4886	135	83	52	1.23	1.37	1.05
+YINGJISHA 	Yingjisha	1504	747	757	767	539	228	79	52	27	9.34	8.80	10.59
+YINGJISHA 	Chengguan	474	242	232	246	186	60	17	8	9	6.46	4.12	13.04
+YINGJISHA 	Qiaolepan	299	157	142	263	140	123	          	          	          	          	          	          
+YINGJISHA 	Longfu	397	196	201	332	164	168	1	1	          	0.30	0.61	          
+YINGJISHA 	Mangxin	1201	608	593	1043	532	511	5	3	2	0.48	0.56	0.39
+YINGJISHA 	Setili	904	476	428	780	413	367	2	          	2	0.26	          	0.54
+YINGJISHA 	Sahan	987	493	494	844	432	412	4	4	          	0.47	0.92	          
+YINGJISHA 	Yingyeer	624	325	299	543	285	258	          	          	          	          	          	          
+YINGJISHA 	Kezile	1202	603	599	1037	520	517	1	1	          	0.10	0.19	          
+YINGJISHA 	Tuopuluke	1003	530	473	902	479	423	6	4	2	0.66	0.83	0.47
+YINGJISHA 	Sugaiti	1297	672	625	585	441	144	          	          	          	          	          	          
+YINGJISHA 	Wuqia	2364	1213	1151	2073	1063	1010	12	7	5	0.58	0.65	0.49
+YINGJISHA 	Aigusi	679	371	308	632	343	289	          	          	          	          	          	          
+YINGJISHA 	Yigeziyeer	910	474	436	782	415	367	3	2	1	0.38	0.48	0.27
+YINGJISHA 	Dongfengnongchang	106	50	56	41	32	9	5	1	4	10.87	3.03	30.77
+ZEPU 	Total	12812	6485	6327	9990	5260	4730	122	69	53	1.21	1.29	1.11
+ZEPU 	Zepu	528	258	270	307	205	102	21	17	4	6.40	7.66	3.77
+ZEPU 	Kuiyibage	452	238	214	412	218	194	          	          	          	          	          	          
+ZEPU 	Bosikamu	1737	882	855	1411	744	667	11	5	6	0.77	0.67	0.89
+ZEPU 	Yima	1483	751	732	1346	671	675	2	          	2	0.15	          	0.30
+ZEPU 	Gulebage	1301	645	656	1165	569	596	3	2	1	0.26	0.35	0.17
+ZEPU 	Saili	604	308	296	543	279	264	1	1	          	0.18	0.36	          
+ZEPU 	Yikesu	1430	711	719	1182	625	557	3	1	2	0.25	0.16	0.36
+ZEPU 	Tuhuqi	454	225	229	418	202	216	1	1	          	0.24	0.49	          
+ZEPU 	Kuiyibage	877	445	432	691	370	321	6	3	3	0.86	0.80	0.93
+ZEPU 	Aketamu	544	290	254	504	263	241	          	          	          	          	          	          
+ZEPU 	Ayikule	790	412	378	675	359	316	20	10	10	2.88	2.71	3.07
+ZEPU 	Buyiluketajikezu	309	159	150	281	147	134	1	          	1	0.35	          	0.74
+ZEPU 	Zepushiyoujidi	2303	1161	1142	1055	608	447	53	29	24	4.78	4.55	5.10
+SHACHE 	Total	44425	22458	21967	34823	19191	15632	591	355	236	1.67	1.82	1.49
+SHACHE 	Shache	12419	6128	6291	7334	4743	2591	471	291	180	6.03	5.78	6.5
+SHACHE 	Qiareke	1556	789	767	1345	691	654	          	          	          	          	          	          
+SHACHE 	Ailixihu	1347	707	640	1222	634	588	1	1	          	0.08	0.16	          
+SHACHE 	Huangdi	1792	925	867	1539	804	735	2	2	          	0.13	0.25	          
+SHACHE 	Awati	787	395	392	708	347	361	          	          	          	          	          	          
+SHACHE 	Baishenkante	2279	1133	1146	2058	1028	1030	1	          	1	0.05	          	0.10
+SHACHE 	Yigaierqi	1307	662	645	1179	606	573	1	1	          	0.08	0.16	          
+SHACHE 	Gulebage	1836	916	920	1191	785	406	56	22	34	4.49	2.73	7.73
+SHACHE 	Arele	844	433	411	744	377	367	          	          	          	          	          	          
+SHACHE 	Qiarebage	772	394	378	680	354	326	1	1	          	0.15	0.28	          
+SHACHE 	Tuomuwusitang	713	374	339	552	312	240	15	10	5	2.65	3.11	2.04
+SHACHE 	Yingwusitang	619	328	291	568	307	261	1	1	          	0.18	0.32	          
+SHACHE 	Wudalike	1493	766	727	1257	662	595	2	1	1	0.16	0.15	0.17
+SHACHE 	Aresilanbage	483	250	233	443	229	214	2	          	2	0.45	          	0.93
+SHACHE 	Zirefupuxiatitajikezu	368	190	178	357	185	172	          	          	          	          	          	          
+SHACHE 	Yakaairike	545	285	260	472	241	231	1	1	          	0.21	0.41	          
+SHACHE 	Kaqun	537	267	270	266	187	79	          	          	          	          	          	          
+SHACHE 	Huoshenlafu	975	486	489	846	433	413	          	          	          	          	          	          
+SHACHE 	Damusi	894	471	423	729	400	329	          	          	          	          	          	          
+SHACHE 	Mixia	2731	1415	1316	2336	1281	1055	4	3	1	0.17	0.23	0.09
+SHACHE 	Yishenkuli	950	495	455	830	431	399	1	          	1	0.12	          	0.25
+SHACHE 	Paikeqi	1227	633	594	1093	561	532	          	          	          	          	          	          
+SHACHE 	Tagaerqi	1812	886	926	1685	830	855	3	3	          	0.18	0.36	          
+SHACHE 	Kuoshenairike	660	353	307	582	315	267	          	          	          	          	          	          
+SHACHE 	Dunbage	2153	1108	1045	1890	978	912	29	18	11	1.51	1.81	1.19
+SHACHE 	Alamaiti	939	480	459	833	424	409	          	          	          	          	          	          
+SHACHE 	Azhatebage	1029	520	509	879	444	435	          	          	          	          	          	          
+SHACHE 	Bageawati	633	329	304	564	294	270	          	          	          	          	          	          
+SHACHE 	Kalasu	725	340	385	641	308	333	          	          	          	          	          	          
+SHACHE 	Pailoulaogainongchang	          	          	          	          	          	          	          	          	          	          	          	          
+YECHENG 	Total	25126	12945	12181	20315	11132	9183	255	180	75	1.24	1.59	0.81
+YECHENG 	Kageleke	5522	2832	2690	3392	2287	1105	169	120	49	4.75	4.99	4.25
+YECHENG 	Qiaerbage	989	503	486	849	432	417	4	3	1	0.47	0.69	0.24
+YECHENG 	Wuxiakebashen	1235	630	605	1111	569	542	1	          	1	0.09	          	0.18
+YECHENG 	Luoke	687	366	321	527	289	238	6	5	1	1.13	1.70	0.42
+YECHENG 	Boxireke	1341	668	673	1235	626	609	2	1	1	0.16	0.16	0.16
+YECHENG 	Tieti	671	353	318	564	302	262	          	          	          	          	          	          
+YECHENG 	Qiasameiqite	920	491	429	817	438	379	          	          	          	          	          	          
+YECHENG 	Tuguqi	1095	579	516	942	494	448	          	          	          	          	          	          
+YECHENG 	Jianggelesi	1556	804	752	1367	713	654	          	          	          	          	          	          
+YECHENG 	Jiayitileke	1538	787	751	1305	690	615	20	9	11	1.51	1.29	1.76
+YECHENG 	Baren	501	258	243	443	231	212	8	2	6	1.77	0.86	2.75
+YECHENG 	Wujireke	1135	579	556	1017	518	499	          	          	          	          	          	          
+YECHENG 	Xiahefu	1055	539	516	921	477	444	          	          	          	          	          	          
+YECHENG 	Yilikeqi	513	258	255	451	230	221	3	3	          	0.66	1.29	          
+YECHENG 	Yitimukong	1856	954	902	1660	854	806	2	1	1	0.12	0.12	0.12
+YECHENG 	Zonglang	647	335	312	521	270	251	          	          	          	          	          	          
+YECHENG 	Kekeya	812	421	391	703	371	332	1	1	          	0.14	0.27	          
+YECHENG 	Xihexiu	285	145	140	223	111	112	          	          	          	          	          	          
+YECHENG 	Qipan	1050	546	504	922	482	440	          	          	          	          	          	          
+YECHENG 	Sayibage	1120	572	548	1029	529	500	1	1	          	0.10	0.19	          
+YECHENG 	2tuan	598	325	273	316	219	97	38	34	4	10.73	13.44	3.96
+MAIGAITI 	Total	15466	7912	7554	11767	6566	5201	301	170	131	2.49	2.52	2.46
+MAIGAITI 	Maigaiti	3044	1532	1512	1914	1181	733	134	66	68	6.54	5.29	8.49
+MAIGAITI 	Bazhajiemi	2256	1159	1097	1639	974	665	55	34	21	3.25	3.37	3.06
+MAIGAITI 	Xiyitidun	657	330	327	563	289	274	          	          	          	          	          	          
+MAIGAITI 	Yangtake	839	442	397	785	414	371	          	          	          	          	          	          
+MAIGAITI 	Tumantale	472	249	223	413	220	193	          	          	          	          	          	          
+MAIGAITI 	Gazikule	933	464	469	873	435	438	          	          	          	          	          	          
+MAIGAITI 	Kezileawati	787	400	387	704	354	350	6	2	4	0.85	0.56	1.13
+MAIGAITI 	Kumukusaer	581	297	284	525	270	255	1	1	          	0.19	0.37	          
+MAIGAITI 	Anggeteleke	921	455	466	807	420	387	2	          	2	0.25	          	0.51
+MAIGAITI 	Kuerma	281	151	130	269	146	123	          	          	          	          	          	          
+MAIGAITI 	43tuan	1675	873	802	1144	622	522	44	32	12	3.70	4.89	2.25
+MAIGAITI 	45tuan	977	509	468	768	408	360	12	8	4	1.54	1.92	1.10
+MAIGAITI 	46tuan	578	308	270	465	256	209	12	7	5	2.52	2.66	2.34
+MAIGAITI 	Qianjinshuiku	591	306	285	337	200	137	18	9	9	5.07	4.31	6.16
+MAIGAITI 	Maigaitinongchang	874	437	437	561	377	184	17	11	6	2.94	2.84	3.16
+YUEPUHU 	Total	8758	4383	4375	7486	3842	3644	79	44	35	1.04	1.13	0.95
+YUEPUHU 	Yuepuhu	1571	769	802	1192	623	569	30	16	14	2.45	2.5	2.40
+YUEPUHU 	Yuepuhu	2087	1049	1038	1773	911	862	20	10	10	1.12	1.09	1.15
+YUEPUHU 	Yekexianbaibazha	844	426	418	786	401	385	2	1	1	0.25	0.25	0.26
+YUEPUHU 	Aiximan	808	406	402	732	378	354	2	2	          	0.27	0.53	          
+YUEPUHU 	Aqike	581	288	293	519	260	259	          	          	          	          	          	          
+YUEPUHU 	Seyeke	636	316	320	559	281	278	          	          	          	          	          	          
+YUEPUHU 	Tieremu	900	446	454	834	415	419	          	          	          	          	          	          
+YUEPUHU 	Bayiawati	473	249	224	417	215	202	2	2	          	0.48	0.92	          
+YUEPUHU 	Ahonglukumu	596	300	296	455	243	212	19	11	8	4.01	4.33	3.64
+YUEPUHU 	42tuan	262	134	128	219	115	104	4	2	2	1.79	1.71	1.89
+JIASHI 	Total	19615	10066	9549	17515	9147	8368	83	40	43	0.47	0.44	0.51
+JIASHI 	Baren	2370	1179	1191	1788	950	838	40	21	19	2.19	2.16	2.22
+JIASHI 	Xikeerkule	195	109	86	129	97	32	4	4	          	3.01	3.96	          
+JIASHI 	Tierimu	1212	606	606	1144	577	567	2	          	2	0.17	          	0.35
+JIASHI 	Yingmaili	1562	808	754	1419	740	679	1	1	          	0.07	0.13	          
+JIASHI 	Jiangbazi	1264	660	604	1204	632	572	          	          	          	          	          	          
+JIASHI 	Wolituogelake	1597	841	756	1498	785	713	6	3	3	0.40	0.38	0.42
+JIASHI 	Kezileboyi	1781	906	875	1675	861	814	3	2	1	0.18	0.23	0.12
+JIASHI 	Mixia	1060	540	520	915	476	439	          	          	          	          	          	          
+JIASHI 	Xiaputule	2488	1288	1200	2262	1195	1067	17	4	13	0.75	0.33	1.20
+JIASHI 	Hexiaawati	2171	1107	1064	2001	1030	971	          	          	          	          	          	          
+JIASHI 	Kezilesu	1358	705	653	1280	665	615	          	          	          	          	          	          
+JIASHI 	Guleluke	1398	712	686	1327	679	648	1	1	          	0.08	0.15	          
+JIASHI 	Yudaikelike	427	215	212	386	197	189	1	          	1	0.26	          	0.53
+JIASHI 	Halihuqinongchang	          	          	          	          	          	          	          	          	          	          	          	          
+JIASHI 	Jiashizongchang	732	390	342	487	263	224	8	4	4	1.62	1.5	1.75
+BACHU 	Total	27258	14049	13209	20197	11316	8881	518	333	185	2.5	2.86	2.04
+BACHU 	Bachu	3216	1555	1661	1592	1098	494	156	80	76	8.92	6.79	13.33
+BACHU 	Selibuya	1690	875	815	1610	830	780	1	          	1	0.06	          	0.13
+BACHU 	Awati	911	483	428	747	397	350	          	          	          	          	          	          
+BACHU 	Sanchakou	          	          	          	          	          	          	          	          	          	          	          	          
+BACHU 	Qiaerbage	1528	785	743	1355	711	644	1	1	          	0.07	0.14	          
+BACHU 	Duolaitibage	1291	663	628	1127	578	549	3	1	2	0.27	0.17	0.36
+BACHU 	Anakule	1410	739	671	1251	659	592	1	1	          	0.08	0.15	          
+BACHU 	Xiamale	482	256	226	393	220	173	          	          	          	          	          	          
+BACHU 	Akesakemarele	1255	642	613	979	539	440	          	          	          	          	          	          
+BACHU 	Alageer	1189	603	586	1119	573	546	          	          	          	          	          	          
+BACHU 	Qiongkuerqiake	1678	868	810	1427	716	711	4	3	1	0.28	0.42	0.14
+BACHU 	Yingwusitang	1567	785	782	1242	639	603	7	5	2	0.56	0.78	0.33
+BACHU 	Kalabaile	802	419	383	441	266	175	10	5	5	2.22	1.85	2.78
+BACHU 	Yonganba	689	370	319	537	331	206	16	7	9	2.89	2.07	4.19
+BACHU 	Xiahelinchang	77	41	36	30	25	5	7	5	2	18.92	16.67	28.57
+BACHU 	Kelakeqinlaogainongchang	          	          	          	          	          	          	          	          	          	          	          	          
+BACHU 	44tuan	457	240	217	338	206	132	5	          	5	1.46	          	3.65
+BACHU 	48tuan	1274	665	609	916	525	391	19	13	6	2.03	2.42	1.51
+BACHU 	49tuan	1180	610	570	686	381	305	61	56	5	8.17	12.81	1.61
+BACHU 	50tuan	878	466	412	599	375	224	22	13	9	3.54	3.35	3.86
+BACHU 	51tuan	2968	1545	1423	1694	1054	640	150	101	49	8.13	8.74	7.11
+BACHU 	52tuan	182	105	77	130	71	59	          	          	          	          	          	          
+BACHU 	53tuan	2534	1334	1200	1984	1122	862	55	42	13	2.70	3.61	1.49
+TASHENKUERGANTAJIKEZIZHIXIAN 	Total	2718	1362	1356	1714	1021	693	107	64	43	5.88	5.90	5.84
+TASHENKUERGANTAJIKEZIZHIXIAN 	Tashenkuergan	804	395	409	377	249	128	64	40	24	14.51	13.84	15.79
+TASHENKUERGANTAJIKEZIZHIXIAN 	Tashenkuergan	374	188	186	269	163	106	4	3	1	1.47	1.81	0.93
+TASHENKUERGANTAJIKEZIZHIXIAN 	Taheman	363	184	179	330	161	169	1	1	          	0.30	0.62	          
+TASHENKUERGANTAJIKEZIZHIXIAN 	Kekeyaerkeerkezizu	          	          	          	          	          	          	          	          	          	          	          	          
+TASHENKUERGANTAJIKEZIZHIXIAN 	Tizinafu	295	149	146	237	124	113	2	2	          	0.84	1.59	          
+TASHENKUERGANTAJIKEZIZHIXIAN 	Dabudaer	134	68	66	78	48	30	2	          	2	2.5	          	6.25
+TASHENKUERGANTAJIKEZIZHIXIAN 	Maeryang	52	27	25	50	25	25	          	          	          	          	          	          
+TASHENKUERGANTAJIKEZIZHIXIAN 	Waqia	163	85	78	101	64	37	          	          	          	          	          	          
+TASHENKUERGANTAJIKEZIZHIXIAN 	Bandier	183	95	88	77	69	8	          	          	          	          	          	          
+TASHENKUERGANTAJIKEZIZHIXIAN 	Kukexiluge	50	27	23	40	21	19	          	          	          	          	          	          
+TASHENKUERGANTAJIKEZIZHIXIAN 	Bulunmusha	95	47	48	71	35	36	1	1	          	1.39	2.78	          
+TASHENKUERGANTAJIKEZIZHIXIAN 	Datong	205	97	108	84	62	22	33	17	16	28.21	21.52	42.11
+HETIAN 	Total	21118	10350	10768	11727	6648	5079	270	153	117	2.25	2.25	2.25
+HETIAN 	Nuerbage	3359	1646	1713	2188	1270	918	51	24	27	2.28	1.85	2.86
+HETIAN 	Gujiangbage	1132	562	570	714	459	255	27	15	12	3.64	3.16	4.49
+HETIAN 	Gulebage	5830	2737	3093	1670	934	736	47	23	24	2.74	2.40	3.16
+HETIAN 	Naerbage	3310	1614	1696	2023	1203	820	101	59	42	4.76	4.68	4.87
+HETIAN 	Lasikui	1021	516	505	889	455	434	3	3	          	0.34	0.66	          
+HETIAN 	Xiaoerbage	4336	2180	2156	2445	1360	1085	25	16	9	1.01	1.16	0.82
+HETIAN 	Yiliqi	831	432	399	645	378	267	10	8	2	1.53	2.07	0.74
+HETIAN 	Gujiangbage	1054	529	525	919	460	459	5	5	          	0.54	1.08	          
+HETIAN 	Aheqiaguanliqu	245	134	111	234	129	105	1	          	1	0.43	          	0.94
+HETIAN 	Total	16391	8436	7955	15184	7807	7377	11	8	3	0.07	0.10	0.04
+HETIAN 	Bageqi	1594	814	780	1522	776	746	          	          	          	          	          	          
+HETIAN 	Tushala	3369	1756	1613	3035	1574	1461	1	1	          	0.03	0.06	          
+HETIAN 	Hanairike	1954	1010	944	1852	962	890	          	          	          	          	          	          
+HETIAN 	Yingawati	615	325	290	584	308	276	          	          	          	          	          	          
+HETIAN 	Yingairike	1157	596	561	1055	544	511	          	          	          	          	          	          
+HETIAN 	Buzhake	1695	884	811	1599	832	767	2	          	2	0.12	          	0.26
+HETIAN 	Layika	3279	1638	1641	2945	1471	1474	6	5	1	0.20	0.34	0.07
+HETIAN 	Langru	634	326	308	592	304	288	          	          	          	          	          	          
+HETIAN 	Tawakule	477	238	239	434	217	217	1	1	          	0.23	0.46	          
+HETIAN 	Yisilamuawati	1181	625	556	1154	607	547	          	          	          	          	          	          
+HETIAN 	Segezikule	188	103	85	176	97	79	1	1	          	0.56	1.02	          
+HETIAN 	Kashentashen	248	121	127	236	115	121	          	          	          	          	          	          
+MOYU 	Total	24255	12581	11674	22492	11713	10779	38	21	17	0.17	0.18	0.16
+MOYU 	Kalakashen	2178	1137	1041	1834	1008	826	28	14	14	1.5	1.37	1.67
+MOYU 	Kaersai	2791	1442	1349	2550	1316	1234	1	1	          	0.04	0.08	          
+MOYU 	Kuiya	2201	1153	1048	2122	1117	1005	          	          	          	          	          	          
+MOYU 	Zhawa	2968	1534	1434	2719	1413	1306	1	1	          	0.04	0.07	          
+MOYU 	Akesalayi	998	525	473	947	501	446	          	          	          	          	          	          
+MOYU 	Wuerqi	630	321	309	590	301	289	          	          	          	          	          	          
+MOYU 	Tuohula	903	459	444	836	428	408	1	          	1	0.12	          	0.24
+MOYU 	Sayibage	1893	961	932	1807	915	892	          	          	          	          	          	          
+MOYU 	Jiahanbage	1082	538	544	1017	506	511	          	          	          	          	          	          
+MOYU 	Puqiakeqi	2019	1077	942	1914	1013	901	3	2	1	0.16	0.20	0.11
+MOYU 	Manglai	710	361	349	611	312	299	1	1	          	0.16	0.32	          
+MOYU 	Kuoyiqi	1237	654	583	1182	624	558	          	          	          	          	          	          
+MOYU 	Yawa	2090	1085	1005	1962	995	967	1	          	1	0.05	          	0.10
+MOYU 	Tuwaite	1104	572	532	1061	550	511	          	          	          	          	          	          
+MOYU 	Yingyeer	580	296	284	539	278	261	          	          	          	          	          	          
+MOYU 	Kawake	729	388	341	721	384	337	          	          	          	          	          	          
+MOYU 	47tuan	142	78	64	80	52	28	2	2	          	2.44	3.70	          
+PISHAN 	Total	13225	6865	6360	11528	6093	5435	45	28	17	0.39	0.46	0.31
+PISHAN 	Guma	2320	1168	1152	1970	1026	944	11	8	3	0.56	0.77	0.32
+PISHAN 	Duwa	573	307	266	494	256	238	1	1	          	0.20	0.39	          
+PISHAN 	Kuoshentage	408	212	196	342	177	165	          	          	          	          	          	          
+PISHAN 	Keliyang	569	295	274	519	276	243	          	          	          	          	          	          
+PISHAN 	Keketiereke	1002	517	485	927	484	443	1	1	          	0.11	0.21	          
+PISHAN 	Sangzhu	1006	527	479	918	482	436	          	          	          	          	          	          
+PISHAN 	Muji	655	357	298	619	333	286	1	1	          	0.16	0.30	          
+PISHAN 	Qiaoda	495	257	238	461	240	221	          	          	          	          	          	          
+PISHAN 	Mukuila	650	336	314	541	284	257	13	6	7	2.35	2.07	2.65
+PISHAN 	Canggui	1207	621	586	1074	563	511	3	3	          	0.28	0.53	          
+PISHAN 	Piyalema	379	194	185	346	176	170	          	          	          	          	          	          
+PISHAN 	Pixina	513	267	246	454	237	217	1	1	          	0.22	0.42	          
+PISHAN 	Bashenlangan	313	165	148	253	134	119	          	          	          	          	          	          
+PISHAN 	Naoabatitajikeminzu	374	188	186	272	155	117	6	2	4	2.16	1.27	3.31
+PISHAN 	Kangkeerkeerkeziminzu	710	400	310	649	373	276	2	1	1	0.31	0.27	0.36
+PISHAN 	Guoyingmuchang	496	253	243	389	211	178	3	2	1	0.77	0.94	0.56
+PISHAN 	Pishannongchang	1555	801	754	1300	686	614	3	2	1	0.23	0.29	0.16
+LUOPU 	Total	15748	8148	7600	13895	7219	6676	53	31	22	0.38	0.43	0.33
+LUOPU 	Luopu	1807	946	861	1603	852	751	8	4	4	0.5	0.47	0.53
+LUOPU 	Yulongkashen	1248	655	593	1133	592	541	7	5	2	0.61	0.84	0.37
+LUOPU 	Jiya	1055	570	485	956	508	448	10	8	2	1.04	1.55	0.44
+LUOPU 	Buya	1686	877	809	1521	803	718	3	2	1	0.20	0.25	0.14
+LUOPU 	Shanpulu	797	408	389	720	365	355	          	          	          	          	          	          
+LUOPU 	Qiaerbage	2909	1469	1440	2494	1265	1229	13	6	7	0.52	0.47	0.57
+LUOPU 	Hanggui	2367	1227	1140	2118	1106	1012	1	1	          	0.05	0.09	          
+LUOPU 	Duolu	1570	789	781	1322	668	654	5	3	2	0.38	0.45	0.30
+LUOPU 	Nawa	818	438	380	733	390	343	          	          	          	          	          	          
+LUOPU 	Baishentuogelake	610	325	285	552	295	257	          	          	          	          	          	          
+LUOPU 	Aqikeguanliqu	          	          	          	          	          	          	          	          	          	          	          	          
+LUOPU 	Xianliangzhongchang	881	444	437	743	375	368	6	2	4	0.80	0.53	1.08
+CELE 	Total	8997	4627	4370	7612	3996	3616	61	34	27	0.79	0.84	0.74
+CELE 	Cele	1101	563	538	915	477	438	3	2	1	0.33	0.42	0.23
+CELE 	Cele	1928	992	936	1740	887	853	1	          	1	0.06	          	0.12
+CELE 	Gulahama	1732	877	855	1569	802	767	2	1	1	0.13	0.12	0.13
+CELE 	Damagou	1630	827	803	1404	720	684	          	          	          	          	          	          
+CELE 	Qiaha	448	223	225	409	205	204	1	          	1	0.24	          	0.49
+CELE 	Wulukesayi	86	42	44	75	37	38	          	          	          	          	          	          
+CELE 	Nuer	814	436	378	645	372	273	5	3	2	0.77	0.80	0.73
+CELE 	Bositan	92	49	43	86	46	40	          	          	          	          	          	          
+CELE 	Nuermuchang	1166	618	548	769	450	319	49	28	21	5.99	5.86	6.18
+YUTIAN 	Total	13453	6884	6569	11860	6172	5688	99	56	43	0.83	0.90	0.75
+YUTIAN 	Mugala	1622	818	804	1223	704	519	26	14	12	2.08	1.95	2.26
+YUTIAN 	Xianbaibazha	689	348	341	627	319	308	8	4	4	1.26	1.24	1.28
+YUTIAN 	Jiayi	953	479	474	839	436	403	4	3	1	0.47	0.68	0.25
+YUTIAN 	Kekeya	1964	1007	957	1813	934	879	12	5	7	0.66	0.53	0.79
+YUTIAN 	Arele	779	388	391	707	347	360	          	          	          	          	          	          
+YUTIAN 	Arixi	441	226	215	397	206	191	1	          	1	0.25	          	0.52
+YUTIAN 	Langan	343	179	164	292	153	139	          	          	          	          	          	          
+YUTIAN 	Siyeke	165	97	68	158	95	63	1	1	          	0.63	1.04	          
+YUTIAN 	Tuogerigazi	800	402	398	688	354	334	1	1	          	0.15	0.28	          
+YUTIAN 	Kaerke	1560	799	761	1390	712	678	29	17	12	2.04	2.33	1.74
+YUTIAN 	Aoyituogelake	654	330	324	617	308	309	          	          	          	          	          	          
+YUTIAN 	Aqiang	652	336	316	588	307	281	5	2	3	0.84	0.65	1.06
+YUTIAN 	Yingbage	396	212	184	362	196	166	          	          	          	          	          	          
+YUTIAN 	Xiwule	893	473	420	760	403	357	3	3	          	0.39	0.74	          
+YUTIAN 	Daliyaboyi	          	          	          	          	          	          	          	          	          	          	          	          
+YUTIAN 	Layisuliangzhongchang	1542	790	752	1399	698	701	9	6	3	0.64	0.85	0.43
+YUTIAN 	Xianyangchang	          	          	          	          	          	          	          	          	          	          	          	          
+YUTIAN 	Yutianjianyu	          	          	          	          	          	          	          	          	          	          	          	          
+MINFENG 	Total	3064	1622	1442	2479	1362	1117	58	31	27	2.29	2.23	2.36
+MINFENG 	Niya	837	433	404	632	343	289	27	12	15	4.10	3.38	4.93
+MINFENG 	Niya	1005	553	452	763	448	315	23	14	9	2.93	3.03	2.78
+MINFENG 	Ruokeya	551	287	264	494	261	233	4	2	2	0.80	0.76	0.85
+MINFENG 	Salewuzeke	          	          	          	          	          	          	          	          	          	          	          	          
+MINFENG 	Yeyike	210	115	95	184	101	83	          	          	          	          	          	          
+MINFENG 	Andier	          	          	          	          	          	          	          	          	          	          	          	          
+MINFENG 	Andiermuchang	461	234	227	406	209	197	4	3	1	0.98	1.42	0.51
+KUITUN 	Total	25299	13101	12198	16137	9530	6607	1045	524	521	6.08	5.21	7.31
+KUITUN 	Tuanjielu	3065	1596	1469	1868	1162	706	293	99	194	13.56	7.85	21.56
+KUITUN 	Wulumuqidonglu	1403	740	663	862	514	348	81	51	30	8.59	9.03	7.94
+KUITUN 	Beijinglu	4668	2326	2342	3112	1723	1389	131	68	63	4.04	3.80	4.34
+KUITUN 	Wulumuqixilu	1908	1048	860	1147	757	390	77	50	27	6.29	6.20	6.47
+KUITUN 	Huochezhan	          	          	          	          	          	          	          	          	          	          	          	          
+KUITUN 	Kaiganqi	          	          	          	          	          	          	          	          	          	          	          	          
+KUITUN 	123tuan	1749	891	858	1143	668	475	69	37	32	5.69	5.25	6.31
+KUITUN 	124tuan	836	461	375	540	339	201	43	23	20	7.38	6.35	9.05
+KUITUN 	125tuan	1976	1021	955	1335	774	561	25	16	9	1.84	2.03	1.58
+KUITUN 	126tuan	1318	693	625	936	553	383	20	13	7	2.09	2.30	1.79
+KUITUN 	127tuan	915	490	425	664	378	286	13	10	3	1.92	2.58	1.04
+KUITUN 	128tuan	1072	560	512	654	404	250	18	12	6	2.68	2.88	2.34
+KUITUN 	129tuan	1320	680	640	886	495	391	70	34	36	7.32	6.43	8.43
+KUITUN 	130tuan	1806	918	888	1124	642	482	61	34	27	5.15	5.03	5.30
+KUITUN 	131tuan	2808	1445	1363	1650	958	692	123	63	60	6.94	6.17	7.98
+KUITUN 	137tuan	455	232	223	216	163	53	21	14	7	8.86	7.91	11.67
+YINING 	Total	27699	13638	14061	14795	9082	5713	2079	1193	886	12.32	11.61	13.43
+YINING 	Ailanmubage	2307	1146	1161	1227	771	456	147	93	54	10.70	10.76	10.59
+YINING 	Sayibuyi	4299	2076	2223	2635	1398	1237	253	110	143	8.76	7.29	10.36
+YINING 	Dunmaili	2830	1370	1460	1775	914	861	141	76	65	7.36	7.68	7.02
+YINING 	Kuleke	          	          	          	          	          	          	          	          	          	          	          	          
+YINING 	Dulaitibage	1679	819	860	795	522	273	141	82	59	15.06	13.58	17.77
+YINING 	Kazanqi	1535	740	795	663	407	256	174	108	66	20.79	20.97	20.5
+YINING 	Jiefanglu	2347	1095	1252	1546	802	744	156	78	78	9.17	8.86	9.49
+YINING 	Yilihelu	1512	722	790	301	144	157	297	206	91	49.67	58.86	36.69
+YINING 	Bayandai	1911	976	935	1035	761	274	83	50	33	7.42	6.17	10.75
+YINING 	Kebokeyuzi	1401	726	675	366	251	115	59	39	20	13.88	13.45	14.81
+YINING 	Tuogelake	1359	685	674	907	594	313	6	3	3	0.66	0.5	0.95
+YINING 	Yingyeer	2033	1051	982	1525	924	601	32	14	18	2.06	1.49	2.91
+YINING 	Hanbin	507	271	236	196	169	27	47	46	1	19.34	21.40	3.57
+YINING 	Tashenkuleke	1856	943	913	802	645	157	402	209	193	33.39	24.47	55.14
+YINING 	Kaerdun	2123	1018	1105	1022	780	242	141	79	62	12.12	9.20	20.39
+YINING 	Jieliangzimuchang	          	          	          	          	          	          	          	          	          	          	          	          
+YINING 	Total	28132	14482	13650	18828	11599	7229	924	535	389	4.68	4.41	5.11
+YINING 	Jiliyuzi	2878	1490	1388	1880	1083	797	177	99	78	8.60	8.38	8.91
+YINING 	Dunmazha	590	307	283	384	232	152	29	24	5	7.02	9.38	3.18
+YINING 	Yuqunwenghuizu	2886	1476	1410	2152	1281	871	27	13	14	1.24	1	1.58
+YINING 	Tulufanyuzi	2574	1290	1284	2181	1139	1042	58	30	28	2.59	2.57	2.62
+YINING 	Kalayaji	247	128	119	77	72	5	56	31	25	42.11	30.10	83.33
+YINING 	Panjin	1628	849	779	1183	748	435	23	9	14	1.91	1.19	3.12
+YINING 	Dadamutu	2100	1088	1012	1342	993	349	11	3	8	0.81	0.30	2.24
+YINING 	Hudiyayuzi	1745	892	853	1367	790	577	8	4	4	0.58	0.5	0.69
+YINING 	Arewusitang	518	261	257	259	219	40	4	2	2	1.52	0.90	4.76
+YINING 	Yingtamu	2592	1339	1253	1286	1036	250	189	112	77	12.81	9.76	23.55
+YINING 	Bayituohai	1372	719	653	1214	647	567	          	          	          	          	          	          
+YINING 	Weiwueryuqiwen	1894	985	909	1011	749	262	60	40	20	5.60	5.07	7.09
+YINING 	Samuyuzi	          	          	          	          	          	          	          	          	          	          	          	          
+YINING 	Kashen	          	          	          	          	          	          	          	          	          	          	          	          
+YINING 	Mazha	          	          	          	          	          	          	          	          	          	          	          	          
+YINING 	Wenyaer	1111	571	540	847	501	346	7	5	2	0.82	0.99	0.57
+YINING 	Awuliya	          	          	          	          	          	          	          	          	          	          	          	          
+YINING 	Quluhai	1091	567	524	900	488	412	3	          	3	0.33	          	0.72
+YINING 	Moluotuohutiyuzi	79	46	33	13	13	          	10	10	          	43.48	43.48	          
+YINING 	Sadikeyuzi	2026	1029	997	1510	869	641	33	19	14	2.14	2.14	2.14
+YINING 	Qingniannongchang	140	76	64	76	70	6	          	          	          	          	          	          
+YINING 	Duolangnongchang	594	311	283	465	258	207	2	1	1	0.43	0.39	0.48
+YINING 	Baishendunnongchang	300	157	143	219	131	88	6	3	3	2.67	2.24	3.30
+YINING 	70tuan	524	269	255	367	216	151	7	4	3	1.87	1.82	1.95
+YINING 	Xinningtangchang	1243	632	611	95	64	31	214	126	88	69.26	66.32	73.95
+CHABUCHAERXIBOZIZHIXIAN 	Total	12858	6672	6186	9447	5463	3984	203	106	97	2.10	1.90	2.38
+CHABUCHAERXIBOZIZHIXIAN 	Chabuchaer	          	          	          	          	          	          	          	          	          	          	          	          
+CHABUCHAERXIBOZIZHIXIAN 	Aixinsheli	830	435	395	591	354	237	6	4	2	1.01	1.12	0.84
+CHABUCHAERXIBOZIZHIXIAN 	Duiqiniulu	1308	673	635	1085	585	500	7	6	1	0.64	1.02	0.20
+CHABUCHAERXIBOZIZHIXIAN 	Sunzhaqiniulu	2084	1111	973	1495	887	608	20	16	4	1.32	1.77	0.65
+CHABUCHAERXIBOZIZHIXIAN 	Chuohuoer	1208	630	578	1044	566	478	2	1	1	0.19	0.18	0.21
+CHABUCHAERXIBOZIZHIXIAN 	Nadaqiniulu	3194	1660	1534	2147	1316	831	89	40	49	3.98	2.95	5.57
+CHABUCHAERXIBOZIZHIXIAN 	Zhakuqiniulu	          	          	          	          	          	          	          	          	          	          	          	          
+CHABUCHAERXIBOZIZHIXIAN 	Miliangquanhuizuminzu	390	201	189	308	167	141	1	1	          	0.32	0.60	          
+CHABUCHAERXIBOZIZHIXIAN 	Kan	939	460	479	788	400	388	2	2	          	0.25	0.5	          
+CHABUCHAERXIBOZIZHIXIAN 	Kuohongqi	507	249	258	328	215	113	3	2	1	0.91	0.92	0.88
+CHABUCHAERXIBOZIZHIXIAN 	Hainuke	          	          	          	          	          	          	          	          	          	          	          	          
+CHABUCHAERXIBOZIZHIXIAN 	Zhagesitai	          	          	          	          	          	          	          	          	          	          	          	          
+CHABUCHAERXIBOZIZHIXIAN 	Qiongbola	288	147	141	231	130	101	          	          	          	          	          	          
+CHABUCHAERXIBOZIZHIXIAN 	Zhongyangchang	394	209	185	326	180	146	4	2	2	1.21	1.10	1.35
+CHABUCHAERXIBOZIZHIXIAN 	Liangzhongfanyuchang	406	210	196	336	182	154	3	1	2	0.88	0.55	1.28
+CHABUCHAERXIBOZIZHIXIAN 	Chabuchaernainiuchang	615	324	291	351	241	110	48	18	30	12.03	6.95	21.43
+CHABUCHAERXIBOZIZHIXIAN 	67tuan	          	          	          	          	          	          	          	          	          	          	          	          
+CHABUCHAERXIBOZIZHIXIAN 	68tuan	334	174	160	230	126	104	6	3	3	2.54	2.33	2.80
+CHABUCHAERXIBOZIZHIXIAN 	69tuan	361	189	172	187	114	73	12	10	2	6.03	8.06	2.67
+HUOCHENG 	Total	22280	11675	10605	15439	9462	5977	690	412	278	4.28	4.17	4.44
+HUOCHENG 	Shuiding	2404	1233	1171	1429	941	488	157	99	58	9.90	9.52	10.62
+HUOCHENG 	Qingshuihe	919	477	442	808	417	391	1	          	1	0.12	          	0.26
+HUOCHENG 	Lucaogou	          	          	          	          	          	          	          	          	          	          	          	          
+HUOCHENG 	Langan	919	461	458	399	335	64	60	52	8	13.07	13.44	11.11
+HUOCHENG 	Sandaohe	1368	714	654	1176	630	546	15	12	3	1.26	1.87	0.55
+HUOCHENG 	Saerbulake	665	348	317	485	257	228	22	15	7	4.34	5.51	2.98
+HUOCHENG 	Yichegashanxibozu	977	508	469	794	427	367	13	7	6	1.61	1.61	1.61
+HUOCHENG 	Sangonghuizu	1906	997	909	1387	799	588	46	24	22	3.21	2.92	3.61
+HUOCHENG 	Huiyuan	1640	853	787	1227	743	484	6	4	2	0.49	0.54	0.41
+HUOCHENG 	Daxigou	912	465	447	788	415	373	          	          	          	          	          	          
+HUOCHENG 	Huoerguosikouan	2569	1484	1085	1980	1393	587	41	17	24	2.03	1.21	3.93
+HUOCHENG 	Gegangoumuchang	513	240	273	275	162	113	57	24	33	17.17	12.90	22.60
+HUOCHENG 	Mohuermuchang	711	359	352	574	298	276	12	10	2	2.05	3.25	0.72
+HUOCHENG 	Zhongyangchang	917	438	479	379	347	32	34	10	24	8.23	2.80	42.86
+HUOCHENG 	61tuan	499	302	197	341	238	103	28	16	12	7.59	6.30	10.43
+HUOCHENG 	62tuan	766	405	361	441	266	175	26	17	9	5.57	6.01	4.89
+HUOCHENG 	63tuan	409	222	187	288	169	119	9	2	7	3.03	1.17	5.56
+HUOCHENG 	64tuan	1585	809	776	1030	568	462	68	42	26	6.19	6.89	5.33
+HUOCHENG 	65tuan	387	203	184	263	152	111	11	7	4	4.01	4.40	3.48
+HUOCHENG 	66tuan	1299	658	641	884	498	386	37	21	16	4.02	4.05	3.98
+HUOCHENG 	Meitanju	915	499	416	491	407	84	47	33	14	8.74	7.5	14.29
+GONGLIU 	Total	11274	5822	5452	6399	4477	1922	330	194	136	4.90	4.15	6.61
+GONGLIU 	Gongliu	2476	1268	1208	1394	1011	383	83	48	35	5.62	4.53	8.37
+GONGLIU 	Mohuer	585	308	277	480	266	214	2	2	          	0.41	0.75	          
+GONGLIU 	Jiergelang	57	32	25	28	21	7	1	1	          	3.45	4.55	          
+GONGLIU 	Agaersen	483	249	234	193	128	65	29	17	12	13.06	11.72	15.58
+GONGLIU 	Dongmaili	14	7	7	5	4	1	          	          	          	          	          	          
+GONGLIU 	Tasituobie	1822	937	885	1174	768	406	48	29	19	3.93	3.64	4.47
+GONGLIU 	Tiareke	1303	688	615	636	607	29	29	13	16	4.36	2.10	35.56
+GONGLIU 	Aketubibieke	740	374	366	430	336	94	3	          	3	0.69	          	3.09
+GONGLIU 	Gongliuxianniuchang	780	396	384	469	322	147	15	10	5	3.10	3.01	3.29
+GONGLIU 	Kuoshenagashenyangchang	596	307	289	391	261	130	          	          	          	          	          	          
+GONGLIU 	Tianxilinyejugongliulinchang	1194	620	574	478	318	160	83	52	31	14.80	14.05	16.23
+GONGLIU 	73tuan	1224	636	588	721	435	286	37	22	15	4.88	4.81	4.98
+XINYUAN 	Total	16864	8830	8034	11966	6938	5028	402	236	166	3.25	3.29	3.20
+XINYUAN 	Xinyuan	1077	536	541	654	402	252	54	37	17	7.63	8.43	6.32
+XINYUAN 	Zeketai	3798	2115	1683	2517	1673	844	108	62	46	4.11	3.57	5.17
+XINYUAN 	Areletuobie	404	210	194	190	130	60	34	19	15	15.18	12.75	20
+XINYUAN 	Talede	616	325	291	477	256	221	          	          	          	          	          	          
+XINYUAN 	Nalati	1709	880	829	1453	764	689	1	          	1	0.07	          	0.14
+XINYUAN 	Biesituobie	1412	718	694	1071	596	475	18	10	8	1.65	1.65	1.66
+XINYUAN 	Kansu	1806	933	873	1450	752	698	10	8	2	0.68	1.05	0.29
+XINYUAN 	Halabula	1194	609	585	893	491	402	21	14	7	2.30	2.77	1.71
+XINYUAN 	Alewule	748	386	362	628	337	291	9	4	5	1.41	1.17	1.69
+XINYUAN 	Tuergen	873	441	432	764	391	373	7	2	5	0.91	0.51	1.32
+XINYUAN 	Tuergennongchang	385	200	185	329	178	151	2	          	2	0.60	          	1.31
+XINYUAN 	Gongannongchang	          	          	          	          	          	          	          	          	          	          	          	          
+XINYUAN 	Qianjinmuchang	302	157	145	280	148	132	1	          	1	0.36	          	0.75
+XINYUAN 	Gaochaomuchang	203	107	96	112	90	22	4	1	3	3.45	1.10	12
+XINYUAN 	Yeguogailiangchang	117	63	54	100	56	44	          	          	          	          	          	          
+XINYUAN 	Gongnaisizhongyangchang	563	281	282	249	169	80	48	28	20	16.16	14.21	20
+XINYUAN 	Xinyuanmachang	143	74	69	78	45	33	1	1	          	1.27	2.17	          
+XINYUAN 	71tuan	350	184	166	166	114	52	51	30	21	23.5	20.83	28.77
+XINYUAN 	72tuan	1164	611	553	555	346	209	33	20	13	5.61	5.46	5.86
+ZHAOSU 	Total	10026	5109	4917	4868	3574	1294	972	534	438	16.64	13	25.29
+ZHAOSU 	Zhaosu	          	          	          	          	          	          	          	          	          	          	          	          
+ZHAOSU 	Hongnahai	646	346	300	291	269	22	71	44	27	19.61	14.06	55.10
+ZHAOSU 	Wuzongbulake	          	          	          	          	          	          	          	          	          	          	          	          
+ZHAOSU 	Akedala	366	183	183	204	155	49	4	2	2	1.92	1.27	3.92
+ZHAOSU 	Kaxiajiaer	511	274	237	188	168	20	47	31	16	20	15.58	44.44
+ZHAOSU 	Saerkuobu	518	270	248	157	151	6	45	38	7	22.28	20.11	53.85
+ZHAOSU 	Kalasu	497	249	248	172	158	14	104	64	40	37.68	28.83	74.07
+ZHAOSU 	Chahanwusumengguminzu	          	          	          	          	          	          	          	          	          	          	          	          
+ZHAOSU 	Xiatekeerkeziminzu	948	486	462	468	392	76	44	20	24	8.59	4.85	24
+ZHAOSU 	Husongtuhaerxunmengguminzu	777	377	400	284	258	26	87	41	46	23.45	13.71	63.89
+ZHAOSU 	Yangchang	858	441	417	599	358	241	52	32	20	7.99	8.21	7.66
+ZHAOSU 	Tugeleqinmuchang	          	          	          	          	          	          	          	          	          	          	          	          
+ZHAOSU 	Akeyazimuchang	415	208	207	159	134	25	35	20	15	18.04	12.99	37.5
+ZHAOSU 	Xiatamuchang	585	300	285	437	250	187	5	          	5	1.13	          	2.60
+ZHAOSU 	Tianshanmuchang	          	          	          	          	          	          	          	          	          	          	          	          
+ZHAOSU 	Qiaolunmutumuchang	827	433	394	412	276	136	97	61	36	19.06	18.10	20.93
+ZHAOSU 	Tianxilinyejuzhaosulinchang	          	          	          	          	          	          	          	          	          	          	          	          
+ZHAOSU 	Zhongmachang	360	184	176	223	136	87	25	10	15	10.08	6.85	14.71
+ZHAOSU 	Junmachang	1382	670	712	421	365	56	278	141	137	39.77	27.87	70.98
+ZHAOSU 	74tuan	98	52	46	63	37	26	          	          	          	          	          	          
+ZHAOSU 	75tuan	454	235	219	351	194	157	13	2	11	3.57	1.02	6.55
+ZHAOSU 	76tuan	          	          	          	          	          	          	          	          	          	          	          	          
+ZHAOSU 	77tuan	298	155	143	140	98	42	38	15	23	21.35	13.27	35.38
+ZHAOSU 	    SÔSÔWb‹QuV‚NSANV‚ÜZbﬂNa    	486	246	240	299	175	124	27	13	14	8.28	6.91	10.14
+TEKESI 	Total	8975	4588	4387	5889	3588	2301	465	241	224	7.32	6.29	8.87
+TEKESI 	Tekesi	          	          	          	          	          	          	          	          	          	          	          	          
+TEKESI 	Hujiertemenggu	196	89	107	157	76	81	          	          	          	          	          	          
+TEKESI 	Kekesu	340	174	166	238	136	102	43	18	25	15.30	11.69	19.69
+TEKESI 	Qilewuzeke	          	          	          	          	          	          	          	          	          	          	          	          
+TEKESI 	Keketiereke	621	328	293	279	250	29	8	3	5	2.79	1.19	14.71
+TEKESI 	Qiaolaketiereke	2415	1238	1177	2046	1089	957	10	5	5	0.49	0.46	0.52
+TEKESI 	Kaladala	971	485	486	598	392	206	8	1	7	1.32	0.25	3.29
+TEKESI 	Kalatuohai	          	          	          	          	          	          	          	          	          	          	          	          
+TEKESI 	Tuosimanmuchang	878	451	427	342	279	63	153	86	67	30.91	23.56	51.54
+TEKESI 	Saerkuobumuchang	578	308	270	504	279	225	2	2	          	0.40	0.71	          
+TEKESI 	Kezibulakemuchang	110	56	54	91	44	47	2	          	2	2.15	          	4.08
+TEKESI 	Kaladalamuchang	717	355	362	368	292	76	14	5	9	3.66	1.68	10.59
+TEKESI 	Aketierekeliangfanchang	509	258	251	402	210	192	7	4	3	1.71	1.87	1.54
+TEKESI 	Tekesijunmachang	432	222	210	148	132	16	118	58	60	44.36	30.53	78.95
+TEKESI 	78tuan	1208	624	584	716	409	307	100	59	41	12.25	12.61	11.78
+NILEKE 	Total	9067	4679	4388	6346	3717	2629	266	130	136	4.02	3.38	4.92
+NILEKE 	Nileke	602	308	294	310	222	88	9	7	2	2.82	3.06	2.22
+NILEKE 	Subutai	1226	626	600	978	520	458	16	7	9	1.61	1.33	1.93
+NILEKE 	Kalasu	830	433	397	667	365	302	          	          	          	          	          	          
+NILEKE 	Jiahawulasitai	421	223	198	339	190	149	4	          	4	1.17	          	2.61
+NILEKE 	Wuzan	149	77	72	119	70	49	          	          	          	          	          	          
+NILEKE 	Kekehaotehaoermengguzu	470	252	218	179	171	8	24	8	16	11.82	4.47	66.67
+NILEKE 	Wulasitai	864	461	403	400	322	78	70	36	34	14.89	10.06	30.36
+NILEKE 	Qunji	508	249	259	427	224	203	8	3	5	1.84	1.32	2.40
+NILEKE 	Kalatuobie	988	508	480	894	470	424	4	1	3	0.45	0.21	0.70
+NILEKE 	Hujiertai	649	316	333	534	273	261	8	7	1	1.48	2.5	0.38
+NILEKE 	Musi	612	309	303	427	255	172	1	          	1	0.23	          	0.58
+NILEKE 	Aketasimuchang	340	177	163	227	128	99	8	3	5	3.40	2.29	4.81
+NILEKE 	Xianliangzhongfanyuchang	          	          	          	          	          	          	          	          	          	          	          	          
+NILEKE 	Junmachang	448	230	218	231	139	92	36	22	14	13.48	13.66	13.21
+NILEKE 	Xianzhongfengchang	608	321	287	398	237	161	54	18	36	11.95	7.06	18.27
+NILEKE 	79tuan	352	189	163	216	131	85	24	18	6	10	12.08	6.59
+TACHENG 	Total	12003	6174	5829	7458	4518	2940	402	214	188	5.11	4.52	6.01
+TACHENG 	Heping	799	382	417	533	280	253	49	20	29	8.42	6.67	10.28
+TACHENG 	Dubieke	1944	972	972	794	483	311	110	67	43	12.17	12.18	12.15
+TACHENG 	Xincheng	1526	780	746	720	483	237	78	43	35	9.77	8.17	12.87
+TACHENG 	Ergong	1512	800	712	894	599	295	77	42	35	7.93	6.55	10.61
+TACHENG 	Kalahabake	349	189	160	260	162	98	7	4	3	2.62	2.41	2.97
+TACHENG 	Qiaxia	1318	679	639	1024	569	455	12	8	4	1.16	1.39	0.87
+TACHENG 	Axierdawoerminzu	502	258	244	351	222	129	2	          	2	0.57	          	1.53
+TACHENG 	Abudula	558	285	273	470	253	217	4	3	1	0.84	1.17	0.46
+TACHENG 	Yemenle	403	215	188	332	187	145	2	          	2	0.60	          	1.36
+TACHENG 	Liangzhongfanyuchang	258	137	121	150	127	23	5	1	4	3.23	0.78	14.81
+TACHENG 	Yuanyichang	293	156	137	191	125	66	7	3	4	3.54	2.34	5.71
+TACHENG 	Yekesumuchang	191	104	87	118	86	32	11	8	3	8.53	8.51	8.57
+TACHENG 	Qiahejimuchang	261	133	128	161	96	65	1	1	          	0.62	1.03	          
+TACHENG 	Bozidakenongchang	310	159	151	223	132	91	2	1	1	0.89	0.75	1.09
+TACHENG 	Woyijiayilaomuchang	124	65	59	105	57	48	1	          	1	0.94	          	2.04
+TACHENG 	Diquzhongniuchang	397	205	192	358	190	168	5	2	3	1.38	1.04	1.75
+TACHENG 	162tuan	237	120	117	131	77	54	10	4	6	7.09	4.94	10
+TACHENG 	163tuan	743	380	363	452	277	175	17	6	11	3.62	2.12	5.91
+TACHENG 	164tuan	278	155	123	191	113	78	2	1	1	1.04	0.88	1.27
+WUSU 	Total	15702	8179	7523	10860	6219	4641	737	404	333	6.36	6.10	6.69
+WUSU 	XinShiqu	1822	973	849	1055	666	389	156	71	85	12.88	9.63	17.93
+WUSU 	Nanyuan	2492	1287	1205	1558	914	644	113	52	61	6.76	5.38	8.65
+WUSU 	Xichengqu	1844	954	890	717	450	267	251	156	95	25.93	25.74	26.24
+WUSU 	Hongqiao	1273	622	651	803	436	367	96	61	35	10.68	12.27	8.71
+WUSU 	Kuihe	185	108	77	114	81	33	22	11	11	16.18	11.96	25
+WUSU 	Baiyanggou	          	          	          	          	          	          	          	          	          	          	          	          
+WUSU 	Hatubuhu	626	327	299	513	279	234	7	2	5	1.35	0.71	2.09
+WUSU 	Huanggong	448	237	211	392	217	175	3	2	1	0.76	0.91	0.57
+WUSU 	Chepaizi	282	143	139	232	125	107	2	1	1	0.85	0.79	0.93
+WUSU 	Ganhezi	544	290	254	474	261	213	1	          	1	0.21	          	0.47
+WUSU 	Baiquan	636	333	303	543	289	254	4	1	3	0.73	0.34	1.17
+WUSU 	Sikeshu	724	377	347	633	333	300	          	          	          	          	          	          
+WUSU 	Guertu	355	190	165	292	159	133	29	18	11	9.03	10.17	7.64
+WUSU 	Xihu	336	177	159	289	156	133	1	1	          	0.34	0.64	          
+WUSU 	Xidagou	480	255	225	413	220	193	          	          	          	          	          	          
+WUSU 	Bashisihu	537	275	262	420	233	187	3	2	1	0.71	0.85	0.53
+WUSU 	Jiahezi	211	111	100	181	100	81	4	2	2	2.16	1.96	2.41
+WUSU 	Jiujianlou	347	180	167	295	155	140	          	          	          	          	          	          
+WUSU 	Shiqiao	589	302	287	504	269	235	1	          	1	0.20	          	0.42
+WUSU 	Toutai	148	75	73	129	69	60	4	3	1	3.01	4.17	1.64
+WUSU 	Jiergeleteguolengmengguminzu	854	452	402	699	388	311	28	13	15	3.85	3.24	4.60
+WUSU 	Tabulehetemengguminzu	135	67	68	120	59	61	          	          	          	          	          	          
+WUSU 	Ganjiahumuchang	328	172	156	138	131	7	10	7	3	6.76	5.07	30
+WUSU 	Bayingoumuchang	219	108	111	82	76	6	2	1	1	2.38	1.30	14.29
+WUSU 	Sailiketimuchang	287	164	123	264	153	111	          	          	          	          	          	          
+WUSU 	Wusujianyu	          	          	          	          	          	          	          	          	          	          	          	          
+EMIN 	Total	13332	6813	6519	7460	4968	2492	525	301	224	6.57	5.71	8.25
+EMIN 	Emin	2198	1094	1104	1108	655	453	168	105	63	13.17	13.82	12.21
+EMIN 	Jiaoqu	1078	578	500	850	499	351	18	15	3	2.07	2.92	0.85
+EMIN 	Shanghu	712	352	360	423	295	128	7	4	3	1.63	1.34	2.29
+EMIN 	Emaleguolengmengguminzu	329	163	166	265	140	125	4	3	1	1.49	2.10	0.79
+EMIN 	Yushenkalasu	385	192	193	142	135	7	8	1	7	5.33	0.74	50
+EMIN 	Jieleagashen	641	326	315	330	290	40	8	3	5	2.37	1.02	11.11
+EMIN 	Marelesu	363	179	184	232	150	82	11	6	5	4.53	3.85	5.75
+EMIN 	Kalayemule	312	161	151	150	142	8	1	1	          	0.66	0.70	          
+EMIN 	Lamazhao	258	132	126	167	111	56	          	          	          	          	          	          
+EMIN 	Huojiertemengguminzu	111	54	57	44	44	          	2	          	2	4.35	          	100
+EMIN 	Erdaoqiao	191	100	91	177	93	84	3	3	          	1.67	3.12	          
+EMIN 	Chaoyangqu	651	343	308	259	178	81	92	52	40	26.21	22.61	33.06
+EMIN 	Erzhihemuchang	208	102	106	124	91	33	1	          	1	0.80	          	2.94
+EMIN 	Jiaerbulakenongchang	266	142	124	220	122	98	1	          	1	0.45	          	1.01
+EMIN 	Kuoshenbikeliangzhongchang	378	199	179	221	159	62	2	1	1	0.90	0.62	1.59
+EMIN 	Saeryemulemuchang	203	106	97	81	80	1	1	          	1	1.22	          	50
+EMIN 	Yemulemuchang	351	177	174	189	155	34	7	3	4	3.57	1.90	10.53
+EMIN 	Diquzhongyangchang	586	298	288	273	266	7	5	4	1	1.80	1.48	12.5
+EMIN 	Wuzongbulakemuchang	312	160	152	145	144	1	1	          	1	0.68	          	50
+EMIN 	Tuanjienongchang	267	141	126	166	98	68	2	1	1	1.19	1.01	1.45
+EMIN 	169tuan	380	197	183	214	134	80	20	9	11	8.55	6.29	12.09
+EMIN 	166tuan	338	171	167	202	122	80	9	4	5	4.27	3.17	5.88
+EMIN 	167tuan	2439	1247	1192	1261	721	540	122	74	48	8.82	9.31	8.16
+EMIN 	168tuan	341	182	159	202	132	70	27	8	19	11.79	5.71	21.35
+EMIN 	165tuan	34	17	17	15	12	3	5	4	1	25	25	25
+SHAWAN 	Total	15039	7762	7277	11545	6432	5113	338	182	156	2.84	2.75	2.96
+SHAWAN 	Sandaohezi	4945	2447	2498	3112	1780	1332	265	149	116	7.85	7.72	8.01
+SHAWAN 	Sidaohezi	818	434	384	706	381	325	3	1	2	0.42	0.26	0.61
+SHAWAN 	Laoshawan	1113	583	530	945	516	429	5	1	4	0.53	0.19	0.92
+SHAWAN 	Wulanwusu	1401	758	643	1147	665	482	1	          	1	0.09	          	0.21
+SHAWAN 	Anjihai	1127	587	540	966	523	443	5	3	2	0.51	0.57	0.45
+SHAWAN 	Dongwan	582	298	284	504	269	235	5	2	3	0.98	0.74	1.26
+SHAWAN 	Xigebi	602	327	275	507	294	213	4	2	2	0.78	0.68	0.93
+SHAWAN 	Liumaowan	508	262	246	420	232	188	2	1	1	0.47	0.43	0.53
+SHAWAN 	Shanghudi	638	341	297	520	295	225	10	4	6	1.89	1.34	2.60
+SHAWAN 	Daquan	1507	790	717	1270	686	584	23	10	13	1.78	1.44	2.18
+SHAWAN 	Jingouhe	533	276	257	453	241	212	2	          	2	0.44	          	0.93
+SHAWAN 	Boertonggu	570	302	268	488	266	222	1	1	          	0.20	0.37	          
+SHAWAN 	Niuquanzimuchang	365	185	180	296	154	142	          	          	          	          	          	          
+SHAWAN 	Boertonggumuchang	330	172	158	211	130	81	12	8	4	5.38	5.80	4.71
+SHAWAN 	Liangzhongchang	          	          	          	          	          	          	          	          	          	          	          	          
+TUOLI 	Total	8523	4294	4229	4367	2897	1470	633	359	274	12.66	11.03	15.71
+TUOLI 	Tuoli	4132	2067	2065	1949	1194	755	395	228	167	16.85	16.03	18.11
+TUOLI 	Tiechanggou	380	193	187	235	169	66	2	          	2	0.84	          	2.94
+TUOLI 	Miaoergou	526	258	268	236	160	76	42	23	19	15.11	12.57	20
+TUOLI 	Duolate	396	195	201	310	160	150	1	1	          	0.32	0.62	          
+TUOLI 	Wuxuete	732	385	347	582	324	258	29	15	14	4.75	4.42	5.15
+TUOLI 	Kufu	398	204	194	208	170	38	2	          	2	0.95	          	5
+TUOLI 	Ahebielidou	626	308	318	238	224	14	81	35	46	25.39	13.51	76.67
+TUOLI 	Jiaerbasinongchang	112	57	55	38	33	5	15	11	4	28.30	25	44.44
+TUOLI 	Tiesibahanmuchang	430	217	213	207	200	7	1	          	1	0.48	          	12.5
+TUOLI 	Kalatuobiemuchang	334	170	164	154	135	19	2	2	          	1.28	1.46	          
+TUOLI 	Yegezikulemuchang	109	62	47	95	56	39	1	1	          	1.04	1.75	          
+TUOLI 	170tuan	348	178	170	115	72	43	62	43	19	35.03	37.39	30.65
+YUMIN 	Total	5769	2984	2785	3680	2279	1401	290	164	126	7.30	6.71	8.25
+YUMIN 	Halabula	755	379	376	460	256	204	57	30	27	11.03	10.49	11.69
+YUMIN 	Halabula	568	301	267	434	241	193	5	3	2	1.14	1.23	1.03
+YUMIN 	Xindi	352	187	165	282	160	122	3	1	2	1.05	0.62	1.61
+YUMIN 	Aletengyemule	1287	643	644	723	454	269	98	54	44	11.94	10.63	14.06
+YUMIN 	Jiyeke	445	223	222	202	185	17	19	18	1	8.60	8.87	5.56
+YUMIN 	Jianggesi	459	234	225	387	202	185	3	2	1	0.77	0.98	0.54
+YUMIN 	Chahantuohaimuchang	1004	526	478	636	413	223	58	33	25	8.36	7.40	10.08
+YUMIN 	Jilandemuchang	356	188	168	269	152	117	11	6	5	3.93	3.80	4.10
+YUMIN 	161tuan	543	303	240	287	216	71	36	17	19	11.15	7.30	21.11
+HEBUKESAIERMENGGUZIZHIXIAN 	Total	4480	2409	2071	2585	1816	769	264	134	130	9.27	6.87	14.46
+HEBUKESAIERMENGGUZIZHIXIAN 	Hebukesaier	91	59	32	67	57	10	2	1	1	2.90	1.72	9.09
+HEBUKESAIERMENGGUZIZHIXIAN 	Heshentuoluogai	1001	545	456	588	428	160	41	20	21	6.52	4.46	11.60
+HEBUKESAIERMENGGUZIZHIXIAN 	Xiazigai	151	80	71	119	70	49	          	          	          	          	          	          
+HEBUKESAIERMENGGUZIZHIXIAN 	Tiebukenwusan	308	158	150	111	98	13	61	34	27	35.47	25.76	67.5
+HEBUKESAIERMENGGUZIZHIXIAN 	Chagankule	258	141	117	154	103	51	17	7	10	9.94	6.36	16.39
+HEBUKESAIERMENGGUZIZHIXIAN 	Bayinaowa	237	126	111	109	90	19	1	1	          	0.91	1.10	          
+HEBUKESAIERMENGGUZIZHIXIAN 	Motege	106	51	55	87	44	43	2	1	1	2.25	2.22	2.27
+HEBUKESAIERMENGGUZIZHIXIAN 	Shajihaikuangqu	238	140	98	132	103	29	14	10	4	9.59	8.85	12.12
+HEBUKESAIERMENGGUZIZHIXIAN 	Chasituoluogaibingtuannongshishimeikuang	          	          	          	          	          	          	          	          	          	          	          	          
+HEBUKESAIERMENGGUZIZHIXIAN 	Yikewutubulagemuchang	1110	599	511	692	448	244	31	17	14	4.29	3.66	5.43
+HEBUKESAIERMENGGUZIZHIXIAN 	Narenhebukemuchang	54	38	16	40	35	5	7	3	4	14.89	7.89	44.44
+HEBUKESAIERMENGGUZIZHIXIAN 	Bagawutubulagemuchang	109	51	58	47	44	3	12	4	8	20.34	8.33	72.73
+HEBUKESAIERMENGGUZIZHIXIAN 	Busitungemuchang	142	74	68	79	43	36	38	21	17	32.48	32.81	32.08
+HEBUKESAIERMENGGUZIZHIXIAN 	184tuan	312	158	154	136	123	13	34	13	21	20	9.56	61.76
+HEBUKESAIERMENGGUZIZHIXIAN 	    gÂ^r\oh<QuV‚N QkV€V‚ÜZbﬂNa    	363	189	174	224	130	94	4	2	2	1.75	1.52	2.08
+ALETAI 	Total	13284	6707	6577	8222	4899	3323	666	334	332	7.49	6.38	9.08
+ALETAI 	Jinshanlu	1027	479	548	511	320	191	60	40	20	10.51	11.11	9.48
+ALETAI 	Jiefanglu	1664	842	822	809	518	291	150	81	69	15.64	13.52	19.17
+ALETAI 	Tuanjielu	1582	808	774	883	506	377	77	36	41	8.02	6.64	9.81
+ALETAI 	Beitun	1570	795	775	918	562	356	116	59	57	11.22	9.5	13.80
+ALETAI 	Aweitan	240	133	107	200	116	84	4	1	3	1.96	0.85	3.45
+ALETAI 	Hongdun	662	331	331	470	266	204	28	15	13	5.62	5.34	5.99
+ALETAI 	Qiemuerqieke	1426	717	709	807	527	280	52	17	35	6.05	3.12	11.11
+ALETAI 	Alahake	249	125	124	196	106	90	11	2	9	5.31	1.85	9.09
+ALETAI 	Handegatemengguzu	248	127	121	204	108	96	          	          	          	          	          	          
+ALETAI 	Lasite	524	273	251	431	246	185	2	          	2	0.46	          	1.07
+ALETAI 	Kalaxilike	636	314	322	545	284	261	5	2	3	0.91	0.70	1.14
+ALETAI 	Saerhusong	432	207	225	257	175	82	6	2	4	2.28	1.13	4.65
+ALETAI 	Balibagai	939	471	468	660	367	293	27	11	16	3.93	2.91	5.18
+ALETAI 	Qieerkeqi	510	257	253	386	216	170	35	9	26	8.31	4	13.27
+ALETAI 	Kalagashenmuchang	367	175	192	270	145	125	14	1	13	4.93	0.68	9.42
+ALETAI 	Aketumusikemuchang	178	105	73	148	95	53	          	          	          	          	          	          
+ALETAI 	181tuan	1030	548	482	527	342	185	79	58	21	13.04	14.5	10.19
+ALETAI 	Taerlangyunmuyikuang	          	          	          	          	          	          	          	          	          	          	          	          
+BUERJIN 	Total	4574	2287	2287	2901	1676	1225	309	152	157	9.63	8.32	11.36
+BUERJIN 	Buerjin	2312	1113	1199	1217	675	542	286	143	143	19.03	17.48	20.88
+BUERJIN 	Woyimoke	1029	555	474	754	473	281	7	3	4	0.92	0.63	1.40
+BUERJIN 	Dulaiti	228	119	109	151	96	55	1	1	          	0.66	1.03	          
+BUERJIN 	Kuositeke	274	150	124	207	124	83	4	1	3	1.90	0.80	3.49
+BUERJIN 	Chonghuer	548	261	287	433	231	202	7	2	5	1.59	0.86	2.42
+BUERJIN 	Yegezituobie	183	89	94	139	77	62	4	2	2	2.80	2.53	3.12
+BUERJIN 	Hemuhanasimenggu	          	          	          	          	          	          	          	          	          	          	          	          
+FUYUN 	Total	6301	3219	3082	3773	2263	1510	514	315	199	11.99	12.22	11.64
+FUYUN 	Kueerqisi	3093	1588	1505	1543	1008	535	319	189	130	17.13	15.79	19.55
+FUYUN 	Keketuohai	990	504	486	367	249	118	173	118	55	32.04	32.15	31.79
+FUYUN 	Tuerhong	471	244	227	384	207	177	3	          	3	0.78	          	1.67
+FUYUN 	Dure	342	175	167	295	155	140	4	3	1	1.34	1.90	0.71
+FUYUN 	Kuerte	233	128	105	229	126	103	          	          	          	          	          	          
+FUYUN 	Kalatongke	552	278	274	481	254	227	11	4	7	2.24	1.55	2.99
+FUYUN 	Tiemaike	133	71	62	112	64	48	          	          	          	          	          	          
+FUYUN 	Kalabulegen	98	45	53	83	38	45	2	          	2	2.35	          	4.26
+FUYUN 	Kalatongketongniekuang	389	186	203	279	162	117	2	1	1	0.71	0.61	0.85
+FUHAI 	Total	6108	3173	2935	3789	2354	1435	409	232	177	9.74	8.97	10.98
+FUHAI 	Fuhai	2116	1066	1050	1248	720	528	182	96	86	12.73	11.76	14.01
+FUHAI 	Jietearele	771	416	355	440	319	121	34	16	18	7.17	4.78	12.95
+FUHAI 	Kuokeagashen	219	119	100	207	113	94	          	          	          	          	          	          
+FUHAI 	Qiganjidie	796	395	401	382	250	132	73	48	25	16.04	16.11	15.92
+FUHAI 	Kalamagai	781	367	414	584	295	289	64	31	33	9.88	9.51	10.25
+FUHAI 	Aerda	          	          	          	          	          	          	          	          	          	          	          	          
+FUHAI 	Diquyinongchang	164	89	75	96	65	31	3	3	          	3.03	4.41	          
+FUHAI 	Fuhaijianyu	          	          	          	          	          	          	          	          	          	          	          	          
+FUHAI 	182tuan	184	98	86	133	82	51	1	          	1	0.75	          	1.92
+FUHAI 	183tuan	329	209	120	270	188	82	6	5	1	2.17	2.59	1.20
+FUHAI 	187tuan	200	108	92	89	82	7	6	5	1	6.32	5.75	12.5
+FUHAI 	188tuan	216	118	98	88	79	9	26	20	6	22.81	20.20	40
+FUHAI 	190tuan	332	188	144	252	161	91	14	8	6	5.26	4.73	6.19
+HABAHE 	Total	5276	2695	2581	3638	2249	1389	168	91	77	4.41	3.89	5.25
+HABAHE 	Akeqi	1625	800	825	982	564	418	147	79	68	13.02	12.29	13.99
+HABAHE 	Saertamu	674	353	321	594	318	276	          	          	          	          	          	          
+HABAHE 	Jiayilema	614	328	286	533	289	244	2	1	1	0.37	0.34	0.41
+HABAHE 	Kulebai	854	426	428	638	373	265	9	5	4	1.39	1.32	1.49
+HABAHE 	Saerbulake	180	97	83	108	83	25	1	1	          	0.92	1.19	          
+HABAHE 	Tiereketi	180	88	92	87	77	10	2	1	1	2.25	1.28	9.09
+HABAHE 	Qibaer	854	450	404	474	423	51	1	1	          	0.21	0.24	          
+HABAHE 	185tuan	295	153	142	222	122	100	6	3	3	2.63	2.40	2.91
+QINGHE 	Total	3813	1949	1864	2892	1578	1314	128	69	59	4.24	4.19	4.30
+QINGHE 	Qinghe	144	68	76	90	51	39	12	5	7	11.76	8.93	15.22
+QINGHE 	Takeshenken	531	263	268	409	221	188	13	10	3	3.08	4.33	1.57
+QINGHE 	Arele	850	434	416	660	357	303	9	6	3	1.35	1.65	0.98
+QINGHE 	Areletuobie	582	289	293	497	255	242	5	2	3	1	0.78	1.22
+QINGHE 	Saertuohai	490	249	241	428	218	210	2	2	          	0.47	0.91	          
+QINGHE 	Chaganguole	620	328	292	483	259	224	56	32	24	10.39	11	9.68
+QINGHE 	Agashenaobao	88	49	39	61	39	22	3	1	2	4.69	2.5	8.33
+QINGHE 	Qingheduliying	508	269	239	264	178	86	28	11	17	9.59	5.82	16.5
+JIMUNAI 	Total	2631	1368	1263	1472	987	485	107	62	45	6.78	5.91	8.49
+JIMUNAI 	Tuoputielieke	1483	764	719	863	493	370	81	46	35	8.58	8.53	8.64
+JIMUNAI 	Jimunai	161	83	78	65	58	7	12	8	4	15.58	12.12	36.36
+JIMUNAI 	Tuoputiereke	252	139	113	134	120	14	5	1	4	3.60	0.83	22.22
+JIMUNAI 	Tuosite	93	42	51	42	37	5	          	          	          	          	          	          
+JIMUNAI 	Qialeshenhai	101	57	44	72	49	23	1	          	1	1.37	          	4.17
+JIMUNAI 	Kaerjiao	195	104	91	147	86	61	3	2	1	2	2.27	1.61
+JIMUNAI 	Biesitielieke	346	179	167	149	144	5	5	5	          	3.25	3.36	          
+JIMUNAI 	186tuan	          	          	          	          	          	          	          	          	          	          	          	          
+SHIHEZI 	Total	43853	22688	21165	27148	16030	11118	2014	1119	895	6.91	6.53	7.45
+SHIHEZI 	Xincheng	2571	1345	1226	1270	739	531	281	157	124	18.12	17.52	18.93
+SHIHEZI 	Xiangyang	2927	1432	1495	1562	890	672	185	83	102	10.59	8.53	13.18
+SHIHEZI 	Hongshan	1898	980	918	1220	728	492	59	10	49	4.61	1.36	9.06
+SHIHEZI 	Laojie	7286	3670	3616	4294	2434	1860	629	340	289	12.78	12.26	13.45
+SHIHEZI 	Dongcheng	409	190	219	335	159	176	1	          	1	0.30	          	0.56
+SHIHEZI 	Beiquan	3441	1761	1680	2055	1206	849	137	87	50	6.25	6.73	5.56
+SHIHEZI 	Shihezi	2148	1164	984	1412	992	420	27	18	9	1.88	1.78	2.10
+SHIHEZI 	152tuan	353	188	165	287	164	123	3	2	1	1.03	1.20	0.81
+SHIHEZI 	121tuan	1362	743	619	964	583	381	11	10	1	1.13	1.69	0.26
+SHIHEZI 	122tuan	637	343	294	461	278	183	          	          	          	          	          	          
+SHIHEZI 	132tuan	599	323	276	353	221	132	34	22	12	8.79	9.05	8.33
+SHIHEZI 	133tuan	1395	741	654	913	533	380	50	30	20	5.19	5.33	5
+SHIHEZI 	134tuan	704	387	317	516	320	196	3	2	1	0.58	0.62	0.51
+SHIHEZI 	135tuan	601	323	278	433	251	182	11	9	2	2.48	3.46	1.09
+SHIHEZI 	136tuan	1274	668	606	716	441	275	76	57	19	9.60	11.45	6.46
+SHIHEZI 	141tuan	434	227	207	326	176	150	21	9	12	6.05	4.86	7.41
+SHIHEZI 	142tuan	992	517	475	633	378	255	42	27	15	6.22	6.67	5.56
+SHIHEZI 	143tuan	2517	1304	1213	1441	886	555	134	75	59	8.51	7.80	9.61
+SHIHEZI 	144tuan	2668	1389	1279	1981	1099	882	25	17	8	1.25	1.52	0.90
+SHIHEZI 	147tuan	2427	1220	1207	1627	890	737	22	10	12	1.33	1.11	1.60
+SHIHEZI 	148tuan	2860	1443	1417	1869	1013	856	90	52	38	4.59	4.88	4.25
+SHIHEZI 	149tuan	1379	734	645	828	514	314	51	33	18	5.80	6.03	5.42
+SHIHEZI 	150tuan	1009	542	467	568	350	218	5	4	1	0.87	1.13	0.46
+SHIHEZI 	151tuan	249	130	119	106	74	32	69	40	29	39.43	35.09	47.54
+SHIHEZI 	Nanshanmeikuang	1142	643	499	660	530	130	21	11	10	3.08	2.03	7.14
+SHIHEZI 	Nanshanshuinichang	571	281	290	318	181	137	27	14	13	7.83	7.18	8.67

@@ -1,0 +1,27 @@
+# Research data (immutable, large)
+*.dta
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+
+# Generated outputs
+*.log
+*.smcl
+*.out
+*.aux
+*.toc
+*.synctex.gz
+
+# Editor/temp files
+*.swp
+*.swo
+*.stswp
+*~
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc

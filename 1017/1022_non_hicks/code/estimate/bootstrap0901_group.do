@@ -1,0 +1,1369 @@
+*******************************************************
+* bootstrap0901_group.do
+* Usage:
+*   do "$CODE/estimate/bootstrap0901_group.do"    // pooled {17,18,19}, IV spec of 18
+*   do "$CODE/estimate/bootstrap0901_group.do"    // pooled {39,40,41}, IV spec of 40
+* Outputs (per group):
+*   - gmm_point_group_<GROUP>.dta   (point + bootstrap SEs + J + N)
+*   - gmm_boot_group_<GROUP>.dta    (bootstrap draws)
+
+* [定义阶段]  先定义：Mata函数 + Stata的program  gmm2step_once
+* [执行阶段]  for 每次bootstrap复制：
+*              -> 调 gmm2step_once (Stata)
+*              -> 调 mata:refresh_globals() (Mata)
+*              -> 调 mata:run_two_step()    (Mata, 真正优化)
+*              <- 结果回到 Stata, 存入 r()
+
+*******************************************************
+clear all
+set more off
+capture confirm global ROOT
+if _rc global ROOT "D:/文章发表/欣昊/input markdown/IJIO/IJIO_GMM_codex/1017/1022_non_hicks"
+global CODE "$ROOT/code"
+global DATA_RAW "$ROOT/data/raw"
+global DATA_WORK "$ROOT/data/work"
+global RES_DATA "$ROOT/results/data"
+global RES_FIG "$ROOT/results/figures"
+global RES_LOG "$ROOT/results/logs"
+cd "$ROOT"
+
+
+* === 仅从全局读取组名，并做校验 ===
+if ("$GROUP_NAME"=="") {
+    di as err "ERROR: global GROUP_NAME is empty. Set it before calling this do-file."
+    exit 3499
+}
+if ("$GROUP_NAME"!="G1_17_19" & "$GROUP_NAME"!="G2_39_41") {
+    di as err "ERROR: invalid GROUP_NAME=[$GROUP_NAME]. Must be G1_17_19 or G2_39_41."
+    exit 3499
+}
+
+* 在本 do 的作用域内生成一个 local，便于后面文件名/筛选使用
+local GROUPNAME "$GROUP_NAME"
+di as txt "DBG: GROUP_NAME(global) = [$GROUP_NAME] ; GROUPNAME(local) = `GROUPNAME'"
+
+* -------- Load & merge -------- *
+use "$DATA_RAW/junenewg_0902", clear
+
+* -------- Group filter (by GROUPNAME) -------- *
+if ("`GROUPNAME'"=="G1_17_19") {
+    keep if inlist(cic2,17,18,19)
+}
+else if ("`GROUPNAME'"=="G2_39_41") {
+    keep if inlist(cic2,39,40,41)
+}
+else {
+    di as err "Unknown GROUPNAME=`GROUPNAME'. Must be G1_17_19 or G2_39_41."
+    exit 198
+}
+
+duplicates drop firmid year, force
+
+* year numeric
+ confirm numeric variable year
+if _rc destring year, replace ignore(" -/,")
+xtset firmid year
+
+// ===== 你的数据处理与构造部分=====
+gen double e = .
+replace e=8.2784 if year==2000
+replace e=8.2770 if inlist(year,2001,2002,2003)
+replace e=8.2768 if year==2004
+replace e=8.1917 if year==2005
+replace e=7.9718 if year==2006
+replace e=7.6040 if year==2007
+
+drop if domesticint <= 0
+drop if 营业收入合计千元 < 40
+
+gen double R = 工业总产值_当年价格千元 * 1000 / e
+
+rename 固定资产合计千元 K
+drop if K < 30
+rename 全部从业人员年平均人数人 L
+replace L = 年末从业人员合计人 if year==2003
+drop if L < 8
+
+rename output Q1
+gen double outputdef = outputdef2
+gen double Q = Q1 / outputdef
+
+gen double WL = 应付工资薪酬总额千元 * 1000 / e
+
+* 生成企业性质大类变量
+gen firmcat = . 
+
+* 1 是国企
+replace firmcat = 1 if firmtype == 1
+
+* 2、3、4 是外企
+replace firmcat = 2 if inlist(firmtype, 2, 3, 4)
+
+* 其他（即非 1、2、3、4）是私企
+replace firmcat = 3 if missing(firmcat)
+
+* 添加标签
+label define firmcatlbl 1 "国企" 2 "外企" 3 "私企", replace
+label values firmcat firmcatlbl
+* -------- 2) 生成虚拟变量（基准：国企）--------
+
+tab firmcat, gen(firmcat_)
+
+* 检查分类结果
+tab firmcat
+
+ confirm variable firmtotalq
+if !_rc rename firmtotalq X
+
+* Merge investment deflator and reconstruct capital
+merge m:1 year using "$DATA_RAW/Brandt-Rawski investment deflator.dta", nogen
+replace BR_deflator = 116.7 if year == 2007
+drop if year < 2000
+
+bysort firmid (year): gen double I = K - K[_n-1]
+bysort firmid (year): replace I = K if _n == 1
+
+bysort firmid (year): gen double inv0 = I
+replace inv0 = 0 if missing(inv0)
+forvalues v = 1/19 {
+    bysort firmid (year): gen double inv`v' = I[_n-`v'] * (BR_deflator / BR_deflator[_n-`v']) if _n > `v'
+    replace inv`v' = 0 if missing(inv`v')
+}
+gen double K_current = inv0
+forvalues v = 1/19 {
+    replace K_current = K_current + inv`v'
+}
+drop inv0-inv19
+replace K = K_current
+
+rename 工业中间投入合计千元 MI
+rename 管理费用千元 Mana
+
+gen double lnR = ln(R)  if R>0
+gen double lnM = ln(domesticint) if domesticint>0
+capture ssc install winsor2, replace
+winsor2 lnR, cuts(1 99) by(cic2 year) replace
+winsor2 lnM, cuts(1 99) by(cic2 year) replace
+gen double lratiofs = lnR - lnM
+
+gen ratio = importint/(domesticint+importint)
+*drop if ratio<0.01   
+*drop if ratio>0.98
+
+gen inputp = inputhat + ln(inputdef2)
+gen einputp = exp(inputp)
+gen MF = importint/einputp
+
+replace 开业成立时间年 = . if 开业成立时间年==0
+gen age   = year - 开业成立时间年 + 1
+gen lnage = ln(age)
+gen lnmana = ln(Mana)
+
+gen  l  = ln(L)
+gen  lsq = l*l 
+gen double k  = ln(K)
+gen  ksq = k*k  
+gen double q  = ln(Q)
+gen m = ln(delfateddomestic)        
+gen double x  = ln(X)
+gen double r  = ln(R)
+gen DWL=WL/L
+gen wl=ln(DWL)
+
+winsor2 k, cuts(1 99) by(cic2 year) replace
+winsor2 l, cuts(1 99) by(cic2 year) replace
+xtset firmid year
+
+capture confirm variable pft
+if !_rc rename pft pi
+capture confirm variable foreignprice
+if !_rc rename foreignprice WX
+capture confirm variable WX
+if !_rc gen double wx = ln(WX)
+
+* First stage  (ADD tariff as you asked)(先把关税删除掉，之后再说)
+reg lratiofs k l wl x age lnmana i.firmcat i.city i.year, vce(cluster firmid)
+predict double r_hat_ols, xb
+gen double es   = exp(-r_hat_ols)
+gen double es2q = es^2
+
+* phi cubic 
+reg r c.(l k m x pi wx wl es)##c.(l k m x pi wx wl es)##c.(l k m x pi wx wl es) ///
+    age i.firmcat i.city i.year
+// 回归（你的第一阶段）后：预测后只对有效样本赋值
+predict double phi if e(sample), xb
+predict double epsilon if e(sample), residuals
+assert !missing(phi, epsilon) if e(sample)
+label var phi     "phi_it"
+label var epsilon "measurement error (first stage)"
+save "$DATA_WORK/firststage.dta", replace
+
+**删选连续>= 2的公司，以及删除首年不保留（因为后面有lag）
+* 1. 按公司ID和年份排序
+sort firmid year
+
+* 验证数据唯一性
+isid firmid year, sort
+di "✅ Data sorted and verified: unique firm-year combinations"
+
+* 2. 计算年份间隔
+by firmid: gen gap = year - L.year
+
+* 3. 识别连续段
+by firmid: gen seqblock = (gap != 1 | missing(gap))
+by firmid: replace seqblock = sum(seqblock)
+
+* 4. 计算每个连续段的长度
+bys firmid seqblock: gen seg_len = _N
+
+* 5. 计算每家公司的最长连续段长度
+bys firmid: egen max_seg_len = max(seg_len)
+
+* 6. 只保留最长连续段≥2年的公司（保留这些公司的所有观测）
+keep if max_seg_len >= 2
+
+* 7. 删除辅助变量
+drop gap seqblock seg_len max_seg_len
+
+* 8. 验证结果
+bys firmid: gen nobs_firm = _N
+tab nobs_firm, missing
+sum nobs_firm, detail
+drop nobs_firm
+
+*生成滞后项
+
+isid firmid year, sort
+xtset firmid year
+gen double phi_lag = L.phi
+
+gen double klag = L.k
+gen double mlag = L.m
+gen double xlag = L.x
+gen double llag = L.l
+gen double ksqlag = L.ksq
+gen double lsqlag = L.lsq
+
+gen double llagsq = llag^2
+gen double klagsq = klag^2
+gen double mlagsq = mlag^2
+gen double xlagsq = xlag^2
+
+gen double llagklag = llag*klag
+gen double llagmlag = llag*mlag
+gen double llagxlag = llag*xlag
+gen double klagmlag = klag*mlag
+gen double klagxlag = klag*xlag
+gen double mlagxlag = mlag*xlag
+
+gen double llag2 = L2.l
+* optional interactions used elsewhere
+gen double llagk = llag*k
+gen double mlagl = mlag*l
+gen double mlagxlagk = mlagxlag*k
+gen double xlagk = xlag*k
+gen double mlagk = mlag*k
+gen double mlagllag = mlag*llag
+gen double llagxlagmlag = llagxlag*mlag
+gen double xlagllag = xlag*llag
+gen double xllagl = xlag*l
+
+gen double lages   = L.es
+gen double lages2q = L.es2q
+gen double klages=k*lages
+
+gen double kl = k*l
+gen byte   const = 1
+
+capture confirm variable const
+if _rc gen byte const = 1
+order firmid year, first
+
+******************工具变量准备*********
+* 首先，为每个内生变量创建一个临时标识
+gen temp_l = l
+gen temp_k = k
+gen temp_m = m
+
+* 使用 rangestat 命令（需要先安装：ssc install rangestat）
+* 计算同行业(cic2)同年份(year)下，除自己外的均值
+capture ssc install rangestat
+rangestat (mean) temp_l, by(cic2 year) interval(firmid . .) excludeself
+rename temp_l_mean l_ind_yr // 行业-年度劳动均值
+
+rangestat (mean) temp_k, by(cic2 year) interval(firmid . .) excludeself
+rename temp_k_mean k_ind_yr // 行业-年度资本均值
+
+rangestat (mean) temp_m, by(cic2 year) interval(firmid . .) excludeself
+rename temp_m_mean m_ind_yr // 行业-年度m均值
+
+* 清理临时变量
+drop temp_*
+********************************
+* 关税和制度的IV
+merge m:1 firmid year using "$DATA_RAW/firm_year_IVs_Ztariff_ZHHI.dta"
+keep if _merge==3
+drop if missing(Z_tariff, Z_HHI_post)
+********************************
+* Year dummies (baseline = first year in sample)
+levelsof year, local(yrs)
+local base : word 1 of `yrs'
+quietly tab year, gen(Dy)
+local j = 1
+foreach y of local yrs {
+    if `y' == `base' drop Dy`j'
+    else               rename Dy`j' dy`y'
+    local ++j
+}
+
+isid firmid year, sort
+xtset firmid year
+
+* —— 1) 年龄的滞后 —— 
+capture confirm variable lnagelag
+if _rc {
+    gen double lnagelag = L.lnage
+    di "✅ Created: lnagelag (lagged firm age)"
+}
+
+drop if missing(const, r, l, k, phi, phi_lag, llag, klag, mlag, lsqlag, ksqlag, ///
+    lsq, ksq, m, es, es2q, lages, lages2q, lnage, firmcat, lnmana, ///
+    lnagelag, firmcat_2, firmcat_3, dy2002-dy2007, klages, mlagxlag)
+	
+	* 先在 Stata 里创建占位变量，供 Mata 写入残差 ——1120添加 —— *
+capture drop OMEGA2 XI2                 // 防止之前已有同名变量 ——1120添加 —— *
+gen double OMEGA2 = .                   // 与样本行数相同的空列 ——1120添加 —— *
+gen double XI2    = .                   // ——1120添加 —— *
+
+* 使用 global 传递起点状态，供 Mata 读取
+  // 0=没有已有起点，1=已有收敛起点  * ——1120添加 —— * 
+
+ 
+
+local have_b0 0    
+*==================== Mata (two-step GMM; add tariff to CONSOL) ====================*
+mata:
+mata clear
+
+real scalar scalarmax(real scalar a, real scalar b)
+{
+    return( a > b ? a : b )
+}
+
+/* 初始化全局矩阵（用于 st_store 回写时保证存在） */
+
+OMEGA2 = J(0,1,.)
+XI2    = J(0,1,.)
+
+void refresh_globals()
+{
+    external X, X_lag, Z, PHI, PHI_lag, Y, C, CONSOL, beta_init, Wg_opt
+        
+    printf(">>> CHECKPOINT A: starting refresh_globals()\n")
+        
+    X       = st_data(., ("const","l","k","lsq","ksq","m","es","es2q"))
+    printf(">>> CHECKPOINT B: X loaded (%f rows)\n", rows(X))
+        
+    X_lag   = st_data(., ("const","llag","klag","lsqlag","ksqlag","mlag","lages","lages2q"))
+    printf(">>> CHECKPOINT C: X_lag loaded (%f rows)\n", rows(X_lag))
+
+    /* IV sets by group name*/
+    string scalar g
+    g = st_global("GROUP_NAME")
+    printf(">> [Mata] GROUPNAME seen: [%s]\n", g)
+    if (g!="G1_17_19" & g!="G2_39_41") {
+        errprintf("Invalid GROUPNAME = [%s]; must be G1_17_19 or G2_39_41\n", g)
+        _error(3499)
+    }
+
+    if (g=="G1_17_19") {
+        // 原先 anchor=18 的 IV
+		Z = st_data(., ("const","lages","llag","klag", "mlag", "l_ind_yr","m_ind_yr", "k_ind_yr","Z_HHI_post"))   
+        printf(">> Using IV: IV_anchor18_Kz9\n")
+    }
+    else  {
+        // 原先 anchor=40 的 IV
+         Z = st_data(., ("llag","klag","l","lages","lsq", "l_ind_yr", "k_ind_yr", "m_ind_yr","Z_tariff", "Z_HHI_post"))
+        printf(">> Using IV: IV_anchor40_Kz9\n")
+    }
+
+   /* ---------- 标准化 Z ----------
+    real rowvector mu, zs
+    mu = colsum(Z) :/ rows(Z)                 // 列均值
+   Z  = Z :- mu                              // 零均值
+    zs = sqrt(colsum(Z:^2) :/ rows(Z)) :+ 1e-12  // 列的 L2 标度（加微小项防 0）
+    Z  = Z :/ zs                              // 单位尺度
+    */       
+    printf(">>> CHECKPOINT Z1: Z raw loaded (%f rows, %f cols)\n", rows(Z), cols(Z))
+
+    // ========== ① 在这里插入 Z 的 missing 检查 ==========
+    real scalar z
+    real rowvector Zmiss
+    Zmiss = colmissing(Z)
+    printf(">>> CHECKPOINT Z2: Z column missing counts = ")
+    z = 1
+    while (z <= cols(Z)) {
+        printf("%f ", Zmiss[z])
+        z = z + 1
+    }
+    printf("\n")
+    // =================================================
+
+    // ---------- 主变量 ----------
+    PHI     = st_data(., "phi")
+    printf(">>> CHECKPOINT E: PHI loaded (%f rows)\n", rows(PHI))
+        
+    PHI_lag = st_data(., "phi_lag")
+    printf(">>> CHECKPOINT F: PHI_lag loaded (%f rows)\n", rows(PHI_lag))
+
+    // ========== ② PHI / PHI_lag missing 检查 ==========
+    printf(">>> PHI missing count = %f\n", colmissing(PHI)[1])
+    printf(">>> PHI_lag missing count = %f\n", colmissing(PHI_lag)[1])
+    // =================================================
+
+    Y       = st_data(., "r")
+    printf(">>> CHECKPOINT G: Y loaded (%f rows)\n", rows(Y))
+    C       = st_data(., "const")
+    printf(">>> CHECKPOINT H: C loaded (%f rows)\n", rows(C))
+
+    // Controls（后续如要加关税再放进这里）
+    CONSOL  = st_data(., ("dy2002","dy2003","dy2004","dy2005","dy2006","dy2007","lnage","firmcat_2","firmcat_3"))
+
+    // ========== ③ 在这里插入 CONSOL 的 missing 检查 ==========
+    real scalar j
+    real rowvector Cmiss
+    printf(">>> CHECKPOINT CONSOL rows=%f cols=%f\n", rows(CONSOL), cols(CONSOL))
+    Cmiss = colmissing(CONSOL)
+    printf(">>> CONSOL missing counts: ")
+    j = 1
+    while (j <= cols(CONSOL)) {
+        printf("%f ", Cmiss[j])
+        j = j + 1
+    }
+    printf("\n")
+    // =================================================
+
+    /* 起点：由 Stata 本地宏 have_b0 控制 */
+    real scalar use_b0
+    use_b0 = strtoreal(st_local("have_b0"))  // 从 st_local 读取
+    printf(">> [Mata] have_b0 = %f\n", use_b0)
+        
+    // ---- 在这里加一层维度与缺失检查 ----
+    printf(">>> DEBUG: rows(X)=%f cols(X)=%f  rows(Y)=%f cols(Y)=%f\n",
+        rows(X), cols(X), rows(Y), cols(Y))
+
+    if (rows(X) != rows(Y)) {
+        errprintf(">>> ERROR: rows(X) != rows(Y) in qrsolve\n")
+        _error(3497)
+    }
+
+    if (cols(Y) != 1) {
+        errprintf(">>> ERROR: Y is not a column vector in qrsolve\n")
+        _error(3497)
+    }
+
+    if (any(missing(X))) {
+        errprintf(">>> ERROR: X contains missing values before qrsolve\n")
+        _error(3497)
+    }
+
+    if (any(missing(Y))) {
+        errprintf(">>> ERROR: Y contains missing values before qrsolve\n")
+        _error(3497)
+    }
+
+    if (use_b0 == 1) {
+        beta_init = st_matrix("b0")'
+        printf(">> Using previous converged beta as starting point\n")
+        if (cols(beta_init) != cols(X)) {
+            printf(">> WARN: dimensions mismatch (beta_init=%f, X=%f). Recomputing OLS start via qrsolve.\n", cols(beta_init), cols(X))
+            beta_init = qrsolve(X, Y)'   // OLS 起点
+        }
+    }
+    else {
+        beta_init = qrsolve(X, Y)'       // 直接用 OLS 起点
+        printf(">> Using OLS (qrsolve) as starting point\n")
+    }
+
+    printf(">>> DEBUG: beta_init loaded, cols(beta_init)=%f\n", cols(beta_init))
+}
+
+/*
+   === 优化 2: 重构 GMM_DL_weighted() 函数 ===
+   原因：原代码在 d0 模式下也计算梯度，这是冗余的
+   解决方案：仅在需要梯度时(todo>=1)计算梯度
+   此外：1) 添加更详细的早停条件 2) 优化数值梯度计算
+*/
+
+void GMM_DL_weighted(todo, b, crit, g, H)
+{
+    external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, Wg_opt // ← NEW
+
+    real colvector OMEGA, OMEGA_lag, XI, gb, m
+    real matrix POOL
+	real scalar N, crit_val  // ← NEW
+
+	  // ======= 全局健检：如果样本太小或 Z 有缺失，直接返回大目标值 =======
+    N = rows(Z)
+    if (N <= 5 | any(missing(Z))) {
+        // 没有足够样本或工具变量里有缺失：给一个很大的目标值，梯度设为 0
+        crit = 1e+20
+        if (todo >= 1) g = J(1, cols(b), 0)
+        if (todo == 2) H = J(cols(b), cols(b), 0)
+        return
+    }
+	
+	    // ★ 这里加一层防护：如果 Wg_opt 还没被 run_two_step 正确设定，就用单位矩阵兜底
+    if (rows(Wg_opt)==0 | cols(Wg_opt)==0 | rows(Wg_opt)!=cols(Z) | cols(Wg_opt)!=cols(Z)) {
+        Wg_opt = I(cols(Z))
+    }
+	
+	
+    OMEGA     = PHI     - X     * b'
+    OMEGA_lag = PHI_lag - X_lag * b'
+
+    if (cols(CONSOL)>0) POOL = (C, OMEGA_lag, CONSOL)
+    else                POOL = (C, OMEGA_lag)
+
+    gb  = qrsolve(POOL, OMEGA)
+    XI  = OMEGA - POOL * gb
+
+	N = rows(Z);
+    m    = quadcross(Z, XI) :/ N  ;    // ← NEW: 用样本平均
+	
+	
+    crit_val = m' * Wg_opt * m;
+    // ====== 防止 missing / 非有限 的目标值 ======
+    if (missing(crit_val) | crit_val>1e+30 | crit_val<-1e+30) {
+        // 任何数值炸掉，一律返回一个巨大的有限值
+        crit = 1e+20
+        if (todo >= 1) g = J(1, cols(b), 0)
+        if (todo == 2) H = J(cols(b), cols(b), 0)
+        return
+    }
+
+    // ===== 早停：如果目标值已经非常小，直接返回 =====
+    if (crit_val < 1e-10 * N) {
+        crit = crit_val
+        if (todo >= 1) g = J(1, cols(b), 0)
+        if (todo == 2) H = J(cols(b), cols(b), 0)
+        return
+    }
+
+    // 正常情况
+    crit = crit_val
+
+    /* 数值梯度：相对步长 + 中心差分（行向量） */
+    if (todo>=1) {
+        real scalar i, eps_i, fplus, fminus,crit_plus, crit_minus
+        real rowvector gnum, btmp
+        real colvector Oe, Oel, XI2p, XI2m, m2p, m2m
+        real matrix PO
+
+        gnum = J(1, cols(b), .)
+
+        for (i=1; i<=cols(b); i++) {
+            // 动态步长：基础步长 1e-6，根据参数尺度调整
+            eps_i = scalarmax(1e-6, 1e-6 * abs(b[i]))
+
+            // +eps
+            btmp    = b
+            btmp[i] = b[i] + eps_i
+            Oe  = PHI     - X     * btmp'
+            Oel = PHI_lag - X_lag * btmp'
+            PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
+            gb  = qrsolve(PO, Oe)
+            XI2p = Oe - PO*gb;
+            m2p  = quadcross(Z, XI2p):/ N
+            crit_plus = m2p' * Wg_opt * m2p
+
+            // -eps
+            btmp    = b
+            btmp[i] = b[i] - eps_i
+            Oe  = PHI     - X     * btmp'
+            Oel = PHI_lag - X_lag * btmp'
+            PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
+            gb  = qrsolve(PO, Oe)
+            XI2m = Oe - PO*gb;
+            m2m  = quadcross(Z, XI2m):/ N
+            crit_minus = m2m' * Wg_opt * m2m
+
+          // --- 保险丝：如果任一边的目标是 missing，就把这一维梯度设成 0 ---
+if (missing(crit_plus) | missing(crit_minus)) {
+    gnum[i] = 0
+}
+else {
+    // 中心差分梯度
+    gnum[i] = (crit_plus - crit_minus) / (2*eps_i)
+}
+        }
+
+        g = gnum   // 与 b 同为行向量
+    }
+}
+
+void run_two_step()
+{
+    // —— 初始化：就算失败也保证这些标量存在 —— 
+    st_numscalar("gmm_conv1", 0)
+    st_numscalar("gmm_conv2", 0)
+    st_numscalar("gmm_conv",  0)
+    st_numscalar("J_unit",    .)
+    st_numscalar("J_opt",     .)
+    st_numscalar("J_df",      .)
+    st_numscalar("J_p",       .)
+
+    // 不再把 OMEGA2 / XI2 声明为 external，避免名字冲突 ——1120添加 —— *
+    external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, beta_init, Wg_opt   // ——1120添加 —— *
+
+    real scalar Kz, Kx, J1, J2, lam, conv1, conv2, smin, smax, cond, EPSJ
+    real rowvector b1, b2
+    real colvector OMEGA1, OMEGA1_lag, XI1, OMEGA2_local, OMEGA2_lag, XI2_local, g_bvec, m_unit, m_opt
+    real colvector svals
+    real matrix POOL1, Mrow, S, POOL2, Wloc
+    real scalar N, Junit, Jopt, df, jp
+    real scalar conv2_nr, J2_nr
+    real rowvector b2_nr
+    real scalar Kz_check
+
+    // 样本量
+    N = rows(Z)
+    st_numscalar("Nobs", N)
+    printf("\n>> [GMM] Starting two-step estimation with N=%f observations\n", N)
+
+    // 维度检查
+    Kz = cols(Z)
+    Kx = cols(X)
+    if (Kz < Kx) {
+        errprintf("ERROR: Not enough instruments (Kz=%f < Kx=%f). Cannot identify model.\n", Kz, Kx)
+        _error(3498)
+    }
+
+    // ===== Step 1: Unit weight matrix (I) =====
+    Wg_opt = I(Kz)  // I(Kz) 作为第一步的单位权重矩阵
+    printf(">> Step 1: GMM with unit weight matrix (NM optimization)\n")
+
+    real scalar S1
+    S1 = optimize_init()
+    optimize_init_evaluator(S1, &GMM_DL_weighted())
+    optimize_init_evaluatortype(S1, "d0")     // 不用梯度
+    optimize_init_which(S1, "min")
+    optimize_init_params(S1, beta_init)
+    optimize_init_technique(S1, "nm")
+
+    // 初始 simplex 步长：每个参数 0.1
+    optimize_init_nmsimplexdeltas(S1, J(1, cols(beta_init), 0.01))
+
+    // 收敛与迭代设置：第一步只要"够好"，不追求极致精度
+    optimize_init_conv_maxiter(S1, 2000)
+    optimize_init_conv_ptol(S1, 1e-8)
+    optimize_init_conv_vtol(S1, 1e-8)
+    optimize_init_tracelevel(S1, "none")
+
+    // 预分配 b1
+    b1 = J(1, Kx, .)
+
+    // —— 直接优化 —— 
+    b1    = optimize(S1)
+    J1    = optimize_result_value(S1)
+    conv1 = optimize_result_converged(S1)
+
+    printf("   Step 1: J1 = %12.6f, converged = %f\n", J1, conv1)
+    st_numscalar("gmm_conv1", conv1)
+
+    // 如未收敛，缩小步长再跑一次
+    if (!conv1) {
+        printf("   Step 1 did not converge. Trying smaller simplex deltas...\n")
+        optimize_init_nmsimplexdeltas(S1, J(1, cols(beta_init), 0.01))
+        optimize_init_params(S1, b1)
+
+        b1    = optimize(S1)
+        J1    = optimize_result_value(S1)
+        conv1 = optimize_result_converged(S1)
+
+        printf("   Step 1 restarted: J1 = %12.6f, converged = %f\n", J1, conv1)
+        st_numscalar("gmm_conv1", conv1)
+    }
+
+    // ===== Step 1.5: Compute optimal weight matrix =====
+    printf(">> Computing optimal weight matrix from Step 1 residuals\n")
+    OMEGA1     = PHI     - X     * b1'
+    OMEGA1_lag = PHI_lag - X_lag * b1'
+
+    if (cols(CONSOL)>0) POOL1 = (C, OMEGA1_lag, CONSOL)
+    else                POOL1 = (C, OMEGA1_lag)
+
+    XI1  = OMEGA1 - POOL1 * qrsolve(POOL1, OMEGA1)
+    Mrow = Z :* (XI1 * J(1, cols(Z), 1))
+
+    S    = (Mrow' * Mrow) :/ N   // 标准化 ——1120添加 —— *
+
+    // 使用 SVD 检查条件数，添加自适应 ridge
+    svals = svdsv(S)
+    smin  = min(svals)
+    smax  = max(svals)
+    cond  = smax / scalarmax(smin, 1e-12)
+
+    lam = 0
+    if (cond > 1e6) {
+        lam = scalarmax(1e-4, (1e-6 * smax))
+        printf("   WARN: S matrix ill-conditioned (cond=%9.2e). Adding ridge lambda=%9.2e\n", cond, lam)
+    }
+    else {
+        printf("   S matrix condition number: %9.2e (good)\n", cond)
+    }
+
+    if (lam > 0) {
+        Wloc = invsym(S + lam * I(Kz))
+    }
+    else {
+        Wloc = invsym(S)
+    }
+    Wg_opt = Wloc
+    st_matrix("W_opt", Wg_opt)
+
+    // ===== Step 2: GMM with optimal weight matrix =====
+    printf(">> Step 2: GMM with optimal weight matrix\n")
+    EPSJ = 1e-8 * N
+
+    real scalar S2
+    S2 = optimize_init()
+    optimize_init_evaluator(S2, &GMM_DL_weighted())
+    optimize_init_evaluatortype(S2, "d0")      // 用数值梯度——1120添加 —— *
+    optimize_init_which(S2, "min")
+    optimize_init_params(S2, b1)
+    optimize_init_technique(S2, "nm")
+	optimize_init_nmsimplexdeltas(S2, J(1, cols(b1), 0.00001))
+    optimize_init_conv_maxiter(S2, 3000)
+    optimize_init_conv_ptol(S2, 1e-8)
+    optimize_init_conv_vtol(S2, 1e-8)
+    optimize_init_tracelevel(S2, "none")
+
+    b2 = J(1, Kx, .)
+    b2    = optimize(S2)
+    J2    = optimize_result_value(S2)
+    conv2 = optimize_result_converged(S2)
+
+    printf("   Step 2 (BFGS): J2 = %12.6f, converged = %f\n", J2, conv2)
+
+    // 若 BFGS 不收敛，用 NM
+    if (!conv2) {
+        printf("   BFGS did not converge. Switching to Nelder–Mead...\n")
+
+        S2 = optimize_init()
+        optimize_init_evaluator(S2, &GMM_DL_weighted())
+        optimize_init_evaluatortype(S2, "d0")
+        optimize_init_which(S2, "min")
+        optimize_init_params(S2, b1)
+        optimize_init_technique(S2, "nm")
+        optimize_init_nmsimplexdeltas(S2, J(1, cols(b1), 0.00001))
+        optimize_init_conv_maxiter(S2, 3000)
+        optimize_init_conv_ptol(S2, 1e-9)
+        optimize_init_conv_vtol(S2, 1e-9)
+        optimize_init_tracelevel(S2, "none")
+
+        b2    = optimize(S2)
+        J2    = optimize_result_value(S2)
+        conv2 = optimize_result_converged(S2)
+
+        printf("   Step 2 (NM):   J2 = %12.6f, converged = %f\n", J2, conv2)
+    }
+
+    // 如未收敛或 J2 仍较大，可选 NR polishing（保留你的逻辑）
+    if (( !conv2 | J2 > EPSJ ) & rows(b2)==1 & cols(b2)==Kx) {
+        printf("   Trying Newton–Raphson polishing...\n")
+
+        S2 = optimize_init()
+        optimize_init_evaluator(S2, &GMM_DL_weighted())
+        optimize_init_evaluatortype(S2, "d0")
+        optimize_init_which(S2, "min")
+        optimize_init_params(S2, b2)
+        optimize_init_technique(S2, "nr")
+        optimize_init_conv_maxiter(S2, 15)
+        optimize_init_conv_ptol(S2, 1e-7)
+        optimize_init_conv_vtol(S2, 1e-7)
+        optimize_init_tracelevel(S2, "none")
+
+        b2_nr    = optimize(S2)
+        J2_nr    = optimize_result_value(S2)
+        conv2_nr = optimize_result_converged(S2)
+
+        if (conv2_nr & (J2_nr <= J2)) {
+            b2    = b2_nr
+            J2    = J2_nr
+            conv2 = conv2_nr
+            printf("   NR polishing improved solution: J2 = %12.6f, converged = %f\n", J2, conv2)
+        }
+        else {
+            printf("   NR polishing did not improve J. Keeping previous BFGS/NM result.\n")
+        }
+    }
+
+    st_numscalar("gmm_conv2", conv2)
+
+    // ===== 计算最终统计量 =====
+    OMEGA2_local     = PHI     - X     * b2'          // ——1120添加 —— *
+    OMEGA2_lag       = PHI_lag - X_lag * b2'
+
+    if (cols(CONSOL)>0) {
+        POOL2 = (C, OMEGA2_lag, CONSOL)
+    }
+    else {
+        POOL2 = (C, OMEGA2_lag)
+    }
+
+    g_bvec   = qrsolve(POOL2, OMEGA2_local)
+    XI2_local = OMEGA2_local - POOL2 * g_bvec  // ——1120添加 —— *
+
+    // 样本平均矩
+    m_unit = quadcross(Z, XI2_local) :/ N
+    m_opt  = quadcross(Z, XI2_local) :/ N   // ——1120添加 —— *
+
+    // J-stat
+    Junit = N * quadcross(m_unit, m_unit)
+    Jopt  = N * quadcross(m_opt, Wg_opt * m_opt)
+
+    df = Kz - Kx
+    jp = .
+    if (df > 0 & Jopt >= 0) {
+        jp = chi2tail(df, Jopt)
+    }
+    else {
+        printf("WARN: invalid (df, Jopt) for chi2tail: df=%f, Jopt=%f. Set J_p=.\n", df, Jopt)
+        jp = .
+    }
+
+    printf("\n>> GMM Results:\n")
+    printf("   J-stat (unit weight): %12.4f\n", Junit)
+    printf("   J-stat (opt weight) : %12.4f  (df=%g, p=%6.4f)\n", Jopt, df, jp)
+    printf("   Converged (step1): %f, (step2): %f\n", conv1, conv2)
+
+	
+    // ===== 分解 J 到每个 IV 上 =====
+    // 1) 在"IV 空间"的分解：J_opt = N * sum_j m_j * (W m)_j
+    real colvector v, J_contrib_iv
+    v            = Wg_opt * m_opt                // Kz×1
+    J_contrib_iv = N :* (m_opt :* v)             // 每个 IV 在原空间的贡献（可正可负）
+
+    // 2) 在"白化后正交基"上的分解：J_opt = N * sum_j (m_white_j)^2
+    real matrix  Wsym, A
+    real colvector m_white, J_contrib_white 
+
+    // W = A' * A，Mata 里 chol(W) 返回上三角 A，使得 A' * A = W
+    Wsym = 0.5*(Wg_opt + Wg_opt')
+    A    = cholesky(Wsym)
+                    // Kz×Kz
+    m_white = A * m_opt                         // Kz×1
+    J_contrib_white = N :* (m_white :^ 2)       // 每个正交方向对 J 的贡献（全 ≥0）
+
+    // 回写到 Stata，行向量形式便于查看
+    st_matrix("J_contrib_iv",     J_contrib_iv')
+    st_matrix("J_contrib_white",  J_contrib_white')
+    // 为了兼容你之前的 Stata 代码，把 J_contrib_iv 也存成 J_contrib
+    st_matrix("J_contrib",        J_contrib_iv')
+
+	
+	
+	
+	
+    // ===== 保存结果到 Stata =====
+    st_matrix("beta_lin_step1", b1')
+    st_matrix("beta_lin",        b2')
+    st_matrix("g_b",             g_bvec)
+
+    st_matrix("moments_unit",    m_unit')
+    st_matrix("moments_opt",     m_opt')
+    st_matrix("W_opt",           Wg_opt)
+
+    st_numscalar("J_unit",   Junit)
+    st_numscalar("J_opt",    Jopt)
+    st_numscalar("J_df",     df)
+    st_numscalar("J_p",      jp)
+    st_numscalar("gmm_conv", (conv1 & conv2))
+
+    // ============ 安全回写残差：加维度检查 ============ 
+    real scalar nobs
+    nobs = st_nobs()
+
+    if (rows(OMEGA2_local) == nobs) {
+        st_store(., "OMEGA2", OMEGA2_local)
+    }
+    else {
+        printf("WARN: OMEGA2 length (%f) != Nobs (%f). Skipping OMEGA2 st_store.\n",
+               rows(OMEGA2_local), nobs)
+    }
+
+    if (rows(XI2_local) == nobs) {
+        st_store(., "XI2", XI2_local)
+    }
+    else {
+        printf("WARN: XI2 length (%f) != Nobs (%f). Skipping XI2 st_store.\n",
+               rows(XI2_local), nobs)
+    }
+    // ===============================================
+
+}
+
+end
+
+program define gmm2step_once, rclass
+    version 18
+    syntax [, rep(integer 0)]
+    
+    * 记录开始时间
+    timer clear 1
+    timer on 1
+    
+ * ===== 先跑 refresh_globals()，并检查 rc =====
+	 mata: mata set matastrict on  // 建议开 strict 模式，报错更清晰
+     mata: refresh_globals()
+/*local rc_mata = _rc
+if `rc_mata' {
+    di as err "ERROR in refresh_globals(): rc=`rc_mata'"
+    exit `rc_mata'
+}*/
+
+  
+ * ===== 再跑 run_two_step()，并检查 rc =====
+ mata: run_two_step()
+ local rc_mata = _rc           // <<< 关键：捕获 run_two_step 的返回码
+ 
+* 如果只是 111（simplex 警告），而且已经有 J_opt，就当成 warning 继续
+if `rc_mata' == 111 {
+    capture confirm scalar J_opt
+    if _rc == 0 {
+        di as txt "NOTE: run_two_step() returned rc=111 (simplex warning), but J_opt is available. Proceeding."
+        local rc_mata = 0
+    }
+}
+* 其他 rc 一律视为错误
+if `rc_mata' {
+    di as err "ERROR in run_two_step(): rc=`rc_mata'"
+    exit `rc_mata'
+}
+    
+* ===== 检查收敛标志 =====
+confirm scalar gmm_conv
+    if _rc {
+        di as err "gmm_conv not returned"
+        exit 498
+    }
+    
+    if scalar(gmm_conv) != 1 {
+        di as txt "WARNING: GMM did not fully converge (gmm_conv=`=scalar(gmm_conv)')"
+    }
+    
+* ===== 提取 β 系数 =====
+ confirm matrix beta_lin
+    if _rc {
+        di as err "beta_lin not returned"
+        exit 498
+    }
+    
+    matrix b = beta_lin
+    return scalar b_c1   = b[1,1]
+    return scalar b_l    = b[2,1]
+    return scalar b_k    = b[3,1]
+    return scalar b_lsq  = b[4,1]
+    return scalar b_ksq  = b[5,1]
+    return scalar b_m    = b[6,1]
+    return scalar b_es   = b[7,1]
+    return scalar b_essq = b[8,1]
+    
+    * 提取控制变量系数
+ confirm matrix g_b
+    if _rc {
+        di as err "g_b not returned"
+        exit 498
+    }
+    
+    matrix gb = g_b
+    * 按 CONSOL 顺序：gb[9] = lnage, gb[10] = firmcat_2, gb[11] = firmcat_3
+    return scalar b_lnage    = gb[9,1]
+    return scalar b_firmcat_2 = gb[10,1]
+    return scalar b_firmcat_3 = gb[11,1]
+    
+    * J-statistics
+	return scalar J_unit     = scalar(J_unit)
+ confirm scalar J_opt
+    if !_rc return scalar J_opt = scalar(J_opt)
+    
+ confirm scalar J_p
+    if !_rc return scalar J_p = scalar(J_p)
+    
+    * 计时
+    timer off 1
+    timer list 1
+    return scalar time = r(t1)
+    
+    di as txt "Rep `rep': completed in `=r(t1)' sec. J_opt=`=scalar(J_opt)'"
+end
+
+* —— 全样本先跑一次，取起点 b0，并保存点估 —— *
+local have_b0 0  // 初始无起点
+mata: st_local("have_b0","`have_b0'")
+di as text _n(2) "{hline 80}"
+di as text "Running full-sample GMM to get starting values and point estimates"
+di as text "{hline 80}"
+
+quietly gmm2step_once
+local rc = _rc
+
+* r(430) 兜底：若 Mata 已经写回了很小的 J_opt，当作收敛
+if (`rc'==430) {
+     confirm scalar J_opt
+    if (_rc==0 & scalar(J_opt) < 1e-8) {
+        di as txt "Flat region; treat as converged because J_opt is tiny."
+        scalar gmm_conv = 1
+        local rc 0
+    }
+}
+
+if (`rc'==0) {
+     confirm scalar gmm_conv
+    if (_rc==0 & scalar(gmm_conv)==1) {
+        matrix b0 = beta_lin
+        local have_b0 1 // 标记已获得起点
+		mata: st_local("have_b0","`have_b0'")
+        di as text "Full-sample GMM converged. Using as starting point for bootstrap."
+    }
+    else {
+        di as err "Full-sample GMM ran but did not converge; cannot save point estimates."
+        exit 459
+    }
+}
+else {
+    di as err "Full-sample GMM failed (rc=`rc'): cannot save point estimates."
+    exit 459
+}
+
+* =============== 线性 IV 诊断（只在 full-sample 收敛后跑一次） ===============
+if "`GROUPNAME'" == "G1_17_19" {
+
+    di as text _n(1) "---------- Linear IV diagnostics for G1_17_19 (ivreg2) ----------"
+
+    * 定义内生变量与"排除型工具变量"
+local endog4   l k m es
+local z_excl4  l llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
+
+    * 注意：const、年份虚拟、lnage、firmcat_* 作为外生回归量，
+    *       既进入结构式，也自动成为 IV（ivreg2 会把所有外生变量当作工具）。
+ivreg2 r const dy2002-dy2007 lnage firmcat_2 firmcat_3 ///
+       (`endog4' = `z_excl4') lsq ksq es2q, ///
+       nocons robust cluster(firmid) first
+
+    * 说明：
+    * - r 是被解释变量（对应你在 GMM 中用 Y/phi 的那一部分）
+    * - const + 年度虚拟 + lnage + firmcat_* 是外生控制
+    * - 括号里的 l, k, ... 是内生变量，用 `z_excl' 这组 IV 来工具化
+    * - first 选项会给出每个内生变量的 first-stage F 和偏相关 R^2
+    *   以及整体 Kleibergen-Paap rk Wald F（weak IV 诊断）
+}
+
+if "`GROUPNAME'" == "G1_39_41" {
+
+    di as text _n(1) "---------- Linear IV diagnostics for G1_39_41 (ivreg2) ----------"
+    capture ssc install ranktest, replace
+    capture ssc install ivreg2,   replace
+    local endog4   l k m es
+    local z_excl4  llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_pos
+    ivreg2 r const dy2002-dy2007 lnage firmcat_2 firmcat_3 ///
+       (`endog4' = `z_excl4') lsq ksq es2q, ///
+       nocons robust cluster(firmid) first
+}
+* ====================== 线性 IV 诊断结束 ============================
+
+// full-sample 成功后，立刻抓取两个控制项系数
+local b_lnage_hat     = r(b_lnage)
+local b_firmcat2_hat  = r(b_firmcat_2)
+local b_firmcat3_hat  = r(b_firmcat_3)
+
+* === 全样本残差已经在 run_two_step() 中写入 OMEGA2 / XI2，这里直接用即可 ——1120添加 —— *
+
+* === 输出 firm-level omega_hat / xi_hat（全样本） ===
+capture drop omega_hat xi_hat   // 不存在就静默跳过，不报错
+gen double omega_hat = OMEGA2
+gen double xi_hat    = XI2
+
+*（可选）基本健检：不应有缺失
+qui count if missing(omega_hat, xi_hat)
+if r(N) > 0 {
+    di as txt "WARNING: `r(N)' missing values in omega_hat/xi_hat"
+}
+
+* 只留关键面板键与结果，按组名输出一个文件
+preserve
+    keep firmid year cic2 omega_hat xi_hat
+    gen str10 group = "`GROUPNAME'"
+    order group firmid year cic2 omega_hat xi_hat
+    compress
+    save "$DATA_WORK/omega_xi_group_`GROUPNAME'.dta", replace
+restore
+
+* —— 现在保存全样本点估 —— *
+quietly count
+local Nobs = r(N)
+preserve
+    clear
+    set obs 1
+    gen group = "`GROUPNAME'"
+    matrix b = beta_lin
+    gen b_const = b[1,1]
+    gen b_l     = b[2,1]
+    gen b_k     = b[3,1]
+    gen b_lsq   = b[4,1]
+    gen b_ksq   = b[5,1]
+    gen b_m     = b[6,1]
+    gen b_es    = b[7,1]
+    gen b_essq  = b[8,1]
+	    // 只写 lnage 与 firmtype 两个控制项的系数（一次回归点估）=====
+    gen b_lnage     = `b_lnage_hat'
+    gen b_firmcat_2 = `b_firmcat2_hat'
+    gen b_firmcat_3 = `b_firmcat3_hat'
+	
+    gen J_unit  = J_unit
+    gen J_opt   = J_opt
+    gen J_df    = J_df
+    gen J_p     = J_p
+    gen N       = `Nobs'
+    order group b_const b_l b_k b_lsq b_ksq b_m b_es b_essq ///
+          b_lnage b_firmcat_2 b_firmcat_3 ///
+          J_unit J_opt J_df J_p N
+    compress
+    save "$DATA_WORK/gmm_point_group_`GROUPNAME'.dta", replace
+restore
+
+* ===== 在全样本估计后立即展示核心结果，方便检查 Step1 / Step2 / J =====  * ——1120添加 —— *
+matrix list beta_lin_step1
+matrix list beta_lin
+matrix list moments_unit
+matrix list moments_opt
+scalar list J_unit J_opt J_df J_p gmm_conv
+display as text "J_opt = " J_opt "  (df = " J_df ", p = " J_p ")"
+
+// 看一下三类 J 分解矩阵
+matrix list J_contrib           // = J_contrib_iv（兼容用）
+matrix list J_contrib_iv
+matrix list J_contrib_white
+
+// ---- 把每个 IV 的 m_opt 和 J_contrib 打印出来 ----
+
+// 1) 根据 moments_opt 的列数自动识别 Kz，避免手动写 9/10 搞错
+local Kz = colsof(moments_opt)
+
+// 2) Z 的名字：这里一定要和实际 IV 数量 Kz 对齐（比如 9 个）
+local Znames const l llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
+
+forvalues j = 1/`Kz' {
+    local zname : word `j' of `Znames'
+    
+    // 从矩阵中取出当前 IV 的矩值和两种 J 贡献
+    scalar m_j      = moments_opt[1, `j']
+    scalar J_iv_j   = J_contrib_iv[1, `j']
+    scalar Jw_j     = J_contrib_white[1, `j']
+    
+    // 避免除零，先默认 share 为 .
+    scalar share_iv = .
+    if (J_opt != 0) scalar share_iv = J_iv_j / J_opt
+    
+    di as txt "`zname':  m_opt = " %9.5f m_j ///
+        "   J_iv = " %9.5f J_iv_j ///
+        "   share_iv = " %6.3f share_iv ///
+        "   J_white = " %9.5f Jw_j
+}
+
+* —— Bootstrap 循环 —— *
+di as text _n(2) "{hline 80}"
+di as text "Starting bootstrap estimation (clustered by firmid)"
+di as text "{hline 80}"
+
+tempname H
+tempfile bootres
+local failed = 0
+local total_time = 0
+
+* === 优化 11: 固定 seed 增强可复现性 ===
+set seed 20250830
+local B = 2  // 调试用，正式运行请设为 200+
+
+* === 优化 4: 记录失败原因 ===
+tempfile failures
+postfile failures rep reason using "`failures'", replace
+
+postfile `H' rep double(b_const b_l b_k b_lsq b_ksq b_m b_es b_essq b_lnage b_firmcat_2 b_firmcat_3 J_unit J_opt time) ///
+    using "`bootres'", replace
+
+forvalues ro = 1/`B' {
+    di as text _n "Bootstrap rep `ro'/`B'"
+    
+    preserve
+        * === 修复 9: 正确重建面板结构 ===
+        quietly bsample, cluster(firmid) idcluster(newfid)
+        
+        * 用新ID重建面板
+        gen long orig_firmid = firmid
+        replace firmid = newfid
+        xtset firmid year
+        
+        * 确保T>=2
+        by firmid: gen byte __T = _N
+        keep if __T >= 2
+        drop __T
+        
+        qui count
+        local N_bs = r(N)
+        di as text "  Sample size after keeping T>=2: `N_bs'"
+        
+        if (`N_bs' < 50) {
+            di as txt "  WARNING: Very small sample (`N_bs' obs). May not converge."
+        }
+        
+
+        
+        * 估计
+         noisily gmm2step_once, rep(`ro')
+        local rc = _rc
+        
+        if (`rc' == 0) {
+            * 检查收敛
+             confirm scalar gmm_conv
+            if _rc {
+                local reason "gmm_conv not returned"
+                local rc 499
+            }
+            else if scalar(gmm_conv) != 1 {
+                local reason "not converged (gmm_conv=`=scalar(gmm_conv)')"
+                local rc 499
+            }
+        }
+        else {
+            local reason "gmm2step_once failed with rc=`rc'"
+        }
+        
+        * 仅在成功且收敛时记录
+        if (`rc' == 0 & scalar(gmm_conv) == 1) {
+            post `H' (`ro') (r(b_c1)) (r(b_l)) (r(b_k)) (r(b_lsq)) (r(b_ksq)) (r(b_m)) ///
+                   (r(b_es)) (r(b_essq)) (r(b_lnage)) (r(b_firmcat_2)) (r(b_firmcat_3)) ///
+               (r(J_unit)) (r(J_opt)) (r(time))
+            
+            * 更新起点
+             confirm matrix beta_lin
+            if (_rc == 0) {
+                matrix b0 = beta_lin
+                local have_b0 1
+            }
+            else {
+                di as txt "  WARNING: beta_lin not available, cannot update starting point"
+            }
+            
+            local total_time = `total_time' + r(time)
+            di as result "  SUCCESS: rep `ro' converged in `=r(time)' sec"
+        }
+        else {
+            local ++failed
+            post failures (`ro') ("`reason'")
+            di as error "  FAILED: rep `ro' - `reason'"
+        }
+    restore
+}
+
+postclose `H'
+postclose failures
+
+di as result _n(2) "Bootstrap completed:"
+di as result "  Total reps: `B'"
+di as result "  Successful: `=`B'-`failed''"
+di as result "  Failed: `failed'"
+if (`B' > `failed') {
+    di as result "  Avg time per rep: `=`total_time'/(`B'-`failed')' sec"
+}
+else {
+    di as err "  All reps failed; avg time not defined."
+}
+
+* 保存失败记录
+use "`failures'", clear
+if _N > 0 {
+    list, noobs
+    save "$DATA_WORK/bootstrap_failures_`GROUPNAME'.dta", replace
+}
+
+* 读取 bootstrap 结果
+use "`bootres'", clear
+if _N == 0 {
+    di as err "No successful bootstrap replications. Cannot compute SEs."
+    exit 430
+}
+
+* —— 计算标准误 —— *
+qui summarize b_const, detail
+local se_const = r(sd)
+qui summarize b_l, detail
+local se_l     = r(sd)
+qui summarize b_k, detail
+local se_k     = r(sd)
+qui summarize b_lsq, detail
+local se_lsq   = r(sd)
+qui summarize b_ksq, detail
+local se_ksq   = r(sd)
+qui summarize b_m, detail
+local se_m     = r(sd)
+qui summarize b_es, detail
+local se_es    = r(sd)
+qui summarize b_essq, detail
+local se_essq  = r(sd)
+qui summarize b_lnage, detail
+local se_lnage     = r(sd)
+qui summarize b_firmcat_2, detail
+local se_firmcat_2 = r(sd)
+qui summarize b_firmcat_3, detail
+local se_firmcat_3 = r(sd)
+qui summarize J_unit, detail
+local se_J_unit = r(sd)
+
+qui summarize J_opt, detail
+local se_J_opt = r(sd)
+
+* —— 附加到点估计文件 —— *
+use "$DATA_WORK/gmm_point_group_`GROUPNAME'.dta", clear
+gen se_const = `se_const'
+gen se_l     = `se_l'
+gen se_k     = `se_k'
+gen se_lsq   = `se_lsq'
+gen se_ksq   = `se_ksq'
+gen se_m     = `se_m'
+gen se_es    = `se_es'
+gen se_essq  = `se_essq'
+gen se_lnage     = `se_lnage'
+gen se_firmcat_2 = `se_firmcat_2'
+gen se_firmcat_3 = `se_firmcat_3'
+gen se_J_unit = `se_J_unit'
+gen se_J_opt  = `se_J_opt'
+gen boot_reps = `=`B'-`failed''
+gen avg_time = `=`total_time'/(`B'-`failed')'
+
+replace J_df = scalar(J_df)
+replace J_p = scalar(J_p)
+order group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq b_m se_m b_es se_es b_essq se_essq ///
+      b_lnage se_lnage b_firmcat_2 se_firmcat_2 b_firmcat_3 se_firmcat_3 ///
+      J_unit se_J_unit J_opt se_J_opt J_df J_p N boot_reps avg_time
+
+compress
+save "$DATA_WORK/gmm_point_group_`GROUPNAME'.dta", replace
+
+* —— 保存 bootstrap draws —— *
+use "`bootres'", clear
+compress
+save "$DATA_WORK/gmm_boot_group_`GROUPNAME'.dta", replace
+
+di as res _n(2) "{hline 80}"
+di as res "Done group `GROUPNAME'. Files written:"
+di as res "  gmm_point_group_`GROUPNAME'.dta   (points + bootstrap SEs + diagnostics)"
+di as res "  gmm_boot_group_`GROUPNAME'.dta    (draws)"
+di as res "  omega_xi_group_`GROUPNAME'.dta   (firm-level residuals)"
+if `failed' > 0 di as res "  bootstrap_failures_`GROUPNAME'.dta (failure reasons)"
+di as res "{hline 80}"
+
+* === 新增：记录结束时间 ===
+local end_time = c(current_time)
+display as text "INFO: Script finished at `end_time'"

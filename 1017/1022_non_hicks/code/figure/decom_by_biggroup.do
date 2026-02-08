@@ -1,0 +1,272 @@
+*******************************************************
+* Counterfactual cost-share plots + decomposition table
+* Two big groups instead of per-cic2 sectors
+* Three curves coincide at base year (2000 or group first year)
+* Update: Constant-Technology also fixes mdcd3 at base year (b0)
+*******************************************************
+clear all
+set more off
+
+* --------- FILE PATHS ----------
+capture confirm global ROOT
+if _rc global ROOT "D:/文章发表/欣昊/input markdown/IJIO/IJIO_GMM_codex/1017/1022_non_hicks"
+global CODE "$ROOT/code"
+global DATA_RAW "$ROOT/data/raw"
+global DATA_WORK "$ROOT/data/work"
+global RES_DATA "$ROOT/results/data"
+global RES_FIG "$ROOT/results/figures"
+global RES_LOG "$ROOT/results/logs"
+
+
+cd "$ROOT"
+local d1 "$DATA_WORK/firststage-nonhicks.dta"
+local d2 "$RES_DATA/gmm_point_industry.dta"
+
+* --------- LOAD base ----------
+use "`d1'", clear
+merge m:1 cic2 using "`d2'"
+keep if _merge==3
+drop _merge
+
+* --------- DEFINE TWO BIG GROUPS ----------
+* Group 1: cic2 in {17,18,19}; Group 2: cic2 in {39,40,41}
+gen byte biggrp = .
+replace biggrp = 1 if inlist(cic2, 17, 18, 19)
+replace biggrp = 2 if inlist(cic2, 39, 40, 41)
+* 保留两大组样本
+keep if inlist(biggrp, 1, 2)
+
+label define BIGGRP 1 "Group 1: 17/18/19" 2 "Group 2: 39/40/41"
+label values biggrp BIGGRP
+
+* --------- FILTERS ----------
+drop if es==.
+drop if es2q==.
+
+* --------- CORE VARIABLES ----------
+gen markdowncd1      = 1 - (1/b_m)*es                          // a
+gen mdcd2            = domesticint/importint
+gen mdcd3            = (1/b_m)*es                               // b
+gen markdownnonHicks = markdowncd1*mdcd2/mdcd3                  // t  (technology term)
+
+* --------- Winsor by (biggrp × year) ----------
+cap which winsor2
+if _rc ssc install winsor2, replace
+local v markdownnonHicks
+winsor2 `v', trim cuts(2 98) by(biggrp year)
+summ `v', detail
+
+drop markdownnonHicks
+rename markdownnonHicks_tr markdownnonHicks
+
+* Optional: AFT construction if needed later (原逻辑保留)
+gen denominator = -2*b_m*b_essq
+gen numerator   = b_es*b_es
+gen denu        = numerator/denominator
+gen aft         = denu*es + m - x
+save "$DATA_WORK/mdnon-Hicks.dta", replace
+
+* (Optional firm-level actual; not used after fix)
+capture drop counterfactualshare
+gen counterfactualshare = markdowncd1/(markdowncd1 + mdcd3*markdownnonHicks)
+
+* ===============================================================
+*      AGGREGATION (by biggrp-year) + ACTUAL + COUNTERFACTUALS
+* ===============================================================
+preserve
+    * Revenue-weighted group-year means (one row per biggrp-year)
+    collapse (mean) markdowncd1 markdownnonHicks mdcd3 [aw=R], by(biggrp year)
+    rename markdowncd1       w_markdowncd1        // a
+    rename markdownnonHicks  w_markdownnonHicks   // t
+    rename mdcd3             w_mdcd3              // b
+
+    * Consistent ACTUAL from aggregated components (ratio form)
+    gen cshare_actual = w_markdowncd1 / ( w_markdowncd1 + w_mdcd3*w_markdownnonHicks )
+    label var cshare_actual "Actual"
+
+    * Base year: prefer 2000; if missing, use group's first year
+    local baseY 2000
+    bys biggrp: egen firstyear = min(year)
+    gen baseflag = (year==`baseY')
+    bys biggrp: egen has2000 = max(baseflag)
+    bys biggrp: gen base_year = `baseY' if has2000==1
+    bys biggrp: replace base_year = firstyear if missing(base_year)
+
+    * Anchor values at base year (group-specific): a0, b0, t0
+    foreach v in w_markdownnonHicks w_markdowncd1 w_mdcd3 {
+        gen __tmp_`v'_base = `v' if year==base_year
+        bys biggrp: egen `v'_base = total(__tmp_`v'_base)
+        drop __tmp_`v'_base
+    }
+
+    * -----------------------------------------------------------
+    * Counterfactual lines for plotting (group-level)
+    *   - Constant Technology: hold t=t0 AND b=b0, only a varies
+    *   - Constant Markdown:   hold a=a0 AND b=b0, only t varies
+    * -----------------------------------------------------------
+    gen cshare_constTech = w_markdowncd1 / ( w_markdowncd1 + w_mdcd3_base*w_markdownnonHicks_base )
+    label var cshare_constTech "Constant Technology"
+
+    gen cshare_constMD   = w_markdowncd1_base / ( w_markdowncd1_base + w_mdcd3_base*w_markdownnonHicks )
+    label var cshare_constMD "Constant Markdown"
+
+    * ---- Styling locals ----
+    local xmin 2000
+    local xmax 2007
+    local L1 "Actual"
+    local L2 "Constant Markdown"
+    local L3 "Constant Technology"
+
+    * =============================================================== *
+    *   DECOMPOSITION TABLE — PATH (constant lines) + SHAPLEY         *
+    *   Convention: Constant-Technology fixes (b0,t0)                  *
+    *               Constant-Markdown fixes (a0,b0)                    *
+    * =============================================================== *
+    tempfile agg_long
+    save `agg_long', replace
+
+    keep biggrp year base_year w_markdowncd1 w_mdcd3 w_markdownnonHicks cshare_actual
+
+    * End year = 2007 if available; else group's last observed year
+    bys biggrp: egen has2007 = max(year==2007)
+    bys biggrp: egen lastyr  = max(year)
+    bys biggrp: gen end_year = 2007 if has2007==1
+    bys biggrp: replace end_year = lastyr if missing(end_year)
+
+    * Flags for base & end rows
+    gen is_base = (year==base_year)
+    gen is_end  = (year==end_year)
+
+    * Extract base values (a0,b0,t0,S0)
+    gen a0_tmp = w_markdowncd1       if is_base
+    gen b0_tmp = w_mdcd3             if is_base
+    gen t0_tmp = w_markdownnonHicks  if is_base
+    gen S0_tmp = cshare_actual       if is_base
+    bys biggrp: egen a0 = max(a0_tmp)
+    bys biggrp: egen b0 = max(b0_tmp)
+    bys biggrp: egen t0 = max(t0_tmp)
+    bys biggrp: egen S0 = max(S0_tmp)
+
+    * Extract end values (a1,b1,t1,S1)
+    gen a1_tmp = w_markdowncd1       if is_end
+    gen b1_tmp = w_mdcd3             if is_end
+    gen t1_tmp = w_markdownnonHicks  if is_end
+    gen S1_tmp = cshare_actual       if is_end
+    bys biggrp: egen a1 = max(a1_tmp)
+    bys biggrp: egen b1 = max(b1_tmp)
+    bys biggrp: egen t1 = max(t1_tmp)
+    bys biggrp: egen S1 = max(S1_tmp)
+
+    * One row per big group for decomposition
+    collapse (max) base_year end_year a0 b0 t0 a1 b1 t1 S0 S1, by(biggrp)
+    gen dS = S1 - S0
+
+    * -----------------------------------------------------------
+    * Counterfactual levels aligned with plotting conventions
+    *   - S_M1T0: markdown moves to a1, technology fixed at (b0,t0)
+    *   - S_M0T1: technology moves to t1, markdown fixed at (a0,b0)
+    * -----------------------------------------------------------
+    gen S_M1T0 = a1/(a1 + b0*t0) if a1>0 & b0>0 & t0>0
+    gen S_M0T1 = a0/(a0 + b0*t1) if a0>0 & b0>0 & t1>0
+
+    * -------- PATH (matches constant lines) --------
+    gen md_path     = S_M1T0 - S0
+    gen tech_path   = S_M0T1 - S0
+    gen inter_path  = dS - md_path - tech_path
+
+    gen pct_md_path     = 100*md_path/dS       if dS!=0
+    gen pct_tech_path   = 100*tech_path/dS     if dS!=0
+    gen pct_interaction = 100*inter_path/dS    if dS!=0
+
+    * -------- SHAPLEY (additive; same S_M1T0, S_M0T1) --------
+    gen C_MD   = 0.5*((S_M1T0 - S0) + (S1 - S_M0T1))
+    gen C_Tech = 0.5*((S_M0T1 - S0) + (S1 - S_M1T0))
+    gen pct_MD_shapley   = 100*C_MD/dS     if dS!=0
+    gen pct_Tech_shapley = 100*C_Tech/dS   if dS!=0
+
+    * Group names
+    capture decode biggrp, gen(group_name)
+    if _rc {
+        label values biggrp BIGGRP
+        decode biggrp, gen(group_name)
+    }
+
+    * -------- Nicely formatted table in Stata only --------
+    order biggrp group_name base_year end_year ///
+          S0 S1 dS ///
+          md_path tech_path inter_path pct_md_path pct_tech_path pct_interaction ///
+          C_MD C_Tech pct_MD_shapley pct_Tech_shapley
+
+    label var S0               "Actual (base)"
+    label var S1               "Actual (end)"
+    label var dS               "Δ Actual"
+    label var md_path          "Δ via Const-MD path (a→a1; b0,t0)"
+    label var tech_path        "Δ via Const-Tech path (t→t1; a0,b0)"
+    label var inter_path       "Δ interaction (residual)"
+    label var pct_md_path      "% via Const-MD"
+    label var pct_tech_path    "% via Const-Tech"
+    label var pct_interaction  "% interaction"
+    label var C_MD             "Shapley MD"
+    label var C_Tech           "Shapley Tech"
+    label var pct_MD_shapley   "% Shapley MD"
+    label var pct_Tech_shapley "% Shapley Tech"
+
+    format S0 S1 dS md_path tech_path inter_path C_MD C_Tech %9.4f
+    format pct_* %9.2f
+    sort biggrp
+
+    di as txt "{hline 120}"
+    di as txt "Foreign-input cost share change — PATH (constant lines with b0,t0 for Const-Tech) vs SHAPLEY"
+    di as txt "PATH: %Const-MD + %Const-Tech + %Interaction = 100"
+    di as txt "SHAPLEY: %Shapley MD + %Shapley Tech = 100"
+    di as txt "{hline 120}"
+    list biggrp group_name base_year end_year ///
+         S0 S1 dS ///
+         md_path tech_path inter_path pct_md_path pct_tech_path pct_interaction ///
+         C_MD C_Tech pct_MD_shapley pct_Tech_shapley, noobs abbreviate(24)
+
+    * -------- Back to long form for plotting --------
+    use `agg_long', clear
+
+    * ---- Plot per GROUP (connected lines; one-line small legend)
+    levelsof biggrp, local(groups)
+    foreach g of local groups {
+
+        * Group display name from value label; fallback to code
+        local lblname : value label biggrp
+        if "`lblname'"=="" local gname "Group `g'"
+        else {
+            local gname : label `lblname' `g'
+            if `"`gname'"'=="" local gname "Group `g'"
+        }
+        * Safe filename token
+        local gfn : display strtoname("`gname'")
+
+        twoway ///
+          (connected cshare_actual    year if biggrp==`g', ///
+              lcolor(blue)  lpattern(solid) lwidth(medium) ///
+              msymbol(O) mcolor(blue)  mfcolor(none) msize(medlarge) sort) ///
+          (connected cshare_constTech year if biggrp==`g', ///
+              lcolor(red)   lpattern(solid) lwidth(medium) ///
+              msymbol(O) mcolor(red)   mfcolor(none) msize(medlarge) sort) ///
+          (connected cshare_constMD   year if biggrp==`g', ///
+              lcolor(green) lpattern(solid) lwidth(medium) ///
+              msymbol(O) mcolor(green) mfcolor(none) msize(medlarge) sort), ///
+          legend( order(1 2 3) ///
+                  label(1 "`L1'") ///
+                  label(2 "`L2'") ///
+                  label(3 "`L3'") ///
+                  position(6) ring(1) rows(1) cols(3) size(small) ///
+                  region(lstyle(none)) ) ///
+          ytitle("Foreign input cost share") ///
+          xtitle("Year") ///
+          title("`gname'") ///
+          xlabel(`xmin'(1)`xmax', grid) ///
+          xscale(range(`xmin' `xmax')) ///
+          ylabel(, grid) ///
+          graphregion(color(white) lstyle(solid) lcolor(black)) ///
+          plotregion(fcolor(white) lstyle(solid) lcolor(black))
+
+        graph export "$RES_FIG/counterfactualshare_`gfn'.png", replace width(1200)
+    }
+restore

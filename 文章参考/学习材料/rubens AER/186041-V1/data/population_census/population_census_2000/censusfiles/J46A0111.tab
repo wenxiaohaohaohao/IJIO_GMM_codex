@@ -1,0 +1,205 @@
+V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14
+TONGSHEN 	Total	23723	100	4809	20.27	15909	67.06	2900	12.22	103	0.43	2	0.01
+TONGSHEN 	Chongshan	2480	100	223	8.99	1824	73.55	414	16.69	18	0.73	1	0.04
+TONGSHEN 	Nansheng	1941	100	260	13.40	1324	68.21	334	17.21	23	1.18	          	          
+TONGSHEN 	Maoyang	3075	100	373	12.13	2255	73.33	432	14.05	14	0.46	1	0.03
+TONGSHEN 	Fanyang	1793	100	248	13.83	1210	67.48	324	18.07	11	0.61	          	          
+TONGSHEN 	Changhao	1029	100	187	18.17	739	71.82	99	9.62	4	0.39	          	          
+TONGSHEN 	Maodao	1239	100	253	20.42	915	73.85	71	5.73	          	          	          	          
+TONGSHEN 	Hongshan	532	100	106	19.92	347	65.23	76	14.29	3	0.56	          	          
+TONGSHEN 	Wuzhishan	793	100	131	16.52	501	63.18	156	19.67	5	0.63	          	          
+TONGSHEN 	Baoguo	235	100	36	15.32	176	74.89	23	9.79	          	          	          	          
+TONGSHEN 	Shizhishu	8729	100	2455	28.12	5422	62.11	829	9.5	23	0.26	          	          
+TONGSHEN 	Changhaonongchang	1877	100	537	28.61	1196	63.72	142	7.57	2	0.11	          	          
+QIONGHAI 	Total	112812	100	24268	21.51	59090	52.38	27963	24.79	1489	1.32	2	          
+QIONGHAI 	Jiaji	19302	100	4420	22.90	10471	54.25	4204	21.78	207	1.07	          	          
+QIONGHAI 	Wanquan	5306	100	954	17.98	2818	53.11	1460	27.52	74	1.39	          	          
+QIONGHAI 	Shibi	3730	100	720	19.30	1961	52.57	1006	26.97	43	1.15	          	          
+QIONGHAI 	Wenquan	5128	100	1071	20.89	2558	49.88	1429	27.87	70	1.37	          	          
+QIONGHAI 	Zhongyuan	5023	100	1311	26.10	2423	48.24	1218	24.25	71	1.41	          	          
+QIONGHAI 	Boao	2377	100	436	18.34	1165	49.01	734	30.88	42	1.77	          	          
+QIONGHAI 	Yangjiang	4186	100	897	21.43	2209	52.77	1002	23.94	78	1.86	          	          
+QIONGHAI 	Longjiang	5268	100	1171	22.23	2711	51.46	1303	24.73	83	1.58	          	          
+QIONGHAI 	Futian	3035	100	550	18.12	1491	49.13	911	30.02	83	2.73	          	          
+QIONGHAI 	Tanmen	3324	100	378	11.37	1672	50.30	1165	35.05	107	3.22	2	0.06
+QIONGHAI 	Tayang	6231	100	1205	19.34	3379	54.23	1570	25.20	77	1.24	          	          
+QIONGHAI 	Changpo	7267	100	1540	21.19	3571	49.14	2038	28.04	118	1.62	          	          
+QIONGHAI 	Dalu	6204	100	1094	17.63	3572	57.58	1465	23.61	73	1.18	          	          
+QIONGHAI 	Yantang	3901	100	696	17.84	2060	52.81	1087	27.86	58	1.49	          	          
+QIONGHAI 	Xinshi	1493	100	317	21.23	790	52.91	372	24.92	14	0.94	          	          
+QIONGHAI 	Chaoyang	2348	100	652	27.77	1009	42.97	661	28.15	26	1.11	          	          
+QIONGHAI 	Wenshi	2372	100	524	22.09	1282	54.05	542	22.85	24	1.01	          	          
+QIONGHAI 	Huishan	1546	100	115	7.44	944	61.06	446	28.85	41	2.65	          	          
+QIONGHAI 	Shangyong	2623	100	637	24.29	1224	46.66	719	27.41	43	1.64	          	          
+QIONGHAI 	Panshui	3511	100	618	17.60	1887	53.75	962	27.40	44	1.25	          	          
+QIONGHAI 	Jiuqujiang	4091	100	1129	27.60	1907	46.61	1011	24.71	44	1.08	          	          
+QIONGHAI 	Donghongnongchang	3293	100	944	28.67	1743	52.93	596	18.10	10	0.30	          	          
+QIONGHAI 	Dongtainongchang	2902	100	699	24.09	1602	55.20	590	20.33	11	0.38	          	          
+QIONGHAI 	Dongpingnongchang	2760	100	621	22.5	1506	54.57	622	22.54	11	0.40	          	          
+QIONGHAI 	Dongshengnongchang	2127	100	747	35.12	1137	53.46	236	11.10	7	0.33	          	          
+QIONGHAI 	Nanfengnongchang	1627	100	377	23.17	926	56.91	311	19.11	13	0.80	          	          
+QIONGHAI 	Bincunshanhuaqiaonongchang	1837	100	445	24.22	1072	58.36	303	16.49	17	0.93	          	          
+DANZHOU 	Total	172917	100	24028	13.90	108358	62.66	38761	22.42	1767	1.02	3	          
+DANZHOU 	Nada	27691	100	5423	19.58	16860	60.89	5216	18.84	191	0.69	1	          
+DANZHOU 	Nanfeng	4742	100	528	11.13	3005	63.37	1158	24.42	51	1.08	          	          
+DANZHOU 	Luoji	3179	100	265	8.34	2043	64.27	837	26.33	34	1.07	          	          
+DANZHOU 	Dacheng	2372	100	241	10.16	1395	58.81	686	28.92	50	2.11	          	          
+DANZHOU 	Yaxing	2591	100	369	14.24	1520	58.66	666	25.70	36	1.39	          	          
+DANZHOU 	Heqing	5261	100	604	11.48	3483	66.20	1133	21.54	41	0.78	          	          
+DANZHOU 	Lanyang	2585	100	370	14.31	1658	64.14	536	20.74	21	0.81	          	          
+DANZHOU 	Xinzhou	5604	100	464	8.28	3738	66.70	1355	24.18	47	0.84	          	          
+DANZHOU 	Guangcun	3521	100	389	11.05	2289	65.01	808	22.95	35	0.99	          	          
+DANZHOU 	Changpo	5651	100	665	11.77	3600	63.71	1327	23.48	59	1.04	          	          
+DANZHOU 	Wangwu	4549	100	465	10.22	2662	58.52	1346	29.59	75	1.65	1	0.02
+DANZHOU 	Paipu	3141	100	240	7.64	1946	61.95	917	29.19	38	1.21	          	          
+DANZHOU 	Haitou	6749	100	419	6.21	4029	59.70	2174	32.21	126	1.87	1	0.01
+DANZHOU 	Sandu	3399	100	304	8.94	2101	61.81	942	27.71	52	1.53	          	          
+DANZHOU 	Mutang	5384	100	502	9.32	3681	68.37	1152	21.40	49	0.91	          	          
+DANZHOU 	Eman	3098	100	268	8.65	1859	60.01	934	30.15	37	1.19	          	          
+DANZHOU 	Xinying	6150	100	397	6.46	3617	58.81	1992	32.39	144	2.34	          	          
+DANZHOU 	Baimajing	6654	100	646	9.71	4048	60.84	1841	27.67	119	1.79	          	          
+DANZHOU 	Fuke	1935	100	241	12.45	1284	66.36	392	20.26	18	0.93	          	          
+DANZHOU 	Zhonghe	6170	100	440	7.13	3805	61.67	1833	29.71	92	1.49	          	          
+DANZHOU 	Fanjia	1067	100	233	21.84	679	63.64	151	14.15	4	0.37	          	          
+DANZHOU 	Songming	3362	100	443	13.18	1931	57.44	943	28.05	45	1.34	          	          
+DANZHOU 	Lanxun	1774	100	225	12.68	1050	59.19	480	27.06	19	1.07	          	          
+DANZHOU 	Songlin	2664	100	222	8.33	1732	65.02	678	25.45	32	1.20	          	          
+DANZHOU 	Dongcheng	4761	100	532	11.17	3001	63.03	1163	24.43	65	1.37	          	          
+DANZHOU 	Xipeinongchang	4607	100	724	15.72	2791	60.58	1039	22.55	53	1.15	          	          
+DANZHOU 	Xihuanongchang	3824	100	489	12.79	2565	67.08	739	19.33	31	0.81	          	          
+DANZHOU 	Xiqingnongchang	4148	100	605	14.59	2709	65.31	805	19.41	29	0.70	          	          
+DANZHOU 	Xiliunongchang	2629	100	518	19.70	1780	67.71	325	12.36	6	0.23	          	          
+DANZHOU 	Xiliannongchang	4583	100	1003	21.89	3047	66.48	523	11.41	10	0.22	          	          
+DANZHOU 	Lanyangnongchang	2631	100	598	22.73	1737	66.02	293	11.14	3	0.11	          	          
+DANZHOU 	Xinyingnongchang	2896	100	458	15.81	2019	69.72	397	13.71	22	0.76	          	          
+DANZHOU 	Bayinongchang	10839	100	2170	20.02	6637	61.23	1959	18.07	73	0.67	          	          
+DANZHOU 	Longshannongchang	581	100	123	21.17	434	74.70	24	4.13	          	          	          	          
+DANZHOU 	Honglingnongchang	1090	100	198	18.17	776	71.19	113	10.37	3	0.28	          	          
+DANZHOU 	Huananrezuoliangyuan	3463	100	967	27.92	2023	58.42	459	13.25	14	0.40	          	          
+DANZHOU 	Yangpukaifaqu	7572	100	1280	16.90	4824	63.71	1425	18.82	43	0.57	          	          
+QIONGSHAN 	Total	155040	100	33412	21.55	86089	55.53	34134	22.02	1405	0.91	          	          
+QIONGSHAN 	Fucheng	31008	100	7597	24.5	17571	56.67	5627	18.15	213	0.69	          	          
+QIONGSHAN 	Lingshan	11099	100	1904	17.15	6157	55.47	2892	26.06	146	1.32	          	          
+QIONGSHAN 	Dongying	2798	100	439	15.69	1585	56.65	740	26.45	34	1.22	          	          
+QIONGSHAN 	Yanfeng	4527	100	1470	32.47	2067	45.66	947	20.92	43	0.95	          	          
+QIONGSHAN 	Yanhai	984	100	392	39.84	393	39.94	187	19	12	1.22	          	          
+QIONGSHAN 	Sanjiang	3201	100	845	26.40	1665	52.01	654	20.43	37	1.16	          	          
+QIONGSHAN 	Dazhipo	3795	100	920	24.24	1842	48.54	999	26.32	34	0.90	          	          
+QIONGSHAN 	Xianlai	2139	100	595	27.82	1071	50.07	453	21.18	20	0.94	          	          
+QIONGSHAN 	Yunlong	3878	100	846	21.82	2029	52.32	968	24.96	35	0.90	          	          
+QIONGSHAN 	Hongqi	5341	100	1119	20.95	2820	52.80	1349	25.26	53	0.99	          	          
+QIONGSHAN 	Sanmenpo	2398	100	446	18.60	1396	58.22	544	22.69	12	0.5	          	          
+QIONGSHAN 	Tanwen	2771	100	516	18.62	1544	55.72	686	24.76	25	0.90	          	          
+QIONGSHAN 	Jiazi	4462	100	921	20.64	2358	52.85	1127	25.26	56	1.26	          	          
+QIONGSHAN 	Dapo	2729	100	673	24.66	1346	49.32	674	24.70	36	1.32	          	          
+QIONGSHAN 	Jiuzhou	5112	100	815	15.94	2996	58.61	1240	24.26	61	1.19	          	          
+QIONGSHAN 	Longtang	6969	100	1143	16.40	4147	59.51	1617	23.20	62	0.89	          	          
+QIONGSHAN 	Longqiao	3499	100	674	19.26	2003	57.24	790	22.58	32	0.91	          	          
+QIONGSHAN 	Shizilu	4606	100	780	16.93	2581	56.04	1197	25.99	48	1.04	          	          
+QIONGSHAN 	Xinpo	6275	100	1183	18.85	3588	57.18	1447	23.06	57	0.91	          	          
+QIONGSHAN 	Shishan	4327	100	703	16.25	2721	62.88	874	20.20	29	0.67	          	          
+QIONGSHAN 	Meian	2616	100	472	18.04	1735	66.32	401	15.33	8	0.31	          	          
+QIONGSHAN 	Yongxing	5787	100	955	16.5	3669	63.40	1139	19.68	24	0.41	          	          
+QIONGSHAN 	Zuntan	4361	100	758	17.38	2617	60.01	949	21.76	37	0.85	          	          
+QIONGSHAN 	Dongshan	10861	100	1843	16.97	6211	57.19	2686	24.73	121	1.11	          	          
+QIONGSHAN 	Xinmin	1515	100	316	20.86	864	57.03	325	21.45	10	0.66	          	          
+QIONGSHAN 	Meirenpo	1823	100	364	19.97	1077	59.08	370	20.30	12	0.66	          	          
+QIONGSHAN 	Guilinyangnongchang	4939	100	2070	41.91	2053	41.57	781	15.81	35	0.71	          	          
+QIONGSHAN 	Sanjiangnongchang	2418	100	717	29.65	1023	42.31	635	26.26	43	1.78	          	          
+QIONGSHAN 	Hongmingnongchang	4525	100	954	21.08	2582	57.06	950	20.99	39	0.86	          	          
+QIONGSHAN 	Dongchangnongchang	2937	100	733	24.96	1542	52.5	643	21.89	19	0.65	          	          
+QIONGSHAN 	Lingjiaoredaizuowuchang	413	100	98	23.73	253	61.26	61	14.77	1	0.24	          	          
+QIONGSHAN 	Changchangmeikuang	927	100	151	16.29	583	62.89	182	19.63	11	1.19	          	          
+WENCHANG 	Total	130738	100	33816	25.87	61222	46.83	33752	25.82	1945	1.49	3	          
+WENCHANG 	Wencheng	14527	100	3952	27.20	7562	52.05	2853	19.64	160	1.10	          	          
+WENCHANG 	Chongxing	7531	100	1931	25.64	3516	46.69	1981	26.30	103	1.37	          	          
+WENCHANG 	Penglai	4223	100	1058	25.05	2045	48.43	1074	25.43	46	1.09	          	          
+WENCHANG 	Huiwen	8123	100	2237	27.54	3813	46.94	1932	23.78	141	1.74	          	          
+WENCHANG 	Maihao	4166	100	1057	25.37	1901	45.63	1156	27.75	51	1.22	1	0.02
+WENCHANG 	Qinglan	5761	100	1433	24.87	2664	46.24	1552	26.94	112	1.94	          	          
+WENCHANG 	Nanyang	2560	100	613	23.95	1131	44.18	775	30.27	41	1.60	          	          
+WENCHANG 	Xinqiao	2701	100	648	23.99	1271	47.06	745	27.58	37	1.37	          	          
+WENCHANG 	Donglu	4595	100	1118	24.33	2062	44.87	1319	28.71	95	2.07	1	0.02
+WENCHANG 	Tanniu	4451	100	1081	24.29	2058	46.24	1242	27.90	70	1.57	          	          
+WENCHANG 	Touyuan	3156	100	1001	31.72	1331	42.17	783	24.81	41	1.30	          	          
+WENCHANG 	Dongge	3502	100	829	23.67	1554	44.37	1031	29.44	88	2.51	          	          
+WENCHANG 	Wenjiao	5283	100	1372	25.97	2400	45.43	1417	26.82	94	1.78	          	          
+WENCHANG 	Dongjiao	9340	100	2173	23.27	4027	43.12	2925	31.32	215	2.30	          	          
+WENCHANG 	Longlou	4310	100	837	19.42	2134	49.51	1282	29.74	57	1.32	          	          
+WENCHANG 	Changsa	4085	100	1093	26.76	1829	44.77	1104	27.03	59	1.44	          	          
+WENCHANG 	Wengtian	5083	100	1142	22.47	2564	50.44	1316	25.89	61	1.20	          	          
+WENCHANG 	Gongpo	2608	100	620	23.77	1129	43.29	812	31.13	47	1.80	          	          
+WENCHANG 	Baoluo	3575	100	1014	28.36	1553	43.44	964	26.97	44	1.23	          	          
+WENCHANG 	Fengpo	2967	100	763	25.72	1427	48.10	746	25.14	30	1.01	1	0.03
+WENCHANG 	Jinshan	6470	100	1614	24.95	3033	46.88	1731	26.75	92	1.42	          	          
+WENCHANG 	Puqian	8666	100	2121	24.47	4423	51.04	2026	23.38	96	1.11	          	          
+WENCHANG 	Baofang	1902	100	544	28.60	757	39.80	565	29.71	36	1.89	          	          
+WENCHANG 	Longma	1734	100	486	28.03	872	50.29	361	20.82	15	0.87	          	          
+WENCHANG 	Hushan	2583	100	863	33.41	1105	42.78	577	22.34	38	1.47	          	          
+WENCHANG 	Donglunongchang	1057	100	337	31.88	524	49.57	192	18.16	4	0.38	          	          
+WENCHANG 	Nanyangnongchang	1178	100	351	29.80	596	50.59	219	18.59	12	1.02	          	          
+WENCHANG 	Luodounongchang	3708	100	1267	34.17	1447	39.02	935	25.22	59	1.59	          	          
+WENCHANG 	Wenchangxiangjiaoyanjiusuo	893	100	261	29.23	494	55.32	137	15.34	1	0.11	          	          
+WANNING 	
+DONGFANG 	
+DINGAN 	
+TUNCHANG 	
+CHENGMAI 	
+LINGAO 	
+BAISHALIZUZHZHIXIAN 	
+CHANGJIANGLIZUZHZHIXIAN 	
+LEDONGLIZUZHZHIXIAN 	
+LINGSHUILIZUZHZHIXIAN 	
+BAOTINGLIZUMIAOZUZHZHIXIAN 	
+QIONGZHONGLIZUMIAOZUZHZHIXIAN 	
+XISHAQUNDAO 	
+NANSHAQUNDAO 	
+ZHONGSHAQUNDAODEDAOJIAOJIQIHAIYU 	
+ZHENDONG 	Total	95393	100	30510	31.98	51307	53.78	13256	13.90	320	0.34	          	          
+ZHENDONG 	Boainan	4538	100	1235	27.21	2406	53.02	877	19.33	20	0.44	          	          
+ZHENDONG 	Hepingnan	8073	100	2463	30.51	4350	53.88	1236	15.31	24	0.30	          	          
+ZHENDONG 	Haifulu	27304	100	10075	36.90	13943	51.07	3191	11.69	95	0.35	          	          
+ZHENDONG 	Zhendong	6375	100	1702	26.70	3223	50.56	1424	22.34	26	0.41	          	          
+ZHENDONG 	Baisha	8715	100	2546	29.21	5026	57.67	1125	12.91	18	0.21	          	          
+ZHENDONG 	Haidian	13151	100	4692	35.68	6613	50.29	1796	13.66	50	0.38	          	          
+ZHENDONG 	Renminlu	10864	100	3400	31.30	6185	56.93	1260	11.60	19	0.17	          	          
+ZHENDONG 	Xinbu	2795	100	551	19.71	1744	62.40	486	17.39	14	0.5	          	          
+ZHENDONG 	Bailong	12916	100	3500	27.10	7525	58.26	1837	14.22	54	0.42	          	          
+ZHENDONG 	Luoniushan	662	100	346	52.27	292	44.11	24	3.63	          	          	          	          
+XINHUA 	Total	85160	100	31192	36.63	43825	51.46	9892	11.62	251	0.29	          	          
+XINHUA 	Binhai	25702	100	9077	35.32	13229	51.47	3320	12.92	76	0.30	          	          
+XINHUA 	Zhongshanlu	2859	100	1040	36.38	1348	47.15	461	16.12	10	0.35	          	          
+XINHUA 	Xinhualu	4920	100	1480	30.08	2487	50.55	931	18.92	22	0.45	          	          
+XINHUA 	Datong	13505	100	5194	38.46	6545	48.46	1722	12.75	44	0.33	          	          
+XINHUA 	Haiken	16499	100	6265	37.97	8739	52.97	1465	8.88	30	0.18	          	          
+XINHUA 	Chengxi	21675	100	8136	37.54	11477	52.95	1993	9.19	69	0.32	          	          
+XIUYING 	Total	38359	100	11224	29.26	22025	57.42	4985	13	125	0.33	          	          
+XIUYING 	Xiuying	9124	100	3334	36.54	4779	52.38	993	10.88	18	0.20	          	          
+XIUYING 	Haixiu	9822	100	3169	32.26	5520	56.20	1110	11.30	23	0.23	          	          
+XIUYING 	Changliu	7109	100	1553	21.85	4352	61.22	1168	16.43	36	0.51	          	          
+XIUYING 	Rongshan	4862	100	924	19	3036	62.44	873	17.96	29	0.60	          	          
+XIUYING 	Fengnan	1397	100	259	18.54	904	64.71	230	16.46	4	0.29	          	          
+XIUYING 	Xinhai	1348	100	365	27.08	830	61.57	149	11.05	4	0.30	          	          
+XIUYING 	Haixiu	4697	100	1620	34.49	2604	55.44	462	9.84	11	0.23	          	          
+SANYA 	Total	101420	100	16297	16.07	64883	63.97	19554	19.28	684	0.67	2	          
+SANYA 	Nanhai	3186	100	333	10.45	1908	59.89	913	28.66	32	1	          	          
+SANYA 	Tengqiao	2814	100	347	12.33	1703	60.52	731	25.98	33	1.17	          	          
+SANYA 	Linwang	4052	100	522	12.88	2449	60.44	1039	25.64	42	1.04	          	          
+SANYA 	Tiandu	5600	100	776	13.86	3813	68.09	989	17.66	22	0.39	          	          
+SANYA 	Hongsha	2243	100	295	13.15	1376	61.35	555	24.74	17	0.76	          	          
+SANYA 	Lizhigou	4180	100	378	9.04	2859	68.40	909	21.75	34	0.81	          	          
+SANYA 	Yanglan	7172	100	613	8.55	4866	67.85	1645	22.94	48	0.67	          	          
+SANYA 	Tianya	5232	100	218	4.17	3421	65.39	1533	29.30	60	1.15	          	          
+SANYA 	Yacheng	7516	100	721	9.59	4686	62.35	2033	27.05	75	1	1	0.01
+SANYA 	Baogang	4271	100	451	10.56	2614	61.20	1154	27.02	51	1.19	1	0.02
+SANYA 	Meishan	2237	100	238	10.64	1530	68.40	456	20.38	13	0.58	          	          
+SANYA 	Gaofeng	1735	100	219	12.62	1190	68.59	316	18.21	10	0.58	          	          
+SANYA 	Yucai	1749	100	137	7.83	1195	68.32	400	22.87	17	0.97	          	          
+SANYA 	Yaliang	1731	100	113	6.53	1244	71.87	359	20.74	15	0.87	          	          
+SANYA 	Hedong	13203	100	3123	23.65	8280	62.71	1748	13.24	52	0.39	          	          
+SANYA 	Hexi	18359	100	4748	25.86	11225	61.14	2317	12.62	69	0.38	          	          
+SANYA 	Nantiannongchang	6074	100	1240	20.41	3683	60.64	1118	18.41	33	0.54	          	          
+SANYA 	Nanxinnongchang	2469	100	508	20.58	1672	67.72	278	11.26	11	0.45	          	          
+SANYA 	Nandaonongchang	1991	100	351	17.63	1374	69.01	258	12.96	8	0.40	          	          
+SANYA 	Licainongchang	2604	100	493	18.93	1794	68.89	306	11.75	11	0.42	          	          
+SANYA 	Nanbinnongchang	3002	100	473	15.76	2001	66.66	497	16.56	31	1.03	          	          

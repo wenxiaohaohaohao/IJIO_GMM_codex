@@ -1,0 +1,384 @@
+V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14
+YINCHUAN CHENGQU 	Total	22762	11115	11647	13885	7507	6378	1381	673	708	9.05	8.23	9.99
+YINCHUAN CHENGQU 	Shenglijie	3767	1835	1932	2136	1159	977	211	102	109	8.99	8.09	10.04
+YINCHUAN CHENGQU 	Zhongshannanjie	1829	937	892	1101	641	460	151	73	78	12.06	10.22	14.5
+YINCHUAN CHENGQU 	Yuhuanggebeijie	3160	1546	1614	1912	1053	859	170	80	90	8.17	7.06	9.48
+YINCHUAN CHENGQU 	Wenhuajie	2171	1060	1111	1258	671	587	153	79	74	10.84	10.53	11.20
+YINCHUAN CHENGQU 	Jiefangxijie	3433	1638	1795	2058	1080	978	185	92	93	8.25	7.85	8.68
+YINCHUAN CHENGQU 	Qianjinjie	1481	723	758	974	511	463	74	38	36	7.06	6.92	7.21
+YINCHUAN CHENGQU 	Funingjie	3062	1484	1578	1968	1071	897	157	73	84	7.39	6.38	8.56
+YINCHUAN CHENGQU 	Xinhuajie	1271	596	675	835	425	410	75	40	35	8.24	8.60	7.87
+YINCHUAN CHENGQU 	Fenghuangbeijie	2588	1296	1292	1643	896	747	205	96	109	11.09	9.68	12.73
+YINCHUAN XINCHENGQU 	Total	20310	10124	10186	10997	6401	4596	1565	616	949	12.46	8.78	17.11
+YINCHUAN XINCHENGQU 	Xinchengdongjie	2320	1129	1191	1190	689	501	161	65	96	11.92	8.62	16.08
+YINCHUAN XINCHENGQU 	Tiedongjie	1769	886	883	1058	595	463	148	68	80	12.27	10.26	14.73
+YINCHUAN XINCHENGQU 	Xihuayuanlu	3568	1804	1764	2137	1222	915	198	66	132	8.48	5.12	12.61
+YINCHUAN XINCHENGQU 	Beijingxilu	2356	1117	1239	1233	697	536	355	123	232	22.36	15	30.21
+YINCHUAN XINCHENGQU 	Wenchanglu	2199	1152	1047	1344	833	511	271	106	165	16.78	11.29	24.41
+YINCHUAN XINCHENGQU 	Shuofanglu	5710	2801	2909	2439	1417	1022	283	117	166	10.40	7.63	13.97
+YINCHUAN XINCHENGQU 	Ninghualu	2388	1235	1153	1596	948	648	149	71	78	8.54	6.97	10.74
+YINCHUAN JIAOQU 	Total	19869	10343	9526	14567	8741	5826	652	365	287	4.28	4.01	4.69
+YINCHUAN JIAOQU 	Luhua	1306	666	640	977	582	395	14	6	8	1.41	1.02	1.99
+YINCHUAN JIAOQU 	Liangtian	1954	1008	946	1414	833	581	56	33	23	3.81	3.81	3.81
+YINCHUAN JIAOQU 	Yinxin	3280	1695	1585	2192	1340	852	162	96	66	6.88	6.69	7.19
+YINCHUAN JIAOQU 	Honghua	6059	3289	2770	4364	2819	1545	333	181	152	7.09	6.03	8.96
+YINCHUAN JIAOQU 	Manchun	1648	853	795	1221	745	476	29	15	14	2.32	1.97	2.86
+YINCHUAN JIAOQU 	Daxin	1765	875	890	1166	663	503	26	13	13	2.18	1.92	2.52
+YINCHUAN JIAOQU 	Zhangzheng	790	393	397	670	359	311	7	3	4	1.03	0.83	1.27
+YINCHUAN JIAOQU 	Yonggu	507	256	251	425	227	198	5	3	2	1.16	1.30	1
+YINCHUAN JIAOQU 	Tonggui	847	425	422	713	380	333	4	4	          	0.56	1.04	          
+YINCHUAN JIAOQU 	Lucaowa	1713	883	830	1425	793	632	16	11	5	1.11	1.37	0.78
+YONGNING 	Total	13983	7110	6873	11129	5975	5154	136	79	57	1.21	1.30	1.09
+YONGNING 	Yanghe	1787	909	878	1083	589	494	49	27	22	4.33	4.38	4.26
+YONGNING 	Lijun	1307	677	630	1067	578	489	9	5	4	0.84	0.86	0.81
+YONGNING 	Wangyuan	1311	663	648	1109	599	510	14	4	10	1.25	0.66	1.92
+YONGNING 	Rencun	1060	543	517	934	493	441	1	          	1	0.11	          	0.23
+YONGNING 	Wanghong	1305	664	641	1128	597	531	4	2	2	0.35	0.33	0.38
+YONGNING 	Zenggang	1254	622	632	1071	558	513	5	4	1	0.46	0.71	0.19
+YONGNING 	Yanghe	2259	1146	1113	1812	985	827	15	10	5	0.82	1.01	0.60
+YONGNING 	Shengli	1101	545	556	897	467	430	2	2	          	0.22	0.43	          
+YONGNING 	Tongqiao	1180	594	586	970	514	456	5	1	4	0.51	0.19	0.87
+YONGNING 	Jinsha	152	79	73	123	72	51	1	1	          	0.81	1.37	          
+YONGNING 	Huangyangtanqu	574	305	269	382	213	169	26	21	5	6.37	8.97	2.87
+YONGNING 	Minningcun	579	301	278	483	265	218	5	2	3	1.02	0.75	1.36
+YONGNING 	Haiyuandiaozhuang	114	62	52	70	45	25	          	          	          	          	          	          
+HELAN 	Total	13439	6877	6562	10937	5971	4966	154	89	65	1.39	1.47	1.29
+HELAN 	Xigang	3415	1756	1659	2559	1449	1110	93	56	37	3.51	3.72	3.23
+HELAN 	Jingui	1354	696	658	1169	628	541	1	1	          	0.09	0.16	          
+HELAN 	Ligang	1357	689	668	1154	612	542	          	          	          	          	          	          
+HELAN 	Hongguang	999	503	496	827	449	378	9	4	5	1.08	0.88	1.31
+HELAN 	Panchang	1272	645	627	1097	587	510	4	3	1	0.36	0.51	0.20
+HELAN 	Fengdeng	955	496	459	798	441	357	4	1	3	0.5	0.23	0.83
+HELAN 	Sishilidian	1023	522	501	824	444	380	12	9	3	1.44	1.99	0.78
+HELAN 	Changxin	1150	590	560	1013	542	471	4	2	2	0.39	0.37	0.42
+HELAN 	Tongyi	793	410	383	665	359	306	2	1	1	0.30	0.28	0.33
+HELAN 	Jinshan	333	175	158	290	158	132	          	          	          	          	          	          
+HELAN 	Nanliangtaizi	304	147	157	239	127	112	4	2	2	1.65	1.55	1.75
+HELAN 	Nuanquannongchang	341	174	167	219	120	99	13	6	7	5.60	4.76	6.60
+HELAN 	Ningxiayuanzhongchang	143	74	69	83	55	28	8	4	4	8.79	6.78	12.5
+DAWUKOU 	Total	10545	5270	5275	6329	3714	2615	569	244	325	8.25	6.16	11.05
+DAWUKOU 	Changsheng	1577	797	780	901	529	372	65	31	34	6.73	5.54	8.37
+DAWUKOU 	Chaoyang	4998	2467	2531	2825	1663	1162	302	125	177	9.66	6.99	13.22
+DAWUKOU 	Renminlu	3073	1540	1533	1952	1123	829	165	70	95	7.79	5.87	10.28
+DAWUKOU 	Changcheng	531	274	257	374	236	138	22	8	14	5.56	3.28	9.21
+DAWUKOU 	Dawukou	366	192	174	277	163	114	15	10	5	5.14	5.78	4.20
+SHIZUISHAN 	Total	9423	4875	4548	5446	3387	2059	674	306	368	11.01	8.29	15.16
+SHIZUISHAN 	Yucailu	1169	586	583	700	411	289	81	39	42	10.37	8.67	12.69
+SHIZUISHAN 	Nanjie	2475	1254	1221	1307	807	500	192	99	93	12.81	10.93	15.68
+SHIZUISHAN 	Zhongjie	1401	719	682	803	498	305	85	46	39	9.57	8.46	11.34
+SHIZUISHAN 	Beijie	1087	552	535	554	360	194	73	38	35	11.64	9.55	15.28
+SHIZUISHAN 	Hebinjie	2299	1248	1051	1567	977	590	101	49	52	6.06	4.78	8.10
+SHIZUISHAN 	Huochezhan	992	516	476	515	334	181	142	35	107	21.61	9.49	37.15
+SHITANJING 	Total	4636	2437	2199	2299	1618	681	302	170	132	11.61	9.51	16.24
+SHITANJING 	Xinhuabeijie	1644	862	782	800	570	230	99	61	38	11.01	9.67	14.18
+SHITANJING 	Xinhuananjie	942	492	450	435	286	149	51	39	12	10.49	12	7.45
+SHITANJING 	Baijigou	1381	749	632	796	594	202	66	43	23	7.66	6.75	10.22
+SHITANJING 	Goukou	669	334	335	268	168	100	86	27	59	24.29	13.85	37.11
+PINGLUO 	Total	19355	9902	9453	15588	8544	7044	434	211	223	2.71	2.41	3.07
+PINGLUO 	Chengguan	2930	1470	1460	1966	1119	847	155	78	77	7.31	6.52	8.33
+PINGLUO 	Huangquqiao	820	425	395	714	382	332	7	6	1	0.97	1.55	0.30
+PINGLUO 	Baofeng	1095	548	547	902	482	420	19	15	4	2.06	3.02	0.94
+PINGLUO 	Touzha	1045	522	523	941	483	458	1	1	          	0.11	0.21	          
+PINGLUO 	Yaofu	837	420	417	726	378	348	14	6	8	1.89	1.56	2.25
+PINGLUO 	Rujigou	761	432	329	434	334	100	69	35	34	13.72	9.49	25.37
+PINGLUO 	Taixi	686	361	325	496	292	204	45	18	27	8.32	5.81	11.69
+PINGLUO 	Xidatan	600	304	296	368	225	143	28	8	20	7.07	3.43	12.27
+PINGLUO 	Dashuigou	1	          	1	1	          	1	          	          	          	          	          	          
+PINGLUO 	Erzha	1202	611	591	950	536	414	12	4	8	1.25	0.74	1.90
+PINGLUO 	Gaozhuang	923	464	459	821	427	394	3	1	2	0.36	0.23	0.51
+PINGLUO 	Huibei	805	418	387	715	384	331	          	          	          	          	          	          
+PINGLUO 	Lingsha	1321	674	647	1159	602	557	12	6	6	1.02	0.99	1.07
+PINGLUO 	Qukou	1032	515	517	951	485	466	1	1	          	0.11	0.21	          
+PINGLUO 	Liuzhong	498	251	247	424	211	213	1	1	          	0.24	0.47	          
+PINGLUO 	Wuxiang	542	262	280	473	233	240	2	2	          	0.42	0.85	          
+PINGLUO 	Tongfu	793	398	395	679	355	324	2	1	1	0.29	0.28	0.31
+PINGLUO 	Zhoucheng	833	432	401	701	375	326	12	8	4	1.68	2.09	1.21
+PINGLUO 	Qianjin	1088	561	527	927	498	429	8	3	5	0.86	0.60	1.15
+PINGLUO 	Chonggang	965	534	431	700	457	243	42	17	25	5.66	3.59	9.33
+PINGLUO 	Xiamiao	578	300	278	540	286	254	1	          	1	0.18	          	0.39
+TAOLE 	Total	2147	1096	1051	1735	930	805	34	19	15	1.92	2	1.83
+TAOLE 	Chengguan	428	209	219	293	165	128	14	7	7	4.56	4.07	5.19
+TAOLE 	Gaorenzhen	269	138	131	231	127	104	1	          	1	0.43	          	0.95
+TAOLE 	Liuqingdi	209	103	106	175	92	83	2	1	1	1.13	1.08	1.19
+TAOLE 	Mataigou	268	138	130	207	112	95	12	7	5	5.48	5.88	5
+TAOLE 	Wuduizi	199	103	96	173	90	83	1	1	          	0.57	1.10	          
+TAOLE 	Hongyazi	226	128	98	190	108	82	1	1	          	0.52	0.92	          
+TAOLE 	Dongsha	116	57	59	86	45	41	3	2	1	3.37	4.26	2.38
+TAOLE 	Yueyahu	432	220	212	380	191	189	          	          	          	          	          	          
+HUINONG 	Total	5587	2886	2701	4397	2470	1927	115	57	58	2.55	2.26	2.92
+HUINONG 	Majiawan	623	316	307	469	264	205	24	14	10	4.87	5.04	4.65
+HUINONG 	Yuanyi	437	223	214	301	179	122	17	6	11	5.35	3.24	8.27
+HUINONG 	Hongguozi	491	280	211	405	256	149	14	6	8	3.34	2.29	5.10
+HUINONG 	Weizha	870	436	434	690	377	313	11	8	3	1.57	2.08	0.95
+HUINONG 	Miaotai	625	314	311	537	282	255	4	2	2	0.74	0.70	0.78
+HUINONG 	Lihe	832	427	405	650	370	280	11	5	6	1.66	1.33	2.10
+HUINONG 	Xiayingzi	379	200	179	304	165	139	13	6	7	4.10	3.51	4.79
+HUINONG 	Xiyonggu	390	204	186	324	177	147	4	2	2	1.22	1.12	1.34
+HUINONG 	Yanzidun	527	271	256	455	244	211	3	          	3	0.66	          	1.40
+HUINONG 	Huinongjianyu	211	110	101	147	82	65	11	6	5	6.96	6.82	7.14
+HUINONG 	Jianquannongchang	202	105	97	115	74	41	3	2	1	2.54	2.63	2.38
+LITONG 	Total	22166	11066	11100	16982	9170	7812	993	367	626	5.52	3.85	7.42
+LITONG 	Wuzhong	4197	2017	2180	2732	1425	1307	296	120	176	9.78	7.77	11.87
+LITONG 	Jinji	1275	619	656	1050	543	507	26	15	11	2.42	2.69	2.12
+LITONG 	Jinyintan	1372	690	682	1005	543	462	57	18	39	5.37	3.21	7.78
+LITONG 	Shangqiao	2073	1040	1033	1463	819	644	110	49	61	6.99	5.65	8.65
+LITONG 	Dongtasi	1414	702	712	1007	567	440	115	28	87	10.25	4.71	16.51
+LITONG 	Gucheng	1596	798	798	1168	661	507	149	44	105	11.31	6.24	17.16
+LITONG 	Zaoyuan	932	453	479	773	397	376	24	13	11	3.01	3.17	2.84
+LITONG 	Chenyuantan	781	415	366	714	392	322	          	          	          	          	          	          
+LITONG 	Banqiao	1326	661	665	1071	576	495	14	7	7	1.29	1.20	1.39
+LITONG 	Qinqu	1122	555	567	929	487	442	34	15	19	3.53	2.99	4.12
+LITONG 	Majiahu	1065	594	471	961	554	407	12	5	7	1.23	0.89	1.69
+LITONG 	Malianqu	1105	555	550	963	508	455	3	1	2	0.31	0.20	0.44
+LITONG 	Hanqu	666	328	338	546	286	260	16	4	12	2.85	1.38	4.41
+LITONG 	Gaozha	1003	490	513	791	422	369	28	12	16	3.42	2.76	4.16
+LITONG 	Yangmahu	651	321	330	552	288	264	8	3	5	1.43	1.03	1.86
+LITONG 	Biandangou	570	306	264	511	283	228	3	          	3	0.58	          	1.30
+LITONG 	Huangshawo	379	192	187	334	175	159	2	1	1	0.60	0.57	0.62
+LITONG 	Balanghunongchang	639	330	309	412	244	168	96	32	64	18.90	11.59	27.59
+HONGSIBAO 	Total	3118	1579	1539	2809	1435	1374	3	2	1	0.11	0.14	0.07
+HONGSIBAO 	Hongsibao	1550	786	764	1390	707	683	2	1	1	0.14	0.14	0.15
+HONGSIBAO 	Dahe	506	253	253	473	241	232	1	1	          	0.21	0.41	          
+HONGSIBAO 	Shaquan	643	325	318	568	291	277	          	          	          	          	          	          
+HONGSIBAO 	Maihe	419	215	204	378	196	182	          	          	          	          	          	          
+ZHONGWEI 	Total	22984	11590	11394	18784	10110	8674	386	157	229	2.01	1.53	2.57
+ZHONGWEI 	Chengguan	4753	2344	2409	3252	1854	1398	240	96	144	6.87	4.92	9.34
+ZHONGWEI 	Gantang	224	110	114	201	100	101	1	          	1	0.5	          	0.98
+ZHONGWEI 	ZhenLuo	2129	1073	1056	1809	948	861	4	3	1	0.22	0.32	0.12
+ZHONGWEI 	Xuanhe	2470	1255	1215	2140	1116	1024	8	3	5	0.37	0.27	0.49
+ZHONGWEI 	Changle	1308	665	643	1118	588	530	7	6	1	0.62	1.01	0.19
+ZHONGWEI 	Yingshuiqiao	899	460	439	732	408	324	32	5	27	4.19	1.21	7.69
+ZHONGWEI 	Chengjiao	1778	911	867	1413	794	619	32	21	11	2.21	2.58	1.75
+ZHONGWEI 	Xiyuan	1383	678	705	1194	618	576	6	2	4	0.5	0.32	0.69
+ZHONGWEI 	Dongyuan	2433	1212	1221	2051	1095	956	38	12	26	1.82	1.08	2.65
+ZHONGWEI 	Rouyuan	1998	1021	977	1715	928	787	2	1	1	0.12	0.11	0.13
+ZHONGWEI 	Yongkang	1376	702	674	1190	627	563	10	6	4	0.83	0.95	0.71
+ZHONGWEI 	Xinbei	491	258	233	443	236	207	2	1	1	0.45	0.42	0.48
+ZHONGWEI 	Dongtai	367	188	179	324	162	162	1	          	1	0.31	          	0.61
+ZHONGWEI 	Xitai	611	320	291	548	291	257	1	1	          	0.18	0.34	          
+ZHONGWEI 	Hongquan	181	91	90	146	79	67	2	          	2	1.35	          	2.90
+ZHONGWEI 	Jingzhuang	228	119	109	200	104	96	          	          	          	          	          	          
+ZHONGWEI 	Sanyanjing	355	183	172	308	162	146	          	          	          	          	          	          
+ZHONGNING 	Total	17425	8792	8633	14115	7483	6632	187	86	101	1.31	1.14	1.5
+ZHONGNING 	Chengguan	1353	681	672	977	535	442	60	23	37	5.79	4.12	7.72
+ZHONGNING 	Mingsha	1059	535	524	857	440	417	9	6	3	1.04	1.35	0.71
+ZHONGNING 	Shikong	1327	681	646	1050	576	474	16	11	5	1.5	1.87	1.04
+ZHONGNING 	Ningan	1397	698	699	1015	570	445	19	8	11	1.84	1.38	2.41
+ZHONGNING 	Zhouta	1054	532	522	892	468	424	5	          	5	0.56	          	1.17
+ZHONGNING 	Kangtan	1069	540	529	930	483	447	1	          	1	0.11	          	0.22
+ZHONGNING 	Xinbao	1361	689	672	1137	595	542	8	3	5	0.70	0.5	0.91
+ZHONGNING 	Donghua	1112	550	562	918	465	453	3	          	3	0.33	          	0.66
+ZHONGNING 	Enhe	1365	676	689	1174	605	569	2	          	2	0.17	          	0.35
+ZHONGNING 	Changtan	487	244	243	412	219	193	1	1	          	0.24	0.45	          
+ZHONGNING 	Baima	828	418	410	692	368	324	5	3	2	0.72	0.81	0.61
+ZHONGNING 	Yuding	1091	547	544	925	486	439	4	3	1	0.43	0.61	0.23
+ZHONGNING 	Zaoyuan	690	349	341	562	300	262	2	2	          	0.35	0.66	          
+ZHONGNING 	Guchengzi	255	129	126	173	98	75	8	3	5	4.42	2.97	6.25
+ZHONGNING 	Changshantou	497	267	230	430	230	200	          	          	          	          	          	          
+ZHONGNING 	Dazhanchang	1094	563	531	952	503	449	2	1	1	0.21	0.20	0.22
+ZHONGNING 	Majialiang	371	184	187	326	159	167	          	          	          	          	          	          
+ZHONGNING 	Changmingdiqu	173	90	83	117	64	53	3	2	1	2.5	3.03	1.85
+ZHONGNING 	Changshantounongchang	337	169	168	246	141	105	7	3	4	2.77	2.08	3.67
+ZHONGNING 	Qukounongchang	505	250	255	330	178	152	32	17	15	8.84	8.72	8.98
+YANCHI 	Total	10833	5551	5282	8198	4647	3551	198	96	102	2.36	2.02	2.79
+YANCHI 	Chengguan	1598	802	796	992	617	375	97	52	45	8.91	7.77	10.71
+YANCHI 	Dashuikeng	1853	973	880	1231	748	483	42	21	21	3.30	2.73	4.17
+YANCHI 	Huianbao	765	384	381	558	338	220	12	5	7	2.11	1.46	3.08
+YANCHI 	Chengjiao	942	474	468	719	407	312	12	          	12	1.64	          	3.70
+YANCHI 	Liuyangbao	448	230	218	387	207	180	4	          	4	1.02	          	2.17
+YANCHI 	Subujing	338	168	170	290	146	144	4	3	1	1.36	2.01	0.69
+YANCHI 	Gaoshawo	577	302	275	508	273	235	4	          	4	0.78	          	1.67
+YANCHI 	Wanglejing	665	331	334	569	291	278	          	          	          	          	          	          
+YANCHI 	Yaergou	542	284	258	425	247	178	2	          	2	0.47	          	1.11
+YANCHI 	Fengjigou	456	236	220	363	198	165	10	9	1	2.68	4.35	0.60
+YANCHI 	Maerzhuang	322	168	154	269	146	123	          	          	          	          	          	          
+YANCHI 	Qingshan	639	329	310	507	277	230	          	          	          	          	          	          
+YANCHI 	Hongjingzi	467	237	230	364	206	158	1	          	1	0.27	          	0.63
+YANCHI 	Mengcheng	485	248	237	420	222	198	2	          	2	0.47	          	1
+YANCHI 	Mahuangshan	419	217	202	354	186	168	3	2	1	0.84	1.06	0.59
+YANCHI 	Houwa	317	168	149	242	138	104	5	4	1	2.02	2.82	0.95
+TONGXIN 	Total	20710	10396	10314	16591	8932	7659	236	126	110	1.40	1.39	1.42
+TONGXIN 	Tongxin	2347	1176	1171	1326	854	472	149	74	75	10.10	7.97	13.71
+TONGXIN 	Hexi	1381	684	697	1134	564	570	3	2	1	0.26	0.35	0.18
+TONGXIN 	Weizhou	1533	784	749	1147	677	470	18	9	9	1.55	1.31	1.88
+TONGXIN 	Xiamaguan	1526	770	756	1281	669	612	1	1	          	0.08	0.15	          
+TONGXIN 	Yuwang	1606	825	781	1492	772	720	1	1	          	0.07	0.13	          
+TONGXIN 	Wangtuan	1691	844	847	1524	767	757	2	2	          	0.13	0.26	          
+TONGXIN 	Chengguan	1240	620	620	987	536	451	22	11	11	2.18	2.01	2.38
+TONGXIN 	Dingjiatang	1182	576	606	923	490	433	5	2	3	0.54	0.41	0.69
+TONGXIN 	Jijia	629	330	299	555	297	258	1	1	          	0.18	0.34	          
+TONGXIN 	Yaoshan	696	344	352	513	300	213	13	9	4	2.47	2.91	1.84
+TONGXIN 	Hanjiaoshui	587	294	293	483	258	225	1	          	1	0.21	          	0.44
+TONGXIN 	Xialiushui	688	345	343	559	297	262	6	4	2	1.06	1.33	0.76
+TONGXIN 	Xinzhuangji	1267	629	638	1099	564	535	          	          	          	          	          	          
+TONGXIN 	Tianlaozhuang	699	356	343	602	311	291	1	1	          	0.17	0.32	          
+TONGXIN 	Magaozhuang	1113	572	541	965	503	462	1	1	          	0.10	0.20	          
+TONGXIN 	Zhangjiayuan	828	408	420	741	373	368	          	          	          	          	          	          
+TONGXIN 	Yanglu	741	372	369	641	323	318	          	          	          	          	          	          
+TONGXIN 	Shishiguan	672	334	338	376	264	112	12	8	4	3.09	2.94	3.45
+TONGXIN 	Shitangouqu	284	133	151	243	113	130	          	          	          	          	          	          
+QINGTONGXIA 	Total	18392	9349	9043	14983	8154	6829	391	189	202	2.54	2.27	2.87
+QINGTONGXIA 	Xiaoba	2993	1514	1479	2210	1224	986	152	73	79	6.44	5.63	7.42
+QINGTONGXIA 	Daba	1932	1010	922	1343	865	478	67	25	42	4.75	2.81	8.08
+QINGTONGXIA 	Qingtongxia	1332	662	670	921	510	411	51	29	22	5.25	5.38	5.08
+QINGTONGXIA 	Yesheng	1372	701	671	1211	631	580	13	7	6	1.06	1.10	1.02
+QINGTONGXIA 	Qujing	1305	653	652	1116	588	528	14	8	6	1.24	1.34	1.12
+QINGTONGXIA 	Xiakou	1724	874	850	1524	801	723	20	9	11	1.30	1.11	1.5
+QINGTONGXIA 	Xiaoba	1371	703	668	1199	646	553	13	6	7	1.07	0.92	1.25
+QINGTONGXIA 	Daba	1152	588	564	999	537	462	12	6	6	1.19	1.10	1.28
+QINGTONGXIA 	Jiangding	1233	615	618	1065	552	513	11	5	6	1.02	0.90	1.16
+QINGTONGXIA 	Shaogang	1254	640	614	1106	578	528	6	3	3	0.54	0.52	0.56
+QINGTONGXIA 	Zhongtan	1238	619	619	1085	562	523	5	2	3	0.46	0.35	0.57
+QINGTONGXIA 	Guangwu	382	192	190	329	176	153	1	          	1	0.30	          	0.65
+QINGTONGXIA 	Lixin	516	269	247	440	232	208	4	4	          	0.90	1.69	          
+QINGTONGXIA 	Ganchengzi	206	113	93	192	105	87	          	          	          	          	          	          
+QINGTONGXIA 	Lianhunongchang	382	196	186	243	147	96	22	12	10	8.30	7.55	9.43
+LINGWU 	Total	17784	9054	8730	13614	7480	6134	416	205	211	2.97	2.67	3.33
+LINGWU 	Cheng	2311	1149	1162	1552	848	704	200	92	108	11.42	9.79	13.30
+LINGWU 	Xinhuaqiao	1711	870	841	1442	761	681	15	7	8	1.03	0.91	1.16
+LINGWU 	Chongxing	1211	580	631	967	495	472	14	5	9	1.43	1	1.87
+LINGWU 	Ciyaobao	2096	1137	959	1415	950	465	46	23	23	3.15	2.36	4.71
+LINGWU 	Majiatan	915	508	407	638	414	224	15	8	7	2.30	1.90	3.03
+LINGWU 	Dongta	1291	638	653	924	494	430	18	6	12	1.91	1.20	2.71
+LINGWU 	Wutongshu	1381	696	685	1163	613	550	4	2	2	0.34	0.33	0.36
+LINGWU 	Dumuqiao	1095	542	553	923	470	453	6	2	4	0.65	0.42	0.88
+LINGWU 	Haojiaqiao	1366	674	692	1170	584	586	2	1	1	0.17	0.17	0.17
+LINGWU 	Guojiaqiao	1241	624	617	937	496	441	29	17	12	3	3.31	2.65
+LINGWU 	Daquan	516	269	247	455	240	215	2	2	          	0.44	0.83	          
+LINGWU 	Linhe	510	266	244	435	241	194	2	          	2	0.46	          	1.02
+LINGWU 	Wulipo	330	166	164	271	145	126	          	          	          	          	          	          
+LINGWU 	Baitugang	602	317	285	508	281	227	4	1	3	0.78	0.35	1.30
+LINGWU 	Yangquandun	274	140	134	224	123	101	1	1	          	0.44	0.81	          
+LINGWU 	Lingwunongchang	812	417	395	531	290	241	54	36	18	9.23	11.04	6.95
+LINGWU 	Changqingjuyouqichu	122	61	61	59	35	24	4	2	2	6.35	5.41	7.69
+GUYUAN 	Total	31554	15899	15655	24507	13164	11343	411	209	202	1.65	1.56	1.75
+GUYUAN 	Chengguan	4553	2223	2330	2482	1495	987	254	117	137	9.28	7.26	12.19
+GUYUAN 	Sanying	1718	857	861	1165	680	485	36	25	11	3	3.55	2.22
+GUYUAN 	Shenzilu	904	477	427	752	410	342	1	1	          	0.13	0.24	          
+GUYUAN 	Qiying	1657	823	834	1379	713	666	4	2	2	0.29	0.28	0.30
+GUYUAN 	Heicheng	2272	1127	1145	1841	934	907	10	6	4	0.54	0.64	0.44
+GUYUAN 	Xijiao	1285	648	637	964	540	424	13	8	5	1.33	1.46	1.17
+GUYUAN 	Nanjiao	1471	759	712	1049	576	473	23	13	10	2.15	2.21	2.07
+GUYUAN 	Kaicheng	1009	509	500	857	450	407	3	2	1	0.35	0.44	0.25
+GUYUAN 	Zhangyi	1729	892	837	1475	779	696	1	1	          	0.07	0.13	          
+GUYUAN 	Hongzhuang	1238	636	602	1083	561	522	1	1	          	0.09	0.18	          
+GUYUAN 	Dawan	958	474	484	784	406	378	1	1	          	0.13	0.25	          
+GUYUAN 	Haodian	566	291	275	466	265	201	2	1	1	0.43	0.38	0.5
+GUYUAN 	Pengbao	1709	861	848	1418	748	670	8	6	2	0.56	0.80	0.30
+GUYUAN 	Zhonghe	1509	767	742	1307	671	636	3	          	3	0.23	          	0.47
+GUYUAN 	Hechuan	934	480	454	784	415	369	1	1	          	0.13	0.24	          
+GUYUAN 	Guanting	360	184	176	298	153	145	2	2	          	0.67	1.29	          
+GUYUAN 	Dongjiao	1065	555	510	853	491	362	12	6	6	1.39	1.21	1.63
+GUYUAN 	Touying	1397	720	677	1114	596	518	4	1	3	0.36	0.17	0.58
+GUYUAN 	Yanglang	1635	801	834	1338	690	648	20	8	12	1.47	1.15	1.82
+GUYUAN 	Gancheng	473	238	235	405	206	199	2	1	1	0.49	0.48	0.5
+GUYUAN 	Tanshan	876	449	427	761	399	362	3	2	1	0.39	0.5	0.28
+GUYUAN 	Zhaike	796	403	393	706	358	348	1	          	1	0.14	          	0.29
+GUYUAN 	Huangduobao	1037	511	526	874	440	434	6	4	2	0.68	0.90	0.46
+GUYUAN 	Gaotai	194	104	90	176	93	83	          	          	          	          	          	          
+GUYUAN 	Maqu	209	110	99	176	95	81	          	          	          	          	          	          
+HAIYUAN 	Total	21054	10703	10351	17370	9258	8112	151	101	50	0.86	1.08	0.61
+HAIYUAN 	Haicheng	2138	1087	1051	1368	851	517	75	52	23	5.20	5.76	4.26
+HAIYUAN 	Liwang	1554	782	772	1353	682	671	          	          	          	          	          	          
+HAIYUAN 	Xingren	1202	608	594	1002	532	470	8	3	5	0.79	0.56	1.05
+HAIYUAN 	Shidian	966	483	483	829	411	418	1	1	          	0.12	0.24	          
+HAIYUAN 	Shuanghe	480	241	239	422	213	209	2	2	          	0.47	0.93	          
+HAIYUAN 	Gaotaisi	864	449	415	719	389	330	4	2	2	0.55	0.51	0.60
+HAIYUAN 	Xian	1394	700	694	1160	602	558	9	6	3	0.77	0.99	0.53
+HAIYUAN 	Shutai	1358	698	660	1203	626	577	2	2	          	0.17	0.32	          
+HAIYUAN 	Luoshan	586	300	286	496	258	238	4	3	1	0.80	1.15	0.42
+HAIYUAN 	Guanqiao	937	486	451	700	420	280	13	6	7	1.82	1.41	2.44
+HAIYUAN 	Yanchi	410	210	200	336	173	163	2	2	          	0.59	1.14	          
+HAIYUAN 	Xutao	423	208	215	379	190	189	1	          	1	0.26	          	0.53
+HAIYUAN 	Haochuan	512	251	261	448	233	215	          	          	          	          	          	          
+HAIYUAN 	Xinglong	922	460	462	665	400	265	9	9	          	1.34	2.20	          
+HAIYUAN 	Gaoya	1161	599	562	1016	525	491	3	1	2	0.29	0.19	0.41
+HAIYUAN 	Zhengqi	1114	557	557	983	500	483	1	          	1	0.10	          	0.21
+HAIYUAN 	Luochuan	441	225	216	388	206	182	1	1	          	0.26	0.48	          
+HAIYUAN 	Jiatang	933	472	461	743	399	344	11	8	3	1.46	1.97	0.86
+HAIYUAN 	Caowa	623	324	299	550	286	264	2	1	1	0.36	0.35	0.38
+HAIYUAN 	Jiucai	623	331	292	549	290	259	1	1	          	0.18	0.34	          
+HAIYUAN 	Lijun	643	326	317	537	281	256	          	          	          	          	          	          
+HAIYUAN 	Yangming	505	258	247	440	225	215	          	          	          	          	          	          
+HAIYUAN 	Hongyang	683	348	335	604	312	292	          	          	          	          	          	          
+HAIYUAN 	Guanzhuang	526	273	253	433	231	202	2	1	1	0.46	0.43	0.49
+HAIYUAN 	Hanyanglin	56	27	29	47	23	24	          	          	          	          	          	          
+XIJI 	Total	24764	12589	12175	21323	11012	10311	82	40	42	0.38	0.36	0.41
+XIJI 	Chengguan	1469	766	703	922	572	350	55	24	31	5.63	4.03	8.14
+XIJI 	Xinglong	1037	530	507	885	464	421	4	3	1	0.45	0.64	0.24
+XIJI 	Chengjiao	1507	782	725	1310	683	627	2	2	          	0.15	0.29	          
+XIJI 	Xinying	1096	566	530	933	486	447	1	1	          	0.11	0.21	          
+XIJI 	Baicheng	818	439	379	679	375	304	2	          	2	0.29	          	0.65
+XIJI 	Hongyao	722	367	355	616	324	292	1	          	1	0.16	          	0.34
+XIJI 	Tianping	889	452	437	758	396	362	2	1	1	0.26	0.25	0.28
+XIJI 	Majian	1222	614	608	1086	542	544	          	          	          	          	          	          
+XIJI 	Subao	1281	647	634	1069	543	526	4	4	          	0.37	0.73	          
+XIJI 	Sanhe	674	342	332	587	305	282	          	          	          	          	          	          
+XIJI 	Pingfeng	982	507	475	829	427	402	5	4	1	0.60	0.93	0.25
+XIJI 	Xingping	1127	578	549	1013	530	483	          	          	          	          	          	          
+XIJI 	Xitan	738	367	371	680	337	343	          	          	          	          	          	          
+XIJI 	Wangmin	600	299	301	548	274	274	          	          	          	          	          	          
+XIJI 	Gongyi	582	287	295	515	257	258	          	          	          	          	          	          
+XIJI 	Yuqiao	760	373	387	659	329	330	          	          	          	          	          	          
+XIJI 	Shenzi	1093	539	554	967	479	488	1	          	1	0.10	          	0.20
+XIJI 	Malian	1012	493	519	895	432	463	          	          	          	          	          	          
+XIJI 	Jiangtai	1413	695	718	1224	606	618	2	          	2	0.16	          	0.32
+XIJI 	Xiaohe	929	480	449	874	445	429	          	          	          	          	          	          
+XIJI 	Xiazhai	549	283	266	478	245	233	          	          	          	          	          	          
+XIJI 	Xiabao	601	304	297	541	273	268	2	1	1	0.37	0.36	0.37
+XIJI 	Piancheng	944	497	447	858	453	405	          	          	          	          	          	          
+XIJI 	Shagou	905	457	448	833	424	409	          	          	          	          	          	          
+XIJI 	Baiya	894	448	446	763	389	374	          	          	          	          	          	          
+XIJI 	Huoshizhai	920	477	443	801	422	379	1	          	1	0.12	          	0.26
+LONGDE 	Total	13528	6934	6594	10862	5766	5096	74	37	37	0.68	0.64	0.72
+LONGDE 	Chengguan	983	509	474	695	407	288	30	11	19	4.14	2.63	6.19
+LONGDE 	Shatang	1255	632	623	951	479	472	6	4	2	0.63	0.83	0.42
+LONGDE 	Liancai	733	371	362	581	304	277	2	2	          	0.34	0.65	          
+LONGDE 	Chengjiao	491	249	242	418	214	204	          	          	          	          	          	          
+LONGDE 	Chenjin	544	297	247	440	241	199	2	1	1	0.45	0.41	0.5
+LONGDE 	Fengtai	338	179	159	277	152	125	          	          	          	          	          	          
+LONGDE 	Haoshui	615	314	301	515	271	244	2	1	1	0.39	0.37	0.41
+LONGDE 	Guanbao	568	286	282	487	251	236	1	          	1	0.20	          	0.42
+LONGDE 	Dazhuang	716	377	339	580	314	266	          	          	          	          	          	          
+LONGDE 	Yanghe	572	291	281	467	240	227	1	          	1	0.21	          	0.44
+LONGDE 	Shenlin	771	372	399	629	310	319	5	1	4	0.79	0.32	1.24
+LONGDE 	Zhangcheng	375	187	188	320	154	166	1	1	          	0.31	0.65	          
+LONGDE 	Taoyuan	316	166	150	248	136	112	2	1	1	0.80	0.73	0.88
+LONGDE 	Fengling	619	315	304	511	257	254	          	          	          	          	          	          
+LONGDE 	Shanhe	397	206	191	356	194	162	          	          	          	          	          	          
+LONGDE 	Shangliang	257	134	123	222	122	100	2	1	1	0.89	0.81	0.99
+LONGDE 	Taoshan	535	274	261	446	238	208	1	          	1	0.22	          	0.48
+LONGDE 	Wenbao	849	402	447	708	344	364	          	          	          	          	          	          
+LONGDE 	Dianan	493	250	243	433	220	213	1	1	          	0.23	0.45	          
+LONGDE 	Yanggou	305	162	143	270	146	124	          	          	          	          	          	          
+LONGDE 	Chongan	321	176	145	272	150	122	          	          	          	          	          	          
+LONGDE 	Longhuquguanweihui	1475	785	690	1036	622	414	18	13	5	1.71	2.05	1.19
+JINGYUAN 	Total	5539	2804	2735	4517	2437	2080	46	28	18	1.01	1.14	0.86
+JINGYUAN 	Xiangshui	1083	556	527	823	470	353	30	16	14	3.52	3.29	3.81
+JINGYUAN 	Baimian	940	484	456	845	446	399	          	          	          	          	          	          
+JINGYUAN 	Xinmin	984	483	501	852	432	420	2	2	          	0.23	0.46	          
+JINGYUAN 	Dongxia	424	213	211	343	187	156	2	1	1	0.58	0.53	0.64
+JINGYUAN 	Xingsheng	573	290	283	468	252	216	4	3	1	0.85	1.18	0.46
+JINGYUAN 	Yuanzi	365	186	179	265	152	113	2	          	2	0.75	          	1.74
+JINGYUAN 	Huanghua	777	391	386	627	337	290	4	4	          	0.63	1.17	          
+JINGYUAN 	Huitai	393	201	192	294	161	133	2	2	          	0.68	1.23	          
+PENGYANG 	Total	15433	7858	7575	12257	6525	5732	95	44	51	0.77	0.67	0.88
+PENGYANG 	Baiyang	963	478	485	622	378	244	40	17	23	6.04	4.30	8.61
+PENGYANG 	Wangwa	313	165	148	241	139	102	          	          	          	          	          	          
+PENGYANG 	Gucheng	1504	773	731	1257	671	586	          	          	          	          	          	          
+PENGYANG 	Xinji	1183	594	589	898	485	413	6	2	4	0.66	0.41	0.96
+PENGYANG 	Goukou	981	493	488	849	432	417	          	          	          	          	          	          
+PENGYANG 	Pengyang	1020	520	500	781	407	374	6	3	3	0.76	0.73	0.80
+PENGYANG 	Yaoxian	640	319	321	520	266	254	          	          	          	          	          	          
+PENGYANG 	Chengyang	1323	646	677	1091	544	547	1	1	          	0.09	0.18	          
+PENGYANG 	Honghe	1407	707	700	1061	553	508	24	11	13	2.21	1.95	2.5
+PENGYANG 	Chuankou	520	274	246	433	237	196	1	1	          	0.23	0.42	          
+PENGYANG 	Wangwa	761	385	376	627	337	290	4	          	4	0.63	          	1.36
+PENGYANG 	Fengzhuang	675	360	315	525	277	248	4	3	1	0.76	1.07	0.40
+PENGYANG 	Xiaocha	478	244	234	397	208	189	          	          	          	          	          	          
+PENGYANG 	Shicha	697	363	334	574	312	262	          	          	          	          	          	          
+PENGYANG 	Mengyuan	1136	595	541	890	481	409	6	4	2	0.67	0.82	0.49
+PENGYANG 	Luowa	444	231	213	369	193	176	          	          	          	          	          	          
+PENGYANG 	Jiaocha	380	206	174	332	183	149	2	2	          	0.60	1.08	          
+PENGYANG 	Caomiao	684	333	351	528	279	249	          	          	          	          	          	          
+PENGYANG 	Liuyuan	324	172	152	262	143	119	1	          	1	0.38	          	0.83

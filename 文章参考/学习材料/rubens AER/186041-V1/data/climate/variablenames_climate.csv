@@ -1,0 +1,26 @@
+Variable names;
+V01301; District station number (character) -
+Year; V04001
+V11046; Great wind speed meters / sec
+V11211_CHAR; The wind direction of the great wind speed (character type)
+V10302; minimum air pressure
+V12012; Minimum temperature Celsius (°C)
+V10301; Maximum pressure Hundreds of Pascals
+V12011; Maximum temperature Celsius (°C)
+V13305; 20-20 ° precipitation amount mm
+V10004_701; average air pressure
+V11291_701; average 2 minutes wind speed m/s
+V12001_701; Average temperature Celsius (°C)
+V13004_701; Average water pressure Hundred Pascals
+V13003_701; Average relative humidity Percentage
+V12012_701; Average minimum temperature Celsius (°C)
+V12011_701; Average maximum temperature Celsius (°C)
+V13353; Daily precipitation ?0.1mm days
+V14033; month sunshine percentage percentage
+V14032; sunshine hours
+V13033; Evaporation (large) mm
+V13032; evaporation mm
+V11042; Maximum wind speed Meter/second
+V11296_CHAR; Wind speed of the maximum wind speed (character type)
+V13052; Maximum daily precipitation mm
+V13007; Minimum relative humidity percentage
