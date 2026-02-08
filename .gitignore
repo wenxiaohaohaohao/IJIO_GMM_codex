@@ -25,3 +25,6 @@ Thumbs.db
 # Python cache
 __pycache__/
 *.pyc
+
+# Reference-only nested repo content
+文章参考/学习材料/price-dispersion-code (6)/MatlabCode/MonteCarlo/
