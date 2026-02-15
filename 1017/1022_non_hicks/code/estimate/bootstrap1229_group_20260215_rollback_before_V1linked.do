@@ -27,7 +27,6 @@ cd "$ROOT"
 
 * 可选：是否运行诊断模块（线性 IV + J 分解打印）
 local RUN_DIAG 0
-local RUN_DIAG 0
 if ("$RUN_DIAG"!="") local RUN_DIAG = real("$RUN_DIAG")
 
 local RUN_POINT_ONLY 0
@@ -36,16 +35,6 @@ if ("$RUN_POINT_ONLY"!="") local RUN_POINT_ONLY = real("$RUN_POINT_ONLY")
 local RUN_BOOT 1
 if ("$RUN_BOOT"!="") local RUN_BOOT = real("$RUN_BOOT")
 if (`RUN_POINT_ONLY'==1) local RUN_BOOT 0
-
-* IV set switch for V1 diagnostics / robustness gate (A | B | C)
-local IV_SET "A"
-if ("$IV_SET"!="") local IV_SET = upper("$IV_SET")
-if !inlist("`IV_SET'","A","B","C") {
-    di as err "ERROR: invalid IV_SET=[`IV_SET']; must be A, B, or C."
-    exit 198
-}
-global IV_SET "`IV_SET'"
-di as txt "RUN SWITCH: RUN_POINT_ONLY=`RUN_POINT_ONLY', RUN_BOOT=`RUN_BOOT', RUN_DIAG=`RUN_DIAG', IV_SET=`IV_SET'"
 
 * === 从全局读取 GROUP_NAME，并做合法性检查 ===
 if ("$GROUP_NAME"=="") {
@@ -203,8 +192,6 @@ reg lratiofs k l wl x age lnmana i.firmcat i.city i.year, vce(cluster firmid)
 predict double r_hat_ols, xb
 gen double es   = exp(-r_hat_ols)
 gen double es2q = es^2
-* V1: keep first-stage fitted index for structural S-constraint linkage in second stage.
-gen double shat = r_hat_ols
 
 * -------- 1.8 第一阶段：估计 φ 的三次多项式（生成 phi, epsilon） -------- *
 reg r c.(l k m x pi wx wl es)##c.(l k m x pi wx wl es)##c.(l k m x pi wx wl es) ///
@@ -281,7 +268,6 @@ gen double xllagl  = xlag*l
 gen double lages   = L.es
 gen double lages2q = L.es2q
 gen double klages  = k*lages
-gen double shat_lag = L.shat
 
 gen double kl      = k*l
 
@@ -341,7 +327,7 @@ if _rc {
 
 * ---- 3.5 最终样本筛选：保证所有 GMM 所需变量不缺失 ---- *
 drop if missing(const, r, l, k, phi, phi_lag, llag, klag, mlag, lsqlag, ksqlag, ///
-    lsq, ksq, m, es, es2q, lages, lages2q, shat, shat_lag, lnage, firmcat, lnmana, ///
+    lsq, ksq, m, es, es2q, lages, lages2q, lnage, firmcat, lnmana, ///
     lnagelag, firmcat_2, firmcat_3, dy2002-dy2007, klages, mlagxlag)
 
 * ---- 3.6 为 Mata 创建残差占位列 OMEGA2/XI2 ---- *
@@ -374,56 +360,25 @@ XI2    = J(0,1,.)
 void refresh_globals()
 {
     external X, X_lag, Z, PHI, PHI_lag, Y, C, CONSOL, beta_init, Wg_opt
-    external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
+        
+    X       = st_data(., ("const","l","k","lsq","ksq","m","es","es2q"))
+    X_lag   = st_data(., ("const","llag","klag","lsqlag","ksqlag","mlag","lages","lages2q"))
 
-    /* V1 linked-constraint setup: X only for initialization; S is updated inside evaluator */
-    X       = st_data(., ("const","l","k","lsq","ksq","m"))
-    X_lag   = st_data(., ("const","llag","klag","lsqlag","ksqlag","mlag"))
-
-    LVAR    = st_data(., "l")
-    KVAR    = st_data(., "k")
-    LSQVAR  = st_data(., "lsq")
-    KSQVAR  = st_data(., "ksq")
-    MVAR    = st_data(., "m")
-    LLAGVAR   = st_data(., "llag")
-    KLAGVAR   = st_data(., "klag")
-    LSQLAGVAR = st_data(., "lsqlag")
-    KSQLAGVAR = st_data(., "ksqlag")
-    MLAGVAR   = st_data(., "mlag")
-    SHAT      = st_data(., "shat")
-    SHAT_lag  = st_data(., "shat_lag")
-
-    /* IV sets by group and IV_SET switch */
-    string scalar g, ivset
+    /* IV sets by group name*/
+    string scalar g
     g = st_global("GROUP_NAME")
-    ivset = st_global("IV_SET")
-    if (ivset=="") ivset = "A"
     if (g!="G1_17_19" & g!="G2_39_41") {
         errprintf("Invalid GROUPNAME = [%s]; must be G1_17_19 or G2_39_41\n", g)
         _error(3499)
     }
-    if (ivset!="A" & ivset!="B" & ivset!="C") {
-        errprintf("Invalid IV_SET = [%s]; must be A/B/C\n", ivset)
-        _error(3499)
-    }
 
-    if (g=="G1_17_19" & ivset=="A") {
-        Z = st_data(., ("const","lages2q","l","ksq","llag","klag","mlag","l_ind_yr","m_ind_yr","k_ind_yr","Z_HHI_post"))
+    if (g=="G1_17_19") {
+        // 原先 anchor=18 的 IV
+        Z = st_data(., ("const","lages2q","l","ksq","llag","klag", "mlag", "l_ind_yr","m_ind_yr", "k_ind_yr","Z_HHI_post"))   
     }
-    else if (g=="G1_17_19" & ivset=="B") {
-        Z = st_data(., ("const","lages2q","l","lsq","ksq","llag","klag","mlag","l_ind_yr","m_ind_yr","k_ind_yr","Z_tariff","Z_HHI_post"))
-    }
-    else if (g=="G1_17_19" & ivset=="C") {
-        Z = st_data(., ("const","llag","klag","mlag","lages","lages2q","l_ind_yr","m_ind_yr","k_ind_yr","Z_tariff","Z_HHI_post"))
-    }
-    else if (g=="G2_39_41" & ivset=="A") {
-        Z = st_data(., ("llag","klag","l","lages","lsq","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","Z_HHI_post"))
-    }
-    else if (g=="G2_39_41" & ivset=="B") {
-        Z = st_data(., ("const","llag","klag","mlag","l","lsq","ksq","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","Z_HHI_post"))
-    }
-    else {
-        Z = st_data(., ("const","llag","klag","mlag","lages","lages2q","l_ind_yr","k_ind_yr","m_ind_yr","Z_HHI_post"))
+    else  {
+        // 原先 anchor=40 的 IV
+        Z = st_data(., ("llag","klag","l","lages","lsq", "l_ind_yr", "k_ind_yr", "m_ind_yr","Z_tariff", "Z_HHI_post"))
     }
 
     PHI     = st_data(., "phi")
@@ -433,8 +388,7 @@ void refresh_globals()
 
     CONSOL  = st_data(., ("dy2002","dy2003","dy2004","dy2005","dy2006","dy2007","lnage","firmcat_2","firmcat_3"))
 
-    real scalar use_b0, shbar, amc0, raw_amc0
-    real rowvector bols
+    real scalar use_b0
     use_b0 = strtoreal(st_local("have_b0"))
 
     if (rows(X) != rows(Y)) {
@@ -445,36 +399,33 @@ void refresh_globals()
         errprintf(">>> ERROR: Y is not a column vector in qrsolve\n")
         _error(3497)
     }
-    if (any(missing(X)) | any(missing(Y)) | any(missing(SHAT)) | any(missing(SHAT_lag))) {
-        errprintf(">>> ERROR: Missing values in core data before optimization\n")
+    if (any(missing(X))) {
+        errprintf(">>> ERROR: X contains missing values before qrsolve\n")
+        _error(3497)
+    }
+    if (any(missing(Y))) {
+        errprintf(">>> ERROR: Y contains missing values before qrsolve\n")
         _error(3497)
     }
 
-    bols = qrsolve(X, Y)'
-    shbar = mean(SHAT)
-    if (missing(shbar)) shbar = 0
-    amc0 = exp(-shbar) + 0.10
-    raw_amc0 = ln(amc0)
-
     if (use_b0 == 1) {
         beta_init = st_matrix("b0")'
-        if (cols(beta_init) != 8) {
-            beta_init = (bols, raw_amc0, 0)
+        if (cols(beta_init) != cols(X)) {
+            beta_init = qrsolve(X, Y)'   // OLS 起点
         }
     }
     else {
-        beta_init = (bols, raw_amc0, 0)
+        beta_init = qrsolve(X, Y)'       // 直接用 OLS 起点
     }
 }
 
 void GMM_DL_weighted(todo, b, crit, g, H)
 {
-    external PHI, PHI_lag, Z, C, CONSOL, Wg, Wg_opt
-    external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
+    external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, Wg_opt
 
-    real colvector OMEGA, OMEGA_lag, XI, gb, m, S_now, S_lag
+    real colvector OMEGA, OMEGA_lag, XI, gb, m
     real matrix POOL
-    real scalar N, crit_val, amc, smin_now, smax_now, smin_lag, smax_lag
+    real scalar N, crit_val
 
     N = rows(Z)
     if (N <= 5 | any(missing(Z))) {
@@ -488,30 +439,9 @@ void GMM_DL_weighted(todo, b, crit, g, H)
         Wg_opt = I(cols(Z))
     }
 
-    /* V1 linked-constraint:
-       amc = exp(raw_amc) guarantees positivity;
-       S and S_lag are updated at each iteration using shat/shat_lag. */
-    amc = exp(b[7])
-    if (missing(amc) | amc<=1e-8 | amc>1e+8) {
-        crit = 1e+20
-        if (todo >= 1) g = J(1, cols(b), 0)
-        if (todo == 2) H = J(cols(b), cols(b), 0)
-        return
-    }
-
-    S_now = 1 :- exp(-SHAT) :/ amc
-    S_lag = 1 :- exp(-SHAT_lag) :/ amc
-    smin_now = min(S_now); smax_now = max(S_now)
-    smin_lag = min(S_lag); smax_lag = max(S_lag)
-    if (any(missing(S_now)) | any(missing(S_lag)) | smin_now<=1e-8 | smax_now>=1-1e-8 | smin_lag<=1e-8 | smax_lag>=1-1e-8) {
-        crit = 1e+20
-        if (todo >= 1) g = J(1, cols(b), 0)
-        if (todo == 2) H = J(cols(b), cols(b), 0)
-        return
-    }
-
-    OMEGA = PHI :- (b[1] :+ b[2]:*LVAR :+ b[3]:*KVAR :+ b[4]:*LSQVAR :+ b[5]:*KSQVAR :+ b[6]:*MVAR :+ b[8]:*(S_now:^2))
-    OMEGA_lag = PHI_lag :- (b[1] :+ b[2]:*LLAGVAR :+ b[3]:*KLAGVAR :+ b[4]:*LSQLAGVAR :+ b[5]:*KSQLAGVAR :+ b[6]:*MLAGVAR :+ b[8]:*(S_lag:^2))
+    OMEGA     = PHI     - X     * b'
+    OMEGA_lag = PHI_lag - X_lag * b'
+    // Version A baseline: AR(1)-style productivity transition, linear block concentrated out.
 
     if (cols(CONSOL)>0) POOL = (C, OMEGA_lag, CONSOL)
     else                POOL = (C, OMEGA_lag)
@@ -542,7 +472,7 @@ void GMM_DL_weighted(todo, b, crit, g, H)
     if (todo>=1) {
         real scalar i, eps_i, crit_plus, crit_minus
         real rowvector gnum, btmp
-        real colvector Oe, Oel, XI2p, XI2m, m2p, m2m, Sp, Slp, Sm, Slm
+        real colvector Oe, Oel, XI2p, XI2m, m2p, m2m
         real matrix PO
 
         gnum = J(1, cols(b), .)
@@ -552,49 +482,23 @@ void GMM_DL_weighted(todo, b, crit, g, H)
 
             btmp    = b
             btmp[i] = b[i] + eps_i
-            amc = exp(btmp[7])
-            if (missing(amc) | amc<=1e-8 | amc>1e+8) {
-                crit_plus = 1e+20
-            }
-            else {
-                Sp = 1 :- exp(-SHAT) :/ amc
-                Slp = 1 :- exp(-SHAT_lag) :/ amc
-                if (any(missing(Sp)) | any(missing(Slp)) | min(Sp)<=1e-8 | max(Sp)>=1-1e-8 | min(Slp)<=1e-8 | max(Slp)>=1-1e-8) {
-                    crit_plus = 1e+20
-                }
-                else {
-                    Oe = PHI :- (btmp[1] :+ btmp[2]:*LVAR :+ btmp[3]:*KVAR :+ btmp[4]:*LSQVAR :+ btmp[5]:*KSQVAR :+ btmp[6]:*MVAR :+ btmp[8]:*(Sp:^2))
-                    Oel = PHI_lag :- (btmp[1] :+ btmp[2]:*LLAGVAR :+ btmp[3]:*KLAGVAR :+ btmp[4]:*LSQLAGVAR :+ btmp[5]:*KSQLAGVAR :+ btmp[6]:*MLAGVAR :+ btmp[8]:*(Slp:^2))
-                    PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
-                    gb  = qrsolve(PO, Oe)
-                    XI2p = Oe - PO*gb
-                    m2p  = quadcross(Z, XI2p):/ N
-                    crit_plus = m2p' * Wg_opt * m2p
-                }
-            }
+            Oe  = PHI     - X     * btmp'
+            Oel = PHI_lag - X_lag * btmp'
+            PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
+            gb  = qrsolve(PO, Oe)
+            XI2p = Oe - PO*gb
+            m2p  = quadcross(Z, XI2p):/ N
+            crit_plus = m2p' * Wg_opt * m2p
 
             btmp    = b
             btmp[i] = b[i] - eps_i
-            amc = exp(btmp[7])
-            if (missing(amc) | amc<=1e-8 | amc>1e+8) {
-                crit_minus = 1e+20
-            }
-            else {
-                Sm = 1 :- exp(-SHAT) :/ amc
-                Slm = 1 :- exp(-SHAT_lag) :/ amc
-                if (any(missing(Sm)) | any(missing(Slm)) | min(Sm)<=1e-8 | max(Sm)>=1-1e-8 | min(Slm)<=1e-8 | max(Slm)>=1-1e-8) {
-                    crit_minus = 1e+20
-                }
-                else {
-                    Oe = PHI :- (btmp[1] :+ btmp[2]:*LVAR :+ btmp[3]:*KVAR :+ btmp[4]:*LSQVAR :+ btmp[5]:*KSQVAR :+ btmp[6]:*MVAR :+ btmp[8]:*(Sm:^2))
-                    Oel = PHI_lag :- (btmp[1] :+ btmp[2]:*LLAGVAR :+ btmp[3]:*KLAGVAR :+ btmp[4]:*LSQLAGVAR :+ btmp[5]:*KSQLAGVAR :+ btmp[6]:*MLAGVAR :+ btmp[8]:*(Slm:^2))
-                    PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
-                    gb  = qrsolve(PO, Oe)
-                    XI2m = Oe - PO*gb
-                    m2m  = quadcross(Z, XI2m):/ N
-                    crit_minus = m2m' * Wg_opt * m2m
-                }
-            }
+            Oe  = PHI     - X     * btmp'
+            Oel = PHI_lag - X_lag * btmp'
+            PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
+            gb  = qrsolve(PO, Oe)
+            XI2m = Oe - PO*gb
+            m2m  = quadcross(Z, XI2m):/ N
+            crit_minus = m2m' * Wg_opt * m2m
 
             if (missing(crit_plus) | missing(crit_minus)) {
                 gnum[i] = 0
@@ -619,15 +523,13 @@ void run_two_step()
     st_numscalar("J_p",       .)
 
     external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, beta_init, Wg_opt
-    external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
     real scalar Kz, Kx, J1, J2, lam, conv1, conv2, smin, smax, cond, EPSJ
     real rowvector b1, b2
     real colvector OMEGA1, OMEGA1_lag, XI1, OMEGA2_local, OMEGA2_lag, XI2_local, g_bvec, m_unit, m_opt
-    real colvector S1_now, S1_lag, S2_now, S2_lag
     real colvector svals
     real matrix POOL1, Mrow, S, POOL2, Wloc
-    real scalar N, Junit, Jopt, df, jp, amc1, amc2
+    real scalar N, Junit, Jopt, df, jp
     real scalar conv2_nr, J2_nr
     real rowvector b2_nr
 
@@ -635,7 +537,7 @@ void run_two_step()
     st_numscalar("Nobs", N)
 
     Kz = cols(Z)
-    Kx = cols(beta_init)
+    Kx = cols(X)
     if (Kz < Kx) {
         errprintf("ERROR: Not enough instruments (Kz=%f < Kx=%f).\n", Kz, Kx)
         _error(3498)
@@ -671,20 +573,9 @@ void run_two_step()
         st_numscalar("gmm_conv1", conv1)
     }
 
-    amc1 = exp(b1[7])
-    if (missing(amc1) | amc1<=1e-8 | amc1>1e+8) {
-        errprintf("ERROR: invalid amc in step 1.\n")
-        _error(3498)
-    }
-    S1_now = 1 :- exp(-SHAT) :/ amc1
-    S1_lag = 1 :- exp(-SHAT_lag) :/ amc1
-    if (min(S1_now)<=1e-8 | max(S1_now)>=1-1e-8 | min(S1_lag)<=1e-8 | max(S1_lag)>=1-1e-8) {
-        errprintf("ERROR: S outside (0,1) in step 1.\n")
-        _error(3498)
-    }
-    OMEGA1 = PHI :- (b1[1] :+ b1[2]:*LVAR :+ b1[3]:*KVAR :+ b1[4]:*LSQVAR :+ b1[5]:*KSQVAR :+ b1[6]:*MVAR :+ b1[8]:*(S1_now:^2))
-    OMEGA1_lag = PHI_lag :- (b1[1] :+ b1[2]:*LLAGVAR :+ b1[3]:*KLAGVAR :+ b1[4]:*LSQLAGVAR :+ b1[5]:*KSQLAGVAR :+ b1[6]:*MLAGVAR :+ b1[8]:*(S1_lag:^2))
-    // First-step linked-constraint transition.
+    OMEGA1     = PHI     - X     * b1'
+    OMEGA1_lag = PHI_lag - X_lag * b1'
+    // First-step AR(1)-style concentrated-out transition.
     if (cols(CONSOL)>0) POOL1 = (C, OMEGA1_lag, CONSOL)
     else                POOL1 = (C, OMEGA1_lag)
     XI1  = OMEGA1 - POOL1 * qrsolve(POOL1, OMEGA1)
@@ -769,20 +660,9 @@ void run_two_step()
 
     st_numscalar("gmm_conv2", conv2)
 
-    amc2 = exp(b2[7])
-    if (missing(amc2) | amc2<=1e-8 | amc2>1e+8) {
-        errprintf("ERROR: invalid amc in step 2.\n")
-        _error(3498)
-    }
-    S2_now = 1 :- exp(-SHAT) :/ amc2
-    S2_lag = 1 :- exp(-SHAT_lag) :/ amc2
-    if (min(S2_now)<=1e-8 | max(S2_now)>=1-1e-8 | min(S2_lag)<=1e-8 | max(S2_lag)>=1-1e-8) {
-        errprintf("ERROR: S outside (0,1) in step 2.\n")
-        _error(3498)
-    }
-    OMEGA2_local = PHI :- (b2[1] :+ b2[2]:*LVAR :+ b2[3]:*KVAR :+ b2[4]:*LSQVAR :+ b2[5]:*KSQVAR :+ b2[6]:*MVAR :+ b2[8]:*(S2_now:^2))
-    OMEGA2_lag = PHI_lag :- (b2[1] :+ b2[2]:*LLAGVAR :+ b2[3]:*KLAGVAR :+ b2[4]:*LSQLAGVAR :+ b2[5]:*KSQLAGVAR :+ b2[6]:*MLAGVAR :+ b2[8]:*(S2_lag:^2))
-    // Second-step linked-constraint transition.
+    OMEGA2_local = PHI     - X     * b2'
+    OMEGA2_lag   = PHI_lag - X_lag * b2'
+    // Second-step AR(1)-style concentrated-out transition.
 
     if (cols(CONSOL)>0) POOL2 = (C, OMEGA2_lag, CONSOL)
     else                POOL2 = (C, OMEGA2_lag)
@@ -872,12 +752,7 @@ program define gmm2step_once, rclass
     return scalar b_lsq  = b[4,1]
     return scalar b_ksq  = b[5,1]
     return scalar b_m    = b[6,1]
-    * V1 linked-constraint parameters:
-    * raw parameter b[7] is mapped to amc=exp(raw_amc) to enforce positivity.
-    return scalar b_amc  = exp(b[7,1])
-    return scalar b_as   = b[8,1]
-    * Backward-compatible aliases (kept to avoid breaking master aggregation code).
-    return scalar b_es   = exp(b[7,1])
+    return scalar b_es   = b[7,1]
     return scalar b_essq = b[8,1]
     
     confirm matrix g_b
@@ -945,14 +820,6 @@ else {
 }
 
 * ---- 5.2 抓取控制变量系数，用于写入点估文件 ---- *
-local b_const_hat = r(b_c1)
-local b_l_hat     = r(b_l)
-local b_k_hat     = r(b_k)
-local b_lsq_hat   = r(b_lsq)
-local b_ksq_hat   = r(b_ksq)
-local b_m_hat     = r(b_m)
-local b_amc_hat   = r(b_amc)
-local b_as_hat    = r(b_as)
 local b_c0_omega_hat  = r(b_c0_omega)
 local b_ar1_omega_hat = r(b_ar1_omega)
 local b_lnage_hat    = r(b_lnage)
@@ -960,40 +827,7 @@ local b_firmcat2_hat = r(b_firmcat_2)
 local b_firmcat3_hat = r(b_firmcat_3)
 di as txt "Main spec dynamic block (AR(1)-style): c0=" %9.5f `b_c0_omega_hat' "  rho=" %9.5f `b_ar1_omega_hat'
 
-* ---- 5.3 Elasticity diagnostics from point estimates ---- *
-capture drop theta_k_hat theta_l_hat theta_m_hat
-gen double theta_k_hat = `b_k_hat' + 2*`b_ksq_hat'*k
-gen double theta_l_hat = `b_l_hat' + 2*`b_lsq_hat'*l
-gen double theta_m_hat = `b_m_hat'
-
-qui summarize theta_k_hat, meanonly
-local elas_k_mean = r(mean)
-qui summarize theta_l_hat, meanonly
-local elas_l_mean = r(mean)
-qui summarize theta_m_hat, meanonly
-local elas_m_mean = r(mean)
-
-qui count
-local N_elas = r(N)
-qui count if theta_k_hat < 0
-local elas_k_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
-qui count if theta_l_hat < 0
-local elas_l_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
-qui count if theta_m_hat < 0
-local elas_m_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
-
-di as txt "Elasticity means: theta_K=" %9.5f `elas_k_mean' "  theta_L=" %9.5f `elas_l_mean' "  theta_M=" %9.5f `elas_m_mean'
-di as txt "Elasticity negative shares: theta_K=" %6.3f `elas_k_negshare' "  theta_L=" %6.3f `elas_l_negshare' "  theta_M=" %6.3f `elas_m_negshare'
-
-preserve
-    keep firmid year cic2 theta_k_hat theta_l_hat theta_m_hat
-    gen str10 group = "`GROUPNAME'"
-    order group firmid year cic2 theta_k_hat theta_l_hat theta_m_hat
-    compress
-    save "$DATA_WORK/elasticity_group_`GROUPNAME'.dta", replace
-restore
-
-* ---- 5.4 firm-level omega_hat / xi_hat output ---- *
+* ---- 5.3 firm-level 残差 omega_hat / xi_hat 输出 ---- *
 capture drop omega_hat xi_hat
 gen double omega_hat = OMEGA2
 gen double xi_hat    = XI2
@@ -1019,38 +853,28 @@ preserve
     set obs 1
     gen group = "`GROUPNAME'"
     matrix b = beta_lin
-    gen b_const = `b_const_hat'
-    gen b_l     = `b_l_hat'
-    gen b_k     = `b_k_hat'
-    gen b_lsq   = `b_lsq_hat'
-    gen b_ksq   = `b_ksq_hat'
-    gen b_m     = `b_m_hat'
-    gen b_amc   = `b_amc_hat'
-    gen b_as    = `b_as_hat'
-    * Backward-compatible aliases
-    gen b_es    = b_amc
-    gen b_essq  = b_as
+    gen b_const = b[1,1]
+    gen b_l     = b[2,1]
+    gen b_k     = b[3,1]
+    gen b_lsq   = b[4,1]
+    gen b_ksq   = b[5,1]
+    gen b_m     = b[6,1]
+    gen b_es    = b[7,1]
+    gen b_essq  = b[8,1]
 
     gen b_c0_omega  = `b_c0_omega_hat'
     gen b_ar1_omega = `b_ar1_omega_hat'
     gen b_lnage     = `b_lnage_hat'
     gen b_firmcat_2 = `b_firmcat2_hat'
     gen b_firmcat_3 = `b_firmcat3_hat'
-    gen elas_k_mean = `elas_k_mean'
-    gen elas_l_mean = `elas_l_mean'
-    gen elas_m_mean = `elas_m_mean'
-    gen elas_k_negshare = `elas_k_negshare'
-    gen elas_l_negshare = `elas_l_negshare'
-    gen elas_m_negshare = `elas_m_negshare'
     
     gen J_unit  = J_unit
     gen J_opt   = J_opt
     gen J_df    = J_df
     gen J_p     = J_p
     gen N       = `Nobs'
-    order group b_const b_l b_k b_lsq b_ksq b_m b_amc b_as b_es b_essq ///
+    order group b_const b_l b_k b_lsq b_ksq b_m b_es b_essq ///
           b_c0_omega b_ar1_omega b_lnage b_firmcat_2 b_firmcat_3 ///
-          elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
           J_unit J_opt J_df J_p N
     compress
     save "$DATA_WORK/gmm_point_group_`GROUPNAME'.dta", replace
@@ -1063,82 +887,48 @@ restore
 
 if `RUN_DIAG' {
 
-    di as text _n(1) "---------- IV diagnostics (A/B/C sets) ----------"
-    di as text "Current optimization IV_SET = `IV_SET'"
-
-    capture ssc install ranktest, replace
-    capture ssc install ivreg2,   replace
-
-    local endog4 l k m
-
+    * ---- 6.1 线性 IV 诊断（ivreg2） ----
     if "`GROUPNAME'" == "G1_17_19" {
-        local z_A l llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
-        local z_B l llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
-        local z_C llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
-    }
-    else {
-        local z_A llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
-        local z_B llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
-        local z_C l llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
-    }
+        di as text _n(1) "---------- Linear IV diagnostics for G1_17_19 (ivreg2) ----------"
+        capture ssc install ranktest, replace
+        capture ssc install ivreg2,   replace
 
-    tempname HDIAG
-    tempfile ivdiag
-    postfile `HDIAG' str4 iv_set byte ok double N jp jstat widstat str80 reason using "`ivdiag'", replace
+        local endog4   l k m es
+        local z_excl4  l llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
 
-    foreach S in A B C {
-        local z_excl ``z_`S''
-        local miss 0
-        foreach z of local z_excl {
-            capture confirm variable `z'
-            if _rc local miss 1
-        }
-
-        if `miss' {
-            post `HDIAG' ("`S'") (0) (.) (.) (.) (.) ("missing variable in IV list")
-            continue
-        }
-
-        capture noisily ivreg2 r const dy2002-dy2007 lnage firmcat_2 firmcat_3 ///
-               (`endog4' = `z_excl') lsq ksq, ///
+        ivreg2 r const dy2002-dy2007 lnage firmcat_2 firmcat_3 ///
+               (`endog4' = `z_excl4') lsq ksq es2q, ///
                nocons robust cluster(firmid) first
-
-        local rc = _rc
-        if (`rc'==0) {
-            local N = e(N)
-            local jp = .
-            local jstat = .
-            local widstat = .
-            capture scalar __jp = e(jp)
-            if !_rc local jp = scalar(__jp)
-            capture scalar __j = e(j)
-            if !_rc local jstat = scalar(__j)
-            capture scalar __wid = e(widstat)
-            if !_rc local widstat = scalar(__wid)
-
-            post `HDIAG' ("`S'") (1) (`N') (`jp') (`jstat') (`widstat') ("ok")
-        }
-        else {
-            post `HDIAG' ("`S'") (0) (.) (.) (.) (.) ("ivreg2 failed")
-        }
     }
-    postclose `HDIAG'
 
-    preserve
-        use "`ivdiag'", clear
-        gen byte pass_j = (ok==1 & !missing(jp) & jp>=0.01 & jp<=0.99)
-        order iv_set ok pass_j N jp jstat widstat reason
-        compress
-        save "$DATA_WORK/iv_diag_group_`GROUPNAME'.dta", replace
-        di as text "Saved IV diagnostics: $DATA_WORK/iv_diag_group_`GROUPNAME'.dta"
-        list, noobs
-    restore
+    if "`GROUPNAME'" == "G2_39_41" {
+        di as text _n(1) "---------- Linear IV diagnostics for G2_39_41 (ivreg2) ----------"
+        capture ssc install ranktest, replace
+        capture ssc install ivreg2,   replace
 
+        local endog4   l k m es
+        local z_excl4  llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
+
+        ivreg2 r const dy2002-dy2007 lnage firmcat_2 firmcat_3 ///
+               (`endog4' = `z_excl4') lsq ksq es2q, ///
+               nocons robust cluster(firmid) first
+    }
+
+    * ---- 6.2 J 分解打印（如果你需要看哪一个 IV 拖了 J）----
     matrix list beta_lin_step1
     matrix list beta_lin
     matrix list moments_unit
     matrix list moments_opt
     scalar list J_unit J_opt J_df J_p gmm_conv
+
+    matrix list J_contrib        // 如果你在 Mata 中保留了相应矩阵
+    matrix list J_contrib_iv
+    matrix list J_contrib_white
+
+    local Kz = colsof(moments_opt)
+    * 注意：这里直接用 colnames(moments_opt) 更安全，
+    * 如果你之前在 Mata 里设置了 colnames(W_opt) 或 Z 的名称，
+    * 可以用它们来替代手动写 Znames。
 }
 
 *======================================================
@@ -1270,8 +1060,6 @@ qui summarize b_es, detail
 local se_es    = r(sd)
 qui summarize b_essq, detail
 local se_essq  = r(sd)
-local se_amc   = `se_es'
-local se_as    = `se_essq'
 qui summarize b_c0_omega, detail
 local se_c0_omega  = r(sd)
 qui summarize b_ar1_omega, detail
@@ -1296,8 +1084,6 @@ gen se_ksq   = `se_ksq'
 gen se_m     = `se_m'
 gen se_es    = `se_es'
 gen se_essq  = `se_essq'
-gen se_amc   = `se_amc'
-gen se_as    = `se_as'
 gen se_c0_omega  = `se_c0_omega'
 gen se_ar1_omega = `se_ar1_omega'
 gen se_lnage     = `se_lnage'
@@ -1309,9 +1095,8 @@ gen boot_reps    = `=`B'-`failed''
 gen avg_time     = `=`total_time'/(`B'-`failed')'
 
 order group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq ///
-      b_m se_m b_amc se_amc b_as se_as b_es se_es b_essq se_essq ///
+      b_m se_m b_es se_es b_essq se_essq ///
       b_c0_omega se_c0_omega b_ar1_omega se_ar1_omega ///
-      elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
       b_lnage se_lnage b_firmcat_2 se_firmcat_2 b_firmcat_3 se_firmcat_3 ///
       J_unit se_J_unit J_opt se_J_opt J_df J_p N boot_reps avg_time
 
@@ -1327,7 +1112,6 @@ di as res "Done group `GROUPNAME'. Files written:"
 di as res "  gmm_point_group_`GROUPNAME'.dta   (points + bootstrap SEs + diagnostics)"
 di as res "  gmm_boot_group_`GROUPNAME'.dta    (draws)"
 di as res "  omega_xi_group_`GROUPNAME'.dta   (firm-level residuals)"
-di as res "  elasticity_group_`GROUPNAME'.dta (firm-level elasticities)"
 if `failed' > 0 di as res "  bootstrap_failures_`GROUPNAME'.dta (failure reasons)"
 di as res "{hline 80}"
 }
@@ -1345,8 +1129,6 @@ else {
     gen se_m     = .
     gen se_es    = .
     gen se_essq  = .
-    gen se_amc   = .
-    gen se_as    = .
     gen se_c0_omega  = .
     gen se_ar1_omega = .
     gen se_lnage     = .
@@ -1358,9 +1140,8 @@ else {
     gen avg_time     = .
 
     order group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq ///
-          b_m se_m b_amc se_amc b_as se_as b_es se_es b_essq se_essq ///
+          b_m se_m b_es se_es b_essq se_essq ///
           b_c0_omega se_c0_omega b_ar1_omega se_ar1_omega ///
-          elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
           b_lnage se_lnage b_firmcat_2 se_firmcat_2 b_firmcat_3 se_firmcat_3 ///
           J_unit se_J_unit J_opt se_J_opt J_df J_p N boot_reps avg_time
     compress
