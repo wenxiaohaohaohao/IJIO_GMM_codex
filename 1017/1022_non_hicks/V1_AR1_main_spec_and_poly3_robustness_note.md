@@ -23,6 +23,15 @@ This is AR(1)-style Markov dynamics with concentrating-out, and it is the **main
 - Better numerical stability in your current data environment.
 - Clearer baseline for later robustness and migration.
 
+## 3) V1 linked constraint & diagnostics (new additions)
+
+- `bootstrap1229_group.do` now exposes `RUN_POINT_ONLY`, `RUN_BOOT`, `RUN_DIAG`, and an `IV_SET` (A/B/C) switch so you can run point estimation, selective bootstrap, and compare IV sets without rerunning the whole pipeline (`RUN_SWITCH` debug print near the top).  
+- In preprocessing we keep `r_hat_ols` as `shat` and 1-period lagged `shat_lag` to recreate Hicks-neutral productivity enough times inside Mata; they are fed to `refresh_globals()` to expose `S` updates to the nonlinear objective (`X` only holds the linear block for initialization).  
+- The Mata evaluator now enforces the structural constraint: `amc = exp(raw_amc)` guarantees α_M>0, `S = 1 - exp(-shat)/amc` and `S_lag` are recomputed every iteration, and any S outside (0,1) or invalid `amc` penalizes the objective to keep solutions in the economics region.  
+- `b_amc` (exp(raw)) and `b_as` replace the old `b_es/b_essq` as the nonlinear parameters; the old names are kept as aliases so downstream scripts (`Master_Non_hicks.do`) keep working.  
+- After point estimation we calculate firm-level elasticity diagnostics (`theta_k/l/m`), print their means & negative shares, and save `elasticity_group_<GROUP>.dta`.
+- The optional diagnostic module now runs ivreg2 for `IV_SET` A/B/C, records convergence/J statistics per set, and writes `$DATA_WORK/iv_diag_group_<GROUP>.dta` (with `pass_j` flag) so you can choose IV combinations by strict criteria.
+
 ## 3) Robustness specification (do not put into main flow now)
 
 Planned robustness:

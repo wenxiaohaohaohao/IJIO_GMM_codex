@@ -11,7 +11,7 @@ clear
 set more off
 * Get current date for log filename
 capture confirm global ROOT
-if _rc global ROOT "D:/文章发表/欣昊/input markdown/IJIO/IJIO_GMM_codex/1017/1022_non_hicks"
+if _rc global ROOT "D:/閺傚洨鐝烽崣鎴ｃ€?濞嗭絾妲?input markdown/IJIO/IJIO_GMM_codex/1017/1022_non_hicks"
 global CODE "$ROOT/code"
 global DATA_RAW "$ROOT/data/raw"
 global DATA_WORK "$ROOT/data/work"
@@ -24,6 +24,7 @@ if ("$TARGET_GROUP"=="") global TARGET_GROUP "ALL"     // ALL | G1_17_19 | G2_39
 if ("$RUN_POINT_ONLY"=="") global RUN_POINT_ONLY 0     // 1 => skip bootstrap in estimate do-file
 if ("$RUN_BOOT"=="") global RUN_BOOT 1                 // kept for compatibility; overridden by RUN_POINT_ONLY
 if ("$RUN_DIAG"=="") global RUN_DIAG 0
+if ("$IV_SET"=="") global IV_SET "A"                   // A | B | C (used inside bootstrap1229_group.do)
 
 
 local today = string(date(c(current_date), "DMY"), "%tdCCYYNNDD")
@@ -34,10 +35,10 @@ global LOG_DIR "$RES_LOG"
 capture mkdir "$LOG_DIR"
 if (_rc != 0 & _rc != 602) {
     di as error "WARNING: mkdir failed, r(`_rc')"
-    global LOG_DIR "."
+    di as error "WARNING: keep LOG_DIR as $RES_LOG and continue."
 }
 
-* 确保有 ivreg2 和 ranktest
+* 绾喕绻氶張?ivreg2 閸?ranktest
 capture which ivreg2
 if _rc ssc install ivreg2, replace
 
@@ -70,7 +71,7 @@ if (!`run_g1' & !`run_g2') {
     exit 198
 }
 
-di as text "RUN MODE: TARGET_GROUP=$TARGET_GROUP, RUN_POINT_ONLY=$RUN_POINT_ONLY, RUN_BOOT=$RUN_BOOT"
+di as text "RUN MODE: TARGET_GROUP=$TARGET_GROUP, RUN_POINT_ONLY=$RUN_POINT_ONLY, RUN_BOOT=$RUN_BOOT, IV_SET=$IV_SET"
 
 if `run_g1' {
     capture noisily do "$CODE/master/run_group_G1.do"
@@ -140,7 +141,10 @@ if r(max) > 50 {
 }
 
 order group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq ///
-      b_m se_m b_es se_es b_essq se_essq b_lnage b_firmcat_2 b_firmcat_3 J_unit J_opt J_df J_p N
+      b_m se_m b_amc se_amc b_as se_as b_es se_es b_essq se_essq ///
+      b_lnage b_firmcat_2 b_firmcat_3 ///
+      elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
+      J_unit J_opt J_df J_p N
 compress
 save "$RES_DATA/nonhicks_points_by_group.dta", replace
 
@@ -148,7 +152,7 @@ save "$RES_DATA/nonhicks_points_by_group.dta", replace
 * STEP 3: CREATE SE-ONLY TABLE
 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 preserve
-    keep group se_const se_l se_k se_lsq se_ksq se_m se_es se_essq
+    keep group se_const se_l se_k se_lsq se_ksq se_m se_amc se_as se_es se_essq
     compress
     save "$RES_DATA/nonhicks_ses_by_group.dta", replace
     di as text _n "Saved SE-only table: nonhicks_ses_by_group.dta"
@@ -187,7 +191,9 @@ restore
 merge 1:m group_pool using "`map'", keep(match) nogen
 drop group_pool J_unit J_opt J_df J_p N
 order cic2 group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq ///
-      b_m se_m b_es se_es b_essq se_essq b_lnage b_firmcat_2 b_firmcat_3 
+      b_m se_m b_amc se_amc b_as se_as b_es se_es b_essq se_essq ///
+      b_lnage b_firmcat_2 b_firmcat_3 ///
+      elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare
 	  
 label var group "GI group label (mapped by cic2)"
 compress
