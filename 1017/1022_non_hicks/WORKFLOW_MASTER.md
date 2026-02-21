@@ -81,3 +81,28 @@ Last update: 2026-02-21
 
 Historical source files are archived under:
 - `1017/1022_non_hicks/archive_20260221/md/`
+
+## 8. Robustness Branch Order (Frozen)
+
+Use the robustness sequence below and keep the main specification unchanged:
+
+- R0: Structure-matched IV robustness (Yinheng/RDP-style IV construction)
+- R1: Standard IV robustness (A/B/C variants around baseline)
+- R2: Dynamic-law robustness (alternative productivity transition, e.g., higher-order terms)
+- R3: Sample robustness (industry/time-window/subsample checks)
+
+R0 is mandatory before R1-R3 because it directly tests whether a control-function/concentrating-out-consistent IV design changes convergence quality, over-identification behavior, and elasticity plausibility.
+
+## 9. Appendix-Ready English Method Note (IV Logic)
+
+### A. Why add R0 (Structure-matched IV robustness)
+
+Our baseline estimation uses a two-step GMM framework with a control-function structure and concentrating-out for the linear productivity-transition block. In this setting, identification quality depends not only on instrument relevance in a generic linear-IV sense, but also on whether instruments are aligned with the model's information structure (predetermined states and lagged observables entering the control-function recursion). Therefore, we add a dedicated robustness layer (R0) that constructs instruments following the Yinheng/RDP-style logic: lagged state variables and low-order polynomial terms consistent with the timing assumptions used by the control-function/concentrating-out system.
+
+### B. Econometric rationale
+
+The rationale is threefold. First, under control-function identification, valid instruments should be measurable with respect to the firm's information set prior to current-period shocks, so lagged states and their polynomial transformations are natural candidates. Second, concentrating-out reduces dimensionality by partialling out linear transition parameters at each candidate nonlinear vector, which makes the nonlinear moments highly sensitive to instrument geometry; structure-matched instruments can improve numerical conditioning and reduce weak-identification symptoms. Third, comparing baseline IVs with structure-matched IVs provides an internal cross-validation of identification assumptions: if key parameters keep their sign and order of magnitude while diagnostics improve, results are less likely to be driven by ad hoc instrument choice.
+
+### C. Implementation and decision rule
+
+We do not replace the baseline specification mechanically. Instead, we run R0 as a robustness layer and compare (i) convergence behavior, (ii) over-identification diagnostics, and (iii) elasticity plausibility (including negative-share frequencies). The baseline is retained as the main specification unless the structure-matched set simultaneously improves diagnostics and preserves economically coherent parameter patterns. This design separates "model structure validation" from "specification replacement," and keeps the empirical narrative transparent.
