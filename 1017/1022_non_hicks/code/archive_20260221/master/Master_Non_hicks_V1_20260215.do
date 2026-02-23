@@ -11,7 +11,7 @@ clear all
 set more off
 * Get current date for log filename
 capture confirm global ROOT
-if _rc global ROOT "D:/文章发表/欣昊/input markdown/IJIO/IJIO_GMM_codex/1017/1022_non_hicks"
+if _rc global ROOT "D:/paper/IJIO_GMM_codex_en/1017/1022_non_hicks"
 global CODE "$ROOT/code"
 global DATA_RAW "$ROOT/data/raw"
 global DATA_WORK "$ROOT/data/work"
