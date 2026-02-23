@@ -106,3 +106,38 @@ The rationale is threefold. First, under control-function identification, valid 
 ### C. Implementation and decision rule
 
 We do not replace the baseline specification mechanically. Instead, we run R0 as a robustness layer and compare (i) convergence behavior, (ii) over-identification diagnostics, and (iii) elasticity plausibility (including negative-share frequencies). The baseline is retained as the main specification unless the structure-matched set simultaneously improves diagnostics and preserves economically coherent parameter patterns. This design separates "model structure validation" from "specification replacement," and keeps the empirical narrative transparent.
+
+## 10. Temp Files Audit (Root)
+
+Audit date: 2026-02-23
+
+- Scope: root-level `tmp_*` files in the repository root.
+- Conclusion: these files are not dependencies of the active run chain.
+- Active run chain remains:
+  - `1017/1022_non_hicks/code/master/Master_Non_hicks.do`
+  - `1017/1022_non_hicks/code/master/run_group_G1.do`
+  - `1017/1022_non_hicks/code/master/run_group_G2.do`
+  - `1017/1022_non_hicks/code/estimate/bootstrap1229_group.do`
+
+Moved (archive only, not deleted) to:
+- `1017/1022_non_hicks/archive_20260221/tmp_root/`
+
+Moved file list:
+- `tmp_getshort.bat`
+- `tmp_getshort2.bat`
+- `tmp_patch_v1_diag.py`
+- `tmp_patch_v1_mata.py`
+- `tmp_patch_v1_output.py`
+- `tmp_run_point_g1.log`
+- `tmp_run_point_g1g2.log`
+- `tmp_run_point_g2.log`
+- `tmp_run_point_g2_debug.log`
+- `tmp_run_v1_point.do`
+- `tmp_run_v1_point.log`
+- `tmp_run_v1_point_batch.do`
+- `tmp_run_v1_point_batch.log`
+- `tmp_run_v1_point_only.log`
+- `tmp_var_dict.docx`
+
+Note:
+- `tmp_run_v1_point.do` and `tmp_run_v1_point_batch.do` are optional manual launchers only; they are not called by the active master scripts.
