@@ -141,3 +141,128 @@ Moved file list:
 
 Note:
 - `tmp_run_v1_point.do` and `tmp_run_v1_point_batch.do` are optional manual launchers only; they are not called by the active master scripts.
+
+## 11. Step 1 Log Read Policy (Execution Standard)
+
+This section is mandatory for future Step 1 runs (`point + diagnostics`, no bootstrap).
+
+### 11.1 Must-read logs
+
+1. `1017/1022_non_hicks/run_step1_point_diag.log`
+2. `1017/1022_non_hicks/main_twogroups_full_log_YYYYMMDD.log` (same run date, latest timestamp only)
+
+Purpose:
+- Confirm run mode flags are correct (`RUN_POINT_ONLY=1`, `RUN_BOOT=0`, `RUN_DIAG=1`)
+- Confirm whether G1/G2 finished
+- Capture first fatal error code and stage if failure occurs
+
+### 11.2 Conditional logs (read only when must-read logs show errors)
+
+1. `1017/1022_non_hicks/results/logs/tmp_point_run_driver.log`
+2. `1017/1022_non_hicks/results/logs/tmp_point_G1G2_driver.log`
+3. `1017/1022_non_hicks/results/logs/tmp_run_g2_point.log` (G2-only issue)
+4. `1017/1022_non_hicks/results/logs/tmp_batch_v1_point.log` (batch-entry issue)
+
+### 11.3 Explicit ignore list
+
+1. `1017/1022_non_hicks/archive_20260221/tmp_root/*.log` (all historical)
+2. Any log with `LastWriteTime < current run start time`
+3. Old root logs from previous dates, including outdated `main_twogroups_full_log_*.log`
+
+### 11.4 Fixed screening rules
+
+1. Record current run start timestamp before launching Stata.
+2. Read only logs with `LastWriteTime >= run start timestamp`.
+3. Always read must-read logs first.
+4. Read conditional logs only if must-read logs indicate failure or inconsistency.
+5. Do not use archive logs as evidence for current-run conclusions.
+
+## 12. Hard-Constraint Reparameterization Note (2026-02-24)
+
+Scope:
+- Main edited file: `1017/1022_non_hicks/code/estimate/bootstrap1229_group.do`
+- Supporting run isolation already in:
+  - `1017/1022_non_hicks/code/master/run_step1_point_diag.do`
+  - `1017/1022_non_hicks/code/master/Master_Non_hicks.do`
+  - `1017/1022_non_hicks/code/master/run_group_G1.do`
+  - `1017/1022_non_hicks/code/master/run_group_G2.do`
+
+### 12.1 Why the previous version failed
+
+Observed error:
+- `ERROR: S outside (0,1) in step 1.`
+
+Mechanically, with
+- `S_it = 1 - exp(-shat_it)/amc`
+- `S_i,t-1 = 1 - exp(-shat_i,t-1)/amc`
+
+the feasible support requires:
+- `amc > max{exp(-shat_it), exp(-shat_i,t-1)}` for all observations used in moments.
+
+The previous initialization (`amc0 = exp(-mean(shat)) + 0.10`) can be below this sample-implied lower bound, so the optimizer starts from an infeasible point and can repeatedly hit infeasible regions.
+
+### 12.2 What was changed (estimation-equivalent transformation)
+
+For the nonlinear parameter previously mapped as `amc = exp(raw_amc)`, we now use:
+
+- `amc = amc_lb * (1 + amc_pad) + exp(raw_amc)`
+- where `amc_lb = max(exp(-shat), exp(-shat_lag))` computed from current estimation sample
+- and `amc_pad = 1e-6`
+
+This was applied consistently in:
+1. initialization (`raw_amc0`)
+2. evaluator (`GMM_DL_weighted`)
+3. step-1/step-2 feasibility checks (`run_two_step`)
+4. returned point estimates (`b_amc`, alias `b_es`)
+
+Interpretation:
+- This is a reparameterization of the optimization coordinate, not a change in model equations or moment conditions.
+- The hard-linked constraint is still exactly enforced.
+
+### 12.3 Additional I/O safety edits (engineering only)
+
+Because this machine blocks overwrite-in-place in some directories:
+- point-only branch was adjusted to avoid unnecessary second `save, replace` of the same file in the same run.
+- `firststage.dta` was renamed to group-specific files:
+  - `firststage_G1_17_19.dta`
+  - `firststage_G2_39_41.dta`
+
+These edits do not change econometric identification or objective function.
+
+### 12.4 Econometric rationale
+
+1. Feasible-set enforcement:
+- For share-like objects constrained to `(0,1)`, direct unconstrained search can spend iterations in economically impossible regions, causing non-smooth penalties and unstable convergence.
+- Reparameterization imposes the support by construction.
+
+2. Invariance of structural content:
+- The moment function and concentrated-out linear block are unchanged.
+- Only the coordinate map from unconstrained optimizer space to constrained structural parameter space is changed.
+
+3. Numerical conditioning:
+- Hard constraints reduce spurious optimizer failures caused by repeated boundary violations, especially in two-step GMM with nonlinear blocks and generated regressors.
+
+### 12.5 Economic interpretation
+
+- `S` is a constrained share object in the hard-linked system.
+- `S<=0` or `S>=1` implies economically invalid allocation/probability interpretation.
+- Enforcing support is therefore not cosmetic; it is part of structural coherence.
+
+### 12.6 Literature anchors for write-up
+
+Core GMM and implementation:
+- Hansen (1982), *Large Sample Properties of Generalized Method of Moments Estimators*.
+
+Control-function / production-function identification context:
+- Olley and Pakes (1996), *The Dynamics of Productivity in the Telecommunications Equipment Industry*.
+- Levinsohn and Petrin (2003), *Estimating Production Functions Using Inputs to Control for Unobservables*.
+- Wooldridge (2009), *On Estimating Firm-Level Production Functions Using Proxy Variables to Control for Unobservables*.
+- Ackerberg, Caves, and Frazer (2015), *Identification Properties of Recent Production Function Estimators*.
+
+Concentrating-out and dynamic productivity process context:
+- Doraszelski and Jaumandreu (2013), *R&D and Productivity: Estimating Endogenous Productivity*.
+- Doraszelski and Jaumandreu (2018), related implementation papers on endogenous productivity dynamics and structural estimation.
+
+Suggested paper wording position:
+- Main text: concise statement of hard-linked constraint and reparameterization purpose.
+- Appendix/footnote: explicit mapping formula and feasibility condition with implementation detail (`amc_lb`, `amc_pad`).

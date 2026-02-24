@@ -12,12 +12,12 @@ set more off
 * Get current date for log filename
 capture confirm global ROOT
 if _rc global ROOT "D:/paper/IJIO_GMM_codex_en/1017/1022_non_hicks"
-global CODE "$ROOT/code"
-global DATA_RAW "$ROOT/data/raw"
-global DATA_WORK "$ROOT/data/work"
-global RES_DATA "$ROOT/results/data"
-global RES_FIG "$ROOT/results/figures"
-global RES_LOG "$ROOT/results/logs"
+if ("$CODE"=="") global CODE "$ROOT/code"
+if ("$DATA_RAW"=="") global DATA_RAW "$ROOT/data/raw"
+if ("$DATA_WORK"=="") global DATA_WORK "$ROOT/data/work"
+if ("$RES_DATA"=="") global RES_DATA "$ROOT/results/data"
+if ("$RES_FIG"=="") global RES_FIG "$ROOT/results/figures"
+if ("$RES_LOG"=="") global RES_LOG "$ROOT/results/logs"
 
 * Run controls (can be preset before calling this master)
 if ("$TARGET_GROUP"=="") global TARGET_GROUP "ALL"     // ALL | G1_17_19 | G2_39_41
@@ -32,10 +32,6 @@ capture log close _all  // Close any existing logs to prevent conflicts
 * Create log directory
 global LOG_DIR "$RES_LOG"
 capture mkdir "$LOG_DIR"
-if (_rc != 0 & _rc != 602) {
-    di as error "WARNING: mkdir failed, r(`_rc')"
-    global LOG_DIR "."
-}
 
 * 确保有 ivreg2 和 ranktest
 capture which ivreg2

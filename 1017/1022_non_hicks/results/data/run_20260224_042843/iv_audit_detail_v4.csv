@@ -1,0 +1,74 @@
+group,iv_set,stage,varname,detail,N,miss_rate,sd,stat1,stat2,stat3
+G1_17_19,A,firstF,k,joint excluded IV,23968,,,60.236992,8,8406
+G1_17_19,A,firstF,l,joint excluded IV,23968,,,,0,8406
+G1_17_19,A,firstF,m,joint excluded IV,23968,,,1307.6714,8,8406
+G1_17_19,A,ivreg2,.,ok,23968,,,1.7430156e-21,103.52901,45.950447
+G1_17_19,A,varstat,Z_HHI_post,ok,23968,0,,,,
+G1_17_19,A,varstat,k_ind_yr,ok,23968,0,,,,
+G1_17_19,A,varstat,klag,ok,23968,0,,,,
+G1_17_19,A,varstat,l,ok,23968,0,,,,
+G1_17_19,A,varstat,l_ind_yr,ok,23968,0,,,,
+G1_17_19,A,varstat,llag,ok,23968,0,,,,
+G1_17_19,A,varstat,m_ind_yr,ok,23968,0,,,,
+G1_17_19,A,varstat,mlag,ok,23968,0,,,,
+G1_17_19,B,firstF,k,joint excluded IV,23968,,,55.685036,9,8406
+G1_17_19,B,firstF,l,joint excluded IV,23968,,,,0,8406
+G1_17_19,B,firstF,m,joint excluded IV,23968,,,1199.3691,9,8406
+G1_17_19,B,ivreg2,.,ok,23968,,,0,285.32034,39.874302
+G1_17_19,B,varstat,Z_HHI_post,ok,23968,0,,,,
+G1_17_19,B,varstat,Z_tariff,ok,23968,0,,,,
+G1_17_19,B,varstat,k_ind_yr,ok,23968,0,,,,
+G1_17_19,B,varstat,klag,ok,23968,0,,,,
+G1_17_19,B,varstat,l,ok,23968,0,,,,
+G1_17_19,B,varstat,l_ind_yr,ok,23968,0,,,,
+G1_17_19,B,varstat,llag,ok,23968,0,,,,
+G1_17_19,B,varstat,m_ind_yr,ok,23968,0,,,,
+G1_17_19,B,varstat,mlag,ok,23968,0,,,,
+G1_17_19,C,firstF,k,joint excluded IV,23968,,,39.8242,8,8406
+G1_17_19,C,firstF,l,joint excluded IV,23968,,,26.287151,8,8406
+G1_17_19,C,firstF,m,joint excluded IV,23968,,,1334.1499,8,8406
+G1_17_19,C,ivreg2,.,ok,23968,,,0,285.32034,39.874302
+G1_17_19,C,varstat,Z_HHI_post,ok,23968,0,,,,
+G1_17_19,C,varstat,Z_tariff,ok,23968,0,,,,
+G1_17_19,C,varstat,k_ind_yr,ok,23968,0,,,,
+G1_17_19,C,varstat,klag,ok,23968,0,,,,
+G1_17_19,C,varstat,l_ind_yr,ok,23968,0,,,,
+G1_17_19,C,varstat,llag,ok,23968,0,,,,
+G1_17_19,C,varstat,m_ind_yr,ok,23968,0,,,,
+G1_17_19,C,varstat,mlag,ok,23968,0,,,,
+G2_39_41,A,firstF,k,joint excluded IV,23289,,,29.623362,7,7964
+G2_39_41,A,firstF,l,joint excluded IV,23289,,,18.190432,7,7964
+G2_39_41,A,firstF,m,joint excluded IV,23289,,,1647.3816,7,7964
+G2_39_41,A,ivreg2,.,ok,23289,,,0,528.69275,25.372335
+G2_39_41,A,varstat,Z_HHI_post,ok,23289,0,,,,
+G2_39_41,A,varstat,k_ind_yr,ok,23289,0,,,,
+G2_39_41,A,varstat,klag,ok,23289,0,,,,
+G2_39_41,A,varstat,l_ind_yr,ok,23289,0,,,,
+G2_39_41,A,varstat,llag,ok,23289,0,,,,
+G2_39_41,A,varstat,m_ind_yr,ok,23289,0,,,,
+G2_39_41,A,varstat,mlag,ok,23289,0,,,,
+G2_39_41,B,firstF,k,joint excluded IV,23289,,,26.12001,8,7964
+G2_39_41,B,firstF,l,joint excluded IV,23289,,,16.048056,8,7964
+G2_39_41,B,firstF,m,joint excluded IV,23289,,,1463.0398,8,7964
+G2_39_41,B,ivreg2,.,ok,23289,,,0,574.49622,22.781757
+G2_39_41,B,varstat,Z_HHI_post,ok,23289,0,,,,
+G2_39_41,B,varstat,Z_tariff,ok,23289,0,,,,
+G2_39_41,B,varstat,k_ind_yr,ok,23289,0,,,,
+G2_39_41,B,varstat,klag,ok,23289,0,,,,
+G2_39_41,B,varstat,l_ind_yr,ok,23289,0,,,,
+G2_39_41,B,varstat,llag,ok,23289,0,,,,
+G2_39_41,B,varstat,m_ind_yr,ok,23289,0,,,,
+G2_39_41,B,varstat,mlag,ok,23289,0,,,,
+G2_39_41,C,firstF,k,joint excluded IV,23289,,,39.812653,9,7964
+G2_39_41,C,firstF,l,joint excluded IV,23289,,,,0,7964
+G2_39_41,C,firstF,m,joint excluded IV,23289,,,1319.259,9,7964
+G2_39_41,C,ivreg2,.,ok,23289,,,0,574.49622,22.781757
+G2_39_41,C,varstat,Z_HHI_post,ok,23289,0,,,,
+G2_39_41,C,varstat,Z_tariff,ok,23289,0,,,,
+G2_39_41,C,varstat,k_ind_yr,ok,23289,0,,,,
+G2_39_41,C,varstat,klag,ok,23289,0,,,,
+G2_39_41,C,varstat,l,ok,23289,0,,,,
+G2_39_41,C,varstat,l_ind_yr,ok,23289,0,,,,
+G2_39_41,C,varstat,llag,ok,23289,0,,,,
+G2_39_41,C,varstat,m_ind_yr,ok,23289,0,,,,
+G2_39_41,C,varstat,mlag,ok,23289,0,,,,

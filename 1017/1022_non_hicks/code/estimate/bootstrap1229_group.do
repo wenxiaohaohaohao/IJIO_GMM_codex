@@ -1,5 +1,4 @@
 *******************************************************
-* bootstrap0901_group_clean.do
 * 目的：按模块清晰整理两步 GMM + bootstrap 程序
 * 说明：逻辑与你当前版本等价，只是：
 *   1) 加了模块化大标题和注释；
@@ -15,12 +14,12 @@ set more off
 set trace off
 capture confirm global ROOT
 if _rc global ROOT "D:/paper/IJIO_GMM_codex_en/1017/1022_non_hicks"
-global CODE "$ROOT/code"
-global DATA_RAW "$ROOT/data/raw"
-global DATA_WORK "$ROOT/data/work"
-global RES_DATA "$ROOT/results/data"
-global RES_FIG "$ROOT/results/figures"
-global RES_LOG "$ROOT/results/logs"
+if ("$CODE"=="") global CODE "$ROOT/code"
+if ("$DATA_RAW"=="") global DATA_RAW "$ROOT/data/raw"
+if ("$DATA_WORK"=="") global DATA_WORK "$ROOT/data/work"
+if ("$RES_DATA"=="") global RES_DATA "$ROOT/results/data"
+if ("$RES_FIG"=="") global RES_FIG "$ROOT/results/figures"
+if ("$RES_LOG"=="") global RES_LOG "$ROOT/results/logs"
 
 
 cd "$ROOT"
@@ -216,7 +215,7 @@ assert !missing(phi, epsilon) if e(sample)
 label var phi     "phi_it"
 label var epsilon "measurement error (first stage)"
 
-save "$DATA_WORK/firststage.dta", replace
+save "$DATA_WORK/firststage_`GROUPNAME'.dta", replace
 
 *======================================================
 * 模块 2：面板截取 & 滞后项、交互项构造
@@ -370,10 +369,12 @@ real scalar scalarmax(real scalar a, real scalar b)
 /* 初始化全局矩阵（用于 st_store 回写时保证存在） */
 OMEGA2 = J(0,1,.)
 XI2    = J(0,1,.)
+AMC_LB = .
+AMC_PAD = 1e-6
 
 void refresh_globals()
 {
-    external X, X_lag, Z, PHI, PHI_lag, Y, C, CONSOL, beta_init, Wg_opt
+    external X, X_lag, Z, PHI, PHI_lag, Y, C, CONSOL, beta_init, Wg_opt, AMC_LB, AMC_PAD
     external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
     /* V1 linked-constraint setup: X only for initialization; S is updated inside evaluator */
@@ -433,7 +434,7 @@ void refresh_globals()
 
     CONSOL  = st_data(., ("dy2002","dy2003","dy2004","dy2005","dy2006","dy2007","lnage","firmcat_2","firmcat_3"))
 
-    real scalar use_b0, shbar, amc0, raw_amc0
+    real scalar use_b0, shbar, amc0, raw_amc0, lb_local
     real rowvector bols
     use_b0 = strtoreal(st_local("have_b0"))
 
@@ -450,11 +451,24 @@ void refresh_globals()
         _error(3497)
     }
 
+    /* Hard-linked S-constraint support:
+       S=1-exp(-shat)/amc in (0,1) requires amc > exp(-shat), same for lag.
+       Build a sample-specific lower bound and enforce it via reparameterization. */
+    lb_local = max( (exp(-SHAT) \ exp(-SHAT_lag)) )
+    if (missing(lb_local) | lb_local<=1e-8) {
+        errprintf(">>> ERROR: invalid AMC lower bound from shat/shat_lag\n")
+        _error(3497)
+    }
+    AMC_LB = lb_local
+    st_numscalar("amc_lb", AMC_LB)
+    st_numscalar("amc_pad", AMC_PAD)
+
     bols = qrsolve(X, Y)'
     shbar = mean(SHAT)
     if (missing(shbar)) shbar = 0
     amc0 = exp(-shbar) + 0.10
-    raw_amc0 = ln(amc0)
+    if (amc0 <= AMC_LB*(1+AMC_PAD)) amc0 = AMC_LB*(1+100*AMC_PAD)
+    raw_amc0 = ln( scalarmax(amc0 - AMC_LB*(1+AMC_PAD), 1e-8) )
 
     if (use_b0 == 1) {
         beta_init = st_matrix("b0")'
@@ -469,7 +483,7 @@ void refresh_globals()
 
 void GMM_DL_weighted(todo, b, crit, g, H)
 {
-    external PHI, PHI_lag, Z, C, CONSOL, Wg, Wg_opt
+    external PHI, PHI_lag, Z, C, CONSOL, Wg, Wg_opt, AMC_LB, AMC_PAD
     external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
     real colvector OMEGA, OMEGA_lag, XI, gb, m, S_now, S_lag
@@ -488,11 +502,10 @@ void GMM_DL_weighted(todo, b, crit, g, H)
         Wg_opt = I(cols(Z))
     }
 
-    /* V1 linked-constraint:
-       amc = exp(raw_amc) guarantees positivity;
-       S and S_lag are updated at each iteration using shat/shat_lag. */
-    amc = exp(b[7])
-    if (missing(amc) | amc<=1e-8 | amc>1e+8) {
+    /* Hard-linked S-constraint reparameterization:
+       amc = AMC_LB*(1+AMC_PAD) + exp(raw_amc), so amc always stays in feasible region. */
+    amc = AMC_LB*(1+AMC_PAD) + exp(b[7])
+    if (missing(amc) | amc<=AMC_LB*(1+AMC_PAD) | amc>1e+12) {
         crit = 1e+20
         if (todo >= 1) g = J(1, cols(b), 0)
         if (todo == 2) H = J(cols(b), cols(b), 0)
@@ -552,8 +565,8 @@ void GMM_DL_weighted(todo, b, crit, g, H)
 
             btmp    = b
             btmp[i] = b[i] + eps_i
-            amc = exp(btmp[7])
-            if (missing(amc) | amc<=1e-8 | amc>1e+8) {
+            amc = AMC_LB*(1+AMC_PAD) + exp(btmp[7])
+            if (missing(amc) | amc<=AMC_LB*(1+AMC_PAD) | amc>1e+12) {
                 crit_plus = 1e+20
             }
             else {
@@ -575,8 +588,8 @@ void GMM_DL_weighted(todo, b, crit, g, H)
 
             btmp    = b
             btmp[i] = b[i] - eps_i
-            amc = exp(btmp[7])
-            if (missing(amc) | amc<=1e-8 | amc>1e+8) {
+            amc = AMC_LB*(1+AMC_PAD) + exp(btmp[7])
+            if (missing(amc) | amc<=AMC_LB*(1+AMC_PAD) | amc>1e+12) {
                 crit_minus = 1e+20
             }
             else {
@@ -618,7 +631,7 @@ void run_two_step()
     st_numscalar("J_df",      .)
     st_numscalar("J_p",       .)
 
-    external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, beta_init, Wg_opt
+    external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, beta_init, Wg_opt, AMC_LB, AMC_PAD
     external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
     real scalar Kz, Kx, J1, J2, lam, conv1, conv2, smin, smax, cond, EPSJ
@@ -671,8 +684,8 @@ void run_two_step()
         st_numscalar("gmm_conv1", conv1)
     }
 
-    amc1 = exp(b1[7])
-    if (missing(amc1) | amc1<=1e-8 | amc1>1e+8) {
+    amc1 = AMC_LB*(1+AMC_PAD) + exp(b1[7])
+    if (missing(amc1) | amc1<=AMC_LB*(1+AMC_PAD) | amc1>1e+12) {
         errprintf("ERROR: invalid amc in step 1.\n")
         _error(3498)
     }
@@ -769,8 +782,8 @@ void run_two_step()
 
     st_numscalar("gmm_conv2", conv2)
 
-    amc2 = exp(b2[7])
-    if (missing(amc2) | amc2<=1e-8 | amc2>1e+8) {
+    amc2 = AMC_LB*(1+AMC_PAD) + exp(b2[7])
+    if (missing(amc2) | amc2<=AMC_LB*(1+AMC_PAD) | amc2>1e+12) {
         errprintf("ERROR: invalid amc in step 2.\n")
         _error(3498)
     }
@@ -873,11 +886,11 @@ program define gmm2step_once, rclass
     return scalar b_ksq  = b[5,1]
     return scalar b_m    = b[6,1]
     * V1 linked-constraint parameters:
-    * raw parameter b[7] is mapped to amc=exp(raw_amc) to enforce positivity.
-    return scalar b_amc  = exp(b[7,1])
+    * raw b[7] maps to amc = amc_lb*(1+amc_pad) + exp(raw_amc), enforcing S-feasible support.
+    return scalar b_amc  = scalar(amc_lb)*(1+scalar(amc_pad)) + exp(b[7,1])
     return scalar b_as   = b[8,1]
     * Backward-compatible aliases (kept to avoid breaking master aggregation code).
-    return scalar b_es   = exp(b[7,1])
+    return scalar b_es   = scalar(amc_lb)*(1+scalar(amc_pad)) + exp(b[7,1])
     return scalar b_essq = b[8,1]
     
     confirm matrix g_b
@@ -1048,10 +1061,39 @@ preserve
     gen J_df    = J_df
     gen J_p     = J_p
     gen N       = `Nobs'
-    order group b_const b_l b_k b_lsq b_ksq b_m b_amc b_as b_es b_essq ///
-          b_c0_omega b_ar1_omega b_lnage b_firmcat_2 b_firmcat_3 ///
-          elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
-          J_unit J_opt J_df J_p N
+    if `RUN_BOOT'==0 {
+        gen se_const = .
+        gen se_l     = .
+        gen se_k     = .
+        gen se_lsq   = .
+        gen se_ksq   = .
+        gen se_m     = .
+        gen se_es    = .
+        gen se_essq  = .
+        gen se_amc   = .
+        gen se_as    = .
+        gen se_c0_omega  = .
+        gen se_ar1_omega = .
+        gen se_lnage     = .
+        gen se_firmcat_2 = .
+        gen se_firmcat_3 = .
+        gen se_J_unit    = .
+        gen se_J_opt     = .
+        gen boot_reps    = 0
+        gen avg_time     = .
+        order group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq ///
+              b_m se_m b_amc se_amc b_as se_as b_es se_es b_essq se_essq ///
+              b_c0_omega se_c0_omega b_ar1_omega se_ar1_omega ///
+              elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
+              b_lnage se_lnage b_firmcat_2 se_firmcat_2 b_firmcat_3 se_firmcat_3 ///
+              J_unit se_J_unit J_opt se_J_opt J_df J_p N boot_reps avg_time
+    }
+    else {
+        order group b_const b_l b_k b_lsq b_ksq b_m b_amc b_as b_es b_essq ///
+              b_c0_omega b_ar1_omega b_lnage b_firmcat_2 b_firmcat_3 ///
+              elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
+              J_unit J_opt J_df J_p N
+    }
     compress
     save "$DATA_WORK/gmm_point_group_`GROUPNAME'.dta", replace
 restore
@@ -1072,14 +1114,16 @@ if `RUN_DIAG' {
     local endog4 l k m
 
     if "`GROUPNAME'" == "G1_17_19" {
-        local z_A l llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
-        local z_B l llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
+        * Excluded IVs: remove contemporaneous endogenous variable l.
+        local z_A llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
+        local z_B llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
         local z_C llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
     }
     else {
         local z_A llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
         local z_B llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
-        local z_C l llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
+        * Excluded IVs: remove contemporaneous endogenous variable l.
+        local z_C llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
     }
 
     tempname HDIAG
@@ -1087,15 +1131,25 @@ if `RUN_DIAG' {
     postfile `HDIAG' str4 iv_set byte ok double N jp jstat widstat str80 reason using "`ivdiag'", replace
 
     foreach S in A B C {
-        local z_excl ``z_`S''
+        * Safe macro expansion by branch to avoid malformed tokens like `l.
+        local z_excl ""
+        if "`S'"=="A" local z_excl "`z_A'"
+        if "`S'"=="B" local z_excl "`z_B'"
+        if "`S'"=="C" local z_excl "`z_C'"
+
         local miss 0
+        local misslist ""
         foreach z of local z_excl {
             capture confirm variable `z'
-            if _rc local miss 1
+            if _rc {
+                local miss 1
+                local misslist "`misslist' `z'"
+            }
         }
 
         if `miss' {
-            post `HDIAG' ("`S'") (0) (.) (.) (.) (.) ("missing variable in IV list")
+            local misslist = trim("`misslist'")
+            post `HDIAG' ("`S'") (0) (.) (.) (.) (.) ("missing: `misslist'")
             continue
         }
 
@@ -1335,36 +1389,7 @@ else {
     di as text _n(2) "{hline 80}"
     di as text "RUN_POINT_ONLY mode: skip bootstrap and keep point estimates only"
     di as text "{hline 80}"
-
-    use "$DATA_WORK/gmm_point_group_`GROUPNAME'.dta", clear
-    gen se_const = .
-    gen se_l     = .
-    gen se_k     = .
-    gen se_lsq   = .
-    gen se_ksq   = .
-    gen se_m     = .
-    gen se_es    = .
-    gen se_essq  = .
-    gen se_amc   = .
-    gen se_as    = .
-    gen se_c0_omega  = .
-    gen se_ar1_omega = .
-    gen se_lnage     = .
-    gen se_firmcat_2 = .
-    gen se_firmcat_3 = .
-    gen se_J_unit    = .
-    gen se_J_opt     = .
-    gen boot_reps    = 0
-    gen avg_time     = .
-
-    order group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq ///
-          b_m se_m b_amc se_amc b_as se_as b_es se_es b_essq se_essq ///
-          b_c0_omega se_c0_omega b_ar1_omega se_ar1_omega ///
-          elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
-          b_lnage se_lnage b_firmcat_2 se_firmcat_2 b_firmcat_3 se_firmcat_3 ///
-          J_unit se_J_unit J_opt se_J_opt J_df J_p N boot_reps avg_time
-    compress
-    save "$DATA_WORK/gmm_point_group_`GROUPNAME'.dta", replace
+    di as text "Point-only placeholders already initialized in gmm_point_group_`GROUPNAME'.dta"
 }
 
 display as text "INFO: Script finished at " c(current_time)
