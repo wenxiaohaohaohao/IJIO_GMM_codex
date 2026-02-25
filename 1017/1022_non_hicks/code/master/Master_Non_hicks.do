@@ -138,7 +138,7 @@ if r(max) > 50 {
 order group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq ///
       b_m se_m b_es se_es b_essq se_essq b_lnage b_firmcat_2 b_firmcat_3 J_unit J_opt J_df J_p N
 compress
-save "$RES_DATA/nonhicks_points_by_group.dta", replace
+save "$DATA_WORK/nonhicks_points_by_group.dta", replace
 
 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 * STEP 3: CREATE SE-ONLY TABLE
@@ -146,7 +146,7 @@ save "$RES_DATA/nonhicks_points_by_group.dta", replace
 preserve
     keep group se_const se_l se_k se_lsq se_ksq se_m se_es se_essq
     compress
-    save "$RES_DATA/nonhicks_ses_by_group.dta", replace
+    save "$DATA_WORK/nonhicks_ses_by_group.dta", replace
     di as text _n "Saved SE-only table: nonhicks_ses_by_group.dta"
 restore
 
@@ -187,7 +187,7 @@ order cic2 group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq //
 	  
 label var group "GI group label (mapped by cic2)"
 compress
-save "$RES_DATA/gmm_point_industry.dta", replace
+save "$DATA_WORK/gmm_point_industry.dta", replace
 
 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 * STEP 5: FINAL SUMMARY & LOG CLOSURE
