@@ -36,11 +36,11 @@ local RUN_BOOT 1
 if ("$RUN_BOOT"!="") local RUN_BOOT = real("$RUN_BOOT")
 if (`RUN_POINT_ONLY'==1) local RUN_BOOT 0
 
-* IV set switch for V1 diagnostics / robustness gate (A | B | C)
+* IV set switch for V1 diagnostics / robustness gate (A | B | C | A1 | A2 | A3)
 local IV_SET "A"
 if ("$IV_SET"!="") local IV_SET = upper("$IV_SET")
-if !inlist("`IV_SET'","A","B","C") {
-    di as err "ERROR: invalid IV_SET=[`IV_SET']; must be A, B, or C."
+if !inlist("`IV_SET'","A","B","C","A1","A2","A3") {
+    di as err "ERROR: invalid IV_SET=[`IV_SET']; must be A, B, C, A1, A2, or A3."
     exit 198
 }
 global IV_SET "`IV_SET'"
@@ -403,8 +403,8 @@ void refresh_globals()
         errprintf("Invalid GROUPNAME = [%s]; must be G1_17_19 or G2_39_41\n", g)
         _error(3499)
     }
-    if (ivset!="A" & ivset!="B" & ivset!="C") {
-        errprintf("Invalid IV_SET = [%s]; must be A/B/C\n", ivset)
+    if (ivset!="A" & ivset!="B" & ivset!="C" & ivset!="A1" & ivset!="A2" & ivset!="A3") {
+        errprintf("Invalid IV_SET = [%s]; must be A/B/C/A1/A2/A3\n", ivset)
         _error(3499)
     }
 
@@ -422,6 +422,24 @@ void refresh_globals()
     }
     else if (g=="G2_39_41" & ivset=="B") {
         Z = st_data(., ("const","llag","klag","mlag","l","lsq","ksq","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","Z_HHI_post"))
+    }
+    else if (g=="G1_17_19" & ivset=="A1") {
+        Z = st_data(., ("llag","klag","mlag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","lages2q","lages"))
+    }
+    else if (g=="G1_17_19" & ivset=="A2") {
+        Z = st_data(., ("llag","klag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","lages2q","lages","klages"))
+    }
+    else if (g=="G1_17_19" & ivset=="A3") {
+        Z = st_data(., ("llag","klag","k_ind_yr","m_ind_yr","Z_tariff","lages2q","lages","klages","llag2"))
+    }
+    else if (g=="G2_39_41" & ivset=="A1") {
+        Z = st_data(., ("llag","mlag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","Z_HHI_post","lages2q","lages"))
+    }
+    else if (g=="G2_39_41" & ivset=="A2") {
+        Z = st_data(., ("llag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","Z_HHI_post","lages2q","lages","llag2"))
+    }
+    else if (g=="G2_39_41" & ivset=="A3") {
+        Z = st_data(., ("llag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","lages2q","lages","llag2","klages"))
     }
     else {
         Z = st_data(., ("const","llag","klag","mlag","lages","lages2q","l_ind_yr","k_ind_yr","m_ind_yr","Z_HHI_post"))

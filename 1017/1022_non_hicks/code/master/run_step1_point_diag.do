@@ -2,12 +2,12 @@ clear all
 set more off
 
 * Step 1 baseline: point estimation + diagnostics only
-global ROOT "."
-global TARGET_GROUP "ALL"
-global RUN_POINT_ONLY 1
-global RUN_BOOT 0
-global RUN_DIAG 1
-global IV_SET "A"
+if ("$ROOT"=="") global ROOT "."
+if ("$TARGET_GROUP"=="") global TARGET_GROUP "ALL"
+if ("$RUN_POINT_ONLY"=="") global RUN_POINT_ONLY 1
+if ("$RUN_BOOT"=="") global RUN_BOOT 0
+if ("$RUN_DIAG"=="") global RUN_DIAG 1
+if ("$IV_SET"=="") global IV_SET "A"
 
 * Isolate Step 1 outputs to avoid replace-collision on existing files
 local run_date = string(date(c(current_date), "DMY"), "%tdCCYYNNDD")
