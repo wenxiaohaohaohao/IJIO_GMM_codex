@@ -1,33 +1,33 @@
+* Step 1 baseline: point estimation + diagnostics only
+* Setup: Use standard output directories (no timestamped subdirectories)
 clear all
 set more off
 
-* Step 1 baseline: point estimation + diagnostics only
-if ("$ROOT"=="") global ROOT "."
+if ("$ROOT"=="") global ROOT "D:/paper/IJIO_GMM_codex_en/1017/1022_non_hicks"
+if ("$CODE"=="") global CODE "$ROOT/code"
+if ("$DATA_RAW"=="") global DATA_RAW "$ROOT/data/raw"
+if ("$DATA_WORK"=="") global DATA_WORK "$ROOT/data/work"
+if ("$RES_DATA"=="") global RES_DATA "$ROOT/results/data"
+if ("$RES_FIG"=="") global RES_FIG "$ROOT/results/figures"
+if ("$RES_LOG"=="") global RES_LOG "$ROOT/results/logs"
+
+* Run controls (can be preset before calling this script)
 if ("$TARGET_GROUP"=="") global TARGET_GROUP "ALL"
 if ("$RUN_POINT_ONLY"=="") global RUN_POINT_ONLY 1
 if ("$RUN_BOOT"=="") global RUN_BOOT 0
 if ("$RUN_DIAG"=="") global RUN_DIAG 1
 if ("$IV_SET"=="") global IV_SET "A"
 
-* Isolate Step 1 outputs to avoid replace-collision on existing files
-local run_date = string(date(c(current_date), "DMY"), "%tdCCYYNNDD")
-local run_time = subinstr(c(current_time), ":", "", .)
-global RUN_TAG "`run_date'_`run_time'"
-global DATA_WORK "$ROOT/data/work/run_$RUN_TAG"
-global RES_DATA "$ROOT/results/data/run_$RUN_TAG"
-global RES_LOG "$ROOT/results/logs/run_$RUN_TAG"
-
-capture mkdir "$ROOT/data/work"
-capture mkdir "$ROOT/results"
-capture mkdir "$ROOT/results/data"
-capture mkdir "$ROOT/results/logs"
+* Create standard output directories
 capture mkdir "$DATA_WORK"
 capture mkdir "$RES_DATA"
+capture mkdir "$RES_FIG"
 capture mkdir "$RES_LOG"
 
-di as txt "STEP1 RUN_TAG = $RUN_TAG"
-di as txt "STEP1 DATA_WORK = $DATA_WORK"
-di as txt "STEP1 RES_DATA  = $RES_DATA"
-di as txt "STEP1 RES_LOG   = $RES_LOG"
+di as txt "STEP1 Configuration:"
+di as txt "  ROOT      = $ROOT"
+di as txt "  DATA_WORK = $DATA_WORK"
+di as txt "  RES_DATA  = $RES_DATA"
+di as txt "  RES_LOG   = $RES_LOG"
 
 do "$ROOT/code/master/Master_Non_hicks.do"
