@@ -41,7 +41,7 @@ capture which ranktest
 if _rc ssc install ranktest, replace
 * Start comprehensive logging - APPEND mode to preserve previous runs
 local log_file "$LOG_DIR/main_twogroups_full_log_`today'.log"
-log using "`log_file'", text replace  // REPLACE to avoid appending to old logs
+log using "`log_file'", text replace  // Use replace as unified overwrite policy
 
 * Add header to log with execution details
 di _n(2) "{hline 80}"
@@ -177,7 +177,7 @@ input str10 group_pool byte cic2
 "G2_39_41" 41
 end
 tempfile map
-save "`map'", replace
+save "`map'"
 restore
 
 merge 1:m group_pool using "`map'", keep(match) nogen
@@ -207,7 +207,7 @@ di as text "  `log_file'"
 di "{hline 80}" _n
 
 * Save copy of log with timestamped name in main directory
-capture copy "`log_file'" "$RES_LOG/main_twogroups_final_log_`today'.log"
+capture copy "`log_file'" "$RES_LOG/main_twogroups_final_log_`today'.log", replace
 if _rc == 0 {
     di as text "Copied log to: main_twogroups_final_log_`today'.log"
 }

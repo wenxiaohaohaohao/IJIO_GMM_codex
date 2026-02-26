@@ -24,6 +24,10 @@ capture mkdir "$RES_DATA"
 capture mkdir "$RES_FIG"
 capture mkdir "$RES_LOG"
 
+* Force runner log into results/logs to avoid root-level stray logs
+capture log close _all
+log using "$RES_LOG/run_step1_point_diag.log", text replace
+
 di as txt "STEP1 Configuration:"
 di as txt "  ROOT      = $ROOT"
 di as txt "  DATA_WORK = $DATA_WORK"
@@ -31,3 +35,4 @@ di as txt "  RES_DATA  = $RES_DATA"
 di as txt "  RES_LOG   = $RES_LOG"
 
 do "$ROOT/code/master/Master_Non_hicks.do"
+log close

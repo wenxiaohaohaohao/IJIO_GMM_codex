@@ -9,7 +9,7 @@
 *------------------------------------------------------
 * 模块 0：环境设置 & 组名检查（对应你原来开头部分）
 *------------------------------------------------------
-clear all
+clear
 set more off
 set trace off
 capture confirm global ROOT
@@ -36,6 +36,15 @@ local RUN_BOOT 1
 if ("$RUN_BOOT"!="") local RUN_BOOT = real("$RUN_BOOT")
 if (`RUN_POINT_ONLY'==1) local RUN_BOOT 0
 
+* Optional robust optimizer mode for fragile IV sets (A2/A3)
+local ROBUST_INIT 0
+if ("$ROBUST_INIT"!="") local ROBUST_INIT = real("$ROBUST_INIT")
+global ROBUST_INIT "`ROBUST_INIT'"
+
+* Optional IV override (space-separated var list), by group
+if ("$IV_Z_G1"=="") global IV_Z_G1 ""
+if ("$IV_Z_G2"=="") global IV_Z_G2 ""
+
 * IV set switch for V1 diagnostics / robustness gate (A | B | C | A1 | A2 | A3)
 local IV_SET "A"
 if ("$IV_SET"!="") local IV_SET = upper("$IV_SET")
@@ -44,7 +53,8 @@ if !inlist("`IV_SET'","A","B","C","A1","A2","A3") {
     exit 198
 }
 global IV_SET "`IV_SET'"
-di as txt "RUN SWITCH: RUN_POINT_ONLY=`RUN_POINT_ONLY', RUN_BOOT=`RUN_BOOT', RUN_DIAG=`RUN_DIAG', IV_SET=`IV_SET'"
+di as txt "RUN SWITCH: RUN_POINT_ONLY=`RUN_POINT_ONLY', RUN_BOOT=`RUN_BOOT', RUN_DIAG=`RUN_DIAG', IV_SET=`IV_SET', ROBUST_INIT=`ROBUST_INIT'"
+di as txt "IV overrides: G1=[$IV_Z_G1] ; G2=[$IV_Z_G2]"
 
 * === 从全局读取 GROUP_NAME，并做合法性检查 ===
 if ("$GROUP_NAME"=="") {
@@ -395,9 +405,12 @@ void refresh_globals()
     SHAT_lag  = st_data(., "shat_lag")
 
     /* IV sets by group and IV_SET switch */
-    string scalar g, ivset
+    string scalar g, ivset, zov
+    string rowvector zvars
+    real scalar robust_mode
     g = st_global("GROUP_NAME")
     ivset = st_global("IV_SET")
+    robust_mode = strtoreal(st_global("ROBUST_INIT"))
     if (ivset=="") ivset = "A"
     if (g!="G1_17_19" & g!="G2_39_41") {
         errprintf("Invalid GROUPNAME = [%s]; must be G1_17_19 or G2_39_41\n", g)
@@ -408,7 +421,12 @@ void refresh_globals()
         _error(3499)
     }
 
-    if (g=="G1_17_19" & ivset=="A") {
+    zov = (g=="G1_17_19" ? st_global("IV_Z_G1") : st_global("IV_Z_G2"))
+    if (zov!="") {
+        zvars = tokens(zov)
+        Z = st_data(., zvars)
+    }
+    else if (g=="G1_17_19" & ivset=="A") {
         Z = st_data(., ("const","lages2q","l","ksq","llag","klag","mlag","l_ind_yr","m_ind_yr","k_ind_yr","Z_HHI_post"))
     }
     else if (g=="G1_17_19" & ivset=="B") {
@@ -487,11 +505,18 @@ void refresh_globals()
     amc0 = exp(-shbar) + 0.10
     if (amc0 <= AMC_LB*(1+AMC_PAD)) amc0 = AMC_LB*(1+100*AMC_PAD)
     raw_amc0 = ln( scalarmax(amc0 - AMC_LB*(1+AMC_PAD), 1e-8) )
+    if (robust_mode==1 & (ivset=="A2" | ivset=="A3")) {
+        amc0 = scalarmax(amc0, AMC_LB*(1+300*AMC_PAD))
+        raw_amc0 = ln( scalarmax(amc0 - AMC_LB*(1+AMC_PAD), 1e-6) )
+    }
 
     if (use_b0 == 1) {
         beta_init = st_matrix("b0")'
         if (cols(beta_init) != 8) {
             beta_init = (bols, raw_amc0, 0)
+        }
+        else if (robust_mode==1 & (ivset=="A2" | ivset=="A3") & beta_init[7] < raw_amc0) {
+            beta_init[7] = raw_amc0
         }
     }
     else {
@@ -652,7 +677,8 @@ void run_two_step()
     external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, beta_init, Wg_opt, AMC_LB, AMC_PAD
     external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
-    real scalar Kz, Kx, J1, J2, lam, conv1, conv2, smin, smax, cond, EPSJ
+    real scalar Kz, Kx, J1, J2, lam, conv1, conv2, smin, smax, cond, EPSJ, robust_mode
+    string scalar ivset
     real rowvector b1, b2
     real colvector OMEGA1, OMEGA1_lag, XI1, OMEGA2_local, OMEGA2_lag, XI2_local, g_bvec, m_unit, m_opt
     real colvector S1_now, S1_lag, S2_now, S2_lag
@@ -663,10 +689,13 @@ void run_two_step()
     real rowvector b2_nr
 
     N = rows(Z)
+    ivset = st_global("IV_SET")
+    robust_mode = strtoreal(st_global("ROBUST_INIT"))
     st_numscalar("Nobs", N)
 
     Kz = cols(Z)
     Kx = cols(beta_init)
+    st_numscalar("Kz_used", Kz)
     if (Kz < Kx) {
         errprintf("ERROR: Not enough instruments (Kz=%f < Kx=%f).\n", Kz, Kx)
         _error(3498)
@@ -681,8 +710,14 @@ void run_two_step()
     optimize_init_which(S1, "min")
     optimize_init_params(S1, beta_init)
     optimize_init_technique(S1, "nm")
-    optimize_init_nmsimplexdeltas(S1, J(1, cols(beta_init), 0.01))
-    optimize_init_conv_maxiter(S1, 2000)
+    if (robust_mode==1 & (ivset=="A2" | ivset=="A3")) {
+        optimize_init_nmsimplexdeltas(S1, J(1, cols(beta_init), 0.002))
+        optimize_init_conv_maxiter(S1, 4000)
+    }
+    else {
+        optimize_init_nmsimplexdeltas(S1, J(1, cols(beta_init), 0.01))
+        optimize_init_conv_maxiter(S1, 2000)
+    }
     optimize_init_conv_ptol(S1, 1e-8)
     optimize_init_conv_vtol(S1, 1e-8)
     optimize_init_tracelevel(S1, "none")
@@ -746,8 +781,14 @@ void run_two_step()
     optimize_init_which(S2, "min")
     optimize_init_params(S2, b1)
     optimize_init_technique(S2, "nm")
-    optimize_init_nmsimplexdeltas(S2, J(1, cols(b1), 0.00001))
-    optimize_init_conv_maxiter(S2, 3000)
+    if (robust_mode==1 & (ivset=="A2" | ivset=="A3")) {
+        optimize_init_nmsimplexdeltas(S2, J(1, cols(b1), 0.0002))
+        optimize_init_conv_maxiter(S2, 5000)
+    }
+    else {
+        optimize_init_nmsimplexdeltas(S2, J(1, cols(b1), 0.00001))
+        optimize_init_conv_maxiter(S2, 3000)
+    }
     optimize_init_conv_ptol(S2, 1e-8)
     optimize_init_conv_vtol(S2, 1e-8)
     optimize_init_tracelevel(S2, "none")
@@ -773,6 +814,34 @@ void run_two_step()
         b2    = optimize(S2)
         J2    = optimize_result_value(S2)
         conv2 = optimize_result_converged(S2)
+    }
+
+    if (robust_mode==1 & (ivset=="A2" | ivset=="A3") & (!conv2 | J2 > EPSJ)) {
+        real matrix starts
+        real scalar r
+        real rowvector b_try
+        starts = (b1 \ (b1:+(0,0,0,0,0,0,0.4,0)) \ (b1:+(0,0,0,0,0,0,0.8,0)) \ (b1:+(0,0,0,0,0,0,0.4,0.1)))
+        for (r=1; r<=rows(starts); r++) {
+            S2 = optimize_init()
+            optimize_init_evaluator(S2, &GMM_DL_weighted())
+            optimize_init_evaluatortype(S2, "d0")
+            optimize_init_which(S2, "min")
+            b_try = starts[r,.]
+            optimize_init_params(S2, b_try)
+            optimize_init_technique(S2, "nm")
+            optimize_init_nmsimplexdeltas(S2, J(1, cols(b_try), 0.0002))
+            optimize_init_conv_maxiter(S2, 5000)
+            optimize_init_conv_ptol(S2, 1e-9)
+            optimize_init_conv_vtol(S2, 1e-9)
+            optimize_init_tracelevel(S2, "none")
+            b2    = optimize(S2)
+            J2_nr = optimize_result_value(S2)
+            conv2_nr = optimize_result_converged(S2)
+            if (conv2_nr & (J2_nr <= J2 | !conv2)) {
+                J2 = J2_nr
+                conv2 = conv2_nr
+            }
+        }
     }
 
     if (( !conv2 | J2 > EPSJ ) & rows(b2)==1 & cols(b2)==Kx) {
@@ -857,6 +926,7 @@ end
 *   对应你原来 gmm2step_once + "全样本先跑一次"
 *======================================================
 
+capture program drop gmm2step_once
 program define gmm2step_once, rclass
     version 18
     syntax [, rep(integer 0)]

@@ -1,11 +1,11 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": "D:\\paper\\IJIO_GMM_codex_en"
 		}
 	],
 	"settings": {
-		"stata-vscode.stataPath": "D:\\AppGallery\\stata18"
+		"stata-vscode.stataPath": "D:\\AppGallery\\stata18\\StataMP-64.exe"
 	},
 	"launch": {
 		"version": "0.2.0",

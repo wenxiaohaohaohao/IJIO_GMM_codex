@@ -1,0 +1,3 @@
+﻿candidate,J_opt,J_df,J_p,b_k,b_l,b_m,elas_k_mean,elas_l_mean,elas_m_mean,elas_k_negshare,elas_l_negshare,elas_m_negshare,N
+r1_g1_drop_mlag_diag,9.873952,2,0.007176267,-0.030849708,0.16338573,0.3575505,0.2424288,0.3348892,0.3575505,0,0,0,23968
+r1_g1_drop_klag_diag,17.284998,2,0.00017644539,0.2886108,0.23463018,0.13404752,0.3657486,0.4512226,0.13404752,0,0,0,23968

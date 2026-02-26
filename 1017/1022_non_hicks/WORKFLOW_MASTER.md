@@ -82,30 +82,30 @@ Last update: 2026-02-21
 Historical source files are archived under:
 - `1017/1022_non_hicks/archive_20260221/md/`
 
-## 8. Robustness Branch Order (Frozen)
+## 8. Research Roadmap R0-R3 (Frozen)
 
-Use the robustness sequence below and keep the main specification unchanged:
+Use the following stage framework as the controlling plan:
 
-- R0: Structure-matched IV robustness (Yinheng/RDP-style IV construction)
-- R1: Standard IV robustness (A/B/C variants around baseline)
-- R2: Dynamic-law robustness (alternative productivity transition, e.g., higher-order terms)
-- R3: Sample robustness (industry/time-window/subsample checks)
+- R0: Main-spec baseline
+- R1: IV screening within the main specification
+- R2: Switch to ACF/RDP-style IV design
+- R3: Robustness consolidation and reporting
 
-R0 is mandatory before R1-R3 because it directly tests whether a control-function/concentrating-out-consistent IV design changes convergence quality, over-identification behavior, and elasticity plausibility.
+This R0-R3 definition is the project-level roadmap standard and overrides older wording in prior notes.
 
-## 9. Appendix-Ready English Method Note (IV Logic)
+## 9. Appendix-Ready English Method Note (IV Logic, Aligned with R0-R3)
 
-### A. Why add R0 (Structure-matched IV robustness)
+### A. Why add R2 (ACF/RDP-style IV robustness)
 
-Our baseline estimation uses a two-step GMM framework with a control-function structure and concentrating-out for the linear productivity-transition block. In this setting, identification quality depends not only on instrument relevance in a generic linear-IV sense, but also on whether instruments are aligned with the model's information structure (predetermined states and lagged observables entering the control-function recursion). Therefore, we add a dedicated robustness layer (R0) that constructs instruments following the Yinheng/RDP-style logic: lagged state variables and low-order polynomial terms consistent with the timing assumptions used by the control-function/concentrating-out system.
+Our baseline estimation uses a two-step GMM framework with a control-function structure and concentrating-out for the linear productivity-transition block. In this setting, identification quality depends not only on instrument relevance in a generic linear-IV sense, but also on whether instruments are aligned with the model's information structure (predetermined states and lagged observables entering the control-function recursion). Therefore, after baseline and in-spec IV screening (R0/R1), we add a dedicated robustness layer (R2) that constructs instruments following the Yinheng/RDP-style logic: lagged state variables and low-order polynomial terms consistent with the timing assumptions used by the control-function/concentrating-out system.
 
 ### B. Econometric rationale
 
 The rationale is threefold. First, under control-function identification, valid instruments should be measurable with respect to the firm's information set prior to current-period shocks, so lagged states and their polynomial transformations are natural candidates. Second, concentrating-out reduces dimensionality by partialling out linear transition parameters at each candidate nonlinear vector, which makes the nonlinear moments highly sensitive to instrument geometry; structure-matched instruments can improve numerical conditioning and reduce weak-identification symptoms. Third, comparing baseline IVs with structure-matched IVs provides an internal cross-validation of identification assumptions: if key parameters keep their sign and order of magnitude while diagnostics improve, results are less likely to be driven by ad hoc instrument choice.
 
-### C. Implementation and decision rule
+### C. Implementation and decision rule (R0 -> R1 -> R2 -> R3)
 
-We do not replace the baseline specification mechanically. Instead, we run R0 as a robustness layer and compare (i) convergence behavior, (ii) over-identification diagnostics, and (iii) elasticity plausibility (including negative-share frequencies). The baseline is retained as the main specification unless the structure-matched set simultaneously improves diagnostics and preserves economically coherent parameter patterns. This design separates "model structure validation" from "specification replacement," and keeps the empirical narrative transparent.
+We do not replace the baseline specification mechanically. Instead, we run R0 as the main baseline, complete R1 IV screening within the main specification, and then run R2 as a robustness layer. We compare (i) convergence behavior, (ii) over-identification diagnostics, and (iii) elasticity plausibility (including negative-share frequencies). The baseline is retained as the main specification unless the structure-matched set simultaneously improves diagnostics and preserves economically coherent parameter patterns. This design separates "model structure validation" from "specification replacement," and keeps the empirical narrative transparent.
 
 ## 10. Temp Files Audit (Root)
 
@@ -148,8 +148,8 @@ This section is mandatory for future Step 1 runs (`point + diagnostics`, no boot
 
 ### 11.1 Must-read logs
 
-1. `1017/1022_non_hicks/run_step1_point_diag.log`
-2. `1017/1022_non_hicks/main_twogroups_full_log_YYYYMMDD.log` (same run date, latest timestamp only)
+1. `1017/1022_non_hicks/results/logs/run_step1_point_diag.log`
+2. `1017/1022_non_hicks/results/logs/main_twogroups_full_log_YYYYMMDD.log` (same run date, latest timestamp only)
 
 Purpose:
 - Confirm run mode flags are correct (`RUN_POINT_ONLY=1`, `RUN_BOOT=0`, `RUN_DIAG=1`)
@@ -167,7 +167,7 @@ Purpose:
 
 1. `1017/1022_non_hicks/archive_20260221/tmp_root/*.log` (all historical)
 2. Any log with `LastWriteTime < current run start time`
-3. Old root logs from previous dates, including outdated `main_twogroups_full_log_*.log`
+3. Old logs outside `results/logs`, including outdated root-level `main_twogroups_full_log_*.log`
 
 ### 11.4 Fixed screening rules
 
@@ -243,6 +243,181 @@ These edits do not change econometric identification or objective function.
 - Hard constraints reduce spurious optimizer failures caused by repeated boundary violations, especially in two-step GMM with nonlinear blocks and generated regressors.
 
 ### 12.5 Economic interpretation
+
+## 13. R1 Execution Standard (C-clean Minimal Usable Set)
+
+Scope:
+- Keep model structure fixed (hard-linked system unchanged).
+- In each run, change IV set only.
+- Target: construct a stable `C-clean` minimal usable IV set before any higher-order expansion.
+
+### 13.1 Fixed run controls (must hold)
+
+1. `RUN_POINT_ONLY=1`
+2. `RUN_BOOT=0`
+3. `RUN_DIAG=1`
+4. `TARGET_GROUP` tested separately for `G1_17_19` and `G2_39_41`
+
+### 13.2 R1 loop procedure
+
+1. Set baseline `IV_SET=C`.
+2. Run baseline by group and record diagnostics.
+3. Run leave-one-out on C instruments (drop one IV each run, per group).
+4. Compare each candidate against baseline on the same group.
+5. Keep candidates that pass all hard gates in 13.3.
+6. Build `C-clean` as the smallest passing subset with best stability.
+7. Freeze `C-clean` and only then enter R2 (ACF/RDP polynomial expansion).
+
+### 13.3 Hard gates (pass/fail)
+
+1. Convergence: `gmm_conv == 1`
+2. Over-identification: `J_p` must move away from persistent near-zero boundary failures.
+3. Elasticity plausibility: key elasticity signs/ranges must be economically coherent.
+4. Stability: results should not jump materially across nearby initial values.
+5. Feasibility: no repeated boundary/infeasible share violations.
+
+Note:
+- R1 objective is not one-shot optimum; objective is a robust minimal usable set.
+
+### 13.4 Mandatory round record fields (for each run)
+
+Use the exact fields below in run logs/tables:
+
+1. `run_tag`
+2. `group_name`
+3. `iv_set`
+4. `iv_variant`
+5. `iv_dropped`
+6. `n_obs`
+7. `kz_used`
+8. `gmm_conv`
+9. `J_opt`
+10. `J_df`
+11. `J_p`
+12. `b_k`
+13. `b_l`
+14. `b_m`
+15. `b_amc`
+16. `b_as`
+17. `elas_k_mean`
+18. `elas_l_mean`
+19. `elas_m_mean`
+20. `elas_k_neg_share`
+21. `elas_l_neg_share`
+22. `elas_m_neg_share`
+23. `s_min`
+24. `s_max`
+25. `status` (`accept` / `robust_only` / `reject`)
+26. `note`
+
+### 13.5 Decision rule to finalize C-clean
+
+1. First remove IVs that consistently worsen `J_p` and/or trigger instability.
+2. Among surviving sets, prioritize low-dimension sets with stable signs/magnitudes.
+3. Keep one final `C-clean` per group if necessary (`G1` and `G2` may differ).
+4. Only after C-clean freeze, proceed to R2 layered ACF/RDP IV expansion (order 1 then 2).
+
+## 14. Permission + Replace Runbook Entry
+
+When `r(608)` appears (cannot modify/erase), use:
+
+- `1017/1022_non_hicks/PERMISSION_REPLACE_RUNBOOK.md`
+
+This runbook contains:
+1. Script-based permission reset order
+2. ACL fallback commands
+3. Unified file-output overwrite policy (direct `replace`)
+
+## 15. r(608) Postmortem (Must Remember)
+
+### 15.1 Root cause from 2026-02-26
+
+Observed mismatch:
+- File attributes looked normal (`Archive`, not `ReadOnly`)
+- File-level ACL looked permissive
+- But `save ..., replace` still failed on root-level files (`firststage*.dta`)
+
+Confirmed root cause:
+- Directory-level ACL on `D:\paper\IJIO_GMM_codex_en` was insufficient for replace-style overwrite in Stata.
+- Stata `replace` requires delete/overwrite capability at the directory level, not only file write permission.
+
+### 15.2 Non-negotiable troubleshooting order
+
+When any `r(608)` appears:
+1. Check directory ACL first (target folder and parent folder).
+2. Then check file ACL/attributes.
+3. Run a root-level smoke test with `save ..., replace` on a temp file.
+4. Only after smoke test passes, run the main estimation chain.
+
+### 15.3 Permanent fix applied
+
+Applied once:
+- `icacls "D:\paper\IJIO_GMM_codex_en" /grant:r "WENXIAO\dongw:(OI)(CI)F" /T /C`
+
+Validated:
+- `firststage.dta`, `firststagecd.dta`, `firststagehicks.dta` all passed Stata `save ..., replace`.
+
+### 15.4 Guardrail for future edits
+
+Do not conclude "permissions are fine" from file readonly bits alone.
+Always validate with an actual Stata replace smoke test before declaring the environment fixed.
+
+## 16. PowerShell Quoting Postmortem (Must Remember)
+
+### 16.1 Why this error kept happening
+
+Root issue:
+- We repeatedly mixed PowerShell string parsing with `cmd /c` parsing and Stata path quoting in one line.
+- Nested quotes (`"..."` inside `"..."`) plus backslashes caused silent command mangling.
+- As a result, the actual command passed to Stata was broken, leading to false diagnostics.
+
+Typical symptoms:
+1. `The string is missing the terminator: "` in PowerShell
+2. `'\' is not recognized as an internal or external command` from `cmd`
+3. Stata log not generated at expected location
+4. Running old log by mistake and misreading run status
+
+### 16.2 Hard rules (do not violate)
+
+1. Do not use deeply nested inline one-liners for complex Stata launch commands.
+2. Build command strings in steps:
+   - normalize path
+   - compose quoted command once
+   - then execute
+3. Prefer writing a temporary `.do` file and call Stata with absolute path to that file.
+4. After each run, verify the specific log file timestamp before interpreting output.
+5. If command composition is nontrivial, run a minimal ping do-file first.
+
+### 16.3 Recommended launch pattern
+
+Use this structure:
+
+```powershell
+$stata = "D:\\AppGallery\\stata18\\StataMP-64.exe"
+$doAbs = "D:\\paper\\IJIO_GMM_codex_en\\...\\run_xxx.do"
+$cmd = '"' + $stata + '" /e do "' + $doAbs + '"'
+cmd /c $cmd
+```
+
+Avoid:
+- direct nested quoting with mixed `'` and `"` in one long line
+- using partially escaped backslashes inside interpolated PowerShell strings
+
+### 16.4 Mandatory pre-run checks
+
+Before batch runs:
+1. `Test-Path` for Stata executable and target do-file
+2. print composed `$cmd`
+3. ensure output log path is absolute
+4. clear stale temp launcher files if reused
+
+### 16.5 Mandatory post-run checks
+
+After run:
+1. confirm expected log exists
+2. confirm log `LastWriteTime` is current run time
+3. read tail of current log only
+4. do not reuse old logs as run evidence
 
 - `S` is a constrained share object in the hard-linked system.
 - `S<=0` or `S>=1` implies economically invalid allocation/probability interpretation.
