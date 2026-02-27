@@ -1,48 +1,49 @@
-@echo off
+﻿@echo off
 REM ============================================================================
 REM fix_permissions.bat
-REM 目的：移除输出目录中的只读属性
+REM 鐩殑锛氱Щ闄よ緭鍑虹洰褰曚腑鐨勫彧璇诲睘鎬?
 REM ============================================================================
 
 echo ============================================
-echo 权限修复脚本
+echo 鏉冮檺淇鑴氭湰
 echo ============================================
 
-cd /d "D:\paper\IJIO_GMM_codex_en\1017\1022_non_hicks"
+cd /d "D:\paper\IJIO_GMM_codex_en\methods\non_hicks"
 
 echo.
-echo 【处理】results/data
+echo 銆愬鐞嗐€憆esults/data
 attrib -r "results\data" /s /d
 attrib -r "results\data\*.dta" /s
 
 echo.
-echo 【处理】results/logs
+echo 銆愬鐞嗐€憆esults/logs
 attrib -r "results\logs" /s /d
 attrib -r "results\logs\*.log" /s
 
 echo.
-echo 【处理】data/work
+echo 銆愬鐞嗐€慸ata/work
 attrib -r "data\work" /s /d
 attrib -r "data\work\*.dta" /s
 
 echo.
 echo ============================================
-echo 权限修复完成
+echo 鏉冮檺淇瀹屾垚
 echo ============================================
 
-REM 验证修复
+REM 楠岃瘉淇
 echo.
-echo 【验证】测试写入权限...
+echo 銆愰獙璇併€戞祴璇曞啓鍏ユ潈闄?..
 cd "results\data"
 (
     echo Permission test
 ) > test_permission.txt
 
 if exist test_permission.txt (
-    echo 成功：可以写入文件
+    echo 鎴愬姛锛氬彲浠ュ啓鍏ユ枃浠?
     del test_permission.txt
 ) else (
-    echo 失败：无法写入文件
+    echo 澶辫触锛氭棤娉曞啓鍏ユ枃浠?
 )
 
 pause
+

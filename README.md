@@ -4,7 +4,7 @@
 
 ## 目录概览
 
-- `1017/`：主研究代码与阶段性结果
+- `methods/`：三种估计识别方法的主代码与结果
 - `tariff_data/`：关税相关脚本与数据
 - `figures/`：图表与导出结果
 - `reference_materials/`：参考文献与外部材料（只读可调用）
@@ -16,14 +16,14 @@
 
 ```text
 IJIO_GMM_codex_en/
-├─ 1017/                                 [可删改替换]
-│  ├─ 1022_non_hicks/                    [可删改替换]
+├─ methods/                              [可删改替换]
+│  ├─ non_hicks/                         [可删改替换]
 │  │  ├─ code/                           [可删改替换]
 │  │  ├─ data/                           [可删改替换]
 │  │  ├─ results/                        [可删改替换]
 │  │  └─ archive_*/                      [可删改替换]
-│  ├─ 1022_non_markdown_non_hicks/       [可删改替换]
-│  └─ 1103_CD/                           [可删改替换]
+│  ├─ non_markdown_non_hicks/            [可删改替换]
+│  └─ cobb_douglas/                      [可删改替换]
 ├─ tariff_data/                          [可删改替换]
 ├─ figures/                              [可删改替换]
 ├─ reference_materials/                  [只读可调用]
@@ -48,7 +48,7 @@ IJIO_GMM_codex_en/
 ## 快速开始
 
 1. 使用 PowerShell 进入仓库根目录：`D:\paper\IJIO_GMM_codex_en`
-2. 先进入任务对应目录（例如 `1017/1022_non_hicks/code/`），再运行脚本
+2. 先进入任务对应目录（例如 `methods/non_hicks/code/`），再运行脚本
 3. 将输出写入非只读目录
 4. 变更后用 `git status` 检查工作区状态
 
@@ -66,3 +66,4 @@ IJIO_GMM_codex_en/
 ---
 
 最后更新时间：2026-02-27（实时版本）
+
