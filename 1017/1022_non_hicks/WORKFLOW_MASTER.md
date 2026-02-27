@@ -2,6 +2,13 @@
 
 Last update: 2026-02-21
 
+## Path Lock (Mandatory)
+
+- Canonical workspace root (the only valid root for this project phase):
+  - `D:/paper/IJIO_GMM_codex_en/1017/1022_non_hicks`
+- Do not use old root or backup/archive folders as active code references.
+- All run/read/write operations must target the canonical root above.
+
 ## 1. 唯一主代码（当前生效）
 
 - `1017/1022_non_hicks/code/estimate/bootstrap1229_group.do`
@@ -82,7 +89,58 @@ Last update: 2026-02-21
 Historical source files are archived under:
 - `1017/1022_non_hicks/archive_20260221/md/`
 
-## 8. Research Roadmap R0-R3 (Frozen)
+## 8. M0 Pre-Stage (Mandatory Before R0-R3)
+
+Goal:
+- Validate and lock the intermediate-input (`m`) construction chain before any further IV expansion.
+- Main-definition baseline must follow active main code exactly; Yinheng-style construction is robustness only.
+
+### 8.1 Scope freeze (no execution expansion)
+1. Keep hard-linked structural system unchanged.
+2. Keep IV set fixed during M0 diagnosis.
+3. Use point+diag only (`RUN_POINT_ONLY=1`, `RUN_BOOT=0`, `RUN_DIAG=1`).
+
+### 8.2 Main-code-aligned `m` chain lock (baseline A)
+1. Trace `m` from raw variable -> deflation -> cleaning -> log transform -> stage-2 entry.
+2. Build a mapping table with variable name, economic meaning, unit, transform, and code location.
+3. Baseline A is always active-main-code definition (no external overwrite).
+
+### 8.3 Stage-1 / Stage-2 compatibility audit (core)
+What to verify:
+1. Whether stage-1 generated regressors (`phi/shat/es`) are built from the same intermediate-input definition used by stage-2 `m`.
+2. Whether stage-1 and stage-2 samples are identical, or differences are fully traceable and economically explainable.
+3. If generated-regressor mismatch symptoms appear, repair stage-1 definition/sampling first, then re-estimate.
+
+Econometric meaning:
+- In control-function GMM, stage-1 objects are generated regressors. If their input definition differs from stage-2 `m` (unit/deflation/sample rules), moments become structurally misaligned even if algebra still runs.
+- This typically causes unstable `b_m`, extreme `J/J_p`, and high sensitivity to IV switching.
+- Therefore, compatibility correction has priority over adding more IVs.
+
+Operational checks:
+1. Definition consistency table (stage-1 vs stage-2): unit, deflator base, positivity rule, winsor/drop rule.
+2. Sample-difference decomposition: intersection and exclusions by cause.
+3. Fixed-IV comparison under (i) current sample and (ii) aligned sample only.
+
+### 8.4 M0 sensitivity design (A/B/C)
+1. A (Main): current active-code intermediate-input construction.
+2. B: cleaning-threshold robustness (winsor/trimming variant), all else fixed.
+3. C: Yinheng-style intermediate-input construction as alternative robustness branch.
+4. No separate "alternative deflator" branch in M0.
+
+### 8.5 M0 hard gates (must pass before R0-R3)
+1. `gmm_conv == 1`.
+2. `b_m` in main spec within `[0.7, 0.9]`.
+3. `J_p` not persistently extreme.
+4. Capital/labor total elasticities not systematically implausible.
+5. A/B/C comparison shows no unexplained jump in `b_m`.
+
+### 8.6 M0 deliverables
+1. Main vs Yinheng intermediate-input mapping table.
+2. Stage-1/Stage-2 sample-difference table.
+3. A/B/C result table (`b_m`, `J_p`, convergence, elasticity sign diagnostics).
+4. Short method note: why M0 precedes IV expansion.
+
+## 9. Research Roadmap R0-R3 (Frozen)
 
 Use the following stage framework as the controlling plan:
 
@@ -93,7 +151,7 @@ Use the following stage framework as the controlling plan:
 
 This R0-R3 definition is the project-level roadmap standard and overrides older wording in prior notes.
 
-## 9. Appendix-Ready English Method Note (IV Logic, Aligned with R0-R3)
+## 10. Appendix-Ready English Method Note (IV Logic, Aligned with R0-R3)
 
 ### A. Why add R2 (ACF/RDP-style IV robustness)
 
@@ -107,7 +165,7 @@ The rationale is threefold. First, under control-function identification, valid 
 
 We do not replace the baseline specification mechanically. Instead, we run R0 as the main baseline, complete R1 IV screening within the main specification, and then run R2 as a robustness layer. We compare (i) convergence behavior, (ii) over-identification diagnostics, and (iii) elasticity plausibility (including negative-share frequencies). The baseline is retained as the main specification unless the structure-matched set simultaneously improves diagnostics and preserves economically coherent parameter patterns. This design separates "model structure validation" from "specification replacement," and keeps the empirical narrative transparent.
 
-## 10. Temp Files Audit (Root)
+## 11. Temp Files Audit (Root)
 
 Audit date: 2026-02-23
 
@@ -142,7 +200,7 @@ Moved file list:
 Note:
 - `tmp_run_v1_point.do` and `tmp_run_v1_point_batch.do` are optional manual launchers only; they are not called by the active master scripts.
 
-## 11. Step 1 Log Read Policy (Execution Standard)
+## 12. Step 1 Log Read Policy (Execution Standard)
 
 This section is mandatory for future Step 1 runs (`point + diagnostics`, no bootstrap).
 
@@ -177,7 +235,7 @@ Purpose:
 4. Read conditional logs only if must-read logs indicate failure or inconsistency.
 5. Do not use archive logs as evidence for current-run conclusions.
 
-## 12. Hard-Constraint Reparameterization Note (2026-02-24)
+## 13. Hard-Constraint Reparameterization Note (2026-02-24)
 
 Scope:
 - Main edited file: `1017/1022_non_hicks/code/estimate/bootstrap1229_group.do`
@@ -244,7 +302,7 @@ These edits do not change econometric identification or objective function.
 
 ### 12.5 Economic interpretation
 
-## 13. R1 Execution Standard (C-clean Minimal Usable Set)
+## 14. R1 Execution Standard (C-clean Minimal Usable Set)
 
 Scope:
 - Keep model structure fixed (hard-linked system unchanged).
@@ -317,7 +375,7 @@ Use the exact fields below in run logs/tables:
 3. Keep one final `C-clean` per group if necessary (`G1` and `G2` may differ).
 4. Only after C-clean freeze, proceed to R2 layered ACF/RDP IV expansion (order 1 then 2).
 
-## 14. Permission + Replace Runbook Entry
+## 15. Permission + Replace Runbook Entry
 
 When `r(608)` appears (cannot modify/erase), use:
 
@@ -328,7 +386,7 @@ This runbook contains:
 2. ACL fallback commands
 3. Unified file-output overwrite policy (direct `replace`)
 
-## 15. r(608) Postmortem (Must Remember)
+## 16. r(608) Postmortem (Must Remember)
 
 ### 15.1 Root cause from 2026-02-26
 
@@ -362,7 +420,7 @@ Validated:
 Do not conclude "permissions are fine" from file readonly bits alone.
 Always validate with an actual Stata replace smoke test before declaring the environment fixed.
 
-## 16. PowerShell Quoting Postmortem (Must Remember)
+## 17. PowerShell Quoting Postmortem (Must Remember)
 
 ### 16.1 Why this error kept happening
 
