@@ -19,7 +19,7 @@ save `SHARE0', replace
 restore
 
 preserve
-use "D:\文章发表\欣昊\input markdown\IJIO\IJIO_GMM\关税数据\finalimporttariff.dta",clear
+use "D:\文章发表\欣昊\input markdown\IJIO\IJIO_GMM\tariff_data\finalimporttariff.dta",clear
 drop if missing(year) | missing(hs6) | missing(tariff)
 duplicates report year hs6
 bysort year hs6: egen tariff_u = mean(tariff)
