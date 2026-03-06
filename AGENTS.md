@@ -31,6 +31,9 @@ Project-specific operating rules for Codex in this workspace.
 - Avoid long-running or compute-heavy commands unless explicitly approved.
 - Do not run GUI or interactive tools (for example Stata UI) unless explicitly requested.
 - Keep changes small and reversible.
+- For troubleshooting requests, stop after identifying the primary cause and applying the minimal local fix.
+- Do not keep retrying or expanding scope once the main blocker is clear unless the user asks for deeper investigation.
+- If the issue depends on files outside this workspace, explain the boundary clearly and ask the user for the relevant content instead of continuing to probe.
 
 ## Communication
 

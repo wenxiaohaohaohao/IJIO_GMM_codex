@@ -1,13 +1,13 @@
 ﻿*******************************************************
-* 目的：按模块清晰整理两步 GMM + bootstrap 程序
-* 说明：逻辑与你当前版本等价，只是：
-*   1) 加了模块化大标题和注释；
-*   2) 线性 IV + J 分解打印移入可选诊断模块；
-*   3) 修正 G2_39_41 线性 IV 诊断中的小笔误（不影响 GMM）；
+* 鐩殑锛氭寜妯″潡娓呮櫚鏁寸悊涓ゆ GMM + bootstrap 绋嬪簭
+* 璇存槑锛氶€昏緫涓庝綘褰撳墠鐗堟湰绛変环锛屽彧鏄細
+*   1) 鍔犱簡妯″潡鍖栧ぇ鏍囬鍜屾敞閲婏紱
+*   2) 绾挎€?IV + J 鍒嗚В鎵撳嵃绉诲叆鍙€夎瘖鏂ā鍧楋紱
+*   3) 淇 G2_39_41 绾挎€?IV 璇婃柇涓殑灏忕瑪璇紙涓嶅奖鍝?GMM锛夛紱
 *******************************************************
 
 *------------------------------------------------------
-* 模块 0：环境设置 & 组名检查（对应你原来开头部分）
+* 妯″潡 0锛氱幆澧冭缃?& 缁勫悕妫€鏌ワ紙瀵瑰簲浣犲師鏉ュ紑澶撮儴鍒嗭級
 *------------------------------------------------------
 clear
 set more off
@@ -24,7 +24,7 @@ if ("$RES_LOG"=="") global RES_LOG "$ROOT/results/logs"
 
 cd "$ROOT"
 
-* 可选：是否运行诊断模块（线性 IV + J 分解打印）
+* 鍙€夛細鏄惁杩愯璇婃柇妯″潡锛堢嚎鎬?IV + J 鍒嗚В鎵撳嵃锛?local RUN_DIAG 0
 local RUN_DIAG 0
 if ("$RUN_DIAG"!="") local RUN_DIAG = real("$RUN_DIAG")
 
@@ -55,7 +55,7 @@ global IV_SET "`IV_SET'"
 di as txt "RUN SWITCH: RUN_POINT_ONLY=`RUN_POINT_ONLY', RUN_BOOT=`RUN_BOOT', RUN_DIAG=`RUN_DIAG', IV_SET=`IV_SET', ROBUST_INIT=`ROBUST_INIT'"
 di as txt "IV overrides: G1=[$IV_Z_G1] ; G2=[$IV_Z_G2]"
 
-* === 从全局读取 GROUP_NAME，并做合法性检查 ===
+* === 浠庡叏灞€璇诲彇 GROUP_NAME锛屽苟鍋氬悎娉曟€ф鏌?===
 if ("$GROUP_NAME"=="") {
     di as err "ERROR: global GROUP_NAME is empty. Set it before calling this do-file."
     exit 3499
@@ -68,10 +68,10 @@ if ("$GROUP_NAME"!="G1_17_19" & "$GROUP_NAME"!="G2_39_41") {
 local GROUPNAME "$GROUP_NAME"
 di as txt "DBG: GROUP_NAME(global) = [$GROUP_NAME] ; GROUPNAME(local) = `GROUPNAME'"
 
-* -------- 载入原始面板数据 -------- *
+* -------- 杞藉叆鍘熷闈㈡澘鏁版嵁 -------- *
 use "$DATA_RAW/junenewg_0902", clear
 
-* -------- 按组别筛选行业（对应原 Group filter 段） -------- *
+* -------- 鎸夌粍鍒瓫閫夎涓氾紙瀵瑰簲鍘?Group filter 娈碉級 -------- *
 if ("`GROUPNAME'"=="G1_17_19") {
     keep if inlist(cic2,17,18,19)
 }
@@ -90,10 +90,10 @@ if _rc destring year, replace ignore(" -/,")
 xtset firmid year
 
 *======================================================
-* 模块 1：数据清理与核心变量构造
-*   对应你原先从"gen double e = ."到"save firststage.dta"
+* 妯″潡 1锛氭暟鎹竻鐞嗕笌鏍稿績鍙橀噺鏋勯€?*   瀵瑰簲浣犲師鍏堜粠"gen double e = ."鍒?save firststage.dta"
+*   浣滅敤锛氭瀯閫?R,K,L,Q,W, firmcat锛岄噸寤鸿祫鏈?K_current锛?*         鐢熸垚 ln 鍙橀噺銆亀insor銆佺涓€闃舵 OLS + 蠁銆?*======================================================
 
-* -------- 1.1 汇率 & 初步样本过滤 -------- *
+* -------- 1.1 姹囩巼 & 鍒濇鏍锋湰杩囨护 -------- *
 gen double e = .
 replace e=8.2784 if year==2000
 replace e=8.2770 if inlist(year,2001,2002,2003)
@@ -105,14 +105,14 @@ replace e=7.6040 if year==2007
 drop if domesticint <= 0
 drop if 钀ヤ笟鏀跺叆鍚堣鍗冨厓 < 40
 
-* -------- 1.2 产出 R、资本 K、劳动 L 构造 -------- *
+* -------- 1.2 浜у嚭 R銆佽祫鏈?K銆佸姵鍔?L 鏋勯€?-------- *
 gen double R = 宸ヤ笟鎬讳骇鍊糭褰撳勾浠锋牸鍗冨厓 * 1000 / e
 
 rename 鍥哄畾璧勪骇鍚堣鍗冨厓 K
 drop if K < 30
 
 rename 鍏ㄩ儴浠庝笟浜哄憳骞村钩鍧囦汉鏁颁汉 L
-replace L = 年末从业人员合计人 if year==2003
+replace L = 骞存湯浠庝笟浜哄憳鍚堣浜?if year==2003
 drop if L < 8
 
 rename output Q1
@@ -136,7 +136,7 @@ tab firmcat, gen(firmcat_)  // firmcat_1, firmcat_2, firmcat_3
 confirm variable firmtotalq
 if !_rc rename firmtotalq X
 
-* -------- 1.5 重建资本存量（Brandt-Rawski deflator） -------- *
+* -------- 1.5 閲嶅缓璧勬湰瀛橀噺锛圔randt-Rawski deflator锛?-------- *
 merge m:1 year using "$DATA_RAW/Brandt-Rawski investment deflator.dta", nogen
 replace BR_deflator = 116.7 if year == 2007
 drop if year < 2000
@@ -157,7 +157,7 @@ forvalues v = 1/19 {
 drop inv0-inv19
 replace K = K_current
 
-* -------- 1.6 其他成本变量与 log 变换 -------- *
+* -------- 1.6 鍏朵粬鎴愭湰鍙橀噺涓?log 鍙樻崲 -------- *
 rename 宸ヤ笟涓棿鎶曞叆鍚堣鍗冨厓 MI
 rename 绠＄悊璐圭敤鍗冨厓 Mana
 
@@ -167,7 +167,7 @@ gen double lnM = ln(domesticint) if domesticint>0
 capture ssc install winsor2, replace
 winsor2 lnR, cuts(1 99) by(cic2 year) replace
 winsor2 lnM, cuts(1 99) by(cic2 year) replace
-gen double lratiofs = lnR - lnM   // 作为第一阶段被解释变量 r
+gen double lratiofs = lnR - lnM   // 浣滀负绗竴闃舵琚В閲婂彉閲?r
 
 gen ratio = importint/(domesticint+importint)
 
@@ -203,7 +203,7 @@ if !_rc rename foreignprice WX
 capture confirm variable WX
 if !_rc gen double wx = ln(WX)
 
-* -------- 1.7 第一阶段：估计成本 share vs. 生产要素（生成 es, es2q） -------- *
+* -------- 1.7 绗竴闃舵锛氫及璁℃垚鏈?share vs. 鐢熶骇瑕佺礌锛堢敓鎴?es, es2q锛?-------- *
 reg lratiofs k l wl x age lnmana i.firmcat i.city i.year, vce(cluster firmid)
 predict double r_hat_ols, xb
 gen double es   = exp(-r_hat_ols)
@@ -211,7 +211,7 @@ gen double es2q = es^2
 * V1: keep first-stage fitted index for structural S-constraint linkage in second stage.
 gen double shat = r_hat_ols
 
-* -------- 1.8 第一阶段：估计 φ 的三次多项式（生成 phi, epsilon） -------- *
+* -------- 1.8 绗竴闃舵锛氫及璁?蠁 鐨勪笁娆″椤瑰紡锛堢敓鎴?phi, epsilon锛?-------- *
 reg r c.(l k m x pi wx wl es)##c.(l k m x pi wx wl es)##c.(l k m x pi wx wl es) ///
     age i.firmcat i.city i.year
 
@@ -224,13 +224,13 @@ label var epsilon "measurement error (first stage)"
 save "$DATA_WORK/firststage_`GROUPNAME'.dta", replace
 
 *======================================================
-* 模块 2：面板截取 & 滞后项、交互项构造
+* 妯″潡 2锛氶潰鏉挎埅鍙?& 婊炲悗椤广€佷氦浜掗」鏋勯€?*   瀵瑰簲浣犲師鏉?鍒犻€夎繛缁?= 2鐨勫叕鍙?鍒板悇绫?lag & interaction
 *======================================================
 
-* ---- 按 firmid-year 排序并保证唯一 ---- *
+* ---- 鎸?firmid-year 鎺掑簭骞朵繚璇佸敮涓€ ---- *
 sort firmid year
 isid firmid year, sort
-di "✅ Data sorted and verified: unique firm-year combinations"
+di "鉁?Data sorted and verified: unique firm-year combinations"
 
 * ---- 2.1 鍙繚鐣欐渶闀胯繛缁 >=2骞寸殑鍏徃 ---- *
 by firmid: gen gap = year - L.year
@@ -295,10 +295,10 @@ if _rc gen byte const = 1
 order firmid year, first
 
 *======================================================
-* 模块 3：工具变量 Z & 控制变量 CONSOL 构造
+* 妯″潡 3锛氬伐鍏峰彉閲?Z & 鎺у埗鍙橀噺 CONSOL 鏋勯€?*   瀵瑰簲浣犲師鍏堢殑 rangestat + merge IV + 骞翠唤铏氭嫙 + drop if missing
 *======================================================
 
-* -------- 3.1 行业-年度同业均值（排除自身） -------- *
+* -------- 3.1 琛屼笟-骞村害鍚屼笟鍧囧€硷紙鎺掗櫎鑷韩锛?-------- *
 gen temp_l = l
 gen temp_k = k
 gen temp_m = m
@@ -339,27 +339,27 @@ xtset firmid year
 capture confirm variable lnagelag
 if _rc {
     gen double lnagelag = L.lnage
-    di "✅ Created: lnagelag (lagged firm age)"
+    di "鉁?Created: lnagelag (lagged firm age)"
 }
 
-* ---- 3.5 最终样本筛选：保证所有 GMM 所需变量不缺失 ---- *
+* ---- 3.5 鏈€缁堟牱鏈瓫閫夛細淇濊瘉鎵€鏈?GMM 鎵€闇€鍙橀噺涓嶇己澶?---- *
 drop if missing(const, r, l, k, phi, phi_lag, llag, klag, mlag, lsqlag, ksqlag, ///
     lsq, ksq, m, es, es2q, lages, lages2q, shat, shat_lag, lnage, firmcat, lnmana, ///
     lnagelag, firmcat_2, firmcat_3, dy2002-dy2007, klages, mlagxlag)
 
-* ---- 3.6 为 Mata 创建残差占位列 OMEGA2/XI2 ---- *
+* ---- 3.6 涓?Mata 鍒涘缓娈嬪樊鍗犱綅鍒?OMEGA2/XI2 ---- *
 capture drop OMEGA2 XI2
 gen double OMEGA2 = .
 gen double XI2    = .
 
-* ---- 3.7 have_b0 起点标志初始化（Stata 本地宏 + Mata local） ---- *
+* ---- 3.7 have_b0 璧风偣鏍囧織鍒濆鍖栵紙Stata 鏈湴瀹?+ Mata local锛?---- *
 local have_b0 0
 mata: st_local("have_b0", "`have_b0'")
 
 *======================================================
 * 妯″潡 4锛歁ata 涓ゆ GMM 寮曟搸
-*   对应你原来的整段 mata: 到 end
-*   内部算法不改，只保留你现有的数值处理和防护。
+*   瀵瑰簲浣犲師鏉ョ殑鏁存 mata: 鍒?end
+*   鍐呴儴绠楁硶涓嶆敼锛屽彧淇濈暀浣犵幇鏈夌殑鏁板€煎鐞嗗拰闃叉姢銆?*   锛堜负浜嗚妭鐪佺瘒骞咃紝杩欓噷鐩存帴娌跨敤浣犲綋鍓嶇増鏈殑 Mata 浠ｇ爜锛?*======================================================
 mata:
 mata clear
 
@@ -368,7 +368,7 @@ real scalar scalarmax(real scalar a, real scalar b)
     return( a > b ? a : b )
 }
 
-/* 初始化全局矩阵（用于 st_store 回写时保证存在） */
+/* 鍒濆鍖栧叏灞€鐭╅樀锛堢敤浜?st_store 鍥炲啓鏃朵繚璇佸瓨鍦級 */
 OMEGA2 = J(0,1,.)
 XI2    = J(0,1,.)
 AMC_LB = .
@@ -613,7 +613,7 @@ void GMM_DL_weighted(todo, b, crit, g, H)
                 else {
                     Oe = PHI :- (btmp[1] :+ btmp[2]:*LVAR :+ btmp[3]:*KVAR :+ btmp[4]:*LSQVAR :+ btmp[5]:*KSQVAR :+ btmp[6]:*MVAR :+ btmp[8]:*(Sp:^2))
                     Oel = PHI_lag :- (btmp[1] :+ btmp[2]:*LLAGVAR :+ btmp[3]:*KLAGVAR :+ btmp[4]:*LSQLAGVAR :+ btmp[5]:*KSQLAGVAR :+ btmp[6]:*MLAGVAR :+ btmp[8]:*(Slp:^2))
-            PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
+                    PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
                     gb  = qrsolve(PO, Oe)
                     XI2p = Oe - PO*gb
                     m2p  = quadcross(Z, XI2p):/ N
@@ -636,7 +636,7 @@ void GMM_DL_weighted(todo, b, crit, g, H)
                 else {
                     Oe = PHI :- (btmp[1] :+ btmp[2]:*LVAR :+ btmp[3]:*KVAR :+ btmp[4]:*LSQVAR :+ btmp[5]:*KSQVAR :+ btmp[6]:*MVAR :+ btmp[8]:*(Sm:^2))
                     Oel = PHI_lag :- (btmp[1] :+ btmp[2]:*LLAGVAR :+ btmp[3]:*KLAGVAR :+ btmp[4]:*LSQLAGVAR :+ btmp[5]:*KSQLAGVAR :+ btmp[6]:*MLAGVAR :+ btmp[8]:*(Slm:^2))
-            PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
+                    PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
                     gb  = qrsolve(PO, Oe)
                     XI2m = Oe - PO*gb
                     m2m  = quadcross(Z, XI2m):/ N
@@ -914,7 +914,7 @@ void run_two_step()
 end
 
 *======================================================
-* 模块 5：Stata 包装程序 + 全样本点估（不含诊断）
+* 妯″潡 5锛歋tata 鍖呰绋嬪簭 + 鍏ㄦ牱鏈偣浼帮紙涓嶅惈璇婃柇锛?*   瀵瑰簲浣犲師鏉?gmm2step_once + "鍏ㄦ牱鏈厛璺戜竴娆?
 *======================================================
 
 capture program drop gmm2step_once
@@ -998,7 +998,7 @@ program define gmm2step_once, rclass
     di as txt "Rep `rep': completed in `=r(t1)' sec. J_opt=`=scalar(J_opt)'"
 end
 
-* -------- 5.1 全样本 GMM（获取 b0 和点估） -------- *
+* -------- 5.1 鍏ㄦ牱鏈?GMM锛堣幏鍙?b0 鍜岀偣浼帮級 -------- *
 local have_b0 0
 mata: st_local("have_b0","`have_b0'")
 
@@ -1036,7 +1036,7 @@ else {
     exit 459
 }
 
-* ---- 5.2 抓取控制变量系数，用于写入点估文件 ---- *
+* ---- 5.2 鎶撳彇鎺у埗鍙橀噺绯绘暟锛岀敤浜庡啓鍏ョ偣浼版枃浠?---- *
 local b_const_hat = r(b_c1)
 local b_l_hat     = r(b_l)
 local b_k_hat     = r(b_k)
@@ -1103,7 +1103,7 @@ preserve
     save "$DATA_WORK/omega_xi_group_`GROUPNAME'.dta", replace
 restore
 
-* ---- 5.4 保存全样本点估（不含 bootstrap se） ---- *
+* ---- 5.4 淇濆瓨鍏ㄦ牱鏈偣浼帮紙涓嶅惈 bootstrap se锛?---- *
 quietly count
 local Nobs = r(N)
 preserve
@@ -1178,7 +1178,7 @@ preserve
 restore
 
 *======================================================
-* 模块 6：可选诊断（线性 IV + J 分解打印）
+* 妯″潡 6锛氬彲閫夎瘖鏂紙绾挎€?IV + J 鍒嗚В鎵撳嵃锛?*   鍙奖鍝嶅睆骞曡緭鍑哄拰闄勫姞璇婃柇锛屼笉褰卞搷 GMM 鐐逛及涓?bootstrap銆?*======================================================
 
 if `RUN_DIAG' {
 
@@ -1273,7 +1273,7 @@ if `RUN_DIAG' {
 }
 
 *======================================================
-* 模块 7：Bootstrap 循环 + bootstrap 标准误（对应你原来的 bootstrap 部分，逻辑不变。）
+* 妯″潡 7锛欱ootstrap 寰幆 + bootstrap 鏍囧噯璇?*   瀵瑰簲浣犲師鏉ョ殑 bootstrap 閮ㄥ垎锛岄€昏緫涓嶅彉銆?*======================================================
 
 if `RUN_BOOT' {
 di as text _n(2) "{hline 80}"
@@ -1382,7 +1382,7 @@ if _N == 0 {
     exit 430
 }
 
-* ---- 7.2 计算 bootstrap 标准误并追加到点估文件 ---- *
+* ---- 7.2 璁＄畻 bootstrap 鏍囧噯璇苟杩藉姞鍒扮偣浼版枃浠?---- *
 qui summarize b_const, detail
 local se_const = r(sd)
 qui summarize b_l, detail
