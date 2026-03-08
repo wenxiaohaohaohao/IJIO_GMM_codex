@@ -1,4 +1,4 @@
-﻿* run_group_G2.do
+* run_group_G2.do
 clear
 set more off
 global GROUP_NAME G2_39_41

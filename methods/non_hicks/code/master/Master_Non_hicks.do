@@ -1,4 +1,4 @@
-﻿/* main_twogroups.do
+/* main_twogroups.do
    Outputs:
      - nonhicks_points_by_group.dta  (points + bootstrap SEs + J + N)
      - nonhicks_ses_by_group.dta     (SEs only, convenience)

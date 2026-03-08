@@ -1,4 +1,4 @@
-﻿*******************************************************
+*******************************************************
 * 目的：按模块清晰整理两步 GMM + bootstrap 程序
 * 说明：逻辑与你当前版本等价，只是：
 *   1) 加了模块化大标题和注释；
@@ -44,11 +44,12 @@ global ROBUST_INIT "`ROBUST_INIT'"
 if ("$IV_Z_G1"=="") global IV_Z_G1 ""
 if ("$IV_Z_G2"=="") global IV_Z_G2 ""
 
-* IV set switch for V1 diagnostics / robustness gate (A | B | C | A1 | A2 | A3)
+* IV set switch for V1 diagnostics / robustness gate (A | B | C | A1 | A2 | A3 | E)
 local IV_SET "A"
 if ("$IV_SET"!="") local IV_SET = upper("$IV_SET")
-if !inlist("`IV_SET'","A","B","C","A1","A2","A3") {
-    di as err "ERROR: invalid IV_SET=[`IV_SET']; must be A, B, C, A1, A2, or A3."
+local VALID_IV_SETS "A B C A1 A2 A3 E"
+if !`: list IV_SET in VALID_IV_SETS' {
+    di as err "ERROR: invalid IV_SET=[`IV_SET']; must be A, B, C, A1, A2, A3, or E."
     exit 198
 }
 global IV_SET "`IV_SET'"
@@ -102,16 +103,15 @@ replace e=8.1917 if year==2005
 replace e=7.9718 if year==2006
 replace e=7.6040 if year==2007
 
-drop if domesticint <= 0
-drop if 钀ヤ笟鏀跺叆鍚堣鍗冨厓 < 40
+drop if 营业收入合计千元 < 40
 
 * -------- 1.2 产出 R、资本 K、劳动 L 构造 -------- *
-gen double R = 宸ヤ笟鎬讳骇鍊糭褰撳勾浠锋牸鍗冨厓 * 1000 / e
+gen double R = 工业总产值_当年价格千元 * 1000 / e
 
-rename 鍥哄畾璧勪骇鍚堣鍗冨厓 K
+rename 固定资产合计千元 K
 drop if K < 30
 
-rename 鍏ㄩ儴浠庝笟浜哄憳骞村钩鍧囦汉鏁颁汉 L
+rename 全部从业人员年平均人数人 L
 replace L = 年末从业人员合计人 if year==2003
 drop if L < 8
 
@@ -119,7 +119,7 @@ rename output Q1
 gen double outputdef = outputdef2
 gen double Q = Q1 / outputdef
 
-gen double WL = 搴斾粯宸ヨ祫钖叕鎬婚鍗冨厓 * 1000 / e
+gen double WL = 应付工资薪酬总额千元 * 1000 / e
 
 * -------- 1.3 浼佷笟鎵€鏈夊埗鍒嗙被 firmcat -------- *
 gen firmcat = . 
@@ -158,11 +158,13 @@ drop inv0-inv19
 replace K = K_current
 
 * -------- 1.6 其他成本变量与 log 变换 -------- *
-rename 宸ヤ笟涓棿鎶曞叆鍚堣鍗冨厓 MI
-rename 绠＄悊璐圭敤鍗冨厓 Mana
+rename 工业中间投入合计千元 MI
+rename 管理费用千元 Mana
+drop if MI <= 0
 
 gen double lnR = ln(R)  if R>0
-gen double lnM = ln(domesticint) if domesticint>0
+* Align units with R (USD): total intermediates in thousand RMB -> USD level.
+gen double lnM = ln(MI*1000/e) if MI>0 & e>0
 
 capture ssc install winsor2, replace
 winsor2 lnR, cuts(1 99) by(cic2 year) replace
@@ -175,8 +177,8 @@ gen inputp  = inputhat + ln(inputdef2)
 gen einputp = exp(inputp)
 gen MF      = importint/einputp
 
-replace 寮€涓氭垚绔嬫椂闂村勾 = . if 寮€涓氭垚绔嬫椂闂村勾==0
-gen age   = year - 寮€涓氭垚绔嬫椂闂村勾 + 1
+replace 开业成立时间年 = . if 开业成立时间年==0
+gen age   = year - 开业成立时间年 + 1
 gen lnage = ln(age)
 gen lnmana = ln(Mana)
 
@@ -185,7 +187,7 @@ gen lsq = l*l
 gen double k   = ln(K)
 gen ksq = k*k  
 gen double q   = ln(Q)
-gen m = ln(delfateddomestic)        
+gen m = ln(MI*1000/e)        
 gen double x   = ln(X)
 gen double r   = ln(R)
 
@@ -373,10 +375,11 @@ OMEGA2 = J(0,1,.)
 XI2    = J(0,1,.)
 AMC_LB = .
 AMC_PAD = 1e-6
+AMC_UB = 0.99
 
 void refresh_globals()
 {
-    external X, X_lag, Z, PHI, PHI_lag, Y, C, CONSOL, beta_init, Wg_opt, AMC_LB, AMC_PAD
+    external X, X_lag, Z, PHI, PHI_lag, Y, C, CONSOL, beta_init, Wg_opt, AMC_LB, AMC_PAD, AMC_UB
     external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
     /* V1 linked-constraint setup: X only for initialization; S is updated inside evaluator */
@@ -408,8 +411,8 @@ void refresh_globals()
         errprintf("Invalid GROUPNAME = [%s]; must be G1_17_19 or G2_39_41\n", g)
         _error(3499)
     }
-    if (ivset!="A" & ivset!="B" & ivset!="C" & ivset!="A1" & ivset!="A2" & ivset!="A3") {
-        errprintf("Invalid IV_SET = [%s]; must be A/B/C/A1/A2/A3\n", ivset)
+    if (ivset!="A" & ivset!="B" & ivset!="C" & ivset!="A1" & ivset!="A2" & ivset!="A3" & ivset!="E") {
+        errprintf("Invalid IV_SET = [%s]; must be A/B/C/A1/A2/A3/E\n", ivset)
         _error(3499)
     }
 
@@ -451,6 +454,10 @@ void refresh_globals()
     else if (g=="G2_39_41" & ivset=="A3") {
         Z = st_data(., ("llag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","lages2q","lages","llag2","klages"))
     }
+    else if (ivset=="E") {
+        /* Conservative E set: lagged levels and squares only. */
+        Z = st_data(., ("const","klag","ksqlag","llag","lsqlag","mlag","mlagsq"))
+    }
     else {
         Z = st_data(., ("const","llag","klag","mlag","lages","lages2q","l_ind_yr","k_ind_yr","m_ind_yr","Z_HHI_post"))
     }
@@ -479,46 +486,45 @@ void refresh_globals()
         _error(3497)
     }
 
-    /* Hard-linked S-constraint support:
-       S=1-exp(-shat)/amc in (0,1) requires amc > exp(-shat), same for lag.
-       Build a sample-specific lower bound and enforce it via reparameterization. */
-    lb_local = max( (exp(-SHAT) \ exp(-SHAT_lag)) )
-    if (missing(lb_local) | lb_local<=1e-8) {
-        errprintf(">>> ERROR: invalid AMC lower bound from shat/shat_lag\n")
-        _error(3497)
-    }
+    /* Keep amc strictly positive by reparameterization; do not force sample-wide
+       S in (0,1), otherwise a few extreme generated-share observations can
+       mechanically pin amc (and thus b_m under equality) at the upper tail. */
+    lb_local = 1e-6
     AMC_LB = lb_local
     st_numscalar("amc_lb", AMC_LB)
     st_numscalar("amc_pad", AMC_PAD)
+    st_numscalar("amc_ub", AMC_UB)
 
     bols = qrsolve(X, Y)'
     shbar = mean(SHAT)
     if (missing(shbar)) shbar = 0
     amc0 = exp(-shbar) + 0.10
-    if (amc0 <= AMC_LB*(1+AMC_PAD)) amc0 = AMC_LB*(1+100*AMC_PAD)
-    raw_amc0 = ln( scalarmax(amc0 - AMC_LB*(1+AMC_PAD), 1e-8) )
+    amc0 = scalarmax(0.05, amc0)
+    amc0 = (amc0 >= AMC_UB-1e-4 ? AMC_UB-1e-4 : amc0)
+    raw_amc0 = ln( amc0 / scalarmax(AMC_UB - amc0, 1e-8) )
     if (robust_mode==1 & (ivset=="A2" | ivset=="A3")) {
-        amc0 = scalarmax(amc0, AMC_LB*(1+300*AMC_PAD))
-        raw_amc0 = ln( scalarmax(amc0 - AMC_LB*(1+AMC_PAD), 1e-6) )
+        amc0 = scalarmax(amc0, 0.10)
+        amc0 = (amc0 >= AMC_UB-1e-4 ? AMC_UB-1e-4 : amc0)
+        raw_amc0 = ln( amc0 / scalarmax(AMC_UB - amc0, 1e-8) )
     }
 
     if (use_b0 == 1) {
         beta_init = st_matrix("b0")'
-        if (cols(beta_init) != 8) {
-            beta_init = (bols, raw_amc0, 0)
+        if (cols(beta_init) != 7) {
+            beta_init = (bols[1], bols[2], bols[3], bols[4], bols[5], raw_amc0, 0)
         }
-        else if (robust_mode==1 & (ivset=="A2" | ivset=="A3") & beta_init[7] < raw_amc0) {
-            beta_init[7] = raw_amc0
+        else if (robust_mode==1 & (ivset=="A2" | ivset=="A3") & beta_init[6] < raw_amc0) {
+            beta_init[6] = raw_amc0
         }
     }
     else {
-        beta_init = (bols, raw_amc0, 0)
+        beta_init = (bols[1], bols[2], bols[3], bols[4], bols[5], raw_amc0, 0)
     }
 }
 
 void GMM_DL_weighted(todo, b, crit, g, H)
 {
-    external PHI, PHI_lag, Z, C, CONSOL, Wg, Wg_opt, AMC_LB, AMC_PAD
+    external PHI, PHI_lag, Z, C, CONSOL, Wg, Wg_opt, AMC_LB, AMC_PAD, AMC_UB
     external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
     real colvector OMEGA, OMEGA_lag, XI, gb, m, S_now, S_lag
@@ -537,10 +543,9 @@ void GMM_DL_weighted(todo, b, crit, g, H)
         Wg_opt = I(cols(Z))
     }
 
-    /* Hard-linked S-constraint reparameterization:
-       amc = AMC_LB*(1+AMC_PAD) + exp(raw_amc), so amc always stays in feasible region. */
-    amc = AMC_LB*(1+AMC_PAD) + exp(b[7])
-    if (missing(amc) | amc<=AMC_LB*(1+AMC_PAD) | amc>1e+12) {
+    /* Keep equality-constrained amc in (0, AMC_UB) via logistic map. */
+    amc = AMC_UB / (1 + exp(-b[6]))
+    if (missing(amc) | amc<=1e-8 | amc>=AMC_UB) {
         crit = 1e+20
         if (todo >= 1) g = J(1, cols(b), 0)
         if (todo == 2) H = J(cols(b), cols(b), 0)
@@ -551,15 +556,16 @@ void GMM_DL_weighted(todo, b, crit, g, H)
     S_lag = 1 :- exp(-SHAT_lag) :/ amc
     smin_now = min(S_now); smax_now = max(S_now)
     smin_lag = min(S_lag); smax_lag = max(S_lag)
-    if (any(missing(S_now)) | any(missing(S_lag)) | smin_now<=1e-8 | smax_now>=1-1e-8 | smin_lag<=1e-8 | smax_lag>=1-1e-8) {
+    if (any(missing(S_now)) | any(missing(S_lag))) {
         crit = 1e+20
         if (todo >= 1) g = J(1, cols(b), 0)
         if (todo == 2) H = J(cols(b), cols(b), 0)
         return
     }
 
-    OMEGA = PHI :- (b[1] :+ b[2]:*LVAR :+ b[3]:*KVAR :+ b[4]:*LSQVAR :+ b[5]:*KSQVAR :+ b[6]:*MVAR :+ b[8]:*(S_now:^2))
-    OMEGA_lag = PHI_lag :- (b[1] :+ b[2]:*LLAGVAR :+ b[3]:*KLAGVAR :+ b[4]:*LSQLAGVAR :+ b[5]:*KSQLAGVAR :+ b[6]:*MLAGVAR :+ b[8]:*(S_lag:^2))
+    /* Equality constraint in structural block: b_m == b_amc == amc */
+    OMEGA = PHI :- (b[1] :+ b[2]:*LVAR :+ b[3]:*KVAR :+ b[4]:*LSQVAR :+ b[5]:*KSQVAR :+ amc:*MVAR :+ b[7]:*(S_now:^2))
+    OMEGA_lag = PHI_lag :- (b[1] :+ b[2]:*LLAGVAR :+ b[3]:*KLAGVAR :+ b[4]:*LSQLAGVAR :+ b[5]:*KSQLAGVAR :+ amc:*MLAGVAR :+ b[7]:*(S_lag:^2))
 
     if (cols(CONSOL)>0) POOL = (C, OMEGA_lag, CONSOL)
     else                POOL = (C, OMEGA_lag)
@@ -600,19 +606,19 @@ void GMM_DL_weighted(todo, b, crit, g, H)
 
             btmp    = b
             btmp[i] = b[i] + eps_i
-            amc = AMC_LB*(1+AMC_PAD) + exp(btmp[7])
-            if (missing(amc) | amc<=AMC_LB*(1+AMC_PAD) | amc>1e+12) {
+            amc = AMC_UB / (1 + exp(-btmp[6]))
+            if (missing(amc) | amc<=1e-8 | amc>=AMC_UB) {
                 crit_plus = 1e+20
             }
             else {
                 Sp = 1 :- exp(-SHAT) :/ amc
                 Slp = 1 :- exp(-SHAT_lag) :/ amc
-                if (any(missing(Sp)) | any(missing(Slp)) | min(Sp)<=1e-8 | max(Sp)>=1-1e-8 | min(Slp)<=1e-8 | max(Slp)>=1-1e-8) {
+                if (any(missing(Sp)) | any(missing(Slp))) {
                     crit_plus = 1e+20
                 }
                 else {
-                    Oe = PHI :- (btmp[1] :+ btmp[2]:*LVAR :+ btmp[3]:*KVAR :+ btmp[4]:*LSQVAR :+ btmp[5]:*KSQVAR :+ btmp[6]:*MVAR :+ btmp[8]:*(Sp:^2))
-                    Oel = PHI_lag :- (btmp[1] :+ btmp[2]:*LLAGVAR :+ btmp[3]:*KLAGVAR :+ btmp[4]:*LSQLAGVAR :+ btmp[5]:*KSQLAGVAR :+ btmp[6]:*MLAGVAR :+ btmp[8]:*(Slp:^2))
+                    Oe = PHI :- (btmp[1] :+ btmp[2]:*LVAR :+ btmp[3]:*KVAR :+ btmp[4]:*LSQVAR :+ btmp[5]:*KSQVAR :+ amc:*MVAR :+ btmp[7]:*(Sp:^2))
+                    Oel = PHI_lag :- (btmp[1] :+ btmp[2]:*LLAGVAR :+ btmp[3]:*KLAGVAR :+ btmp[4]:*LSQLAGVAR :+ btmp[5]:*KSQLAGVAR :+ amc:*MLAGVAR :+ btmp[7]:*(Slp:^2))
             PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
                     gb  = qrsolve(PO, Oe)
                     XI2p = Oe - PO*gb
@@ -623,19 +629,19 @@ void GMM_DL_weighted(todo, b, crit, g, H)
 
             btmp    = b
             btmp[i] = b[i] - eps_i
-            amc = AMC_LB*(1+AMC_PAD) + exp(btmp[7])
-            if (missing(amc) | amc<=AMC_LB*(1+AMC_PAD) | amc>1e+12) {
+            amc = AMC_UB / (1 + exp(-btmp[6]))
+            if (missing(amc) | amc<=1e-8 | amc>=AMC_UB) {
                 crit_minus = 1e+20
             }
             else {
                 Sm = 1 :- exp(-SHAT) :/ amc
                 Slm = 1 :- exp(-SHAT_lag) :/ amc
-                if (any(missing(Sm)) | any(missing(Slm)) | min(Sm)<=1e-8 | max(Sm)>=1-1e-8 | min(Slm)<=1e-8 | max(Slm)>=1-1e-8) {
+                if (any(missing(Sm)) | any(missing(Slm))) {
                     crit_minus = 1e+20
                 }
                 else {
-                    Oe = PHI :- (btmp[1] :+ btmp[2]:*LVAR :+ btmp[3]:*KVAR :+ btmp[4]:*LSQVAR :+ btmp[5]:*KSQVAR :+ btmp[6]:*MVAR :+ btmp[8]:*(Sm:^2))
-                    Oel = PHI_lag :- (btmp[1] :+ btmp[2]:*LLAGVAR :+ btmp[3]:*KLAGVAR :+ btmp[4]:*LSQLAGVAR :+ btmp[5]:*KSQLAGVAR :+ btmp[6]:*MLAGVAR :+ btmp[8]:*(Slm:^2))
+                    Oe = PHI :- (btmp[1] :+ btmp[2]:*LVAR :+ btmp[3]:*KVAR :+ btmp[4]:*LSQVAR :+ btmp[5]:*KSQVAR :+ amc:*MVAR :+ btmp[7]:*(Sm:^2))
+                    Oel = PHI_lag :- (btmp[1] :+ btmp[2]:*LLAGVAR :+ btmp[3]:*KLAGVAR :+ btmp[4]:*LSQLAGVAR :+ btmp[5]:*KSQLAGVAR :+ amc:*MLAGVAR :+ btmp[7]:*(Slm:^2))
             PO  = (cols(CONSOL)>0 ? (C, Oel, CONSOL) : (C, Oel))
                     gb  = qrsolve(PO, Oe)
                     XI2m = Oe - PO*gb
@@ -666,7 +672,7 @@ void run_two_step()
     st_numscalar("J_df",      .)
     st_numscalar("J_p",       .)
 
-    external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, beta_init, Wg_opt, AMC_LB, AMC_PAD
+    external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, beta_init, Wg_opt, AMC_LB, AMC_PAD, AMC_UB
     external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
     real scalar Kz, Kx, J1, J2, lam, conv1, conv2, smin, smax, cond, EPSJ, robust_mode
@@ -729,19 +735,15 @@ void run_two_step()
         st_numscalar("gmm_conv1", conv1)
     }
 
-    amc1 = AMC_LB*(1+AMC_PAD) + exp(b1[7])
-    if (missing(amc1) | amc1<=AMC_LB*(1+AMC_PAD) | amc1>1e+12) {
+    amc1 = AMC_UB / (1 + exp(-b1[6]))
+    if (missing(amc1) | amc1<=1e-8 | amc1>=AMC_UB) {
         errprintf("ERROR: invalid amc in step 1.\n")
         _error(3498)
     }
     S1_now = 1 :- exp(-SHAT) :/ amc1
     S1_lag = 1 :- exp(-SHAT_lag) :/ amc1
-    if (min(S1_now)<=1e-8 | max(S1_now)>=1-1e-8 | min(S1_lag)<=1e-8 | max(S1_lag)>=1-1e-8) {
-        errprintf("ERROR: S outside (0,1) in step 1.\n")
-        _error(3498)
-    }
-    OMEGA1 = PHI :- (b1[1] :+ b1[2]:*LVAR :+ b1[3]:*KVAR :+ b1[4]:*LSQVAR :+ b1[5]:*KSQVAR :+ b1[6]:*MVAR :+ b1[8]:*(S1_now:^2))
-    OMEGA1_lag = PHI_lag :- (b1[1] :+ b1[2]:*LLAGVAR :+ b1[3]:*KLAGVAR :+ b1[4]:*LSQLAGVAR :+ b1[5]:*KSQLAGVAR :+ b1[6]:*MLAGVAR :+ b1[8]:*(S1_lag:^2))
+    OMEGA1 = PHI :- (b1[1] :+ b1[2]:*LVAR :+ b1[3]:*KVAR :+ b1[4]:*LSQVAR :+ b1[5]:*KSQVAR :+ amc1:*MVAR :+ b1[7]:*(S1_now:^2))
+    OMEGA1_lag = PHI_lag :- (b1[1] :+ b1[2]:*LLAGVAR :+ b1[3]:*KLAGVAR :+ b1[4]:*LSQLAGVAR :+ b1[5]:*KSQLAGVAR :+ amc1:*MLAGVAR :+ b1[7]:*(S1_lag:^2))
     // First-step linked-constraint transition.
     if (cols(CONSOL)>0) POOL1 = (C, OMEGA1_lag, CONSOL)
     else                POOL1 = (C, OMEGA1_lag)
@@ -812,7 +814,7 @@ void run_two_step()
         real matrix starts
         real scalar r
         real rowvector b_try
-        starts = (b1 \ (b1:+(0,0,0,0,0,0,0.4,0)) \ (b1:+(0,0,0,0,0,0,0.8,0)) \ (b1:+(0,0,0,0,0,0,0.4,0.1)))
+        starts = (b1 \ (b1:+(0,0,0,0,0,0.4,0)) \ (b1:+(0,0,0,0,0,0.8,0)) \ (b1:+(0,0,0,0,0,0.4,0.1)))
         for (r=1; r<=rows(starts); r++) {
             S2 = optimize_init()
             optimize_init_evaluator(S2, &GMM_DL_weighted())
@@ -861,19 +863,15 @@ void run_two_step()
 
     st_numscalar("gmm_conv2", conv2)
 
-    amc2 = AMC_LB*(1+AMC_PAD) + exp(b2[7])
-    if (missing(amc2) | amc2<=AMC_LB*(1+AMC_PAD) | amc2>1e+12) {
+    amc2 = AMC_UB / (1 + exp(-b2[6]))
+    if (missing(amc2) | amc2<=1e-8 | amc2>=AMC_UB) {
         errprintf("ERROR: invalid amc in step 2.\n")
         _error(3498)
     }
     S2_now = 1 :- exp(-SHAT) :/ amc2
     S2_lag = 1 :- exp(-SHAT_lag) :/ amc2
-    if (min(S2_now)<=1e-8 | max(S2_now)>=1-1e-8 | min(S2_lag)<=1e-8 | max(S2_lag)>=1-1e-8) {
-        errprintf("ERROR: S outside (0,1) in step 2.\n")
-        _error(3498)
-    }
-    OMEGA2_local = PHI :- (b2[1] :+ b2[2]:*LVAR :+ b2[3]:*KVAR :+ b2[4]:*LSQVAR :+ b2[5]:*KSQVAR :+ b2[6]:*MVAR :+ b2[8]:*(S2_now:^2))
-    OMEGA2_lag = PHI_lag :- (b2[1] :+ b2[2]:*LLAGVAR :+ b2[3]:*KLAGVAR :+ b2[4]:*LSQLAGVAR :+ b2[5]:*KSQLAGVAR :+ b2[6]:*MLAGVAR :+ b2[8]:*(S2_lag:^2))
+    OMEGA2_local = PHI :- (b2[1] :+ b2[2]:*LVAR :+ b2[3]:*KVAR :+ b2[4]:*LSQVAR :+ b2[5]:*KSQVAR :+ amc2:*MVAR :+ b2[7]:*(S2_now:^2))
+    OMEGA2_lag = PHI_lag :- (b2[1] :+ b2[2]:*LLAGVAR :+ b2[3]:*KLAGVAR :+ b2[4]:*LSQLAGVAR :+ b2[5]:*KSQLAGVAR :+ amc2:*MLAGVAR :+ b2[7]:*(S2_lag:^2))
     // Second-step linked-constraint transition.
 
     if (cols(CONSOL)>0) POOL2 = (C, OMEGA2_lag, CONSOL)
@@ -963,14 +961,14 @@ program define gmm2step_once, rclass
     return scalar b_k    = b[3,1]
     return scalar b_lsq  = b[4,1]
     return scalar b_ksq  = b[5,1]
-    return scalar b_m    = b[6,1]
-    * V1 linked-constraint parameters:
-    * raw b[7] maps to amc = amc_lb*(1+amc_pad) + exp(raw_amc), enforcing S-feasible support.
-    return scalar b_amc  = scalar(amc_lb)*(1+scalar(amc_pad)) + exp(b[7,1])
-    return scalar b_as   = b[8,1]
+    * Equality-constrained point estimates: b_m is set identically to b_amc.
+    * raw b[6] maps to amc = amc_ub/(1+exp(-raw_amc)), enforcing 0<amc<amc_ub.
+    return scalar b_m    = scalar(amc_ub)/(1+exp(-b[6,1]))
+    return scalar b_amc  = scalar(amc_ub)/(1+exp(-b[6,1]))
+    return scalar b_as   = b[7,1]
     * Backward-compatible aliases (kept to avoid breaking master aggregation code).
-    return scalar b_es   = scalar(amc_lb)*(1+scalar(amc_pad)) + exp(b[7,1])
-    return scalar b_essq = b[8,1]
+    return scalar b_es   = scalar(amc_ub)/(1+exp(-b[6,1]))
+    return scalar b_essq = b[7,1]
     
     confirm matrix g_b
     if _rc {
@@ -1202,17 +1200,22 @@ if `RUN_DIAG' {
         * Excluded IVs: remove contemporaneous endogenous variable l.
         local z_C llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
     }
+    local z_E const klag ksqlag llag lsqlag mlag mlagsq
 
     tempname HDIAG
     tempfile ivdiag
     postfile `HDIAG' str4 iv_set byte ok double N jp jstat widstat str80 reason using "`ivdiag'", replace
 
-    foreach S in A B C {
+    local diag_sets "A B C"
+    if "`IV_SET'"=="E" local diag_sets "E"
+
+    foreach S in `diag_sets' {
         * Safe macro expansion by branch to avoid malformed tokens like `l.
         local z_excl ""
         if "`S'"=="A" local z_excl "`z_A'"
         if "`S'"=="B" local z_excl "`z_B'"
         if "`S'"=="C" local z_excl "`z_C'"
+        if "`S'"=="E" local z_excl "`z_E'"
 
         local miss 0
         local misslist ""
@@ -1468,4 +1471,3 @@ else {
 }
 
 display as text "INFO: Script finished at " c(current_time)
-
