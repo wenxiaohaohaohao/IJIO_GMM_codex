@@ -1,4 +1,4 @@
-﻿* Step 1 baseline: point estimation + diagnostics only
+* Step 1 baseline A-IV: point estimation + diagnostics only
 * Setup: Use standard output directories (no timestamped subdirectories)
 clear all
 set more off
@@ -16,7 +16,7 @@ if ("$TARGET_GROUP"=="") global TARGET_GROUP "ALL"
 if ("$RUN_POINT_ONLY"=="") global RUN_POINT_ONLY 1
 if ("$RUN_BOOT"=="") global RUN_BOOT 0
 if ("$RUN_DIAG"=="") global RUN_DIAG 1
-if ("$IV_SET"=="") global IV_SET "A"
+global IV_SET "A"
 
 * Create standard output directories
 capture mkdir "$DATA_WORK"
@@ -36,4 +36,5 @@ di as txt "  RES_LOG   = $RES_LOG"
 
 do "$ROOT/code/master/Master_Non_hicks.do"
 log close
+
 

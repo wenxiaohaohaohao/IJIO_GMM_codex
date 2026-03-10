@@ -35,26 +35,95 @@ local RUN_BOOT 1
 if ("$RUN_BOOT"!="") local RUN_BOOT = real("$RUN_BOOT")
 if (`RUN_POINT_ONLY'==1) local RUN_BOOT 0
 
-* Optional robust optimizer mode for fragile IV sets (A2/A3)
+* Optional robust optimizer mode (kept for compatibility; current main IV uses standard settings)
 local ROBUST_INIT 0
 if ("$ROBUST_INIT"!="") local ROBUST_INIT = real("$ROBUST_INIT")
 global ROBUST_INIT "`ROBUST_INIT'"
 
-* Optional IV override (space-separated var list), by group
-if ("$IV_Z_G1"=="") global IV_Z_G1 ""
-if ("$IV_Z_G2"=="") global IV_Z_G2 ""
-
-* IV set switch for V1 diagnostics / robustness gate (A | B | C | A1 | A2 | A3 | E)
-local IV_SET "A"
-if ("$IV_SET"!="") local IV_SET = upper("$IV_SET")
-local VALID_IV_SETS "A B C A1 A2 A3 E"
-if !`: list IV_SET in VALID_IV_SETS' {
-    di as err "ERROR: invalid IV_SET=[`IV_SET']; must be A, B, C, A1, A2, A3, or E."
+* Optional soft penalty on negative S_fd shares inside the GMM objective
+local S_NEG_PENALTY_W 0
+if ("$S_NEG_PENALTY_W"!="") local S_NEG_PENALTY_W = real("$S_NEG_PENALTY_W")
+if (`S_NEG_PENALTY_W' < 0) {
+    di as err "ERROR: S_NEG_PENALTY_W must be nonnegative."
     exit 198
 }
-global IV_SET "`IV_SET'"
-di as txt "RUN SWITCH: RUN_POINT_ONLY=`RUN_POINT_ONLY', RUN_BOOT=`RUN_BOOT', RUN_DIAG=`RUN_DIAG', IV_SET=`IV_SET', ROBUST_INIT=`ROBUST_INIT'"
-di as txt "IV overrides: G1=[$IV_Z_G1] ; G2=[$IV_Z_G2]"
+global S_NEG_PENALTY_W "`S_NEG_PENALTY_W'"
+
+* Smooth penalty type for S_fd shares: NEGSQ | SOFTPLUS
+local S_NEG_PENALTY_MODE "NEGSQ"
+if ("$S_NEG_PENALTY_MODE"!="") local S_NEG_PENALTY_MODE = upper("$S_NEG_PENALTY_MODE")
+if !inlist("`S_NEG_PENALTY_MODE'","NEGSQ","SOFTPLUS") {
+    di as err "ERROR: S_NEG_PENALTY_MODE must be NEGSQ or SOFTPLUS."
+    exit 198
+}
+global S_NEG_PENALTY_MODE "`S_NEG_PENALTY_MODE'"
+
+* Softplus-hinge tuning parameters, used only when S_NEG_PENALTY_MODE=SOFTPLUS
+local S_SOFT_EPS 0
+if ("$S_SOFT_EPS"!="") local S_SOFT_EPS = real("$S_SOFT_EPS")
+if (`S_SOFT_EPS' < 0) {
+    di as err "ERROR: S_SOFT_EPS must be nonnegative."
+    exit 198
+}
+global S_SOFT_EPS "`S_SOFT_EPS'"
+
+local S_SOFT_TAU 0.01
+if ("$S_SOFT_TAU"!="") local S_SOFT_TAU = real("$S_SOFT_TAU")
+if (`S_SOFT_TAU' <= 0) {
+    di as err "ERROR: S_SOFT_TAU must be positive."
+    exit 198
+}
+global S_SOFT_TAU "`S_SOFT_TAU'"
+
+* Optional hard positivity constraint on all-sample S shares
+local S_POS_HARD 0
+if ("$S_POS_HARD"!="") local S_POS_HARD = real("$S_POS_HARD")
+if !inlist(`S_POS_HARD',0,1) {
+    di as err "ERROR: S_POS_HARD must be 0 or 1."
+    exit 198
+}
+global S_POS_HARD "`S_POS_HARD'"
+
+* Optional AMC upper bound override for linked amc parameter
+local AMC_UB_OVERRIDE 0.99
+if ("$AMC_UB_OVERRIDE"!="") local AMC_UB_OVERRIDE = real("$AMC_UB_OVERRIDE")
+if (`AMC_UB_OVERRIDE' <= 0) {
+    di as err "ERROR: AMC_UB_OVERRIDE must be positive."
+    exit 198
+}
+global AMC_UB_OVERRIDE "`AMC_UB_OVERRIDE'"
+
+* Optional trim of the upper tail of exp(-shat), in percent of observations
+local EXPNEGSHAT_TRIM_TOP_PCT 0
+if ("$EXPNEGSHAT_TRIM_TOP_PCT"!="") local EXPNEGSHAT_TRIM_TOP_PCT = real("$EXPNEGSHAT_TRIM_TOP_PCT")
+if (`EXPNEGSHAT_TRIM_TOP_PCT' < 0 | `EXPNEGSHAT_TRIM_TOP_PCT' >= 100) {
+    di as err "ERROR: EXPNEGSHAT_TRIM_TOP_PCT must be in [0,100)."
+    exit 198
+}
+global EXPNEGSHAT_TRIM_TOP_PCT "`EXPNEGSHAT_TRIM_TOP_PCT'"
+
+* Main code now keeps only the baseline A IV specification.
+local IV_SET "A"
+if ("$IV_SET"!="" & upper("$IV_SET")!="A") {
+    di as err "ERROR: this streamlined main code keeps only IV_SET=A."
+    exit 198
+}
+global IV_SET "A"
+local CAPITAL_MODE "BR"
+if ("$CAPITAL_MODE"!="") local CAPITAL_MODE = upper("$CAPITAL_MODE")
+if !inlist("`CAPITAL_MODE'","BR","RAW") {
+    di as err "ERROR: invalid CAPITAL_MODE=[`CAPITAL_MODE']; must be BR or RAW."
+    exit 198
+}
+global CAPITAL_MODE "`CAPITAL_MODE'"
+local FS_X_MODE "LOG"
+if ("$FS_X_MODE"!="") local FS_X_MODE = upper("$FS_X_MODE")
+if !inlist("`FS_X_MODE'","LOG","LOG1P") {
+    di as err "ERROR: invalid FS_X_MODE=[`FS_X_MODE']; must be LOG or LOG1P."
+    exit 198
+}
+global FS_X_MODE "`FS_X_MODE'"
+di as txt "RUN SWITCH: RUN_POINT_ONLY=`RUN_POINT_ONLY', RUN_BOOT=`RUN_BOOT', RUN_DIAG=`RUN_DIAG', IV_SET=A, CAPITAL_MODE=`CAPITAL_MODE', FS_X_MODE=`FS_X_MODE', ROBUST_INIT=`ROBUST_INIT', S_NEG_PENALTY_W=`S_NEG_PENALTY_W', S_NEG_PENALTY_MODE=`S_NEG_PENALTY_MODE', S_SOFT_EPS=`S_SOFT_EPS', S_SOFT_TAU=`S_SOFT_TAU', S_POS_HARD=`S_POS_HARD', AMC_UB_OVERRIDE=`AMC_UB_OVERRIDE', EXPNEGSHAT_TRIM_TOP_PCT=`EXPNEGSHAT_TRIM_TOP_PCT'"
 
 * === 从全局读取 GROUP_NAME，并做合法性检查 ===
 if ("$GROUP_NAME"=="") {
@@ -104,6 +173,7 @@ replace e=7.9718 if year==2006
 replace e=7.6040 if year==2007
 
 drop if 营业收入合计千元 < 40
+drop if domesticint <= 0
 
 * -------- 1.2 产出 R、资本 K、劳动 L 构造 -------- *
 gen double R = 工业总产值_当年价格千元 * 1000 / e
@@ -121,50 +191,66 @@ gen double Q = Q1 / outputdef
 
 gen double WL = 应付工资薪酬总额千元 * 1000 / e
 
-* -------- 1.3 浼佷笟鎵€鏈夊埗鍒嗙被 firmcat -------- *
+* -------- 1.3 企业所有制分类 firmcat -------- *
 gen firmcat = . 
-replace firmcat = 1 if firmtype == 1                  // 鍥戒紒
-replace firmcat = 2 if inlist(firmtype, 2, 3, 4)      // 澶栦紒
-replace firmcat = 3 if missing(firmcat)               // 鍏朵粬瑙嗕负绉佷紒
+replace firmcat = 1 if firmtype == 1                  // 国企
+replace firmcat = 2 if inlist(firmtype, 2, 3, 4)      // 外企
+replace firmcat = 3 if missing(firmcat)               // 其他视为私企
 
-label define firmcatlbl 1 "鍥戒紒" 2 "澶栦紒" 3 "绉佷紒", replace
+
+label define firmcatlbl 1 "??" 2 "??" 3 "??", replace
 label values firmcat firmcatlbl
-
 tab firmcat, gen(firmcat_)  // firmcat_1, firmcat_2, firmcat_3
+capture confirm variable firmcat_1
+if _rc {
+    gen byte firmcat_1 = (firmcat==1)
+}
+capture confirm variable firmcat_2
+if _rc {
+    gen byte firmcat_2 = (firmcat==2)
+}
+capture confirm variable firmcat_3
+if _rc {
+    gen byte firmcat_3 = (firmcat==3)
+}
 
-* -------- 1.4 澶勭悊 firmtotalq / X锛堟€讳腑闂存姇鍏ワ級 -------- *
+* -------- 1.4 ?? firmtotalq / X??????? -------- *
 confirm variable firmtotalq
-if !_rc rename firmtotalq X
-
-* -------- 1.5 重建资本存量（Brandt-Rawski deflator） -------- *
-merge m:1 year using "$DATA_RAW/Brandt-Rawski investment deflator.dta", nogen
-replace BR_deflator = 116.7 if year == 2007
-drop if year < 2000
-
-bysort firmid (year): gen double I = K - K[_n-1]
-bysort firmid (year): replace I = K if _n == 1
-
-bysort firmid (year): gen double inv0 = I
-replace inv0 = 0 if missing(inv0)
-forvalues v = 1/19 {
-    bysort firmid (year): gen double inv`v' = I[_n-`v'] * (BR_deflator / BR_deflator[_n-`v']) if _n > `v'
-    replace inv`v' = 0 if missing(inv`v')
+if !_rc {
+    rename firmtotalq X
 }
-gen double K_current = inv0
-forvalues v = 1/19 {
-    replace K_current = K_current + inv`v'
+* -------- 1.5 ???????Brandt-Rawski deflator? -------- *
+if "$CAPITAL_MODE" == "BR" {
+    merge m:1 year using "$DATA_RAW/Brandt-Rawski investment deflator.dta", nogen
+    replace BR_deflator = 116.7 if year == 2007
+    drop if year < 2000
+
+    bysort firmid (year): gen double I = K - K[_n-1]
+    bysort firmid (year): replace I = K if _n == 1
+
+    bysort firmid (year): gen double inv0 = I
+    replace inv0 = 0 if missing(inv0)
+    forvalues v = 1/19 {
+        bysort firmid (year): gen double inv`v' = I[_n-`v'] * (BR_deflator / BR_deflator[_n-`v']) if _n > `v'
+        replace inv`v' = 0 if missing(inv`v')
+    }
+    gen double K_current = inv0
+    forvalues v = 1/19 {
+        replace K_current = K_current + inv`v'
+    }
+    drop inv0-inv19
+    replace K = K_current
 }
-drop inv0-inv19
-replace K = K_current
+else if "$CAPITAL_MODE" == "RAW" {
+    * Audit mode: use raw fixed assets directly, matching the GAUSS capital definition.
+}
 
 * -------- 1.6 其他成本变量与 log 变换 -------- *
 rename 工业中间投入合计千元 MI
 rename 管理费用千元 Mana
-drop if MI <= 0
 
 gen double lnR = ln(R)  if R>0
-* Align units with R (USD): total intermediates in thousand RMB -> USD level.
-gen double lnM = ln(MI*1000/e) if MI>0 & e>0
+gen double lnM = ln(domesticint) if domesticint>0
 
 capture ssc install winsor2, replace
 winsor2 lnR, cuts(1 99) by(cic2 year) replace
@@ -181,14 +267,20 @@ replace 开业成立时间年 = . if 开业成立时间年==0
 gen age   = year - 开业成立时间年 + 1
 gen lnage = ln(age)
 gen lnmana = ln(Mana)
+gen double size_emp = L
 
 gen l   = ln(L)
 gen lsq = l*l 
 gen double k   = ln(K)
 gen ksq = k*k  
 gen double q   = ln(Q)
-gen m = ln(MI*1000/e)        
-gen double x   = ln(X)
+gen m = ln(delfateddomestic)        
+if "$FS_X_MODE" == "LOG1P" {
+    gen double x = ln(1 + X)
+}
+else {
+    gen double x = ln(X)
+}
 gen double r   = ln(R)
 
 gen DWL = WL/L
@@ -199,11 +291,17 @@ winsor2 l, cuts(1 99) by(cic2 year) replace
 xtset firmid year
 
 capture confirm variable pft
-if !_rc rename pft pi
+if !_rc {
+    rename pft pi
+}
 capture confirm variable foreignprice
-if !_rc rename foreignprice WX
+if !_rc {
+    rename foreignprice WX
+}
 capture confirm variable WX
-if !_rc gen double wx = ln(WX)
+if !_rc {
+    gen double wx = ln(WX)
+}
 
 * -------- 1.7 第一阶段：估计成本 share vs. 生产要素（生成 es, es2q） -------- *
 reg lratiofs k l wl x age lnmana i.firmcat i.city i.year, vce(cluster firmid)
@@ -212,6 +310,18 @@ gen double es   = exp(-r_hat_ols)
 gen double es2q = es^2
 * V1: keep first-stage fitted index for structural S-constraint linkage in second stage.
 gen double shat = r_hat_ols
+if real("$EXPNEGSHAT_TRIM_TOP_PCT") > 0 {
+    local __trim_cut = 100 - real("$EXPNEGSHAT_TRIM_TOP_PCT")
+    capture drop __expnegshat
+    gen double __expnegshat = exp(-shat)
+    _pctile __expnegshat, p(`__trim_cut')
+    local expnegshat_cut = r(r1)
+    qui count if __expnegshat > `expnegshat_cut'
+    local expnegshat_trimN = r(N)
+    di as txt "Trimming upper tail of exp(-shat): top $EXPNEGSHAT_TRIM_TOP_PCT% ; cutoff=" %9.6f `expnegshat_cut' " ; dropped N=" `expnegshat_trimN'
+    drop if __expnegshat > `expnegshat_cut'
+    drop __expnegshat
+}
 
 * -------- 1.8 第一阶段：估计 φ 的三次多项式（生成 phi, epsilon） -------- *
 reg r c.(l k m x pi wx wl es)##c.(l k m x pi wx wl es)##c.(l k m x pi wx wl es) ///
@@ -232,9 +342,9 @@ save "$DATA_WORK/firststage_`GROUPNAME'.dta", replace
 * ---- 按 firmid-year 排序并保证唯一 ---- *
 sort firmid year
 isid firmid year, sort
-di "✅ Data sorted and verified: unique firm-year combinations"
+di "[OK] Data sorted and verified: unique firm-year combinations"
 
-* ---- 2.1 鍙繚鐣欐渶闀胯繛缁 >=2骞寸殑鍏徃 ---- *
+* ---- 2.1 ?????????????? >= 2 ??? ---- *
 by firmid: gen gap = year - L.year
 by firmid: gen seqblock = (gap != 1 | missing(gap))
 by firmid: replace seqblock = sum(seqblock)
@@ -292,7 +402,9 @@ gen double shat_lag = L.shat
 gen double kl      = k*l
 
 capture confirm variable const
-if _rc gen byte const = 1
+if _rc {
+    gen byte const = 1
+}
 
 order firmid year, first
 
@@ -341,13 +453,13 @@ xtset firmid year
 capture confirm variable lnagelag
 if _rc {
     gen double lnagelag = L.lnage
-    di "✅ Created: lnagelag (lagged firm age)"
+    di "[OK] Created: lnagelag (lagged firm age)"
 }
 
 * ---- 3.5 最终样本筛选：保证所有 GMM 所需变量不缺失 ---- *
 drop if missing(const, r, l, k, phi, phi_lag, llag, klag, mlag, lsqlag, ksqlag, ///
     lsq, ksq, m, es, es2q, lages, lages2q, shat, shat_lag, lnage, firmcat, lnmana, ///
-    lnagelag, firmcat_2, firmcat_3, dy2002-dy2007, klages, mlagxlag)
+    lnagelag, size_emp, firmcat_2, firmcat_3, dy2002-dy2007, klages, mlagxlag)
 
 * ---- 3.6 为 Mata 创建残差占位列 OMEGA2/XI2 ---- *
 capture drop OMEGA2 XI2
@@ -359,9 +471,9 @@ local have_b0 0
 mata: st_local("have_b0", "`have_b0'")
 
 *======================================================
-* 妯″潡 4锛歁ata 涓ゆ GMM 寮曟搸
-*   对应你原来的整段 mata: 到 end
-*   内部算法不改，只保留你现有的数值处理和防护。
+* ?? 4?Mata ?? GMM ??
+*   ???????? mata: ? end
+*   ?????????????????????
 mata:
 mata clear
 
@@ -376,10 +488,44 @@ XI2    = J(0,1,.)
 AMC_LB = .
 AMC_PAD = 1e-6
 AMC_UB = 0.99
+S_NEG_PEN_W = 0
+S_NEG_PEN_MODE_G = 0
+S_SOFT_EPS_G = 0
+S_SOFT_TAU_G = 0.01
+S_POS_HARD_G = 0
+
+real colvector softplus_hinge(real colvector S, real scalar eps, real scalar tau)
+{
+    real colvector z, sp
+    z = (eps :- S) :/ tau
+    sp = tau :* (((z :> 0) :* z) :+ ln(1 :+ exp(-abs(z))))
+    return(sp)
+}
+
+real scalar calc_s_penalty(real colvector S_now, real colvector S_lag, real scalar w, real scalar mode, real scalar eps, real scalar tau)
+{
+    real colvector p_now, p_lag
+    real scalar pen
+
+    if (w <= 0) return(0)
+
+    if (mode == 1) {
+        p_now = softplus_hinge(S_now, eps, tau)
+        p_lag = softplus_hinge(S_lag, eps, tau)
+    }
+    else {
+        p_now = (-S_now) :* (S_now :< 0)
+        p_lag = (-S_lag) :* (S_lag :< 0)
+    }
+
+    pen = w * (mean(p_now:^2) + mean(p_lag:^2))
+    if (missing(pen)) pen = 1e+20
+    return(pen)
+}
 
 void refresh_globals()
 {
-    external X, X_lag, Z, PHI, PHI_lag, Y, C, CONSOL, beta_init, Wg_opt, AMC_LB, AMC_PAD, AMC_UB
+    external X, X_lag, Z, PHI, PHI_lag, Y, C, CONSOL, beta_init, Wg_opt, AMC_LB, AMC_PAD, AMC_UB, S_NEG_PEN_W, S_NEG_PEN_MODE_G, S_SOFT_EPS_G, S_SOFT_TAU_G, S_POS_HARD_G
     external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
     /* V1 linked-constraint setup: X only for initialization; S is updated inside evaluator */
@@ -398,68 +544,30 @@ void refresh_globals()
     MLAGVAR   = st_data(., "mlag")
     SHAT      = st_data(., "shat")
     SHAT_lag  = st_data(., "shat_lag")
+    S_NEG_PEN_W = strtoreal(st_global("S_NEG_PENALTY_W"))
+    if (missing(S_NEG_PEN_W) | S_NEG_PEN_W < 0) S_NEG_PEN_W = 0
+    S_NEG_PEN_MODE_G = (st_global("S_NEG_PENALTY_MODE") == "SOFTPLUS")
+    S_SOFT_EPS_G = strtoreal(st_global("S_SOFT_EPS"))
+    if (missing(S_SOFT_EPS_G) | S_SOFT_EPS_G < 0) S_SOFT_EPS_G = 0
+    S_SOFT_TAU_G = strtoreal(st_global("S_SOFT_TAU"))
+    if (missing(S_SOFT_TAU_G) | S_SOFT_TAU_G <= 0) S_SOFT_TAU_G = 0.01
+    S_POS_HARD_G = strtoreal(st_global("S_POS_HARD"))
+    if (missing(S_POS_HARD_G) | (S_POS_HARD_G != 0 & S_POS_HARD_G != 1)) S_POS_HARD_G = 0
+    AMC_UB = strtoreal(st_global("AMC_UB_OVERRIDE"))
+    if (missing(AMC_UB) | AMC_UB <= 0) AMC_UB = 0.99
 
-    /* IV sets by group and IV_SET switch */
-    string scalar g, ivset, zov
-    string rowvector zvars
-    real scalar robust_mode
+    /* Keep only the baseline A IV specification. */
+    string scalar g
     g = st_global("GROUP_NAME")
-    ivset = st_global("IV_SET")
-    robust_mode = strtoreal(st_global("ROBUST_INIT"))
-    if (ivset=="") ivset = "A"
     if (g!="G1_17_19" & g!="G2_39_41") {
         errprintf("Invalid GROUPNAME = [%s]; must be G1_17_19 or G2_39_41\n", g)
         _error(3499)
     }
-    if (ivset!="A" & ivset!="B" & ivset!="C" & ivset!="A1" & ivset!="A2" & ivset!="A3" & ivset!="E") {
-        errprintf("Invalid IV_SET = [%s]; must be A/B/C/A1/A2/A3/E\n", ivset)
-        _error(3499)
-    }
-
-    zov = (g=="G1_17_19" ? st_global("IV_Z_G1") : st_global("IV_Z_G2"))
-    if (zov!="") {
-        zvars = tokens(zov)
-        Z = st_data(., zvars)
-    }
-    else if (g=="G1_17_19" & ivset=="A") {
-        Z = st_data(., ("const","lages2q","l","ksq","llag","klag","mlag","l_ind_yr","m_ind_yr","k_ind_yr","Z_HHI_post"))
-    }
-    else if (g=="G1_17_19" & ivset=="B") {
-        Z = st_data(., ("const","lages2q","l","lsq","ksq","llag","klag","mlag","l_ind_yr","m_ind_yr","k_ind_yr","Z_tariff","Z_HHI_post"))
-    }
-    else if (g=="G1_17_19" & ivset=="C") {
-        Z = st_data(., ("const","llag","klag","mlag","lages","lages2q","l_ind_yr","m_ind_yr","k_ind_yr","Z_tariff","Z_HHI_post"))
-    }
-    else if (g=="G2_39_41" & ivset=="A") {
-        Z = st_data(., ("llag","klag","l","lages","lsq","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","Z_HHI_post"))
-    }
-    else if (g=="G2_39_41" & ivset=="B") {
-        Z = st_data(., ("const","llag","klag","mlag","l","lsq","ksq","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","Z_HHI_post"))
-    }
-    else if (g=="G1_17_19" & ivset=="A1") {
-        Z = st_data(., ("llag","klag","mlag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","lages2q","lages"))
-    }
-    else if (g=="G1_17_19" & ivset=="A2") {
-        Z = st_data(., ("llag","klag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","lages2q","lages","klages"))
-    }
-    else if (g=="G1_17_19" & ivset=="A3") {
-        Z = st_data(., ("llag","klag","k_ind_yr","m_ind_yr","Z_tariff","lages2q","lages","klages","llag2"))
-    }
-    else if (g=="G2_39_41" & ivset=="A1") {
-        Z = st_data(., ("llag","mlag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","Z_HHI_post","lages2q","lages"))
-    }
-    else if (g=="G2_39_41" & ivset=="A2") {
-        Z = st_data(., ("llag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","Z_HHI_post","lages2q","lages","llag2"))
-    }
-    else if (g=="G2_39_41" & ivset=="A3") {
-        Z = st_data(., ("llag","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","lages2q","lages","llag2","klages"))
-    }
-    else if (ivset=="E") {
-        /* Conservative E set: lagged levels and squares only. */
-        Z = st_data(., ("const","klag","ksqlag","llag","lsqlag","mlag","mlagsq"))
+    if (g=="G1_17_19") {
+        Z = st_data(., ("const","l","llag","klag","mlag","l_ind_yr","m_ind_yr","k_ind_yr","Z_HHI_post"))
     }
     else {
-        Z = st_data(., ("const","llag","klag","mlag","lages","lages2q","l_ind_yr","k_ind_yr","m_ind_yr","Z_HHI_post"))
+        Z = st_data(., ("llag","klag","l","lages","lsq","l_ind_yr","k_ind_yr","m_ind_yr","Z_tariff","Z_HHI_post"))
     }
 
     PHI     = st_data(., "phi")
@@ -467,9 +575,9 @@ void refresh_globals()
     Y       = st_data(., "r")
     C       = st_data(., "const")
 
-    CONSOL  = st_data(., ("dy2002","dy2003","dy2004","dy2005","dy2006","dy2007","lnage","firmcat_2","firmcat_3"))
+    CONSOL  = st_data(., ("dy2002","dy2003","dy2004","dy2005","dy2006","dy2007","size_emp","lnage","firmcat_2","firmcat_3"))
 
-    real scalar use_b0, shbar, amc0, raw_amc0, lb_local
+    real scalar use_b0, shbar, amc0, lb_local
     real rowvector bols
     use_b0 = strtoreal(st_local("have_b0"))
 
@@ -486,9 +594,10 @@ void refresh_globals()
         _error(3497)
     }
 
-    /* Keep amc strictly positive by reparameterization; do not force sample-wide
-       S in (0,1), otherwise a few extreme generated-share observations can
-       mechanically pin amc (and thus b_m under equality) at the upper tail. */
+    /* Directly estimate b_m and use the same parameter in the S-constraint.
+       Keep only a positivity guard; do not force sample-wide S in (0,1),
+       otherwise a few extreme generated-share observations can mechanically
+       pin b_m under the equality constraint. */
     lb_local = 1e-6
     AMC_LB = lb_local
     st_numscalar("amc_lb", AMC_LB)
@@ -500,36 +609,26 @@ void refresh_globals()
     if (missing(shbar)) shbar = 0
     amc0 = exp(-shbar) + 0.10
     amc0 = scalarmax(0.05, amc0)
-    amc0 = (amc0 >= AMC_UB-1e-4 ? AMC_UB-1e-4 : amc0)
-    raw_amc0 = ln( amc0 / scalarmax(AMC_UB - amc0, 1e-8) )
-    if (robust_mode==1 & (ivset=="A2" | ivset=="A3")) {
-        amc0 = scalarmax(amc0, 0.10)
-        amc0 = (amc0 >= AMC_UB-1e-4 ? AMC_UB-1e-4 : amc0)
-        raw_amc0 = ln( amc0 / scalarmax(AMC_UB - amc0, 1e-8) )
-    }
 
     if (use_b0 == 1) {
         beta_init = st_matrix("b0")'
         if (cols(beta_init) != 7) {
-            beta_init = (bols[1], bols[2], bols[3], bols[4], bols[5], raw_amc0, 0)
-        }
-        else if (robust_mode==1 & (ivset=="A2" | ivset=="A3") & beta_init[6] < raw_amc0) {
-            beta_init[6] = raw_amc0
+            beta_init = (bols[1], bols[2], bols[3], bols[4], bols[5], amc0, 0)
         }
     }
     else {
-        beta_init = (bols[1], bols[2], bols[3], bols[4], bols[5], raw_amc0, 0)
+        beta_init = (bols[1], bols[2], bols[3], bols[4], bols[5], amc0, 0)
     }
 }
 
 void GMM_DL_weighted(todo, b, crit, g, H)
 {
-    external PHI, PHI_lag, Z, C, CONSOL, Wg, Wg_opt, AMC_LB, AMC_PAD, AMC_UB
+    external PHI, PHI_lag, Z, C, CONSOL, Wg, Wg_opt, AMC_LB, AMC_PAD, AMC_UB, S_NEG_PEN_W, S_NEG_PEN_MODE_G, S_SOFT_EPS_G, S_SOFT_TAU_G, S_POS_HARD_G
     external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
     real colvector OMEGA, OMEGA_lag, XI, gb, m, S_now, S_lag
     real matrix POOL
-    real scalar N, crit_val, amc, smin_now, smax_now, smin_lag, smax_lag
+    real scalar N, crit_val, amc, smin_now, smax_now, smin_lag, smax_lag, penalty_val
 
     N = rows(Z)
     if (N <= 5 | any(missing(Z))) {
@@ -543,9 +642,9 @@ void GMM_DL_weighted(todo, b, crit, g, H)
         Wg_opt = I(cols(Z))
     }
 
-    /* Keep equality-constrained amc in (0, AMC_UB) via logistic map. */
-    amc = AMC_UB / (1 + exp(-b[6]))
-    if (missing(amc) | amc<=1e-8 | amc>=AMC_UB) {
+    /* Directly estimate b_m and impose the equality b_m == b_amc == amc. */
+    amc = b[6]
+    if (missing(amc) | amc<=AMC_LB) {
         crit = 1e+20
         if (todo >= 1) g = J(1, cols(b), 0)
         if (todo == 2) H = J(cols(b), cols(b), 0)
@@ -557,6 +656,12 @@ void GMM_DL_weighted(todo, b, crit, g, H)
     smin_now = min(S_now); smax_now = max(S_now)
     smin_lag = min(S_lag); smax_lag = max(S_lag)
     if (any(missing(S_now)) | any(missing(S_lag))) {
+        crit = 1e+20
+        if (todo >= 1) g = J(1, cols(b), 0)
+        if (todo == 2) H = J(cols(b), cols(b), 0)
+        return
+    }
+    if (S_POS_HARD_G == 1 & (smin_now <= 0 | smin_lag <= 0)) {
         crit = 1e+20
         if (todo >= 1) g = J(1, cols(b), 0)
         if (todo == 2) H = J(cols(b), cols(b), 0)
@@ -576,6 +681,11 @@ void GMM_DL_weighted(todo, b, crit, g, H)
     N       = rows(Z)
     m       = quadcross(Z, XI) :/ N
     crit_val = m' * Wg_opt * m
+    penalty_val = 0
+    if (S_NEG_PEN_W > 0) {
+        penalty_val = calc_s_penalty(S_now, S_lag, S_NEG_PEN_W, S_NEG_PEN_MODE_G, S_SOFT_EPS_G, S_SOFT_TAU_G)
+        crit_val = crit_val + penalty_val
+    }
 
     if (missing(crit_val) | crit_val>1e+30 | crit_val<-1e+30) {
         crit = 1e+20
@@ -594,7 +704,7 @@ void GMM_DL_weighted(todo, b, crit, g, H)
     crit = crit_val
 
     if (todo>=1) {
-        real scalar i, eps_i, crit_plus, crit_minus
+        real scalar i, eps_i, crit_plus, crit_minus, penalty_plus, penalty_minus
         real rowvector gnum, btmp
         real colvector Oe, Oel, XI2p, XI2m, m2p, m2m, Sp, Slp, Sm, Slm
         real matrix PO
@@ -606,8 +716,8 @@ void GMM_DL_weighted(todo, b, crit, g, H)
 
             btmp    = b
             btmp[i] = b[i] + eps_i
-            amc = AMC_UB / (1 + exp(-btmp[6]))
-            if (missing(amc) | amc<=1e-8 | amc>=AMC_UB) {
+            amc = btmp[6]
+            if (missing(amc) | amc<=AMC_LB) {
                 crit_plus = 1e+20
             }
             else {
@@ -624,13 +734,18 @@ void GMM_DL_weighted(todo, b, crit, g, H)
                     XI2p = Oe - PO*gb
                     m2p  = quadcross(Z, XI2p):/ N
                     crit_plus = m2p' * Wg_opt * m2p
+                    if (S_NEG_PEN_W > 0) {
+                        penalty_plus = calc_s_penalty(Sp, Slp, S_NEG_PEN_W, S_NEG_PEN_MODE_G, S_SOFT_EPS_G, S_SOFT_TAU_G)
+                        if (missing(penalty_plus)) crit_plus = 1e+20
+                        else crit_plus = crit_plus + penalty_plus
+                    }
                 }
             }
 
             btmp    = b
             btmp[i] = b[i] - eps_i
-            amc = AMC_UB / (1 + exp(-btmp[6]))
-            if (missing(amc) | amc<=1e-8 | amc>=AMC_UB) {
+            amc = btmp[6]
+            if (missing(amc) | amc<=AMC_LB) {
                 crit_minus = 1e+20
             }
             else {
@@ -647,6 +762,11 @@ void GMM_DL_weighted(todo, b, crit, g, H)
                     XI2m = Oe - PO*gb
                     m2m  = quadcross(Z, XI2m):/ N
                     crit_minus = m2m' * Wg_opt * m2m
+                    if (S_NEG_PEN_W > 0) {
+                        penalty_minus = calc_s_penalty(Sm, Slm, S_NEG_PEN_W, S_NEG_PEN_MODE_G, S_SOFT_EPS_G, S_SOFT_TAU_G)
+                        if (missing(penalty_minus)) crit_minus = 1e+20
+                        else crit_minus = crit_minus + penalty_minus
+                    }
                 }
             }
 
@@ -672,11 +792,10 @@ void run_two_step()
     st_numscalar("J_df",      .)
     st_numscalar("J_p",       .)
 
-    external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, beta_init, Wg_opt, AMC_LB, AMC_PAD, AMC_UB
+    external PHI, PHI_lag, X, X_lag, Z, C, CONSOL, Wg, beta_init, Wg_opt, AMC_LB, AMC_PAD, AMC_UB, S_POS_HARD_G
     external LVAR, KVAR, LSQVAR, KSQVAR, MVAR, LLAGVAR, KLAGVAR, LSQLAGVAR, KSQLAGVAR, MLAGVAR, SHAT, SHAT_lag
 
-    real scalar Kz, Kx, J1, J2, lam, conv1, conv2, smin, smax, cond, EPSJ, robust_mode
-    string scalar ivset
+    real scalar Kz, Kx, J1, J2, lam, conv1, conv2, smin, smax, cond, EPSJ, need_amc_lb
     real rowvector b1, b2
     real colvector OMEGA1, OMEGA1_lag, XI1, OMEGA2_local, OMEGA2_lag, XI2_local, g_bvec, m_unit, m_opt
     real colvector S1_now, S1_lag, S2_now, S2_lag
@@ -687,13 +806,15 @@ void run_two_step()
     real rowvector b2_nr
 
     N = rows(Z)
-    ivset = st_global("IV_SET")
-    robust_mode = strtoreal(st_global("ROBUST_INIT"))
     st_numscalar("Nobs", N)
 
     Kz = cols(Z)
     Kx = cols(beta_init)
     st_numscalar("Kz_used", Kz)
+    if (S_POS_HARD_G == 1) {
+        need_amc_lb = max(exp(-SHAT) \ exp(-SHAT_lag))
+        st_numscalar("s_hard_req_lb", need_amc_lb)
+    }
     if (Kz < Kx) {
         errprintf("ERROR: Not enough instruments (Kz=%f < Kx=%f).\n", Kz, Kx)
         _error(3498)
@@ -708,14 +829,8 @@ void run_two_step()
     optimize_init_which(S1, "min")
     optimize_init_params(S1, beta_init)
     optimize_init_technique(S1, "nm")
-    if (robust_mode==1 & (ivset=="A2" | ivset=="A3")) {
-        optimize_init_nmsimplexdeltas(S1, J(1, cols(beta_init), 0.002))
-        optimize_init_conv_maxiter(S1, 4000)
-    }
-    else {
-        optimize_init_nmsimplexdeltas(S1, J(1, cols(beta_init), 0.01))
-        optimize_init_conv_maxiter(S1, 2000)
-    }
+    optimize_init_nmsimplexdeltas(S1, J(1, cols(beta_init), 0.01))
+    optimize_init_conv_maxiter(S1, 2000)
     optimize_init_conv_ptol(S1, 1e-8)
     optimize_init_conv_vtol(S1, 1e-8)
     optimize_init_tracelevel(S1, "none")
@@ -735,8 +850,8 @@ void run_two_step()
         st_numscalar("gmm_conv1", conv1)
     }
 
-    amc1 = AMC_UB / (1 + exp(-b1[6]))
-    if (missing(amc1) | amc1<=1e-8 | amc1>=AMC_UB) {
+    amc1 = b1[6]
+    if (missing(amc1) | amc1<=AMC_LB) {
         errprintf("ERROR: invalid amc in step 1.\n")
         _error(3498)
     }
@@ -775,14 +890,8 @@ void run_two_step()
     optimize_init_which(S2, "min")
     optimize_init_params(S2, b1)
     optimize_init_technique(S2, "nm")
-    if (robust_mode==1 & (ivset=="A2" | ivset=="A3")) {
-        optimize_init_nmsimplexdeltas(S2, J(1, cols(b1), 0.0002))
-        optimize_init_conv_maxiter(S2, 5000)
-    }
-    else {
-        optimize_init_nmsimplexdeltas(S2, J(1, cols(b1), 0.00001))
-        optimize_init_conv_maxiter(S2, 3000)
-    }
+    optimize_init_nmsimplexdeltas(S2, J(1, cols(b1), 0.00001))
+    optimize_init_conv_maxiter(S2, 3000)
     optimize_init_conv_ptol(S2, 1e-8)
     optimize_init_conv_vtol(S2, 1e-8)
     optimize_init_tracelevel(S2, "none")
@@ -810,34 +919,6 @@ void run_two_step()
         conv2 = optimize_result_converged(S2)
     }
 
-    if (robust_mode==1 & (ivset=="A2" | ivset=="A3") & (!conv2 | J2 > EPSJ)) {
-        real matrix starts
-        real scalar r
-        real rowvector b_try
-        starts = (b1 \ (b1:+(0,0,0,0,0,0.4,0)) \ (b1:+(0,0,0,0,0,0.8,0)) \ (b1:+(0,0,0,0,0,0.4,0.1)))
-        for (r=1; r<=rows(starts); r++) {
-            S2 = optimize_init()
-            optimize_init_evaluator(S2, &GMM_DL_weighted())
-            optimize_init_evaluatortype(S2, "d0")
-            optimize_init_which(S2, "min")
-            b_try = starts[r,.]
-            optimize_init_params(S2, b_try)
-            optimize_init_technique(S2, "nm")
-            optimize_init_nmsimplexdeltas(S2, J(1, cols(b_try), 0.0002))
-            optimize_init_conv_maxiter(S2, 5000)
-            optimize_init_conv_ptol(S2, 1e-9)
-            optimize_init_conv_vtol(S2, 1e-9)
-            optimize_init_tracelevel(S2, "none")
-            b2    = optimize(S2)
-            J2_nr = optimize_result_value(S2)
-            conv2_nr = optimize_result_converged(S2)
-            if (conv2_nr & (J2_nr <= J2 | !conv2)) {
-                J2 = J2_nr
-                conv2 = conv2_nr
-            }
-        }
-    }
-
     if (( !conv2 | J2 > EPSJ ) & rows(b2)==1 & cols(b2)==Kx) {
         S2 = optimize_init()
         optimize_init_evaluator(S2, &GMM_DL_weighted())
@@ -863,8 +944,8 @@ void run_two_step()
 
     st_numscalar("gmm_conv2", conv2)
 
-    amc2 = AMC_UB / (1 + exp(-b2[6]))
-    if (missing(amc2) | amc2<=1e-8 | amc2>=AMC_UB) {
+    amc2 = b2[6]
+    if (missing(amc2) | amc2<=AMC_LB) {
         errprintf("ERROR: invalid amc in step 2.\n")
         _error(3498)
     }
@@ -961,13 +1042,12 @@ program define gmm2step_once, rclass
     return scalar b_k    = b[3,1]
     return scalar b_lsq  = b[4,1]
     return scalar b_ksq  = b[5,1]
-    * Equality-constrained point estimates: b_m is set identically to b_amc.
-    * raw b[6] maps to amc = amc_ub/(1+exp(-raw_amc)), enforcing 0<amc<amc_ub.
-    return scalar b_m    = scalar(amc_ub)/(1+exp(-b[6,1]))
-    return scalar b_amc  = scalar(amc_ub)/(1+exp(-b[6,1]))
+    * Equality-constrained point estimates: directly estimated b_m is set identically to b_amc.
+    return scalar b_m    = b[6,1]
+    return scalar b_amc  = b[6,1]
     return scalar b_as   = b[7,1]
-    * Backward-compatible aliases (kept to avoid breaking master aggregation code).
-    return scalar b_es   = scalar(amc_ub)/(1+exp(-b[6,1]))
+    * Backward-compatible aliases only; do not interpret as separate economic parameters.
+    return scalar b_es   = b[6,1]
     return scalar b_essq = b[7,1]
     
     confirm matrix g_b
@@ -976,12 +1056,13 @@ program define gmm2step_once, rclass
         exit 498
     }
     matrix gb = g_b
-    capture matrix rownames gb = c0_omega ar1_omega dy2002 dy2003 dy2004 dy2005 dy2006 dy2007 lnage firmcat_2 firmcat_3
+    capture matrix rownames gb = c0_omega ar1_omega dy2002 dy2003 dy2004 dy2005 dy2006 dy2007 size_emp lnage firmcat_2 firmcat_3
     return scalar b_c0_omega  = gb[1,1]
     return scalar b_ar1_omega = gb[2,1]
-    return scalar b_lnage     = gb[9,1]
-    return scalar b_firmcat_2 = gb[10,1]
-    return scalar b_firmcat_3 = gb[11,1]
+    return scalar b_size_emp  = gb[9,1]
+    return scalar b_lnage     = gb[10,1]
+    return scalar b_firmcat_2 = gb[11,1]
+    return scalar b_firmcat_3 = gb[12,1]
     
     return scalar J_unit = scalar(J_unit)
     confirm scalar J_opt
@@ -1045,16 +1126,30 @@ local b_amc_hat   = r(b_amc)
 local b_as_hat    = r(b_as)
 local b_c0_omega_hat  = r(b_c0_omega)
 local b_ar1_omega_hat = r(b_ar1_omega)
+local b_size_emp_hat = r(b_size_emp)
 local b_lnage_hat    = r(b_lnage)
 local b_firmcat2_hat = r(b_firmcat_2)
 local b_firmcat3_hat = r(b_firmcat_3)
 di as txt "Main spec dynamic block (AR(1)-style): c0=" %9.5f `b_c0_omega_hat' "  rho=" %9.5f `b_ar1_omega_hat'
 
 * ---- 5.3 Elasticity diagnostics from point estimates ---- *
-capture drop theta_k_hat theta_l_hat theta_m_hat
+capture drop S_fd_hat S_fd_clip ///
+    theta_k_hat theta_l_hat theta_m_hat ///
+    theta_md_hat theta_mf_hat theta_md_clip_hat theta_mf_clip_hat
+gen double S_fd_hat    = 1 - exp(-shat)/`b_m_hat'
+gen double S_fd_clip   = cond(S_fd_hat<0, 0, cond(S_fd_hat>1, 1, S_fd_hat))
 gen double theta_k_hat = `b_k_hat' + 2*`b_ksq_hat'*k
 gen double theta_l_hat = `b_l_hat' + 2*`b_lsq_hat'*l
 gen double theta_m_hat = `b_m_hat'
+gen double theta_md_hat = `b_m_hat' * (1 - S_fd_hat)
+gen double theta_mf_hat = `b_m_hat' * S_fd_hat
+gen double theta_md_clip_hat = `b_m_hat' * (1 - S_fd_clip)
+gen double theta_mf_clip_hat = `b_m_hat' * S_fd_clip
+
+qui summarize S_fd_hat, meanonly
+local sfd_mean = r(mean)
+qui summarize S_fd_clip, meanonly
+local sfd_clip_mean = r(mean)
 
 qui summarize theta_k_hat, meanonly
 local elas_k_mean = r(mean)
@@ -1062,23 +1157,50 @@ qui summarize theta_l_hat, meanonly
 local elas_l_mean = r(mean)
 qui summarize theta_m_hat, meanonly
 local elas_m_mean = r(mean)
+qui summarize theta_md_hat, meanonly
+local elas_md_mean = r(mean)
+qui summarize theta_mf_hat, meanonly
+local elas_mf_mean = r(mean)
+qui summarize theta_md_clip_hat, meanonly
+local elas_md_clip_mean = r(mean)
+qui summarize theta_mf_clip_hat, meanonly
+local elas_mf_clip_mean = r(mean)
 
 qui count
 local N_elas = r(N)
+qui count if S_fd_hat < 0
+local sfd_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
+qui count if S_fd_hat > 1
+local sfd_gt1share = cond(`N_elas'>0, r(N)/`N_elas', .)
 qui count if theta_k_hat < 0
 local elas_k_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
 qui count if theta_l_hat < 0
 local elas_l_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
 qui count if theta_m_hat < 0
 local elas_m_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
+qui count if theta_md_hat < 0
+local elas_md_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
+qui count if theta_mf_hat < 0
+local elas_mf_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
+qui count if theta_md_clip_hat < 0
+local elas_md_clip_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
+qui count if theta_mf_clip_hat < 0
+local elas_mf_clip_negshare = cond(`N_elas'>0, r(N)/`N_elas', .)
 
-di as txt "Elasticity means: theta_K=" %9.5f `elas_k_mean' "  theta_L=" %9.5f `elas_l_mean' "  theta_M=" %9.5f `elas_m_mean'
-di as txt "Elasticity negative shares: theta_K=" %6.3f `elas_k_negshare' "  theta_L=" %6.3f `elas_l_negshare' "  theta_M=" %6.3f `elas_m_negshare'
+di as txt "Elasticity means: theta_K=" %9.5f `elas_k_mean' "  theta_L=" %9.5f `elas_l_mean' "  theta_M=" %9.5f `elas_m_mean' ///
+    "  theta_MD=" %9.5f `elas_md_mean' "  theta_MF=" %9.5f `elas_mf_mean'
+di as txt "Elasticity negative shares: theta_K=" %6.3f `elas_k_negshare' "  theta_L=" %6.3f `elas_l_negshare' "  theta_M=" %6.3f `elas_m_negshare' ///
+    "  theta_MD=" %6.3f `elas_md_negshare' "  theta_MF=" %6.3f `elas_mf_negshare'
+di as txt "S_fd diagnostics (raw): mean=" %9.5f `sfd_mean' "  negshare=" %6.3f `sfd_negshare' "  gt1share=" %6.3f `sfd_gt1share'
+di as txt "Clipped split means: theta_MD_clip=" %9.5f `elas_md_clip_mean' "  theta_MF_clip=" %9.5f `elas_mf_clip_mean' ///
+    "  S_fd_clip_mean=" %9.5f `sfd_clip_mean'
 
 preserve
-    keep firmid year cic2 theta_k_hat theta_l_hat theta_m_hat
+    keep firmid year cic2 S_fd_hat S_fd_clip theta_k_hat theta_l_hat theta_m_hat ///
+        theta_md_hat theta_mf_hat theta_md_clip_hat theta_mf_clip_hat
     gen str10 group = "`GROUPNAME'"
-    order group firmid year cic2 theta_k_hat theta_l_hat theta_m_hat
+    order group firmid year cic2 S_fd_hat S_fd_clip theta_k_hat theta_l_hat theta_m_hat ///
+        theta_md_hat theta_mf_hat theta_md_clip_hat theta_mf_clip_hat
     compress
     save "$DATA_WORK/elasticity_group_`GROUPNAME'.dta", replace
 restore
@@ -1117,21 +1239,34 @@ preserve
     gen b_m     = `b_m_hat'
     gen b_amc   = `b_amc_hat'
     gen b_as    = `b_as_hat'
-    * Backward-compatible aliases
+    * Backward-compatible aliases only; do not interpret as separate economic parameters.
     gen b_es    = b_amc
     gen b_essq  = b_as
 
     gen b_c0_omega  = `b_c0_omega_hat'
     gen b_ar1_omega = `b_ar1_omega_hat'
+    gen b_size_emp  = `b_size_emp_hat'
     gen b_lnage     = `b_lnage_hat'
     gen b_firmcat_2 = `b_firmcat2_hat'
     gen b_firmcat_3 = `b_firmcat3_hat'
     gen elas_k_mean = `elas_k_mean'
     gen elas_l_mean = `elas_l_mean'
     gen elas_m_mean = `elas_m_mean'
+    gen sfd_mean = `sfd_mean'
+    gen sfd_clip_mean = `sfd_clip_mean'
+    gen elas_md_mean = `elas_md_mean'
+    gen elas_mf_mean = `elas_mf_mean'
+    gen elas_md_clip_mean = `elas_md_clip_mean'
+    gen elas_mf_clip_mean = `elas_mf_clip_mean'
+    gen sfd_negshare = `sfd_negshare'
+    gen sfd_gt1share = `sfd_gt1share'
     gen elas_k_negshare = `elas_k_negshare'
     gen elas_l_negshare = `elas_l_negshare'
     gen elas_m_negshare = `elas_m_negshare'
+    gen elas_md_negshare = `elas_md_negshare'
+    gen elas_mf_negshare = `elas_mf_negshare'
+    gen elas_md_clip_negshare = `elas_md_clip_negshare'
+    gen elas_mf_clip_negshare = `elas_mf_clip_negshare'
     
     gen J_unit  = J_unit
     gen J_opt   = J_opt
@@ -1151,6 +1286,7 @@ preserve
         gen se_as    = .
         gen se_c0_omega  = .
         gen se_ar1_omega = .
+        gen se_size_emp  = .
         gen se_lnage     = .
         gen se_firmcat_2 = .
         gen se_firmcat_3 = .
@@ -1161,14 +1297,16 @@ preserve
         order group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq ///
               b_m se_m b_amc se_amc b_as se_as b_es se_es b_essq se_essq ///
               b_c0_omega se_c0_omega b_ar1_omega se_ar1_omega ///
-              elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
-              b_lnage se_lnage b_firmcat_2 se_firmcat_2 b_firmcat_3 se_firmcat_3 ///
+              elas_k_mean elas_l_mean elas_m_mean sfd_mean sfd_clip_mean elas_md_mean elas_mf_mean elas_md_clip_mean elas_mf_clip_mean ///
+              sfd_negshare sfd_gt1share elas_k_negshare elas_l_negshare elas_m_negshare elas_md_negshare elas_mf_negshare elas_md_clip_negshare elas_mf_clip_negshare ///
+              b_size_emp se_size_emp b_lnage se_lnage b_firmcat_2 se_firmcat_2 b_firmcat_3 se_firmcat_3 ///
               J_unit se_J_unit J_opt se_J_opt J_df J_p N boot_reps avg_time
     }
     else {
         order group b_const b_l b_k b_lsq b_ksq b_m b_amc b_as b_es b_essq ///
-              b_c0_omega b_ar1_omega b_lnage b_firmcat_2 b_firmcat_3 ///
-              elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
+              b_c0_omega b_ar1_omega b_size_emp b_lnage b_firmcat_2 b_firmcat_3 ///
+              elas_k_mean elas_l_mean elas_m_mean sfd_mean sfd_clip_mean elas_md_mean elas_mf_mean elas_md_clip_mean elas_mf_clip_mean ///
+              sfd_negshare sfd_gt1share elas_k_negshare elas_l_negshare elas_m_negshare elas_md_negshare elas_mf_negshare elas_md_clip_negshare elas_mf_clip_negshare ///
               J_unit J_opt J_df J_p N
     }
     compress
@@ -1180,8 +1318,8 @@ restore
 
 if `RUN_DIAG' {
 
-    di as text _n(1) "---------- IV diagnostics (A/B/C sets) ----------"
-    di as text "Current optimization IV_SET = `IV_SET'"
+    di as text _n(1) "---------- IV diagnostics (baseline A set) ----------"
+    di as text "Current optimization IV_SET = A"
 
     capture ssc install ranktest, replace
     capture ssc install ivreg2,   replace
@@ -1191,31 +1329,21 @@ if `RUN_DIAG' {
     if "`GROUPNAME'" == "G1_17_19" {
         * Excluded IVs: remove contemporaneous endogenous variable l.
         local z_A llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
-        local z_B llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
-        local z_C llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
     }
     else {
         local z_A llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_HHI_post
-        local z_B llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
-        * Excluded IVs: remove contemporaneous endogenous variable l.
-        local z_C llag klag mlag l_ind_yr k_ind_yr m_ind_yr Z_tariff Z_HHI_post
     }
-    local z_E const klag ksqlag llag lsqlag mlag mlagsq
 
     tempname HDIAG
     tempfile ivdiag
     postfile `HDIAG' str4 iv_set byte ok double N jp jstat widstat str80 reason using "`ivdiag'", replace
 
-    local diag_sets "A B C"
-    if "`IV_SET'"=="E" local diag_sets "E"
+    local diag_sets "A"
 
     foreach S in `diag_sets' {
         * Safe macro expansion by branch to avoid malformed tokens like `l.
         local z_excl ""
         if "`S'"=="A" local z_excl "`z_A'"
-        if "`S'"=="B" local z_excl "`z_B'"
-        if "`S'"=="C" local z_excl "`z_C'"
-        if "`S'"=="E" local z_excl "`z_E'"
 
         local miss 0
         local misslist ""
@@ -1295,7 +1423,7 @@ tempfile failures
 postfile failures rep reason using "`failures'", replace
 
     postfile `H' rep double(b_const b_l b_k b_lsq b_ksq b_m b_es b_essq ///
-                      b_c0_omega b_ar1_omega b_lnage b_firmcat_2 b_firmcat_3 J_unit J_opt time) ///
+                     b_c0_omega b_ar1_omega b_size_emp b_lnage b_firmcat_2 b_firmcat_3 J_unit J_opt time) ///
     using "`bootres'", replace
 
 forvalues ro = 1/`B' {
@@ -1338,7 +1466,7 @@ forvalues ro = 1/`B' {
         
         if (`rc' == 0 & scalar(gmm_conv) == 1) {
             post `H' (`ro') (r(b_c1)) (r(b_l)) (r(b_k)) (r(b_lsq)) (r(b_ksq)) (r(b_m)) ///
-                   (r(b_es)) (r(b_essq)) (r(b_c0_omega)) (r(b_ar1_omega)) (r(b_lnage)) (r(b_firmcat_2)) (r(b_firmcat_3)) ///
+                   (r(b_es)) (r(b_essq)) (r(b_c0_omega)) (r(b_ar1_omega)) (r(b_size_emp)) (r(b_lnage)) (r(b_firmcat_2)) (r(b_firmcat_3)) ///
                    (r(J_unit)) (r(J_opt)) (r(time))
             
             confirm matrix beta_lin
@@ -1408,6 +1536,8 @@ qui summarize b_c0_omega, detail
 local se_c0_omega  = r(sd)
 qui summarize b_ar1_omega, detail
 local se_ar1_omega = r(sd)
+qui summarize b_size_emp, detail
+local se_size_emp  = r(sd)
 qui summarize b_lnage, detail
 local se_lnage     = r(sd)
 qui summarize b_firmcat_2, detail
@@ -1432,6 +1562,7 @@ gen se_amc   = `se_amc'
 gen se_as    = `se_as'
 gen se_c0_omega  = `se_c0_omega'
 gen se_ar1_omega = `se_ar1_omega'
+gen se_size_emp  = `se_size_emp'
 gen se_lnage     = `se_lnage'
 gen se_firmcat_2 = `se_firmcat_2'
 gen se_firmcat_3 = `se_firmcat_3'
@@ -1443,8 +1574,9 @@ gen avg_time     = `=`total_time'/(`B'-`failed')'
 order group b_const se_const b_l se_l b_k se_k b_lsq se_lsq b_ksq se_ksq ///
       b_m se_m b_amc se_amc b_as se_as b_es se_es b_essq se_essq ///
       b_c0_omega se_c0_omega b_ar1_omega se_ar1_omega ///
-      elas_k_mean elas_l_mean elas_m_mean elas_k_negshare elas_l_negshare elas_m_negshare ///
-      b_lnage se_lnage b_firmcat_2 se_firmcat_2 b_firmcat_3 se_firmcat_3 ///
+      elas_k_mean elas_l_mean elas_m_mean elas_md_mean elas_mf_mean ///
+      elas_k_negshare elas_l_negshare elas_m_negshare elas_md_negshare elas_mf_negshare ///
+      b_size_emp se_size_emp b_lnage se_lnage b_firmcat_2 se_firmcat_2 b_firmcat_3 se_firmcat_3 ///
       J_unit se_J_unit J_opt se_J_opt J_df J_p N boot_reps avg_time
 
 compress

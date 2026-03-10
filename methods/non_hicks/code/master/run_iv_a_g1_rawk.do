@@ -14,7 +14,8 @@ global TARGET_GROUP "G1_17_19"
 global RUN_POINT_ONLY 1
 global RUN_BOOT 0
 global RUN_DIAG 1
-global IV_SET "E"
+global IV_SET "A"
+global CAPITAL_MODE "RAW"
 
 cd "$ROOT"
 do "$CODE/master/Master_Non_hicks.do"
